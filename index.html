@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FIST-O Dashboard</title>
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="./css/dashboard.css" />
+    <link rel="stylesheet" href="./css/employee-details.css" />
+    <link rel="stylesheet" href="./css/employee-details-table.css" />
+    <link rel="stylesheet" href="./css/update-employee.css" />
+    <link rel="stylesheet" href="./css/employee-req.css" />
+    <link rel="stylesheet" href="./css/client.css">
+  </head>
+  <body>
+    <!-- Sidebar (STAYS FIXED) -->
+    <div class="sidebar">
+      <div class="sidebar-header">
+        <div class="user-profile">
+          <img src="./assets/Imgaes/profile_user.png" alt="" />
+        </div>
+        <div class="user-info">
+          <p class="welcome-text">Welcome, Project Head</p>
+          <p class="role-text">Role: Project Head ID: FST008</p>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <a href="#" class="nav-item active" data-page="dashboard">
+          <img src="./assets/Imgaes/dashboard_icon.png" alt="" />
+          <span class="nav-text">Dashboard</span>
+        </a>
+        <a href="#" class="nav-item" data-page="analysis">
+          <img src="./assets/Imgaes/analysis_icon.png" alt="" />
+          <span class="nav-text">Analysis</span>
+        </a>
+        <a href="#" class="nav-item" data-page="client">
+          <img src="./assets/Imgaes/client_icon.png" alt="" />
+          <span class="nav-text">Clients</span>
+        </a>
+        <a href="#" class="nav-item" data-page="projects">
+          <img src="./assets/Imgaes/projects_icon.png" alt="" />
+          <span class="nav-text">Projects</span>
+        </a>
+        <a href="#" class="nav-item" data-page="employee-details">
+          <img src="./assets/Imgaes/employee_icon.png" alt="" />
+          <span class="nav-text">Employee Details</span>
+        </a>
+        <a href="#" class="nav-item" data-page="employee-request">
+          <img src="./assets/Imgaes/employee_req_icon.png" alt="" />
+          <span class="nav-text">Employee Request</span>
+        </a>
+        <a href="#" class="nav-item" data-page="hr">
+          <img src="./assets/Imgaes/hr_icon.png" alt="" />
+          <span class="nav-text">HR</span>
+        </a>
+        <a href="#" class="nav-item" data-page="daily-reports">
+          <img src="./assets/imgaes/daily_icon.png" alt="" />
+          <span class="nav-text">Daily Reports</span>
+        </a>
+        <a href="#" class="nav-item" data-page="reports">
+          <img src="./assets/Imgaes/reports_icon.png" alt="" />
+          <span class="nav-text">Reports</span>
+        </a>
+        <a href="#" class="nav-item" data-page="budget">
+          <img src="./assets/Imgaes/budget_icon.png" alt="" />
+          <span class="nav-text">Budget</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <a href="#" class="logout-btn">
+          <img src="" alt="" />
+          <span>Logout</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Main Content Wrapper -->
+    <div class="main-wrapper">
+      <!-- Hamburger Menu Button -->
+      <button class="hamburger-btn" id="hamburgerBtn">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <!-- Top Navbar (STAYS FIXED) -->
+      <nav class="top-navbar">
+        <div class="navbar-left">
+          <span class="current-date">Thursday 7 Oct,2025, 03:10:05 pm</span>
+        </div>
+        <div class="navbar-center">
+          <img src="./assets/Imgaes/Fist_O_logo_black.png" alt="" />
+        </div>
+        <div class="navbar-right">
+          <button class="icon-btn notification-btn">
+            <img src="./assets/Imgaes/nav_bell.png" alt="" />
+          </button>
+          <button class="icon-btn profile-btn">
+            <img src="./assets/Imgaes/nav_calendar.png" alt="" />
+          </button>
+          <button class="icon-btn settings-btn">
+            <img src="./assets/Imgaes/nav_profile.png" alt="" />
+          </button>
+        </div>
+      </nav>
+
+      <!-- DYNAMIC CONTENT AREA (ONLY THIS CHANGES) -->
+      <div class="content-area" id="content-area">
+        <div class="loading">Loading...</div>
+      </div>
+    </div>
+
+    <!-- Sidebar Overlay for Mobile -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- Scripts -->
+    <script src="./js/employee-data.js"></script>
+    <script src="./js/employee-details.js"></script>
+    <script src="./js/update-employee.js"></script>
+    <script src="./js/employee-req.js"></script>
+    <script src="./js/client.js"></script>
+    <script src="./script.js"></script>
+  </body>
+</html>
