@@ -211,6 +211,12 @@ body {
     color: #1a2332;
 }
 
+.logout-btn img{
+    width: 100%;
+    max-width: 20px;
+    height: auto;
+}
+
 /* Page Content Styles */
 .page-content {
     animation: fadeIn 0.3s ease;

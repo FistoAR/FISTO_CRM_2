@@ -96,13 +96,29 @@ function initializePageScripts(pageName) {
       }, 100);
       break;
 
-       case "client":
-            setTimeout(() => {
-                if (typeof initializeClientDatabaseTabs === "function") {
-                    initializeClientDatabaseTabs();
-                }
-            }, 100);
-            break;
+case "client":
+  setTimeout(() => {
+    if (typeof initializeClientDatabaseTabs === "function") {
+      initializeClientDatabaseTabs();
+    }
+    if (typeof initializeCustomerModal === "function") {
+      initializeCustomerModal();
+    }
+    if (typeof initializeFirstLevelFollowup === "function") {
+      initializeFirstLevelFollowup();
+    }
+    if (typeof initializeSecondLevelFollowup === "function") {
+      initializeSecondLevelFollowup();
+    }
+    // ADD THIS - Initialize Meeting Details
+    if (typeof initializeMeetingDetails === "function") {
+      initializeMeetingDetails();
+    } else {
+      console.error("initializeMeetingDetails function not found!");
+    }
+  }, 100);
+  break;
+
 
     // Add more cases for other pages as needed
   }

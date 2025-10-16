@@ -1,0 +1,498 @@
+/* TABLE  css*/
+
+/* Customer Database Table Styles */
+.second-level-table-container {
+    width: 100%;
+    overflow-x: auto;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e8e8e8;
+}
+
+.second-level-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 1200px;
+}
+
+.second-level-table thead {
+    background: #CBCDD2;
+}
+
+.second-level-table thead th {
+    padding: 16px 20px;
+    text-align: left;
+    font-family: 'Gilroy-SemiBold', sans-serif;
+    font-size: .86vw;
+    color: #333;
+    text-transform: none;
+    letter-spacing: 0;
+    border-right: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+}
+
+.second-level-table thead th:last-child {
+    border-right: none;
+}
+
+.second-level-table tbody tr {
+    transition: background 0.2s ease;
+}
+
+.second-level-table tbody tr:hover {
+    background: #fafafa;
+}
+
+.second-level-table tbody td {
+    padding: 16px 20px;
+    font-size: .9vw;
+    font-family: 'Gilroy-SemiBold', sans-serif;
+    color: #333;
+    vertical-align: middle;
+    border-right: 2px solid #CBCDD2;
+    border-bottom: 2px solid #CBCDD2;
+}
+
+.second-level-table tbody td:last-child {
+    border-right: none;
+}
+
+.second-level-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+
+
+
+/* Center align View column */
+.second-level-table tbody td:nth-child(9) {
+    text-align: center;
+}
+
+.second-level-table thead th:nth-child(9) {
+    text-align: center;
+}
+
+/* Status Select in Table */
+.second-level-status-select {
+    padding: 6px 12px;
+    border: 1px solid #CBCDD2;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-family: 'Gilroy-SemiBold', sans-serif;
+    cursor: pointer;
+    outline: none;
+    background-color: white;
+    transition: all 0.2s ease;
+}
+
+.second-level-status-select:hover {
+    border-color: #0052CC;
+}
+
+.second-level-status-select:focus {
+    border-color: #0052CC;
+    box-shadow: 0 0 0 2px rgba(0, 82, 204, 0.1);
+}
+
+/* View Button */
+.second-level-view-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.second-level-view-btn:hover {
+    background: #f0f0f0;
+    border-radius: 6px;
+    transform: scale(1.1);
+}
+
+.second-level-view-btn img {
+    width: 20px;
+    height: 20px;
+}
+
+/* MODAL STYLES */
+
+/* Second Level Modal (Edit Modal) */
+.second-level-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(3px);
+}
+
+.second-level-modal.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.second-level-modal-content {
+    background-color: #fff;
+    width: 90%;
+    max-width: 500px;
+    max-height: 90vh;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    animation: slideDown 0.3s ease;
+}
+
+/* Wider Modal for View */
+.second-level-modal-wide {
+    max-width: 800px;
+}
+
+.second-level-modal-header {
+    padding: 20px 30px;
+    background: linear-gradient(to bottom, #0052CC 10%, #002966 100%);
+    border-radius: 12px 12px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.second-level-modal-header h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: #fff;
+    font-family: 'Gilroy-Bold', sans-serif;
+}
+
+.second-level-modal-close,
+.second-level-view-modal-close {
+    color: #fff;
+    font-size: 32px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    line-height: 1;
+}
+
+.second-level-modal-close:hover,
+.second-level-view-modal-close:hover {
+    transform: scale(1.2);
+}
+
+.second-level-modal-body {
+    padding: 30px;
+    overflow-y: auto;
+    flex-grow: 1;
+}
+
+/* Form Styles */
+.second-level-form-group {
+    margin-bottom: 20px;
+}
+
+.second-level-label {
+    display: block;
+    font-size: 0.9rem;
+    font-family: 'Gilroy-SemiBold', sans-serif;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.second-level-required {
+    color: #dc2626;
+    font-weight: bold;
+}
+
+.second-level-input,
+.second-level-select,
+.second-level-textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #CBCDD2;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-family: 'Gilroy-Regular', sans-serif;
+    transition: all 0.3s ease;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.second-level-input:focus,
+.second-level-select:focus,
+.second-level-textarea:focus {
+    border-color: #0052CC;
+    box-shadow: 0 0 0 3px rgba(0, 82, 204, 0.1);
+}
+
+.second-level-input[readonly] {
+    background-color: #f5f5f5;
+    cursor: not-allowed;
+}
+
+.second-level-textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.second-level-modal-footer {
+    padding: 20px 30px;
+    background-color: #f9fafb;
+    border-radius: 0 0 12px 12px;
+    border-top: 1px solid #e5e7eb;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.second-level-btn-save {
+    padding: 12px 40px;
+    background: linear-gradient(to bottom, #0052CC 10%, #002966 100%);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-family: 'Gilroy-Bold', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.second-level-btn-save:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 82, 204, 0.3);
+}
+
+.second-level-btn-close {
+    padding: 12px 40px;
+    background: #e5e7eb;
+    color: #333;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-family: 'Gilroy-Bold', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.second-level-btn-close:hover {
+    background: #d1d5db;
+}
+
+/* VIEW MODAL STYLES */
+
+/* Section Styles */
+.second-level-section {
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.second-level-section:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.second-level-section-title {
+    font-size: 1.125rem;
+    font-family: 'Gilroy-Bold', sans-serif;
+    color: #0052CC;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #0052CC;
+}
+
+/* View Modal Grid */
+.second-level-view-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.second-level-view-item {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.second-level-view-item.full-width {
+    grid-column: 1 / -1;
+}
+
+.second-level-view-item label {
+    font-size: 0.75rem;
+    font-family: 'Gilroy-SemiBold', sans-serif;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.second-level-view-item span {
+    font-size: 0.95rem;
+    font-family: 'Gilroy-Regular', sans-serif;
+    color: #333;
+    word-break: break-word;
+}
+
+/* Status Badge in View Modal - Different colors for 2nd level */
+.status-badge-view-second {
+    display: inline-block;
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-size: 0.875rem !important;
+    font-family: 'Gilroy-SemiBold', sans-serif !important;
+    text-transform: capitalize;
+}
+
+.status-badge-view-second.status-second-lead {
+    background: #dbeafe;
+    color: #1e40af;
+}
+
+.status-badge-view-second.status-second-drop {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.status-badge-view-second.status-second-quotation {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.status-badge-view-second.status-second-inprogress {
+    background: #e0e7ff;
+    color: #3730a3;
+}
+
+.status-badge-view-second.status-second-notinterest {
+    background: #ffe4e6;
+    color: #881337;
+}
+
+/* RESPONSIVE STYLES */
+
+/* Tablet (768px - 1024px) */
+@media (max-width: 1024px) {
+    .second-level-table {
+        min-width: 900px;
+    }
+
+    .second-level-table thead th {
+        padding: 1rem 1.25rem;
+        font-size: 0.875rem;
+    }
+
+    .second-level-table tbody td {
+        padding: 1rem 1.25rem;
+        font-size: 0.875rem;
+    }
+
+    .second-level-status-select {
+        font-size: 0.75rem;
+    }
+
+    .second-level-modal-wide {
+        max-width: 700px;
+    }
+
+    .second-level-section-title {
+        font-size: 1rem;
+    }
+}
+
+/* Mobile (481px - 767px) */
+@media (max-width: 767px) {
+    .second-level-table-container {
+        border-radius: 8px;
+    }
+
+    .second-level-table {
+        min-width: 100%;
+        font-size: 0.75rem;
+    }
+
+    .second-level-table thead th {
+        padding: 0.75rem 0.5rem;
+        font-size: 0.75rem;
+    }
+
+    .second-level-table tbody td {
+        padding: 0.75rem 0.5rem;
+        font-size: 0.75rem;
+    }
+
+    .second-level-status-select {
+        font-size: 0.6875rem;
+        padding: 0.375rem 0.5rem;
+    }
+
+    .second-level-view-btn img {
+        width: 16px;
+        height: 16px;
+    }
+
+    .second-level-modal-content {
+        max-width: 95vw;
+        max-height: 90vh;
+    }
+
+    .second-level-modal-wide {
+        max-width: 95vw;
+    }
+
+    .second-level-view-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .second-level-modal-header {
+        padding: 1rem 1.25rem;
+    }
+
+    .second-level-modal-header h2 {
+        font-size: 1.25rem;
+    }
+
+    .second-level-modal-body {
+        padding: 1.25rem;
+    }
+
+    .second-level-section-title {
+        font-size: 0.9375rem;
+    }
+}
+
+/* Small Mobile (320px - 480px) */
+@media (max-width: 480px) {
+    .second-level-table thead th {
+        padding: 0.625rem 0.375rem;
+        font-size: 0.6875rem;
+    }
+
+    .second-level-table tbody td {
+        padding: 0.625rem 0.375rem;
+        font-size: 0.6875rem;
+    }
+
+    .second-level-modal-header h2 {
+        font-size: 1.125rem;
+    }
+
+    .second-level-section-title {
+        font-size: 0.875rem;
+    }
+
+    .second-level-btn-save,
+    .second-level-btn-close {
+        width: 100%;
+        padding: 0.75rem 1.5rem;
+        font-size: 0.875rem;
+    }
+}

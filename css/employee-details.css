@@ -1,6 +1,6 @@
-.employee-details-content h2{
+.employee-details-content h2 {
     font-size: 2vw;
-    font-family: 'Gilroy-Bold',sans-serif;
+    font-family: 'Gilroy-Bold', sans-serif;
 }
 
 #addEmployeeBtn {
@@ -139,7 +139,7 @@
     display: inline-block;
 }
 
-.employee-important-fill{
+.employee-important-fill {
     color: red;
 }
 
@@ -492,6 +492,16 @@
 
 /* Tablet (1024px and below) */
 @media (max-width: 1024px) {
+    .employee-details-content h2 {
+        font-size: 1.5rem;
+    }
+
+    #addEmployeeBtn {
+        font-size: 0.875rem;
+        padding: 0.75rem 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
     .emp-modal-content {
         max-width: 80vw;
         margin: 5% auto;
@@ -539,6 +549,16 @@
 
 /* Mobile (768px and below) */
 @media (max-width: 768px) {
+    .employee-details-content h2 {
+        font-size: 1.25rem;
+    }
+
+    #addEmployeeBtn {
+        font-size: 0.8125rem;
+        padding: 0.625rem 1.25rem;
+        margin-top: 1.25rem;
+    }
+
     .emp-modal-content {
         width: 90%;
         margin: 2% auto;
@@ -653,6 +673,16 @@
 
 /* Small Mobile (480px and below) */
 @media (max-width: 480px) {
+    .employee-details-content h2 {
+        font-size: 1.125rem;
+    }
+
+    #addEmployeeBtn {
+        font-size: 0.75rem;
+        padding: 0.5rem 1rem;
+        margin-top: 1rem;
+    }
+
     .emp-modal-content {
         width: 90%;
         margin: 8% auto;
