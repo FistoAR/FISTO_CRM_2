@@ -1,94 +1,95 @@
+/* ==================== MEETING DETAILS PAGE STYLES ==================== */
+
+/* Add Meeting Button */
 .meeting-details-add-btn {
-    font-size: 1vw;
-    padding: 10px 20px;
-    background-color: #0052CC;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    font-family: 'Gilroy-Bold', sans-serif;
-    margin-bottom: 1vw;
+  font-size: 1vw;
+  padding: 10px 20px;
+  background-color: #0052cc;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-family: 'Gilroy-Bold', sans-serif;
+  margin-bottom: 1vw;
 }
 
 .meeting-details-add-btn:hover {
-    background: linear-gradient(to bottom, #0052CC 10%, #002966 100%);
-    color: #ffffff;
-    border-color: #0052CC;
+  background: linear-gradient(to bottom, #0052cc 10%, #002966 100%);
+  color: #ffffff;
+  border-color: #0052cc;
 }
 
 .meeting-details-add-btn img {
-    width: 100%;
-    height: auto;
-    max-width: 1.4vw;
-    margin-right: .2vw;
-    vertical-align: middle;
+  width: 100%;
+  height: auto;
+  max-width: 1.4vw;
+  margin-right: 0.2vw;
+  vertical-align: middle;
 }
 
+/* ==================== TABLE STYLES ==================== */
 
-
-/* TABLE  css*/
-
-/* Customer Database Table Styles */
+/* Meeting Details Table Container */
 .meeting-details-table-container {
-    width: 100%;
-    overflow-x: auto;
-    background: #fff;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-    border: 1px solid #e8e8e8;
+  width: 100%;
+  overflow-x: auto;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e8e8e8;
 }
 
 .meeting-details-table {
-    width: 100%;
-    border-collapse: collapse;
-    min-width: 1200px;
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 1200px;
 }
 
 .meeting-details-table thead {
-    background: #CBCDD2;
+  background: #cbcdd2;
 }
 
 .meeting-details-table thead th {
-    padding: 16px 20px;
-    text-align: left;
-    font-family: 'Gilroy-SemiBold', sans-serif;
-    font-size: .86vw;
-    color: #333;
-    text-transform: none;
-    letter-spacing: 0;
-    border-right: 2px solid #fff;
-    border-bottom: 2px solid #fff;
+  padding: 16px 20px;
+  text-align: left;
+  font-family: 'Gilroy-SemiBold', sans-serif;
+  font-size: 0.86vw;
+  color: #333;
+  text-transform: none;
+  letter-spacing: 0;
+  border-right: 2px solid #fff;
+  border-bottom: 2px solid #fff;
 }
 
 .meeting-details-table thead th:last-child {
-    border-right: none;
+  border-right: none;
 }
 
 .meeting-details-table tbody tr {
-    transition: background 0.2s ease;
+  transition: background 0.2s ease;
 }
 
 .meeting-details-table tbody tr:hover {
-    background: #fafafa;
+  background: #fafafa;
 }
 
 .meeting-details-table tbody td {
-    padding: 16px 20px;
-    font-size: .9vw;
-    font-family: 'Gilroy-SemiBold', sans-serif;
-    color: #333;
-    vertical-align: middle;
-    border-right: 2px solid #CBCDD2;
-    border-bottom: 2px solid #CBCDD2;
+  padding: 16px 20px;
+  font-size: 0.9vw;
+  font-family: 'Gilroy-SemiBold', sans-serif;
+  color: #333;
+  vertical-align: middle;
+  border-right: 2px solid #cbcdd2;
+  border-bottom: 2px solid #cbcdd2;
 }
 
 .meeting-details-table tbody td:last-child {
-    border-right: none;
+  border-right: none;
 }
 
 .meeting-details-table tbody tr:last-child td {
-    border-bottom: none;
+  border-bottom: none;
 }
 
 /* Center align Upload MOM, View and Delete columns */
@@ -161,7 +162,7 @@
   height: 20px;
 }
 
-/* MODAL STYLES */
+/* ==================== MODAL STYLES ==================== */
 
 .meeting-modal {
   display: none;
@@ -192,10 +193,11 @@
   display: flex;
   flex-direction: column;
   animation: slideDown 0.3s ease;
+  overflow: hidden;
 }
 
 .meeting-modal-wide {
-  max-width: 800px;
+  max-width: 900px;
 }
 
 .meeting-modal-header {
@@ -233,10 +235,32 @@
 .meeting-modal-body {
   padding: 30px;
   overflow-y: auto;
+  overflow-x: hidden;
   flex-grow: 1;
+  flex-shrink: 1;
 }
 
-/* Form Styles */
+/* Custom Scrollbar for Modal Body */
+.meeting-modal-body::-webkit-scrollbar {
+  width: 8px;
+}
+
+.meeting-modal-body::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.meeting-modal-body::-webkit-scrollbar-thumb {
+  background: #0052cc;
+  border-radius: 10px;
+}
+
+.meeting-modal-body::-webkit-scrollbar-thumb:hover {
+  background: #002966;
+}
+
+/* ==================== FORM STYLES ==================== */
+
 .meeting-form-row {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -292,7 +316,8 @@
   min-height: 80px;
 }
 
-/* Employee Dropdown with Search */
+/* ==================== EMPLOYEE DROPDOWN STYLES ==================== */
+
 .meeting-employee-dropdown {
   position: relative;
 }
@@ -304,7 +329,6 @@
 .meeting-employee-list {
   display: none;
   position: absolute;
-  top: 100%;
   left: 0;
   right: 0;
   max-height: 200px;
@@ -313,8 +337,17 @@
   border: 1px solid #cbcdd2;
   border-radius: 6px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  z-index: 10;
-  margin-top: 4px;
+  z-index: 100;
+  margin-top: 1vw;
+}
+
+.meeting-employee-list.active {
+  display: block;
+}
+
+/* Hide selected employees */
+.meeting-employee-item.hidden {
+  display: none !important;
 }
 
 .meeting-employee-item {
@@ -345,6 +378,7 @@
   flex-wrap: wrap;
   gap: 8px;
   margin-top: 10px;
+  min-height: 0;
 }
 
 .meeting-employee-badge {
@@ -374,7 +408,8 @@
   color: #991b1b;
 }
 
-/* Meeting Links */
+/* ==================== MEETING LINKS STYLES ==================== */
+
 .meeting-link-row {
   display: flex;
   align-items: center;
@@ -386,10 +421,10 @@
   flex: 1;
 }
 
-.meeting-add-link-btn {
+.meeting-add-link-btn,
+.meeting-remove-link-btn {
   width: 36px;
   height: 36px;
-  background: #0052cc;
   color: white;
   border: none;
   border-radius: 6px;
@@ -402,12 +437,26 @@
   flex-shrink: 0;
 }
 
+.meeting-add-link-btn {
+  background: #0052cc;
+}
+
 .meeting-add-link-btn:hover {
   background: #003d99;
   transform: scale(1.1);
 }
 
-/* Radio Group */
+.meeting-remove-link-btn {
+  background: #dc2626;
+}
+
+.meeting-remove-link-btn:hover {
+  background: #b91c1c;
+  transform: scale(1.1);
+}
+
+/* ==================== RADIO GROUP STYLES ==================== */
+
 .meeting-radio-group {
   display: flex;
   gap: 20px;
@@ -426,7 +475,8 @@
   cursor: pointer;
 }
 
-/* Modal Footer */
+/* ==================== MODAL FOOTER ==================== */
+
 .meeting-modal-footer {
   padding: 20px 30px;
   background-color: #f9fafb;
@@ -434,6 +484,7 @@
   border-top: 1px solid #e5e7eb;
   text-align: center;
   flex-shrink: 0;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
 }
 
 .meeting-btn-submit {
@@ -469,7 +520,9 @@
   background: #d1d5db;
 }
 
-/* View Modal Styles */
+/* ==================== VIEW MODAL STYLES (WITH CLICKABLE LINKS) ==================== */
+
+/* View Modal Sections */
 .meeting-view-section {
   margin-bottom: 30px;
   padding-bottom: 20px;
@@ -478,6 +531,8 @@
 
 .meeting-view-section:last-child {
   border-bottom: none;
+  padding-bottom: 0;
+  margin-bottom: 0;
 }
 
 .meeting-section-title {
@@ -489,78 +544,643 @@
   border-bottom: 2px solid #0052cc;
 }
 
-.meeting-view-grid {
+/* View Form Grid Layout */
+.meeting-view-form-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
 }
 
-.meeting-view-item {
+.meeting-view-form-group {
   display: flex;
   flex-direction: column;
-  gap: 8px;
 }
 
-.meeting-view-item.full-width {
+.meeting-view-form-group.full-width {
   grid-column: 1 / -1;
 }
 
-.meeting-view-item label {
-  font-size: 0.75rem;
+/* View Form Labels */
+.meeting-view-label {
+  font-size: 0.85rem;
   font-family: "Gilroy-SemiBold", sans-serif;
-  color: #666;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.meeting-view-item span {
-  font-size: 0.95rem;
-  font-family: "Gilroy-Regular", sans-serif;
   color: #333;
-  word-break: break-word;
+  margin-bottom: 8px;
 }
 
-.meeting-links-container {
+/* View Form Read-only Inputs */
+.meeting-view-input,
+.meeting-view-textarea {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid #cbcdd2;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-family: "Gilroy-Regular", sans-serif;
+  background-color: #f9fafb;
+  color: #333;
+  cursor: not-allowed;
+  box-sizing: border-box;
+  outline: none;
+  pointer-events: none;
+}
+
+.meeting-view-input:focus,
+.meeting-view-textarea:focus {
+  border-color: #cbcdd2;
+  box-shadow: none;
+}
+
+.meeting-view-textarea {
+  resize: none;
+  min-height: 80px;
+  line-height: 1.6;
+}
+
+/* View Form Styling */
+.meeting-view-form {
+  width: 100%;
+}
+
+/* ==================== CLICKABLE MEETING LINKS (UPDATED) ==================== */
+
+/* Meeting Links Clickable Container */
+.meeting-links-readonly-container {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
+  margin-top: 10px;
 }
 
-.meeting-link-badge {
-  display: inline-block;
-  padding: 8px 16px;
-  background: #dbeafe;
-  color: #1e40af;
+/* Clickable Link Row - Styled as Input */
+.meeting-link-clickable-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #f9fafb;
+  padding: 10px 14px;
   border-radius: 6px;
+  border: 1px solid #cbcdd2;
+  cursor: pointer;
+  transition: all 0.2s ease;
   text-decoration: none;
-  font-size: 0.875rem;
-  font-family: "Gilroy-SemiBold", sans-serif;
-  transition: all 0.2s;
 }
 
-.meeting-link-badge:hover {
-  background: #bfdbfe;
+.meeting-link-clickable-row:hover {
+  background: #e0f2fe;
+  border-color: #0052cc;
   transform: translateX(4px);
 }
 
-/* RESPONSIVE STYLES */
-@media (max-width: 1024px) {
-  .meeting-form-row {
-    grid-template-columns: repeat(2, 1fr);
+.meeting-link-icon {
+  color: #0052cc;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.meeting-link-clickable-row:hover .meeting-link-icon {
+  transform: scale(1.2);
+}
+
+/* Link Text Styled as Input */
+.meeting-link-text {
+  flex: 1;
+  font-size: 0.875rem;
+  color: #0052cc;
+  font-family: "Gilroy-Regular", sans-serif;
+  text-decoration: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.meeting-link-clickable-row:hover .meeting-link-text {
+  text-decoration: underline;
+}
+
+/* External Link Indicator */
+.meeting-link-external {
+  color: #0052cc;
+  font-size: 0.875rem;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.meeting-link-clickable-row:hover .meeting-link-external {
+  opacity: 1;
+}
+
+/* Empty State for Links */
+.meeting-links-readonly-container:empty::before {
+  content: "No meeting links added";
+  color: #999;
+  font-style: italic;
+  font-size: 0.875rem;
+  font-family: "Gilroy-Regular", sans-serif;
+  padding: 10px 14px;
+  display: block;
+  background: #f9fafb;
+  border-radius: 6px;
+  border: 1px solid #cbcdd2;
+}
+
+/* ==================== ATTENDEES DISPLAY ==================== */
+
+/* Attendees Display in View Modal */
+.meeting-attendees-readonly {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid #cbcdd2;
+  border-radius: 6px;
+  background-color: #f9fafb;
+  min-height: 60px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: flex-start;
+  box-sizing: border-box;
+}
+
+.meeting-attendees-readonly:empty::before {
+  content: "No attendees selected";
+  color: #999;
+  font-style: italic;
+  font-size: 0.875rem;
+  font-family: "Gilroy-Regular", sans-serif;
+}
+
+/* Attendee Badge in View Modal */
+.meeting-attendee-badge-view {
+  display: inline-block;
+  padding: 6px 12px;
+  background: #dbeafe;
+  color: #1e40af;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-family: "Gilroy-SemiBold", sans-serif;
+}
+
+/* ==================== ANIMATION ==================== */
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
   }
 }
 
-@media (max-width: 767px) {
+/* ==================== RESPONSIVE DESIGN - MEDIA QUERIES ==================== */
+
+/* Tablet (768px - 1024px) */
+@media (max-width: 1024px) {
+  .meeting-details-add-btn {
+    font-size: 1rem;
+    padding: 0.75rem 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .meeting-details-add-btn img {
+    max-width: 1.25rem;
+    margin-right: 0.5rem;
+  }
+
+  .meeting-details-table {
+    min-width: 900px;
+  }
+
+  .meeting-details-table thead th {
+    padding: 1rem 1.25rem;
+    font-size: 0.875rem;
+  }
+
+  .meeting-details-table tbody td {
+    padding: 1rem 1.25rem;
+    font-size: 0.875rem;
+  }
+
+  .meeting-upload-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.75rem;
+  }
+
+  .meeting-upload-btn span {
+    font-size: 0.875rem;
+  }
+
   .meeting-modal-content {
+    max-width: 80vw;
+    max-height: 85vh;
+  }
+
+  .meeting-modal-wide {
+    max-width: 80vw;
+  }
+
+  .meeting-modal-header h2 {
+    font-size: 1.5rem;
+  }
+
+  .meeting-modal-body {
+    padding: 1.5rem;
+  }
+
+  .meeting-section-title {
+    font-size: 1rem;
+  }
+
+  .meeting-form-row {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .meeting-label {
+    font-size: 0.875rem;
+  }
+
+  .meeting-input,
+  .meeting-select,
+  .meeting-textarea {
+    padding: 0.75rem 1rem;
+    font-size: 0.875rem;
+  }
+
+  .meeting-btn-submit,
+  .meeting-btn-close {
+    padding: 0.75rem 2rem;
+    font-size: 0.875rem;
+  }
+
+  .meeting-modal-footer {
+    padding: 1rem 1.5rem;
+  }
+
+  .meeting-view-btn img,
+  .meeting-delete-btn img {
+    width: 18px;
+    height: 18px;
+  }
+
+  .meeting-add-link-btn,
+  .meeting-remove-link-btn {
+    width: 32px;
+    height: 32px;
+    font-size: 1.3rem;
+  }
+
+  .meeting-employee-badge {
+    font-size: 0.8125rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .meeting-view-label {
+    font-size: 0.8125rem;
+  }
+
+  .meeting-view-input,
+  .meeting-view-textarea {
+    padding: 0.75rem 1rem;
+    font-size: 0.875rem;
+  }
+
+  .meeting-link-clickable-row {
+    padding: 0.75rem 1rem;
+    gap: 10px;
+  }
+
+  .meeting-link-text {
+    font-size: 0.8125rem;
+  }
+
+  .meeting-link-icon {
+    font-size: 1.1rem;
+  }
+
+  .meeting-attendee-badge-view {
+    font-size: 0.8125rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .meeting-attendees-readonly {
+    min-height: 50px;
+  }
+}
+
+/* Mobile (481px - 767px) */
+@media (max-width: 767px) {
+  .meeting-details-add-btn {
+    font-size: 0.875rem;
+    padding: 0.625rem 1.25rem;
+    margin-bottom: 1rem;
+  }
+
+  .meeting-details-add-btn img {
+    max-width: 1rem;
+    margin-right: 0.375rem;
+  }
+
+  .meeting-details-table-container {
+    border-radius: 8px;
+  }
+
+  .meeting-details-table {
+    min-width: 100%;
+    font-size: 0.75rem;
+  }
+
+  .meeting-details-table thead th {
+    padding: 0.75rem 0.5rem;
+    font-size: 0.75rem;
+  }
+
+  .meeting-details-table tbody td {
+    padding: 0.75rem 0.5rem;
+    font-size: 0.75rem;
+  }
+
+  .meeting-upload-btn {
+    padding: 0.375rem 0.75rem;
+    font-size: 0.6875rem;
+  }
+
+  .meeting-upload-btn span {
+    font-size: 0.75rem;
+  }
+
+  .meeting-modal-content {
+    max-width: 95vw;
+    max-height: 90vh;
+    margin: 1% auto;
+  }
+
+  .meeting-modal-wide {
     max-width: 95vw;
   }
 
+  .meeting-modal-header {
+    padding: 1rem 1.25rem;
+  }
+
+  .meeting-modal-header h2 {
+    font-size: 1.25rem;
+  }
+
+  .meeting-modal-close,
+  .meeting-view-modal-close {
+    font-size: 28px;
+  }
+
+  .meeting-modal-body {
+    padding: 1.25rem;
+  }
+
+  .meeting-section-title {
+    font-size: 0.9375rem;
+  }
+
   .meeting-form-row {
+    grid-template-columns: 1fr;
+    gap: 0.875rem;
+    margin-bottom: 0.875rem;
+  }
+
+  .meeting-label {
+    font-size: 0.8125rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .meeting-input,
+  .meeting-select,
+  .meeting-textarea {
+    padding: 0.625rem 0.875rem;
+    font-size: 0.875rem;
+  }
+
+  .meeting-modal-footer {
+    padding: 1rem 1.25rem;
+  }
+
+  .meeting-btn-submit,
+  .meeting-btn-close {
+    width: 100%;
+    padding: 0.875rem 1.5rem;
+    font-size: 0.875rem;
+  }
+
+  .meeting-view-btn,
+  .meeting-delete-btn {
+    padding: 0.5rem;
+  }
+
+  .meeting-view-btn img,
+  .meeting-delete-btn img {
+    width: 16px;
+    height: 16px;
+  }
+
+  .meeting-view-form-grid {
     grid-template-columns: 1fr;
   }
 
-  .meeting-view-grid {
-    grid-template-columns: 1fr;
+  .meeting-add-link-btn,
+  .meeting-remove-link-btn {
+    width: 30px;
+    height: 30px;
+    font-size: 1.2rem;
+  }
+
+  .meeting-employee-item {
+    padding: 0.625rem 0.875rem;
+  }
+
+  .meeting-employee-badge {
+    font-size: 0.75rem;
+    padding: 0.375rem 0.75rem;
+  }
+
+  .meeting-view-section {
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+  }
+
+  .meeting-view-label {
+    font-size: 0.75rem;
+    margin-bottom: 6px;
+  }
+
+  .meeting-view-input,
+  .meeting-view-textarea {
+    padding: 0.625rem 0.875rem;
+    font-size: 0.8125rem;
+  }
+
+  .meeting-view-textarea {
+    min-height: 70px;
+  }
+
+  .meeting-link-clickable-row {
+    padding: 0.625rem 0.875rem;
+    gap: 8px;
+  }
+
+  .meeting-link-text {
+    font-size: 0.75rem;
+  }
+
+  .meeting-link-icon {
+    font-size: 1rem;
+  }
+
+  .meeting-attendee-badge-view {
+    font-size: 0.75rem;
+    padding: 0.375rem 0.75rem;
+  }
+
+  .meeting-attendees-readonly {
+    min-height: 45px;
+    padding: 0.625rem 0.875rem;
   }
 }
 
+/* Small Mobile (320px - 480px) */
+@media (max-width: 480px) {
+  .meeting-details-add-btn {
+    font-size: 0.8125rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .meeting-details-add-btn img {
+    max-width: 0.875rem;
+    margin-right: 0.25rem;
+  }
+
+  .meeting-details-table thead th {
+    padding: 0.625rem 0.375rem;
+    font-size: 0.6875rem;
+  }
+
+  .meeting-details-table tbody td {
+    padding: 0.625rem 0.375rem;
+    font-size: 0.6875rem;
+  }
+
+  .meeting-upload-btn {
+    padding: 0.3125rem 0.625rem;
+    font-size: 0.625rem;
+  }
+
+  .meeting-upload-btn span {
+    font-size: 0.6875rem;
+  }
+
+  .meeting-modal-header h2 {
+    font-size: 1.125rem;
+  }
+
+  .meeting-modal-close,
+  .meeting-view-modal-close {
+    font-size: 24px;
+  }
+
+  .meeting-modal-body {
+    padding: 1rem;
+  }
+
+  .meeting-section-title {
+    font-size: 0.875rem;
+  }
+
+  .meeting-label {
+    font-size: 0.75rem;
+  }
+
+  .meeting-input,
+  .meeting-select,
+  .meeting-textarea {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.8125rem;
+  }
+
+  .meeting-modal-footer {
+    padding: 0.875rem 1rem;
+  }
+
+  .meeting-btn-submit,
+  .meeting-btn-close {
+    padding: 0.75rem 1.25rem;
+    font-size: 0.8125rem;
+  }
+
+  .meeting-view-btn img,
+  .meeting-delete-btn img {
+    width: 14px;
+    height: 14px;
+  }
+
+  .meeting-add-link-btn,
+  .meeting-remove-link-btn {
+    width: 28px;
+    height: 28px;
+    font-size: 1.1rem;
+  }
+
+  .meeting-employee-item {
+    padding: 0.5rem 0.75rem;
+  }
+
+  .meeting-employee-badge {
+    font-size: 0.6875rem;
+    padding: 0.3125rem 0.625rem;
+  }
+
+  .meeting-remove-emp {
+    font-size: 1rem;
+  }
+
+  .meeting-view-section {
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+  }
+
+  .meeting-view-label {
+    font-size: 0.6875rem;
+    margin-bottom: 5px;
+  }
+
+  .meeting-view-input,
+  .meeting-view-textarea {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.75rem;
+  }
+
+  .meeting-view-textarea {
+    min-height: 60px;
+  }
+
+  .meeting-link-clickable-row {
+    padding: 0.5rem 0.75rem;
+    gap: 6px;
+  }
+
+  .meeting-link-text {
+    font-size: 0.6875rem;
+  }
+
+  .meeting-link-icon {
+    font-size: 0.9rem;
+  }
+
+  .meeting-attendee-badge-view {
+    font-size: 0.6875rem;
+    padding: 0.3125rem 0.625rem;
+  }
+
+  .meeting-attendees-readonly {
+    min-height: 40px;
+    padding: 0.5rem 0.75rem;
+  }
+}

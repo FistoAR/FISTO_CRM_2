@@ -202,17 +202,17 @@ function initializeFirstLevelFollowup() {
     });
   }
 
-function closeModal() {
+  function closeModal() {
     modal.classList.remove("active");
     form.reset();
-    
+
     // Reset dropdown to original value if user canceled
     if (editingIndex !== -1) {
-        renderTable(); // Re-render to reset dropdown to original status
+      renderTable(); // Re-render to reset dropdown to original status
     }
-    
+
     editingIndex = -1;
-}
+  }
 
   function closeViewModal() {
     viewModal.classList.remove("active");
@@ -321,58 +321,48 @@ function closeModal() {
   }
 
   // Open View Modal Function (when view button is clicked)
+  // Open View Modal Function (when view button is clicked)
   function openViewModal(index) {
     const record = firstLevelCustomers[index];
     const customerData = record.fullCustomerData;
 
     // Populate Customer Database Information
-    document.getElementById("viewDbDate").textContent =
-      customerData.date || "-";
-    document.getElementById("viewDbCustomerId").textContent =
+    document.getElementById("viewDbDate").value = customerData.date || "-";
+    document.getElementById("viewDbCustomerId").value =
       customerData.customerId || "-";
-    document.getElementById("viewDbCompanyName").textContent =
+    document.getElementById("viewDbCompanyName").value =
       customerData.companyName || "-";
-    document.getElementById("viewDbCustomerName").textContent =
+    document.getElementById("viewDbCustomerName").value =
       customerData.customerName || "-";
-    document.getElementById("viewDbIndustryType").textContent =
+    document.getElementById("viewDbIndustryType").value =
       customerData.industryType || "-";
-    document.getElementById("viewDbWebsite").textContent =
+    document.getElementById("viewDbWebsite").value =
       customerData.website || "-";
-    document.getElementById("viewDbAddress").textContent =
+    document.getElementById("viewDbAddress").value =
       customerData.address || "-";
-    document.getElementById("viewDbReference").textContent =
+    document.getElementById("viewDbReference").value =
       customerData.reference || "-";
-    document.getElementById("viewDbRemarks").textContent =
+    document.getElementById("viewDbRemarks").value =
       customerData.remarks || "-";
 
     // Populate Contact Details
-    document.getElementById("viewDbContactPerson").textContent =
+    document.getElementById("viewDbContactPerson").value =
       customerData.contactPerson || "-";
-    document.getElementById("viewDbPhoneNumber").textContent =
+    document.getElementById("viewDbPhoneNumber").value =
       customerData.phoneNumber || "-";
-    document.getElementById("viewDbMailId").textContent =
-      customerData.mailId || "-";
-    document.getElementById("viewDbDesignation").textContent =
+    document.getElementById("viewDbMailId").value = customerData.mailId || "-";
+    document.getElementById("viewDbDesignation").value =
       customerData.designation || "-";
 
     // Populate 1st Level Follow-up Information
-    const statusSpan = document.getElementById("viewFollowupStatus");
-    statusSpan.textContent = record.status;
-    statusSpan.className = "status-badge-view";
-
-    // Add status-specific class
-    const statusClass = record.status.toLowerCase().replace(/[^a-z]/g, "");
-    if (statusClass !== "none") {
-      statusSpan.classList.add(`status-${statusClass}`);
-    }
-
-    document.getElementById("viewFollowupInitiatedDate").textContent =
+    document.getElementById("viewFollowupStatus").value = record.status;
+    document.getElementById("viewFollowupInitiatedDate").value =
       record.initiatedDate || "-";
-    document.getElementById("viewFollowupUpdateDate").textContent =
+    document.getElementById("viewFollowupUpdateDate").value =
       record.updateDate || "-";
-    document.getElementById("viewFollowupNextDate").textContent =
+    document.getElementById("viewFollowupNextDate").value =
       record.nextFollowupDate || "-";
-    document.getElementById("viewFollowupRemarks").textContent =
+    document.getElementById("viewFollowupRemarks").value =
       record.remarks || "No remarks yet";
 
     viewModal.classList.add("active");

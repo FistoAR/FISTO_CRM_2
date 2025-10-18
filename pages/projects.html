@@ -1,3 +1,252 @@
 <div class="projects-content">
-  <h2>Projects</h2>
+  
+
+  <!-- Add Project Button (Top Right) -->
+  <div class="project-header-section">
+    <h2>Projects</h2>
+    <button id="addProjectBtn" class="project-btn-primary">
+      + New Project
+    </button>
+  </div>
+
+  <!-- Search and Filter Section (Below Button) -->
+  <div class="project-info-search-section">
+    <!-- All Projects Count (Left) -->
+    <div class="table-header-info">
+      <span>All Projects (<span id="totalProjects">0</span>)</span>
+    </div>
+
+    <!-- Search and Filter (Right) -->
+    <div class="project-search-filter-section">
+      <div class="search-box">
+        <input
+          type="text"
+          id="projectSearchInput"
+          placeholder="Search"
+          class="project-search-input"
+        />
+      </div>
+      <button id="filterBtn" class="project-filter-btn">
+        <span>⚙</span> Filter
+      </button>
+    </div>
+  </div>
+
+
+  <!-- Success Message Toast -->
+  <div id="successToast" class="success-toast">
+    <span class="success-icon">✓</span>
+    <span id="successText">Project "EST1N98" added successfully</span>
+  </div>
+
+  <!-- PROJECT TABLE -->
+  <div class="project-table-wrapper">
+    <div class="project-table-container">
+      <table class="project-table">
+        <thead>
+          <tr>
+            <th>Project Name</th>
+            <th>Start Date</th>
+            <th>Deadline</th>
+            <th>Team Head</th>
+            <th>Project Status</th>
+            <th>View</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody id="projectTableBody">
+          <tr>
+            <td
+              colspan="7"
+              style="text-align: center; padding: 40px; color: #999"
+            >
+              No projects added yet. Click "New Project" to get started.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- PAGINATION -->
+   <div class="pagination-wrapper"> </div>
+  <div class="pagination-container">
+    <button id="prevBtn" class="pagination-btn" disabled>Previous</button>
+    <div id="paginationNumbers" class="pagination-numbers"></div>
+    <button id="nextBtn" class="pagination-btn">Next</button>
+  </div>
+ 
+  
+  <!-- ADD PROJECT MODAL -->
+  <div id="projectModal" class="project-modal">
+    <div class="project-modal-content">
+      <div class="project-modal-header">
+        <h2>Add New Project</h2>
+        <span class="project-modal-close">&times;</span>
+      </div>
+
+      <div class="project-modal-body">
+        <form id="projectForm">
+          <!-- PROJECT DETAILS -->
+          <div class="form-section">
+            <h4 class="section-title">Project Details</h4>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Customer ID <span class="required">*</span></label>
+                <input
+                  type="text"
+                  id="customerId"
+                  class="project-input"
+                  placeholder="EST1N98"
+                  readonly
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label
+                  >Selection Onboarding Projects
+                  <span class="required">*</span></label
+                >
+                <select id="onboardingProject" class="project-select" required>
+                  <option value="">
+                    -- Select Project from Client Table --
+                  </option>
+                </select>
+                <small class="form-helper"
+                  >Select an onboarded project or enter manually below</small
+                >
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Project Description <span class="required">*</span></label>
+              <textarea
+                id="projectDescription"
+                class="project-textarea"
+                rows="3"
+                placeholder="Enter project description..."
+                required
+              ></textarea>
+            </div>
+          </div>
+
+          <!-- CONTACT DETAILS -->
+          <div class="form-section">
+            <h4 class="section-title">Contact Details</h4>
+            <div id="contactFieldsContainer"></div>
+          </div>
+
+          <!-- DOCUMENTS -->
+          <div class="form-section">
+            <h4 class="section-title">Documents</h4>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Upload Document <span class="required">*</span></label>
+                <div class="file-upload-wrapper">
+                  <input
+                    type="file"
+                    id="documentUpload"
+                    class="file-input"
+                    accept=".pdf,.doc,.docx"
+                  />
+                  <button type="button" class="file-choose-btn">
+                    Choose File
+                  </button>
+                  <span class="file-name">No file Selected</span>
+                </div>
+              </div>
+              <div class="form-group">
+                <label
+                  >Enter Document Link <span class="required">*</span></label
+                >
+                <input
+                  type="url"
+                  id="documentLink"
+                  class="project-input"
+                  placeholder="https://example.com/document"
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- PROJECT ASSIGNMENT -->
+          <div class="form-section">
+            <h4 class="section-title">Project Assignment</h4>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Allocated Team <span class="required">*</span></label>
+                <select id="allocatedTeam" class="project-select" required>
+                  <option value="">
+                    Allocated Your Teams for This Project
+                  </option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Reporting Person <span class="required">*</span></label>
+                <input
+                  type="text"
+                  id="reportingPerson"
+                  class="project-input"
+                  placeholder="Enter reporting person name"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label>Start Date <span class="required">*</span></label>
+                <input
+                  type="date"
+                  id="startDate"
+                  class="project-input"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label>Completion Date <span class="required">*</span></label>
+                <input
+                  type="date"
+                  id="completionDate"
+                  class="project-input"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label>Revie Date <span class="required">*</span></label>
+                <input
+                  type="date"
+                  id="revieDate"
+                  class="project-input"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Remarks <span class="required">*</span></label>
+              <textarea
+                id="remarks"
+                class="project-textarea"
+                rows="3"
+                placeholder="Enter remarks..."
+                required
+              ></textarea>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div class="project-modal-footer">
+        <div class="project-form-actions">
+          <button type="button" class="btn-secondary" id="clearFormBtn">
+            Clear Form
+          </button>
+          <button type="button" class="btn-primary" id="projectSubmitBtn">
+            Submit
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

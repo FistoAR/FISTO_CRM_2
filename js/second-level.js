@@ -288,58 +288,50 @@ function initializeSecondLevelFollowup() {
   }
 
   // Open View Modal Function (when view button is clicked)
+  // Open View Modal Function (when view button is clicked)
   function openViewModal(index) {
     const record = secondLevelCustomers[index];
     const customerData = record.fullCustomerData;
 
     // Populate Customer Database Information
-    document.getElementById("viewDbDateSecond").textContent =
+    document.getElementById("viewDbDateSecond").value =
       customerData.date || "-";
-    document.getElementById("viewDbCustomerIdSecond").textContent =
+    document.getElementById("viewDbCustomerIdSecond").value =
       customerData.customerId || "-";
-    document.getElementById("viewDbCompanyNameSecond").textContent =
+    document.getElementById("viewDbCompanyNameSecond").value =
       customerData.companyName || "-";
-    document.getElementById("viewDbCustomerNameSecond").textContent =
+    document.getElementById("viewDbCustomerNameSecond").value =
       customerData.customerName || "-";
-    document.getElementById("viewDbIndustryTypeSecond").textContent =
+    document.getElementById("viewDbIndustryTypeSecond").value =
       customerData.industryType || "-";
-    document.getElementById("viewDbWebsiteSecond").textContent =
+    document.getElementById("viewDbWebsiteSecond").value =
       customerData.website || "-";
-    document.getElementById("viewDbAddressSecond").textContent =
+    document.getElementById("viewDbAddressSecond").value =
       customerData.address || "-";
-    document.getElementById("viewDbReferenceSecond").textContent =
+    document.getElementById("viewDbReferenceSecond").value =
       customerData.reference || "-";
-    document.getElementById("viewDbRemarksSecond").textContent =
+    document.getElementById("viewDbRemarksSecond").value =
       customerData.remarks || "-";
 
     // Populate Contact Details
-    document.getElementById("viewDbContactPersonSecond").textContent =
+    document.getElementById("viewDbContactPersonSecond").value =
       customerData.contactPerson || "-";
-    document.getElementById("viewDbPhoneNumberSecond").textContent =
+    document.getElementById("viewDbPhoneNumberSecond").value =
       customerData.phoneNumber || "-";
-    document.getElementById("viewDbMailIdSecond").textContent =
+    document.getElementById("viewDbMailIdSecond").value =
       customerData.mailId || "-";
-    document.getElementById("viewDbDesignationSecond").textContent =
+    document.getElementById("viewDbDesignationSecond").value =
       customerData.designation || "-";
 
     // Populate 2nd Level Follow-up Information
-    const statusSpan = document.getElementById("viewFollowupStatusSecond");
-    statusSpan.textContent = record.status;
-    statusSpan.className = "status-badge-view-second";
-
-    // Add status-specific class
-    const statusClass = record.status.toLowerCase().replace(/[^a-z]/g, "");
-    if (statusClass !== "none") {
-      statusSpan.classList.add(`status-second-${statusClass}`);
-    }
-
-    document.getElementById("viewFollowupInitiatedDateSecond").textContent =
+    document.getElementById("viewFollowupStatusSecond").value = record.status;
+    document.getElementById("viewFollowupInitiatedDateSecond").value =
       record.initiatedDate || "-";
-    document.getElementById("viewFollowupUpdateDateSecond").textContent =
+    document.getElementById("viewFollowupUpdateDateSecond").value =
       record.updateDate || "-";
-    document.getElementById("viewFollowupNextDateSecond").textContent =
+    document.getElementById("viewFollowupNextDateSecond").value =
       record.nextFollowupDate || "-";
-    document.getElementById("viewFollowupRemarksSecond").textContent =
+    document.getElementById("viewFollowupRemarksSecond").value =
       record.remarks || "No remarks yet";
 
     viewModal.classList.add("active");

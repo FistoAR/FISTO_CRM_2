@@ -191,23 +191,24 @@
 /* Customer Modal Header */
 .customer-modal-header {
     padding: 20px 30px;
-    background: linear-gradient(to bottom, #0052CC 10%, #002966 100%);
+    background: white;
     border-radius: 12px 12px 0 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-shrink: 0;
+    border-bottom: 1px solid #e5e7eb;
 }
 
 .customer-modal-header h2 {
     margin: 0;
     font-size: 1.5vw;
-    color: #fff;
+    color: #000000;
     font-family: 'Gilroy-Bold', sans-serif;
 }
 
 .customer-modal-close {
-    color: #fff;
+    color: #000000;
     font-size: 32px;
     font-weight: bold;
     cursor: pointer;
@@ -289,7 +290,7 @@
 /* Customer Modal Footer */
 .customer-modal-footer {
     padding: 20px 30px;
-    background-color: #f9fafb;
+    background-color: #ffffff;
     border-radius: 0 0 12px 12px;
     border-top: 1px solid #e5e7eb;
     flex-shrink: 0;

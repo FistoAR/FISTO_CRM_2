@@ -75,7 +75,7 @@
 
 /* Fixed Header */
 .emp-modal-header {
-    background: linear-gradient(to bottom, #0052CC 10%, #002966 100%);
+    background: white;
     color: white;
     padding: 20px 30px;
     border-radius: 10px 10px 0 0;
@@ -89,13 +89,13 @@
 
 .emp-modal-header h2 {
     font-size: 1.4vw;
-    color: white;
+    color: rgb(0, 0, 0);
     margin: 0;
     font-family: 'Gilroy-Bold', sans-serif;
 }
 
 .emp-modal-close {
-    color: white;
+    color: rgb(0, 0, 0);
     font-size: 28px;
     font-weight: bold;
     cursor: pointer;
@@ -446,7 +446,7 @@
 .emp-modal-footer {
     padding: 20px 30px;
     border-top: 1px solid #ddd;
-    background-color: #e8e8e8;
+    background-color: #ffffff;
     border-radius: 0 0 10px 10px;
     position: sticky;
     bottom: 0;

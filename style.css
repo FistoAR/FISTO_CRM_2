@@ -326,9 +326,10 @@ body {
 /* Content Area */
 .content-area {
     flex: 1;
-    padding: 30px;
+    padding: 20px;
     background: #ffffff;
     min-height: calc(100vh - 60px);
+    position: relative;
 }
 
 /* Hamburger Menu Button */

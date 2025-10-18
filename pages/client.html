@@ -384,6 +384,7 @@
 
     <!-- View Modal (read-only) -->
     <!-- View Modal (read-only) - Shows both Customer DB and 1st Level Data -->
+    <!-- View Modal (read-only with inputs) -->
     <div id="firstLevelViewModal" class="first-level-modal">
       <div class="first-level-modal-content first-level-modal-wide">
         <div class="first-level-modal-header">
@@ -397,42 +398,87 @@
             <h3 class="first-level-section-title">
               Customer Database Information
             </h3>
-            <div class="first-level-view-grid">
-              <div class="first-level-view-item">
-                <label>Date:</label>
-                <span id="viewDbDate">-</span>
+            <div class="first-level-view-form-grid">
+              <div class="first-level-view-form-group">
+                <label class="first-level-view-label">Date:</label>
+                <input
+                  type="text"
+                  id="viewDbDate"
+                  class="first-level-view-input"
+                  readonly
+                />
               </div>
-              <div class="first-level-view-item">
-                <label>Customer ID:</label>
-                <span id="viewDbCustomerId">-</span>
+              <div class="first-level-view-form-group">
+                <label class="first-level-view-label">Customer ID:</label>
+                <input
+                  type="text"
+                  id="viewDbCustomerId"
+                  class="first-level-view-input"
+                  readonly
+                />
               </div>
-              <div class="first-level-view-item">
-                <label>Company Name:</label>
-                <span id="viewDbCompanyName">-</span>
+              <div class="first-level-view-form-group">
+                <label class="first-level-view-label">Company Name:</label>
+                <input
+                  type="text"
+                  id="viewDbCompanyName"
+                  class="first-level-view-input"
+                  readonly
+                />
               </div>
-              <div class="first-level-view-item">
-                <label>Customer Name:</label>
-                <span id="viewDbCustomerName">-</span>
+              <div class="first-level-view-form-group">
+                <label class="first-level-view-label">Customer Name:</label>
+                <input
+                  type="text"
+                  id="viewDbCustomerName"
+                  class="first-level-view-input"
+                  readonly
+                />
               </div>
-              <div class="first-level-view-item">
-                <label>Industry Type:</label>
-                <span id="viewDbIndustryType">-</span>
+              <div class="first-level-view-form-group">
+                <label class="first-level-view-label">Industry Type:</label>
+                <input
+                  type="text"
+                  id="viewDbIndustryType"
+                  class="first-level-view-input"
+                  readonly
+                />
               </div>
-              <div class="first-level-view-item">
-                <label>Website:</label>
-                <span id="viewDbWebsite">-</span>
+              <div class="first-level-view-form-group">
+                <label class="first-level-view-label">Website:</label>
+                <input
+                  type="text"
+                  id="viewDbWebsite"
+                  class="first-level-view-input"
+                  readonly
+                />
               </div>
-              <div class="first-level-view-item">
-                <label>Address:</label>
-                <span id="viewDbAddress">-</span>
+              <div class="first-level-view-form-group">
+                <label class="first-level-view-label">Address:</label>
+                <input
+                  type="text"
+                  id="viewDbAddress"
+                  class="first-level-view-input"
+                  readonly
+                />
               </div>
-              <div class="first-level-view-item">
-                <label>Reference:</label>
-                <span id="viewDbReference">-</span>
+              <div class="first-level-view-form-group">
+                <label class="first-level-view-label">Reference:</label>
+                <input
+                  type="text"
+                  id="viewDbReference"
+                  class="first-level-view-input"
+                  readonly
+                />
               </div>
-              <div class="first-level-view-item full-width">
-                <label>Remarks:</label>
-                <span id="viewDbRemarks">-</span>
+              <div class="first-level-view-form-group full-width">
+                <label class="first-level-view-label">Remarks:</label>
+                <textarea
+                  id="viewDbRemarks"
+                  class="first-level-view-textarea"
+                  rows="2"
+                  readonly
+                ></textarea>
               </div>
             </div>
           </div>
@@ -440,22 +486,42 @@
           <!-- Contact Details -->
           <div class="first-level-section">
             <h3 class="first-level-section-title">Contact Details</h3>
-            <div class="first-level-view-grid">
-              <div class="first-level-view-item">
-                <label>Contact Person:</label>
-                <span id="viewDbContactPerson">-</span>
+            <div class="first-level-view-form-grid">
+              <div class="first-level-view-form-group">
+                <label class="first-level-view-label">Contact Person:</label>
+                <input
+                  type="text"
+                  id="viewDbContactPerson"
+                  class="first-level-view-input"
+                  readonly
+                />
               </div>
-              <div class="first-level-view-item">
-                <label>Phone Number:</label>
-                <span id="viewDbPhoneNumber">-</span>
+              <div class="first-level-view-form-group">
+                <label class="first-level-view-label">Phone Number:</label>
+                <input
+                  type="text"
+                  id="viewDbPhoneNumber"
+                  class="first-level-view-input"
+                  readonly
+                />
               </div>
-              <div class="first-level-view-item">
-                <label>Mail ID:</label>
-                <span id="viewDbMailId">-</span>
+              <div class="first-level-view-form-group">
+                <label class="first-level-view-label">Mail ID:</label>
+                <input
+                  type="text"
+                  id="viewDbMailId"
+                  class="first-level-view-input"
+                  readonly
+                />
               </div>
-              <div class="first-level-view-item">
-                <label>Designation:</label>
-                <span id="viewDbDesignation">-</span>
+              <div class="first-level-view-form-group">
+                <label class="first-level-view-label">Designation:</label>
+                <input
+                  type="text"
+                  id="viewDbDesignation"
+                  class="first-level-view-input"
+                  readonly
+                />
               </div>
             </div>
           </div>
@@ -465,26 +531,53 @@
             <h3 class="first-level-section-title">
               1st Level Follow-up Information
             </h3>
-            <div class="first-level-view-grid">
-              <div class="first-level-view-item">
-                <label>Status:</label>
-                <span id="viewFollowupStatus" class="status-badge-view">-</span>
+            <div class="first-level-view-form-grid">
+              <div class="first-level-view-form-group">
+                <label class="first-level-view-label">Status:</label>
+                <input
+                  type="text"
+                  id="viewFollowupStatus"
+                  class="first-level-view-input"
+                  readonly
+                />
               </div>
-              <div class="first-level-view-item">
-                <label>Initiated Date:</label>
-                <span id="viewFollowupInitiatedDate">-</span>
+              <div class="first-level-view-form-group">
+                <label class="first-level-view-label">Initiated Date:</label>
+                <input
+                  type="text"
+                  id="viewFollowupInitiatedDate"
+                  class="first-level-view-input"
+                  readonly
+                />
               </div>
-              <div class="first-level-view-item">
-                <label>Update Date:</label>
-                <span id="viewFollowupUpdateDate">-</span>
+              <div class="first-level-view-form-group">
+                <label class="first-level-view-label">Update Date:</label>
+                <input
+                  type="text"
+                  id="viewFollowupUpdateDate"
+                  class="first-level-view-input"
+                  readonly
+                />
               </div>
-              <div class="first-level-view-item">
-                <label>Next Follow-up Date:</label>
-                <span id="viewFollowupNextDate">-</span>
+              <div class="first-level-view-form-group">
+                <label class="first-level-view-label"
+                  >Next Follow-up Date:</label
+                >
+                <input
+                  type="text"
+                  id="viewFollowupNextDate"
+                  class="first-level-view-input"
+                  readonly
+                />
               </div>
-              <div class="first-level-view-item full-width">
-                <label>Follow-up Remarks:</label>
-                <span id="viewFollowupRemarks">-</span>
+              <div class="first-level-view-form-group full-width">
+                <label class="first-level-view-label">Follow-up Remarks:</label>
+                <textarea
+                  id="viewFollowupRemarks"
+                  class="first-level-view-textarea"
+                  rows="2"
+                  readonly
+                ></textarea>
               </div>
             </div>
           </div>
@@ -606,6 +699,7 @@
 
     <!-- View Modal for 2nd Level (Same structure as first level, but with different IDs) -->
     <!-- View Modal (read-only) - Shows both Customer DB and 2nd Level Data -->
+    <!-- View Modal for 2nd Level (read-only with inputs) -->
     <div id="secondLevelViewModal" class="second-level-modal">
       <div class="second-level-modal-content second-level-modal-wide">
         <div class="second-level-modal-header">
@@ -619,42 +713,87 @@
             <h3 class="second-level-section-title">
               Customer Database Information
             </h3>
-            <div class="second-level-view-grid">
-              <div class="second-level-view-item">
-                <label>Date:</label>
-                <span id="viewDbDateSecond">-</span>
+            <div class="second-level-view-form-grid">
+              <div class="second-level-view-form-group">
+                <label class="second-level-view-label">Date:</label>
+                <input
+                  type="text"
+                  id="viewDbDateSecond"
+                  class="second-level-view-input"
+                  readonly
+                />
               </div>
-              <div class="second-level-view-item">
-                <label>Customer ID:</label>
-                <span id="viewDbCustomerIdSecond">-</span>
+              <div class="second-level-view-form-group">
+                <label class="second-level-view-label">Customer ID:</label>
+                <input
+                  type="text"
+                  id="viewDbCustomerIdSecond"
+                  class="second-level-view-input"
+                  readonly
+                />
               </div>
-              <div class="second-level-view-item">
-                <label>Company Name:</label>
-                <span id="viewDbCompanyNameSecond">-</span>
+              <div class="second-level-view-form-group">
+                <label class="second-level-view-label">Company Name:</label>
+                <input
+                  type="text"
+                  id="viewDbCompanyNameSecond"
+                  class="second-level-view-input"
+                  readonly
+                />
               </div>
-              <div class="second-level-view-item">
-                <label>Customer Name:</label>
-                <span id="viewDbCustomerNameSecond">-</span>
+              <div class="second-level-view-form-group">
+                <label class="second-level-view-label">Customer Name:</label>
+                <input
+                  type="text"
+                  id="viewDbCustomerNameSecond"
+                  class="second-level-view-input"
+                  readonly
+                />
               </div>
-              <div class="second-level-view-item">
-                <label>Industry Type:</label>
-                <span id="viewDbIndustryTypeSecond">-</span>
+              <div class="second-level-view-form-group">
+                <label class="second-level-view-label">Industry Type:</label>
+                <input
+                  type="text"
+                  id="viewDbIndustryTypeSecond"
+                  class="second-level-view-input"
+                  readonly
+                />
               </div>
-              <div class="second-level-view-item">
-                <label>Website:</label>
-                <span id="viewDbWebsiteSecond">-</span>
+              <div class="second-level-view-form-group">
+                <label class="second-level-view-label">Website:</label>
+                <input
+                  type="text"
+                  id="viewDbWebsiteSecond"
+                  class="second-level-view-input"
+                  readonly
+                />
               </div>
-              <div class="second-level-view-item">
-                <label>Address:</label>
-                <span id="viewDbAddressSecond">-</span>
+              <div class="second-level-view-form-group">
+                <label class="second-level-view-label">Address:</label>
+                <input
+                  type="text"
+                  id="viewDbAddressSecond"
+                  class="second-level-view-input"
+                  readonly
+                />
               </div>
-              <div class="second-level-view-item">
-                <label>Reference:</label>
-                <span id="viewDbReferenceSecond">-</span>
+              <div class="second-level-view-form-group">
+                <label class="second-level-view-label">Reference:</label>
+                <input
+                  type="text"
+                  id="viewDbReferenceSecond"
+                  class="second-level-view-input"
+                  readonly
+                />
               </div>
-              <div class="second-level-view-item full-width">
-                <label>Remarks:</label>
-                <span id="viewDbRemarksSecond">-</span>
+              <div class="second-level-view-form-group full-width">
+                <label class="second-level-view-label">Remarks:</label>
+                <textarea
+                  id="viewDbRemarksSecond"
+                  class="second-level-view-textarea"
+                  rows="2"
+                  readonly
+                ></textarea>
               </div>
             </div>
           </div>
@@ -662,22 +801,42 @@
           <!-- Contact Details -->
           <div class="second-level-section">
             <h3 class="second-level-section-title">Contact Details</h3>
-            <div class="second-level-view-grid">
-              <div class="second-level-view-item">
-                <label>Contact Person:</label>
-                <span id="viewDbContactPersonSecond">-</span>
+            <div class="second-level-view-form-grid">
+              <div class="second-level-view-form-group">
+                <label class="second-level-view-label">Contact Person:</label>
+                <input
+                  type="text"
+                  id="viewDbContactPersonSecond"
+                  class="second-level-view-input"
+                  readonly
+                />
               </div>
-              <div class="second-level-view-item">
-                <label>Phone Number:</label>
-                <span id="viewDbPhoneNumberSecond">-</span>
+              <div class="second-level-view-form-group">
+                <label class="second-level-view-label">Phone Number:</label>
+                <input
+                  type="text"
+                  id="viewDbPhoneNumberSecond"
+                  class="second-level-view-input"
+                  readonly
+                />
               </div>
-              <div class="second-level-view-item">
-                <label>Mail ID:</label>
-                <span id="viewDbMailIdSecond">-</span>
+              <div class="second-level-view-form-group">
+                <label class="second-level-view-label">Mail ID:</label>
+                <input
+                  type="text"
+                  id="viewDbMailIdSecond"
+                  class="second-level-view-input"
+                  readonly
+                />
               </div>
-              <div class="second-level-view-item">
-                <label>Designation:</label>
-                <span id="viewDbDesignationSecond">-</span>
+              <div class="second-level-view-form-group">
+                <label class="second-level-view-label">Designation:</label>
+                <input
+                  type="text"
+                  id="viewDbDesignationSecond"
+                  class="second-level-view-input"
+                  readonly
+                />
               </div>
             </div>
           </div>
@@ -687,30 +846,55 @@
             <h3 class="second-level-section-title">
               2nd Level Follow-up Information
             </h3>
-            <div class="second-level-view-grid">
-              <div class="second-level-view-item">
-                <label>Status:</label>
-                <span
+            <div class="second-level-view-form-grid">
+              <div class="second-level-view-form-group">
+                <label class="second-level-view-label">Status:</label>
+                <input
+                  type="text"
                   id="viewFollowupStatusSecond"
-                  class="status-badge-view-second"
-                  >-</span
+                  class="second-level-view-input"
+                  readonly
+                />
+              </div>
+              <div class="second-level-view-form-group">
+                <label class="second-level-view-label">Initiated Date:</label>
+                <input
+                  type="text"
+                  id="viewFollowupInitiatedDateSecond"
+                  class="second-level-view-input"
+                  readonly
+                />
+              </div>
+              <div class="second-level-view-form-group">
+                <label class="second-level-view-label">Update Date:</label>
+                <input
+                  type="text"
+                  id="viewFollowupUpdateDateSecond"
+                  class="second-level-view-input"
+                  readonly
+                />
+              </div>
+              <div class="second-level-view-form-group">
+                <label class="second-level-view-label"
+                  >Next Follow-up Date:</label
                 >
+                <input
+                  type="text"
+                  id="viewFollowupNextDateSecond"
+                  class="second-level-view-input"
+                  readonly
+                />
               </div>
-              <div class="second-level-view-item">
-                <label>Initiated Date:</label>
-                <span id="viewFollowupInitiatedDateSecond">-</span>
-              </div>
-              <div class="second-level-view-item">
-                <label>Update Date:</label>
-                <span id="viewFollowupUpdateDateSecond">-</span>
-              </div>
-              <div class="second-level-view-item">
-                <label>Next Follow-up Date:</label>
-                <span id="viewFollowupNextDateSecond">-</span>
-              </div>
-              <div class="second-level-view-item full-width">
-                <label>Follow-up Remarks:</label>
-                <span id="viewFollowupRemarksSecond">-</span>
+              <div class="second-level-view-form-group full-width">
+                <label class="second-level-view-label"
+                  >Follow-up Remarks:</label
+                >
+                <textarea
+                  id="viewFollowupRemarksSecond"
+                  class="second-level-view-textarea"
+                  rows="2"
+                  readonly
+                ></textarea>
               </div>
             </div>
           </div>
@@ -727,12 +911,15 @@
         </div>
       </div>
     </div>
-
   </div>
 
   <!-- Meeting Details Section -->
   <div class="tab-content" id="meeting-details">
-    <button class="meeting-details-add-btn" style="float: right">
+    <button
+      class="meeting-details-add-btn"
+      id="openMeetingModal"
+      style="float: right"
+    >
       <img src="../assets/imgaes/plus_btn.png" alt="" /> Add Meeting
     </button>
 
@@ -767,233 +954,296 @@
     </div>
 
     <!-- Schedule Meeting Modal -->
-<div id="meetingModal" class="meeting-modal">
-  <div class="meeting-modal-content">
-    <!-- Fixed Header -->
-    <div class="meeting-modal-header">
-      <h2 id="meetingModalTitle">Schedule Meeting</h2>
-      <span class="meeting-modal-close">&times;</span>
-    </div>
-
-    <!-- Scrollable Body -->
-    <div class="meeting-modal-body">
-      <form id="meetingForm" class="meeting-form">
-        <!-- Row 1 -->
-        <div class="meeting-form-row">
-          <div class="meeting-form-group">
-            <label class="meeting-label">
-              Meeting Title <span class="meeting-required">*</span>
-            </label>
-            <input
-              type="text"
-              name="meetingTitle"
-              class="meeting-input"
-              placeholder="Enter Meeting Title"
-              required
-            />
-          </div>
-
-          <div class="meeting-form-group">
-            <label class="meeting-label">
-              Meeting Date <span class="meeting-required">*</span>
-            </label>
-            <input
-              type="date"
-              name="meetingDate"
-              class="meeting-input"
-              required
-            />
-          </div>
-
-          <div class="meeting-form-group">
-            <label class="meeting-label">
-              Attendees (Employee IDs) <span class="meeting-required">*</span>
-            </label>
-            <div id="employeeDropdownContainer"></div>
-            <input type="hidden" id="attendeesHidden" name="attendees" />
-          </div>
+    <!-- Schedule Meeting Modal -->
+    <div id="meetingModal" class="meeting-modal">
+      <div class="meeting-modal-content">
+        <!-- Fixed Header -->
+        <div class="meeting-modal-header">
+          <h2 id="meetingModalTitle">Schedule Meeting</h2>
+          <span class="meeting-modal-close">&times;</span>
         </div>
 
-        <!-- Row 2 -->
-        <div class="meeting-form-row">
-          <div class="meeting-form-group">
-            <label class="meeting-label">
-              From <span class="meeting-required">*</span>
-            </label>
-            <input
-              type="time"
-              name="fromTime"
-              class="meeting-input"
-              required
-            />
-          </div>
-
-          <div class="meeting-form-group">
-            <label class="meeting-label">
-              To Time <span class="meeting-required">*</span>
-            </label>
-            <input
-              type="time"
-              name="toTime"
-              class="meeting-input"
-              required
-            />
-          </div>
-
-          <div class="meeting-form-group">
-            <label class="meeting-label">
-              Duration (Minutes) <span class="meeting-required">*</span>
-            </label>
-            <select name="duration" class="meeting-select" required>
-              <option value="">Select Duration</option>
-              <option value="30">30 Minutes</option>
-              <option value="60">60 Minutes</option>
-              <option value="90">90 Minutes</option>
-              <option value="120">120 Minutes</option>
-            </select>
-          </div>
-        </div>
-
-        <!-- Row 3 -->
-        <div class="meeting-form-row">
-          <div class="meeting-form-group full-width">
-            <label class="meeting-label">
-              Meeting Description <span class="meeting-required">*</span>
-            </label>
-            <textarea
-              name="meetingDescription"
-              class="meeting-textarea"
-              rows="3"
-              placeholder="Enter meeting description"
-              required
-            ></textarea>
-          </div>
-        </div>
-
-        <!-- Row 4 - Meeting Links -->
-        <div class="meeting-form-row">
-          <div class="meeting-form-group full-width">
-            <label class="meeting-label">
-              Add Meeting Link <span class="meeting-required">*</span>
-            </label>
-            <div id="meetingLinksContainer"></div>
-          </div>
-        </div>
-
-        <!-- Row 5 - Project Name and Meeting Mode -->
-        <div class="meeting-form-row">
-          <div class="meeting-form-group">
-            <label class="meeting-label">Project Name</label>
-            <input
-              type="text"
-              name="projectName"
-              class="meeting-input"
-              placeholder="Enter project name (optional)"
-            />
-          </div>
-
-          <div class="meeting-form-group">
-            <label class="meeting-label">Meeting Mode</label>
-            <div class="meeting-radio-group">
-              <label class="meeting-radio-label">
+        <!-- Scrollable Body -->
+        <div class="meeting-modal-body">
+          <form id="meetingForm" class="meeting-form">
+            <!-- Row 1 -->
+            <div class="meeting-form-row">
+              <div class="meeting-form-group">
+                <label class="meeting-label">
+                  Meeting Title <span class="meeting-required">*</span>
+                </label>
                 <input
-                  type="radio"
-                  name="meetingMode"
-                  value="Remote"
-                  checked
+                  type="text"
+                  name="meetingTitle"
+                  class="meeting-input"
+                  placeholder="Enter Meeting Title"
+                  required
                 />
-                <span>Remote</span>
-              </label>
-              <label class="meeting-radio-label">
-                <input type="radio" name="meetingMode" value="Onsite" />
-                <span>Onsite</span>
-              </label>
+              </div>
+
+              <div class="meeting-form-group">
+                <label class="meeting-label">
+                  Meeting Date <span class="meeting-required">*</span>
+                </label>
+                <input
+                  type="date"
+                  name="meetingDate"
+                  class="meeting-input"
+                  required
+                />
+              </div>
+
+              <div class="meeting-form-group">
+                <label class="meeting-label">
+                  Attendees (Employee IDs)
+                  <span class="meeting-required">*</span>
+                </label>
+                <div id="employeeDropdownContainer"></div>
+                <input type="hidden" id="attendeesHidden" name="attendees" />
+              </div>
             </div>
+
+            <!-- Row 2 -->
+            <div class="meeting-form-row">
+              <div class="meeting-form-group">
+                <label class="meeting-label">
+                  From <span class="meeting-required">*</span>
+                </label>
+                <input
+                  type="time"
+                  name="fromTime"
+                  class="meeting-input"
+                  required
+                />
+              </div>
+
+              <div class="meeting-form-group">
+                <label class="meeting-label">
+                  To Time <span class="meeting-required">*</span>
+                </label>
+                <input
+                  type="time"
+                  name="toTime"
+                  class="meeting-input"
+                  required
+                />
+              </div>
+
+              <div class="meeting-form-group">
+                <label class="meeting-label">
+                  Duration (Minutes) <span class="meeting-required">*</span>
+                </label>
+                <select name="duration" class="meeting-select" required>
+                  <option value="">Select Duration</option>
+                  <option value="30">30 Minutes</option>
+                  <option value="60">60 Minutes</option>
+                  <option value="90">90 Minutes</option>
+                  <option value="120">120 Minutes</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Row 3 -->
+            <div class="meeting-form-row">
+              <div class="meeting-form-group full-width">
+                <label class="meeting-label">
+                  Meeting Description <span class="meeting-required">*</span>
+                </label>
+                <textarea
+                  name="meetingDescription"
+                  class="meeting-textarea"
+                  rows="3"
+                  placeholder="Enter meeting description"
+                  required
+                ></textarea>
+              </div>
+            </div>
+
+            <!-- Row 4 - Meeting Links -->
+            <div class="meeting-form-row">
+              <div class="meeting-form-group full-width">
+                <label class="meeting-label">
+                  Add Meeting Link <span class="meeting-required">*</span>
+                </label>
+                <div id="meetingLinksContainer"></div>
+              </div>
+            </div>
+
+            <!-- Row 5 - Meeting Mode Only (Project Name REMOVED) -->
+            <div class="meeting-form-row">
+              <div class="meeting-form-group">
+                <label class="meeting-label">Meeting Mode</label>
+                <div class="meeting-radio-group">
+                  <label class="meeting-radio-label">
+                    <input
+                      type="radio"
+                      name="meetingMode"
+                      value="Remote"
+                      checked
+                    />
+                    <span>Remote</span>
+                  </label>
+                  <label class="meeting-radio-label">
+                    <input type="radio" name="meetingMode" value="Onsite" />
+                    <span>Onsite</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <!-- Fixed Footer -->
+        <div class="meeting-modal-footer">
+          <div class="meeting-form-actions">
+            <button
+              type="button"
+              class="meeting-btn-submit"
+              id="meetingSubmitBtn"
+            >
+              Submit
+            </button>
           </div>
         </div>
-      </form>
-    </div>
-
-    <!-- Fixed Footer -->
-    <div class="meeting-modal-footer">
-      <div class="meeting-form-actions">
-        <button
-          type="button"
-          class="meeting-btn-submit"
-          id="meetingSubmitBtn"
-        >
-          Submit
-        </button>
       </div>
     </div>
-  </div>
-</div>
 
-<!-- View Meeting Modal -->
-<div id="meetingViewModal" class="meeting-modal">
-  <div class="meeting-modal-content meeting-modal-wide">
-    <div class="meeting-modal-header">
-      <h2>Meeting Details</h2>
-      <span class="meeting-view-modal-close">&times;</span>
-    </div>
+    <!-- View Meeting Modal -->
+    <!-- View Meeting Modal -->
+    <!-- View Meeting Modal -->
+    <!-- View Meeting Modal -->
+    <div id="meetingViewModal" class="meeting-modal">
+      <div class="meeting-modal-content meeting-modal-wide">
+        <div class="meeting-modal-header">
+          <h2>Meeting Details</h2>
+          <span class="meeting-view-modal-close">&times;</span>
+        </div>
 
-    <div class="meeting-modal-body">
-      <div class="meeting-view-section">
-        <h3 class="meeting-section-title">Basic Information</h3>
-        <div class="meeting-view-grid">
-          <div class="meeting-view-item">
-            <label>Meeting Title:</label>
-            <span id="viewMeetingTitle">-</span>
-          </div>
-          <div class="meeting-view-item">
-            <label>Date:</label>
-            <span id="viewMeetingDate">-</span>
-          </div>
-          <div class="meeting-view-item">
-            <label>Time:</label>
-            <span id="viewMeetingTime">-</span>
-          </div>
-          <div class="meeting-view-item">
-            <label>Duration:</label>
-            <span id="viewMeetingDuration">-</span>
-          </div>
-          <div class="meeting-view-item">
-            <label>Project Name:</label>
-            <span id="viewProjectName">-</span>
-          </div>
-          <div class="meeting-view-item">
-            <label>Meeting Mode:</label>
-            <span id="viewMeetingMode">-</span>
-          </div>
-          <div class="meeting-view-item full-width">
-            <label>Attendees:</label>
-            <span id="viewAttendees">-</span>
-          </div>
-          <div class="meeting-view-item full-width">
-            <label>Description:</label>
-            <span id="viewMeetingDescription">-</span>
-          </div>
+        <div class="meeting-modal-body">
+          <form class="meeting-view-form">
+            <!-- Section 1: Basic Information -->
+            <div class="meeting-view-section">
+              <h3 class="meeting-section-title">Basic Information</h3>
+
+              <div class="meeting-view-form-grid">
+                <div class="meeting-view-form-group">
+                  <label class="meeting-view-label">Meeting Title</label>
+                  <input
+                    type="text"
+                    id="viewMeetingTitle"
+                    class="meeting-view-input"
+                    readonly
+                  />
+                </div>
+
+                <div class="meeting-view-form-group">
+                  <label class="meeting-view-label">Date of Meeting</label>
+                  <input
+                    type="text"
+                    id="viewMeetingDate"
+                    class="meeting-view-input"
+                    readonly
+                  />
+                </div>
+
+                <div class="meeting-view-form-group">
+                  <label class="meeting-view-label">From Time</label>
+                  <input
+                    type="text"
+                    id="viewFromTime"
+                    class="meeting-view-input"
+                    readonly
+                  />
+                </div>
+
+                <div class="meeting-view-form-group">
+                  <label class="meeting-view-label">To Time</label>
+                  <input
+                    type="text"
+                    id="viewToTime"
+                    class="meeting-view-input"
+                    readonly
+                  />
+                </div>
+
+                <div class="meeting-view-form-group">
+                  <label class="meeting-view-label">Duration</label>
+                  <input
+                    type="text"
+                    id="viewMeetingDuration"
+                    class="meeting-view-input"
+                    readonly
+                  />
+                </div>
+
+                <div class="meeting-view-form-group">
+                  <label class="meeting-view-label">Meeting Mode</label>
+                  <input
+                    type="text"
+                    id="viewMeetingMode"
+                    class="meeting-view-input"
+                    readonly
+                  />
+                </div>
+
+                <div class="meeting-view-form-group full-width">
+                  <label class="meeting-view-label">Project Name</label>
+                  <input
+                    type="text"
+                    id="viewProjectName"
+                    class="meeting-view-input"
+                    readonly
+                  />
+                </div>
+
+                <div class="meeting-view-form-group full-width">
+                  <label class="meeting-view-label">Meeting Description</label>
+                  <textarea
+                    id="viewMeetingDescription"
+                    class="meeting-view-textarea"
+                    readonly
+                  ></textarea>
+                </div>
+              </div>
+            </div>
+
+            <!-- Section 2: Attendees (THIS IS THE IMPORTANT PART) -->
+            <div class="meeting-view-section">
+              <h3 class="meeting-section-title">Attendees</h3>
+              <div class="meeting-view-form-grid">
+                <div class="meeting-view-form-group full-width">
+                  <label class="meeting-view-label">Selected Employees</label>
+                  <!-- THIS DIV MUST EXIST -->
+                  <div
+                    id="viewAttendeesContainer"
+                    class="meeting-attendees-readonly"
+                  ></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Section 3: Meeting Links -->
+            <div class="meeting-view-section">
+              <h3 class="meeting-section-title">Meeting Links</h3>
+              <!-- THIS DIV MUST EXIST -->
+              <div
+                id="viewMeetingLinksContainer"
+                class="meeting-links-readonly-container"
+              ></div>
+            </div>
+          </form>
+        </div>
+
+        <div class="meeting-modal-footer">
+          <button
+            type="button"
+            class="meeting-btn-close"
+            onclick="document.getElementById('meetingViewModal').classList.remove('active'); document.body.style.overflow = '';"
+          >
+            Close
+          </button>
         </div>
       </div>
-
-      <div class="meeting-view-section">
-        <h3 class="meeting-section-title">Meeting Links</h3>
-        <div id="viewMeetingLinks" class="meeting-links-container"></div>
-      </div>
     </div>
-
-    <div class="meeting-modal-footer">
-      <button
-        type="button"
-        class="meeting-btn-close"
-        onclick="document.getElementById('meetingViewModal').classList.remove('active')"
-      >
-        Close
-      </button>
-    </div>
-  </div>
-</div>
-
-
   </div>
 </div>

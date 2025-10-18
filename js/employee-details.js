@@ -1,3 +1,110 @@
+// ==================== EMPLOYEE DATA MANAGEMENT ====================
+// Store all employees in an array with FAKE DATA
+let employeesData = [
+    {
+        employeeId: 'EMP001',
+        employeeName: 'Rajesh Kumar',
+        dob: '1990-05-15',
+        gender: 'Male',
+        emailPersonal: 'rajesh.kumar@gmail.com',
+        emailOfficial: 'rajesh.kumar@company.com',
+        phonePersonal: '+91 9876543210',
+        phoneOfficial: '+91 9876543211',
+        designation: 'Senior Developer',
+        employmentType: 'On Role',
+        workingStatus: 'Working',
+        joinDate: '2020-01-15',
+        internStartDate: null,
+        internEndDate: null,
+        durationMonths: null,
+        address: '123 MG Road, Coimbatore, Tamil Nadu - 641001',
+        photoURL: null,
+        uploadedFiles: {}
+    },
+    {
+        employeeId: 'EMP002',
+        employeeName: 'Priya Sharma',
+        dob: '1995-08-22',
+        gender: 'Female',
+        emailPersonal: 'priya.sharma@gmail.com',
+        emailOfficial: 'priya.sharma@company.com',
+        phonePersonal: '+91 9876543220',
+        phoneOfficial: '+91 9876543221',
+        designation: 'UI/UX Designer',
+        employmentType: 'On Role',
+        workingStatus: 'Working',
+        joinDate: '2021-06-10',
+        internStartDate: null,
+        internEndDate: null,
+        durationMonths: null,
+        address: '456 RS Puram, Coimbatore, Tamil Nadu - 641002',
+        photoURL: null,
+        uploadedFiles: {}
+    },
+    {
+        employeeId: 'INT001',
+        employeeName: 'Arun Vijay',
+        dob: '2000-03-12',
+        gender: 'Male',
+        emailPersonal: 'arun.vijay@gmail.com',
+        emailOfficial: 'arun.vijay@company.com',
+        phonePersonal: '+91 9876543230',
+        phoneOfficial: '+91 9876543231',
+        designation: 'Frontend Developer Intern',
+        employmentType: 'Intern',
+        workingStatus: 'Working',
+        joinDate: null,
+        internStartDate: '2024-08-01',
+        internEndDate: '2025-02-01',
+        durationMonths: '6 months',
+        address: '789 Gandhipuram, Coimbatore, Tamil Nadu - 641012',
+        photoURL: null,
+        uploadedFiles: {}
+    },
+    {
+        employeeId: 'EMP003',
+        employeeName: 'Deepa Lakshmi',
+        dob: '1992-11-05',
+        gender: 'Female',
+        emailPersonal: 'deepa.lakshmi@gmail.com',
+        emailOfficial: 'deepa.lakshmi@company.com',
+        phonePersonal: '+91 9876543240',
+        phoneOfficial: '+91 9876543241',
+        designation: 'Project Manager',
+        employmentType: 'On Role',
+        workingStatus: 'Working',
+        joinDate: '2019-03-20',
+        internStartDate: null,
+        internEndDate: null,
+        durationMonths: null,
+        address: '321 Saibaba Colony, Coimbatore, Tamil Nadu - 641011',
+        photoURL: null,
+        uploadedFiles: {}
+    },
+    {
+        employeeId: 'INT002',
+        employeeName: 'Karthik Rajan',
+        dob: '2001-07-18',
+        gender: 'Male',
+        emailPersonal: 'karthik.rajan@gmail.com',
+        emailOfficial: 'karthik.rajan@company.com',
+        phonePersonal: '+91 9876543250',
+        phoneOfficial: '+91 9876543251',
+        designation: 'Marketing Intern',
+        employmentType: 'Intern',
+        workingStatus: 'Working',
+        joinDate: null,
+        internStartDate: '2024-09-01',
+        internEndDate: '2025-03-01',
+        durationMonths: '6 months',
+        address: '555 Peelamedu, Coimbatore, Tamil Nadu - 641004',
+        photoURL: null,
+        uploadedFiles: {}
+    }
+];
+
+let currentEditingIndex = null;
+
 // Function to initialize employee details page (called from script.js)
 function initializeEmployeeDetailsPage() {
     console.log('Initializing employee details page...');
@@ -253,9 +360,7 @@ function initializeEmployeeDetailsPage() {
 
     empAddBtn.onclick = () => {
         console.log('Add Employee button clicked!');
-        if (typeof resetEditingIndex === 'function') {
-            resetEditingIndex();
-        }
+        resetEditingIndex();
         empModal.style.display = 'block';
         document.body.style.overflow = 'hidden';
         toggleEmploymentFields();
@@ -361,9 +466,7 @@ function initializeEmployeeDetailsPage() {
                 uploadedFiles: JSON.parse(JSON.stringify(uploadedFiles))
             };
             
-            if (typeof addEmployeeToData === 'function') {
-                addEmployeeToData(newEmployee);
-            }
+            addEmployeeToData(newEmployee);
             
             empModal.style.display = 'none';
             document.body.style.overflow = 'auto';
@@ -389,5 +492,133 @@ function initializeEmployeeDetailsPage() {
         };
     }
 
+    // Initial table render with fake data
+    renderEmployeeTable();
+
     console.log('Employee details page initialized successfully!');
+}
+
+// Function to render the employee table
+function renderEmployeeTable() {
+    const tableBody = document.getElementById('employeeTableBody');
+    if (!tableBody) return;
+    
+    tableBody.innerHTML = '';
+    
+    if (employeesData.length === 0) {
+        tableBody.innerHTML = `
+            <tr>
+                <td colspan="9" style="text-align: center; padding: 40px; color: #999;">
+                    No employees added yet. Click "Add Employee" to get started.
+                </td>
+            </tr>
+        `;
+        return;
+    }
+    
+    employeesData.forEach((employee, index) => {
+        const row = document.createElement('tr');
+        
+        // Get job role badge color
+        let jobRoleBadgeClass = '';
+        if (employee.employmentType === 'On Role') {
+            jobRoleBadgeClass = 'job-role-onrole';
+        } else {
+            jobRoleBadgeClass = 'job-role-intern';
+        }
+        
+        row.innerHTML = `
+            <td>${employee.employeeId}</td>
+            <td>
+                <div class="employee-name-cell">
+                    <div class="employee-avatar">
+                        ${employee.photoURL ? 
+                            `<img src="${employee.photoURL}" alt="${employee.employeeName}">` : 
+                            `<div class="avatar-placeholder">${employee.employeeName.charAt(0).toUpperCase()}</div>`
+                        }
+                    </div>
+                    <span>${employee.employeeName}</span>
+                </div>
+            </td>
+            <td>${employee.designation}</td>
+            <td><span class="job-role-badge ${jobRoleBadgeClass}">${employee.employmentType}</span></td>
+            <td><span class="status-badge status-working">${employee.workingStatus}</span></td>
+            <td>
+                <div class="contact-cell">
+                    <img src="./assets/Imgaes/table_mail.png" alt="Email" class="contact-icon">
+                    ${employee.emailPersonal}
+                </div>
+            </td>
+            <td>
+                <div class="contact-cell">
+                    <img src="./assets/Imgaes/table_call.png" alt="Phone" class="contact-icon">
+                    ${employee.phonePersonal}
+                </div>
+            </td>
+            <td>
+                <button class="table-view-btn" onclick="viewEmployee(${index})">
+                    <img src="./assets/Imgaes/table_eye.png" alt="View">
+                </button>
+            </td>
+            <td>
+                <button class="table-delete-btn" onclick="deleteEmployee(${index})">
+                    <img src="./assets/Imgaes/preview_delete_btn.png" alt="Delete">
+                </button>
+            </td>
+        `;
+        
+        tableBody.appendChild(row);
+    });
+}
+
+// Function to view employee (opens update modal with data)
+function viewEmployee(index) {
+    currentEditingIndex = index;
+    const employee = employeesData[index];
+    
+    // Populate update modal with employee data
+    if (typeof populateUpdateModal === 'function') {
+        populateUpdateModal(employee);
+    }
+    
+    // Open update modal
+    const updateEmployeeModal = document.getElementById('updateEmployeeModal');
+    if (updateEmployeeModal) {
+        updateEmployeeModal.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+// Function to delete employee
+function deleteEmployee(index) {
+    const employee = employeesData[index];
+    if (confirm(`Are you sure you want to delete ${employee.employeeName}?`)) {
+        employeesData.splice(index, 1);
+        renderEmployeeTable();
+        alert('Employee deleted successfully!');
+    }
+}
+
+// Function to add employee to data
+function addEmployeeToData(employeeData) {
+    employeesData.push(employeeData);
+    renderEmployeeTable();
+}
+
+// Function to update employee in data
+function updateEmployeeInData(index, employeeData) {
+    if (index !== null && index >= 0 && index < employeesData.length) {
+        employeesData[index] = employeeData;
+        renderEmployeeTable();
+    }
+}
+
+// Function to get current editing index
+function getCurrentEditingIndex() {
+    return currentEditingIndex;
+}
+
+// Function to reset editing index
+function resetEditingIndex() {
+    currentEditingIndex = null;
 }

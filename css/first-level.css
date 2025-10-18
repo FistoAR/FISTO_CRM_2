@@ -17,14 +17,14 @@
 }
 
 .first-level-table thead {
-    background: #CBCDD2;
+    background: #cbcdd2;
 }
 
 .first-level-table thead th {
     padding: 16px 20px;
     text-align: left;
-    font-family: 'Gilroy-SemiBold', sans-serif;
-    font-size: .86vw;
+    font-family: "Gilroy-SemiBold", sans-serif;
+    font-size: 0.86vw;
     color: #333;
     text-transform: none;
     letter-spacing: 0;
@@ -46,12 +46,12 @@
 
 .first-level-table tbody td {
     padding: 16px 20px;
-    font-size: .9vw;
-    font-family: 'Gilroy-SemiBold', sans-serif;
+    font-size: 0.9vw;
+    font-family: "Gilroy-SemiBold", sans-serif;
     color: #333;
     vertical-align: middle;
-    border-right: 2px solid #CBCDD2;
-    border-bottom: 2px solid #CBCDD2;
+    border-right: 2px solid #cbcdd2;
+    border-bottom: 2px solid #cbcdd2;
 }
 
 .first-level-table tbody td:last-child {
@@ -74,10 +74,10 @@
 /* Status Select in Table */
 .first-level-status-select {
     padding: 6px 12px;
-    border: 1px solid #CBCDD2;
+    border: 1px solid #cbcdd2;
     border-radius: 6px;
     font-size: 0.8rem;
-    font-family: 'Gilroy-SemiBold', sans-serif;
+    font-family: "Gilroy-SemiBold", sans-serif;
     cursor: pointer;
     outline: none;
     background-color: white;
@@ -85,11 +85,11 @@
 }
 
 .first-level-status-select:hover {
-    border-color: #0052CC;
+    border-color: #0052cc;
 }
 
 .first-level-status-select:focus {
-    border-color: #0052CC;
+    border-color: #0052cc;
     box-shadow: 0 0 0 2px rgba(0, 82, 204, 0.1);
 }
 
@@ -160,6 +160,7 @@
         transform: translateY(-50px);
         opacity: 0;
     }
+
     to {
         transform: translateY(0);
         opacity: 1;
@@ -168,24 +169,25 @@
 
 .first-level-modal-header {
     padding: 20px 30px;
-    background: linear-gradient(to bottom, #0052CC 10%, #002966 100%);
+    background: white;
     border-radius: 12px 12px 0 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-shrink: 0;
+    border-bottom: 1px solid #e5e7eb;
 }
 
 .first-level-modal-header h2 {
     margin: 0;
     font-size: 1.5rem;
-    color: #fff;
-    font-family: 'Gilroy-Bold', sans-serif;
+    color: #000000;
+    font-family: "Gilroy-Bold", sans-serif;
 }
 
 .first-level-modal-close,
 .first-level-view-modal-close {
-    color: #fff;
+    color: #000000;
     font-size: 32px;
     font-weight: bold;
     cursor: pointer;
@@ -212,7 +214,7 @@
 .first-level-label {
     display: block;
     font-size: 0.9rem;
-    font-family: 'Gilroy-SemiBold', sans-serif;
+    font-family: "Gilroy-SemiBold", sans-serif;
     color: #333;
     margin-bottom: 8px;
 }
@@ -227,10 +229,10 @@
 .first-level-textarea {
     width: 100%;
     padding: 12px 16px;
-    border: 1px solid #CBCDD2;
+    border: 1px solid #cbcdd2;
     border-radius: 6px;
     font-size: 0.9rem;
-    font-family: 'Gilroy-Regular', sans-serif;
+    font-family: "Gilroy-Regular", sans-serif;
     transition: all 0.3s ease;
     outline: none;
     box-sizing: border-box;
@@ -239,7 +241,7 @@
 .first-level-input:focus,
 .first-level-select:focus,
 .first-level-textarea:focus {
-    border-color: #0052CC;
+    border-color: #0052cc;
     box-shadow: 0 0 0 3px rgba(0, 82, 204, 0.1);
 }
 
@@ -264,12 +266,12 @@
 
 .first-level-btn-save {
     padding: 12px 40px;
-    background: linear-gradient(to bottom, #0052CC 10%, #002966 100%);
+    background: linear-gradient(to bottom, #0052cc 10%, #002966 100%);
     color: white;
     border: none;
     border-radius: 6px;
     font-size: 1rem;
-    font-family: 'Gilroy-Bold', sans-serif;
+    font-family: "Gilroy-Bold", sans-serif;
     cursor: pointer;
     transition: all 0.3s ease;
 }
@@ -286,7 +288,7 @@
     border: none;
     border-radius: 6px;
     font-size: 1rem;
-    font-family: 'Gilroy-Bold', sans-serif;
+    font-family: "Gilroy-Bold", sans-serif;
     cursor: pointer;
     transition: all 0.3s ease;
 }
@@ -311,14 +313,62 @@
 
 .first-level-section-title {
     font-size: 1.125rem;
-    font-family: 'Gilroy-Bold', sans-serif;
-    color: #0052CC;
+    font-family: "Gilroy-Bold", sans-serif;
+    color: #0052cc;
     margin-bottom: 15px;
     padding-bottom: 10px;
-    border-bottom: 2px solid #0052CC;
+    border-bottom: 2px solid #0052cc;
 }
 
-/* View Modal Grid */
+/* View Modal Form Grid - NEW */
+.first-level-view-form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.first-level-view-form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.first-level-view-form-group.full-width {
+    grid-column: 1 / -1;
+}
+
+.first-level-view-label {
+    font-size: 0.85rem;
+    font-family: "Gilroy-SemiBold", sans-serif;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.first-level-view-input,
+.first-level-view-textarea {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid #cbcdd2;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-family: "Gilroy-Regular", sans-serif;
+    background-color: #f9fafb;
+    color: #333;
+    cursor: not-allowed;
+    box-sizing: border-box;
+    outline: none;
+}
+
+.first-level-view-input:focus,
+.first-level-view-textarea:focus {
+    border-color: #cbcdd2;
+}
+
+.first-level-view-textarea {
+    resize: none;
+    min-height: 60px;
+}
+
+/* Old View Grid (kept for backward compatibility) */
 .first-level-view-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -337,7 +387,7 @@
 
 .first-level-view-item label {
     font-size: 0.75rem;
-    font-family: 'Gilroy-SemiBold', sans-serif;
+    font-family: "Gilroy-SemiBold", sans-serif;
     color: #666;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -345,7 +395,7 @@
 
 .first-level-view-item span {
     font-size: 0.95rem;
-    font-family: 'Gilroy-Regular', sans-serif;
+    font-family: "Gilroy-Regular", sans-serif;
     color: #333;
     word-break: break-word;
 }
@@ -356,7 +406,7 @@
     padding: 6px 14px;
     border-radius: 6px;
     font-size: 0.875rem !important;
-    font-family: 'Gilroy-SemiBold', sans-serif !important;
+    font-family: "Gilroy-SemiBold", sans-serif !important;
     text-transform: capitalize;
 }
 
@@ -409,6 +459,16 @@
     .first-level-section-title {
         font-size: 1rem;
     }
+
+    .first-level-view-label {
+        font-size: 0.8125rem;
+    }
+
+    .first-level-view-input,
+    .first-level-view-textarea {
+        padding: 0.75rem 1rem;
+        font-size: 0.875rem;
+    }
 }
 
 /* Mobile (481px - 767px) */
@@ -451,7 +511,8 @@
         max-width: 95vw;
     }
 
-    .first-level-view-grid {
+    .first-level-view-grid,
+    .first-level-view-form-grid {
         grid-template-columns: 1fr;
     }
 
@@ -469,6 +530,17 @@
 
     .first-level-section-title {
         font-size: 0.9375rem;
+    }
+
+    .first-level-view-label {
+        font-size: 0.75rem;
+        margin-bottom: 6px;
+    }
+
+    .first-level-view-input,
+    .first-level-view-textarea {
+        padding: 0.625rem 0.875rem;
+        font-size: 0.8125rem;
     }
 }
 
@@ -497,5 +569,15 @@
         width: 100%;
         padding: 0.75rem 1.5rem;
         font-size: 0.875rem;
+    }
+
+    .first-level-view-label {
+        font-size: 0.6875rem;
+    }
+
+    .first-level-view-input,
+    .first-level-view-textarea {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.75rem;
     }
 }
