@@ -243,8 +243,8 @@ function addContactRow(contactData = null, isFirst = false) {
   contactRow.innerHTML = `
        <div class="form-group-action">
         ${isFirst || contactContainer.children.length === 0 ? 
-          '<button type="button" class="add-contact-btn" title="Add Contact"><span class="plus-icon">+</span></button>' :
-          '<button type="button" class="remove-contact-btn" title="Remove Contact"><span class="minus-icon">−</span></button>'
+          '<button type="button" class="add-contact-btn" title="Add Contact">Add New Contact</button>' :
+          '<button type="button" class="remove-contact-btn" title="Remove Contact"><img src="../assets/imgaes/preview_delete_btn.png"></button>'
         }
       </div>
     <div class="form-row contact-form-row">
