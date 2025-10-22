@@ -127,7 +127,6 @@ function initializePageScripts(pageName) {
         }
       }, 100);
       break;
-
   }
 }
 

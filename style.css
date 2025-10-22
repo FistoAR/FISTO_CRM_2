@@ -13,36 +13,28 @@ body {
 /* Gilroy Fonts */
 @font-face {
     font-family: 'Gilroy-Bold';
-    src: url('./assets/fonts/gilroy_fonts/Gilroy-Bold.woff2') format('woff2'),
-         url('./assets/fonts/gilroy_fonts/Gilroy-Bold.woff') format('woff'),
-         url('./assets/fonts/gilroy_fonts/Gilroy-Bold.ttf') format('truetype');
+    src: url('./assets/fonts/gilroy_fonts/Gilroy-Bold.ttf') format('truetype');
     font-weight: 700;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Gilroy-SemiBold';
-    src: url('./assets/fonts/gilroy_fonts/Gilroy-SemiBold.woff2') format('woff2'),
-         url('./assets/fonts/gilroy_fonts/Gilroy-SemiBold.woff') format('woff'),
-         url('./assets/fonts/gilroy_fonts/Gilroy-SemiBold.ttf') format('truetype');
+    src: url('./assets/fonts/gilroy_fonts/Gilroy-SemiBold.ttf') format('truetype');
     font-weight: 600;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Gilroy-Medium';
-    src: url('./assets/fonts/gilroy_fonts/Gilroy-Medium.woff2') format('woff2'),
-         url('./assets/fonts/gilroy_fonts/Gilroy-Medium.woff') format('woff'),
-         url('./assets/fonts/gilroy_fonts/Gilroy-Medium.ttf') format('truetype');
+    src: url('./assets/fonts/gilroy_fonts/Gilroy-Medium.ttf') format('truetype');
     font-weight: 500;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Gilroy-Thin';
-    src: url('./assets/fonts/gilroy_fonts/Gilroy-Thin.woff2') format('woff2'),
-         url('./assets/fonts/gilroy_fonts/Gilroy-Thin.woff') format('woff'),
-         url('./assets/fonts/gilroy_fonts/Gilroy-Thin.ttf') format('truetype');
+    src: url('./assets/fonts/gilroy_fonts/Gilroy-Thin.ttf') format('truetype');
     font-weight: 200;
     font-style: normal;
     color: #000;
@@ -51,9 +43,7 @@ body {
 /* Montserrat Fonts */
 @font-face {
     font-family: 'Montserrat-Thin';
-    src: url('./assets/fonts/Montserrat_fonts/Montserrat-Thin.woff2') format('woff2'),
-         url('./assets/fonts/Montserrat_fonts/Montserrat-Thin.woff') format('woff'),
-         url('./assets/fonts/Montserrat_fonts/Montserrat-Thin.ttf') format('truetype');
+    src: url('./assets/fonts/Montserrat_fonts/Montserrat-Thin.ttf') format('truetype');
     font-weight: 100;
     font-style: normal;
 }

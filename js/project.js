@@ -1,5 +1,7 @@
 // ==================== PROJECT MANAGEMENT SYSTEM ====================
-
+let projectResourcesUploadedFiles = [];
+let projectResourcesUploadedLinks = [];
+let projectResourcesSelectedFiles = [];
 // Fake onboarding project data
 const onboardingProjects = [
   {
@@ -55,15 +57,165 @@ const teams = [
 
 // Fake project data for table
 let projectsData = [
-  { id: 1, name: "Excel Software", startDate: "10/10/2025", deadline: "24/10/2025", teamHead: "Fisto", status: 73, customerId: "EST1N98" },
-  { id: 2, name: "Hiring Platform", startDate: "07/10/2025", deadline: "30/10/2025", teamHead: "Fisto", status: 11, customerId: "EST2M45" },
-  { id: 3, name: "Software application", startDate: "09/10/2025", deadline: "07/10/2025", teamHead: "Fisto", status: 22, customerId: "EST3K72" },
-  { id: 4, name: "E-Commerce Platform", startDate: "15/10/2025", deadline: "15/11/2025", teamHead: "Fisto", status: 45, customerId: "EST4P19" },
-  { id: 5, name: "Mobile Banking App", startDate: "20/10/2025", deadline: "20/12/2025", teamHead: "Fisto", status: 5, customerId: "EST5L88" },
-  { id: 6, name: "Hiring Platform", startDate: "07/10/2025", deadline: "30/10/2025", teamHead: "Fisto", status: 33, customerId: "EST2M45" },
-  { id: 7, name: "Software application", startDate: "09/10/2025", deadline: "07/10/2025", teamHead: "Fisto", status: 67, customerId: "EST3K72" },
-  { id: 8, name: "Excel Software", startDate: "10/10/2025", deadline: "24/10/2025", teamHead: "Fisto", status: 88, customerId: "EST1N98" },
-  { id: 9, name: "E-Commerce Platform", startDate: "15/10/2025", deadline: "15/11/2025", teamHead: "Fisto", status: 55, customerId: "EST4P19" }
+  { id: 1, name: "Excel Software", startDate: "10/10/2025", deadline: "24/10/2025", teamHead: "Fisto", status: 73, customerId: "EST1N98", priority: "High", initiatedBy: "Fisto", description: "to create excel software" },
+  { id: 2, name: "Hiring Platform", startDate: "07/10/2025", deadline: "30/10/2025", teamHead: "Fisto", status: 11, customerId: "EST2M45", priority: "Medium", initiatedBy: "Fisto", description: "AI recruitment system" },
+  { id: 3, name: "Software application", startDate: "09/10/2025", deadline: "07/10/2025", teamHead: "Fisto", status: 22, customerId: "EST3K72", priority: "High", initiatedBy: "Fisto", description: "ERP solution" },
+  { id: 4, name: "E-Commerce Platform", startDate: "15/10/2025", deadline: "15/11/2025", teamHead: "Fisto", status: 45, customerId: "EST4P19", priority: "Low", initiatedBy: "Fisto", description: "Online store" },
+  { id: 5, name: "Mobile Banking App", startDate: "20/10/2025", deadline: "20/12/2025", teamHead: "Fisto", status: 5, customerId: "EST5L88", priority: "High", initiatedBy: "Fisto", description: "Banking app" },
+  { id: 6, name: "Hiring Platform", startDate: "07/10/2025", deadline: "30/10/2025", teamHead: "Fisto", status: 33, customerId: "EST2M45", priority: "Medium", initiatedBy: "Fisto", description: "HR system" },
+  { id: 7, name: "Software application", startDate: "09/10/2025", deadline: "07/10/2025", teamHead: "Fisto", status: 67, customerId: "EST3K72", priority: "High", initiatedBy: "Fisto", description: "Business software" },
+  { id: 8, name: "Excel Software", startDate: "10/10/2025", deadline: "24/10/2025", teamHead: "Fisto", status: 88, customerId: "EST1N98", priority: "High", initiatedBy: "Fisto", description: "Excel integration" },
+  { id: 9, name: "E-Commerce Platform", startDate: "15/10/2025", deadline: "15/11/2025", teamHead: "Fisto", status: 55, customerId: "EST4P19", priority: "Low", initiatedBy: "Fisto", description: "E-commerce site" }
+];
+
+// Sample employee data for overview page
+const projectOverviewAvailableEmployees = [
+  { id: 1, name: "Praveen", initial: "P", avatar: "#FF5733" },
+  { id: 2, name: "Ram", initial: "R", avatar: "#33C4FF" },
+  { id: 3, name: "sham", initial: "S", avatar: "#FFB533" },
+  { id: 4, name: "Sameer", initial: "S", avatar: "#9D33FF" },
+  { id: 5, name: "Hari", initial: "H", avatar: "#33FF57" }
+];
+
+let projectOverviewAllocatedEmployees = [
+  { id: 6, name: "Murugan", initial: "M", avatar: "#333333" },
+  { id: 7, name: "Safi", initial: "S", avatar: "#555555" },
+  { id: 8, name: "Harish", initial: "H", avatar: "#777777" },
+  { id: 9, name: "Pradeepa", initial: "P", avatar: "#999999" }
+];
+
+// Fake task data
+let tasksData = [
+  {
+    id: 1,
+    taskNumber: 1,
+    name: "Database Design",
+    startDate: "2025-10-15",
+    endDate: "2025-10-18",
+    startTime: "09:00",
+    endTime: "17:00",
+    description: "Design",
+    employee: "Murugan",
+    status: "Completed",
+    progress: 100
+  },
+  {
+    id: 2,
+    taskNumber: 2,
+    name: "API Development",
+    startDate: "2025-10-16",
+    endDate: "2025-10-20",
+    startTime: "10:00",
+    endTime: "18:00",
+    description: "Develop",
+    employee: "Safi",
+    status: "In Progress",
+    progress: 65
+  },
+  {
+    id: 3,
+    taskNumber: 3,
+    name: "UI Design",
+    startDate: "2025-10-14",
+    endDate: "2025-10-19",
+    startTime: "09:30",
+    endTime: "16:30",
+    description: "Create",
+    employee: "Harish",
+    status: "In Progress",
+    progress: 78
+  },
+  {
+    id: 4,
+    taskNumber: 4,
+    name: "Testing Phase",
+    startDate: "2025-10-20",
+    endDate: "2025-10-25",
+    startTime: "11:00",
+    endTime: "19:00",
+    description: "Conduct",
+    employee: "Pradeepa",
+    status: "Not Started",
+    progress: 0
+  },
+  {
+    id: 5,
+    taskNumber: 5,
+    name: "Frontend Integration",
+    startDate: "2025-10-17",
+    endDate: "2025-10-22",
+    startTime: "08:00",
+    endTime: "16:00",
+    description: "Integrate",
+    employee: "Murugan",
+    status: "In Progress",
+    progress: 45
+  },
+  {
+    id: 6,
+    taskNumber: 6,
+    name: "Security Audit",
+    startDate: "2025-10-21",
+    endDate: "2025-10-24",
+    startTime: "10:30",
+    endTime: "17:30",
+    description: "Perform",
+    employee: "Safi",
+    status: "Not Started",
+    progress: 0
+  },
+  {
+    id: 7,
+    taskNumber: 7,
+    name: "Documentation",
+    startDate: "2025-10-18",
+    endDate: "2025-10-23",
+    startTime: "09:00",
+    endTime: "15:00",
+    description: "Write",
+    employee: "Harish",
+    status: "In Progress",
+    progress: 30
+  },
+  {
+    id: 8,
+    taskNumber: 8,
+    name: "Performance Optimization",
+    startDate: "2025-10-22",
+    endDate: "2025-10-26",
+    startTime: "11:30",
+    endTime: "18:30",
+    description: "Optimize",
+    employee: "Pradeepa",
+    status: "Not Started",
+    progress: 0
+  },
+  {
+    id: 9,
+    taskNumber: 9,
+    name: "Deployment Setup",
+    startDate: "2025-10-23",
+    endDate: "2025-10-25",
+    startTime: "08:30",
+    endTime: "16:30",
+    description: "Configure",
+    employee: "Murugan",
+    status: "Not Started",
+    progress: 0
+  },
+  {
+    id: 10,
+    taskNumber: 10,
+    name: "User Training",
+    startDate: "2025-10-24",
+    endDate: "2025-10-26",
+    startTime: "10:00",
+    endTime: "14:00",
+    description: "Conduct",
+    employee: "Safi",
+    status: "Not Started",
+    progress: 0
+  }
 ];
 
 // Pagination variables
@@ -71,8 +223,22 @@ const itemsPerPage = 8;
 let currentPage = 1;
 let filteredProjects = [...projectsData];
 
+// Task pagination variables
+const tasksPerPage = 8;
+let currentTaskPage = 1;
+let filteredTasksForPagination = [];
+
 // Contact counter
 let contactIdCounter = 0;
+
+// Current project and employee management
+let currentProjectOverview = null;
+let selectedProjectOverviewEmployees = new Set();
+let tempProjectOverviewAllocatedEmployees = [];
+
+// Task management variables
+let taskCardCounter = 0;
+let currentExpandedTask = null;
 
 // ==================== INITIALIZATION ====================
 function initializeProjectPage() {
@@ -81,7 +247,7 @@ function initializeProjectPage() {
   populateOnboardingDropdown();
   populateTeamsDropdown();
   setupEventListeners();
-  addContactRow(null, true); // Add initial contact row
+  addContactRow(null, true);
   renderTable();
   setupPagination();
 }
@@ -89,6 +255,7 @@ function initializeProjectPage() {
 // ==================== POPULATE DROPDOWNS ====================
 function populateOnboardingDropdown() {
   const dropdown = document.getElementById("onboardingProject");
+  if (!dropdown) return;
   
   onboardingProjects.forEach(project => {
     const option = document.createElement("option");
@@ -101,6 +268,7 @@ function populateOnboardingDropdown() {
 
 function populateTeamsDropdown() {
   const dropdown = document.getElementById("allocatedTeam");
+  if (!dropdown) return;
   
   teams.forEach(team => {
     const option = document.createElement("option");
@@ -116,26 +284,34 @@ function setupEventListeners() {
   const addBtn = document.getElementById("addProjectBtn");
   const closeBtn = document.querySelector(".project-modal-close");
   
-  addBtn.addEventListener("click", () => {
-    modal.style.display = "flex";
-    document.body.style.overflow = "hidden";
-  });
+  if (addBtn) {
+    addBtn.addEventListener("click", () => {
+      modal.style.display = "flex";
+      document.body.style.overflow = "hidden";
+    });
+  }
   
-  closeBtn.addEventListener("click", () => {
-    closeModal();
-  });
+  if (closeBtn) {
+    closeBtn.addEventListener("click", () => {
+      closeModal();
+    });
+  }
   
   window.addEventListener("click", (e) => {
-    if (e.target === modal) {
+    if (modal && e.target === modal) {
       closeModal();
+    }
+    const employeeModal = document.getElementById("projectOverviewEmployeeModal");
+    if (employeeModal && e.target === employeeModal) {
+      closeProjectOverviewEmployeeModal();
     }
   });
   
-  // Onboarding project selection
   const onboardingSelect = document.getElementById("onboardingProject");
-  onboardingSelect.addEventListener("change", handleOnboardingSelection);
+  if (onboardingSelect) {
+    onboardingSelect.addEventListener("change", handleOnboardingSelection);
+  }
   
-  // Add contact button (delegated)
   document.addEventListener("click", (e) => {
     if (e.target.closest(".add-contact-btn")) {
       addContactRow();
@@ -145,52 +321,97 @@ function setupEventListeners() {
     }
   });
   
-  // File upload
   const fileInput = document.getElementById("documentUpload");
   const fileChooseBtn = document.querySelector(".file-choose-btn");
   const fileName = document.querySelector(".file-name");
   
-  fileChooseBtn.addEventListener("click", () => {
-    fileInput.click();
-  });
+  if (fileChooseBtn && fileInput && fileName) {
+    fileChooseBtn.addEventListener("click", () => {
+      fileInput.click();
+    });
+    
+    fileInput.addEventListener("change", (e) => {
+      if (e.target.files.length > 0) {
+        fileName.textContent = e.target.files[0].name;
+      } else {
+        fileName.textContent = "No file Selected";
+      }
+    });
+  }
   
-  fileInput.addEventListener("change", (e) => {
-    if (e.target.files.length > 0) {
-      fileName.textContent = e.target.files[0].name;
-    } else {
-      fileName.textContent = "No file Selected";
-    }
-  });
-  
-  // Form submission
   const submitBtn = document.getElementById("projectSubmitBtn");
-  submitBtn.addEventListener("click", handleFormSubmit);
+  if (submitBtn) {
+    submitBtn.addEventListener("click", handleFormSubmit);
+  }
   
-  // Clear form
   const clearBtn = document.getElementById("clearFormBtn");
-  clearBtn.addEventListener("click", clearForm);
+  if (clearBtn) {
+    clearBtn.addEventListener("click", clearForm);
+  }
   
-  // Search functionality
   const searchInput = document.getElementById("projectSearchInput");
-  searchInput.addEventListener("input", handleSearch);
+  if (searchInput) {
+    searchInput.addEventListener("input", handleSearch);
+  }
   
-  // Pagination
-  document.getElementById("prevBtn").addEventListener("click", () => {
-    if (currentPage > 1) {
-      currentPage--;
-      renderTable();
-      setupPagination();
-    }
-  });
+  const prevBtn = document.getElementById("prevBtn");
+  const nextBtn = document.getElementById("nextBtn");
   
-  document.getElementById("nextBtn").addEventListener("click", () => {
-    const totalPages = Math.ceil(filteredProjects.length / itemsPerPage);
-    if (currentPage < totalPages) {
-      currentPage++;
-      renderTable();
-      setupPagination();
-    }
-  });
+  if (prevBtn) {
+    prevBtn.addEventListener("click", () => {
+      if (currentPage > 1) {
+        currentPage--;
+        renderTable();
+        setupPagination();
+      }
+    });
+  }
+  
+  if (nextBtn) {
+    nextBtn.addEventListener("click", () => {
+      const totalPages = Math.ceil(filteredProjects.length / itemsPerPage);
+      if (currentPage < totalPages) {
+        currentPage++;
+        renderTable();
+        setupPagination();
+      }
+    });
+  }
+  
+  const empSearchInput = document.getElementById("projectOverviewEmployeeSearchInput");
+  if (empSearchInput) {
+    empSearchInput.addEventListener("input", handleProjectOverviewEmployeeSearch);
+  }
+  
+  // Add task search input listener
+  const taskSearchInput = document.getElementById('TaskprojectSearchInput');
+  if (taskSearchInput) {
+    taskSearchInput.addEventListener('input', handleTaskSearchInput);
+  }
+  
+  // Add task pagination event listeners
+  const taskPrevBtn = document.getElementById('taskprevBtn');
+  const taskNextBtn = document.getElementById('tasknextBtn');
+
+  if (taskPrevBtn) {
+    taskPrevBtn.addEventListener('click', () => {
+      if (currentTaskPage > 1) {
+        currentTaskPage--;
+        renderTasksTable();
+      }
+    });
+  }
+
+  if (taskNextBtn) {
+    taskNextBtn.addEventListener('click', () => {
+      const dataToShow = filteredTasksForPagination.length > 0 ? filteredTasksForPagination : tasksData;
+      const totalPages = Math.ceil(dataToShow.length / tasksPerPage);
+      if (currentTaskPage < totalPages) {
+        currentTaskPage++;
+        renderTasksTable();
+      }
+    });
+  }
 }
 
 // ==================== HANDLE ONBOARDING SELECTION ====================
@@ -204,16 +425,13 @@ function handleOnboardingSelection(e) {
   
   const projectData = JSON.parse(selectedOption.dataset.projectData);
   
-  // Autofill customer ID and description
   document.getElementById("customerId").value = projectData.id;
   document.getElementById("projectDescription").value = projectData.description;
   
-  // Clear existing contact rows
   const contactContainer = document.getElementById("contactFieldsContainer");
   contactContainer.innerHTML = "";
   contactIdCounter = 0;
   
-  // Add contacts from project data
   projectData.contacts.forEach((contact, index) => {
     const isFirst = index === 0;
     addContactRow(contact, isFirst);
@@ -241,12 +459,12 @@ function addContactRow(contactData = null, isFirst = false) {
   contactRow.dataset.contactId = contactIdCounter;
   
   contactRow.innerHTML = `
-       <div class="form-group-action">
-        ${isFirst || contactContainer.children.length === 0 ? 
-          '<button type="button" class="add-contact-btn" title="Add Contact">Add New Contact</button>' :
-          '<button type="button" class="remove-contact-btn" title="Remove Contact"><img src="../assets/imgaes/preview_delete_btn.png"></button>'
-        }
-      </div>
+    <div class="form-group-action">
+      ${isFirst || contactContainer.children.length === 0 ? 
+        '<button type="button" class="add-contact-btn" title="Add Contact">Add New Contact</button>' :
+        '<button type="button" class="remove-contact-btn" title="Remove Contact"><img src="../assets/imgaes/preview_delete_btn.png"></button>'
+      }
+    </div>
     <div class="form-row contact-form-row">
       <div class="form-group">
         <label>Contact Person <span class="required">*</span></label>
@@ -275,7 +493,6 @@ function removeContactRow(button) {
   const contactRow = button.closest(".contact-row");
   contactRow.remove();
   
-  // Ensure at least one contact row exists
   const contactContainer = document.getElementById("contactFieldsContainer");
   if (contactContainer.children.length === 0) {
     addContactRow(null, true);
@@ -293,7 +510,6 @@ function handleFormSubmit(e) {
     return;
   }
   
-  // Collect form data
   const formData = {
     id: projectsData.length + 1,
     customerId: document.getElementById("customerId").value,
@@ -307,24 +523,21 @@ function handleFormSubmit(e) {
     revieDate: document.getElementById("revieDate").value,
     remarks: document.getElementById("remarks").value,
     teamHead: "Fisto",
+    initiatedBy: "Fisto",
+    priority: "High",
     status: Math.floor(Math.random() * 100) + 1
   };
   
-  // Add to projects data
   projectsData.push(formData);
   filteredProjects = [...projectsData];
   
-  // Reset to last page to show new entry
   currentPage = Math.ceil(filteredProjects.length / itemsPerPage);
   
-  // Re-render table
   renderTable();
   setupPagination();
   
-  // Show success message
   showSuccessToast(formData.customerId);
   
-  // Close modal and clear form
   closeModal();
 }
 
@@ -358,43 +571,61 @@ function formatDate(dateString) {
 // ==================== CLOSE MODAL ====================
 function closeModal() {
   const modal = document.getElementById("projectModal");
-  modal.style.display = "none";
+  if (modal) {
+    modal.style.display = "none";
+  }
   document.body.style.overflow = "";
   clearForm();
 }
 
 // ==================== CLEAR FORM ====================
 function clearForm() {
-  document.getElementById("projectForm").reset();
-  document.querySelector(".file-name").textContent = "No file Selected";
+  const form = document.getElementById("projectForm");
+  if (form) {
+    form.reset();
+  }
   
-  // Reset contacts to single row
+  const fileName = document.querySelector(".file-name");
+  if (fileName) {
+    fileName.textContent = "No file Selected";
+  }
+  
   const contactContainer = document.getElementById("contactFieldsContainer");
-  contactContainer.innerHTML = "";
-  contactIdCounter = 0;
-  addContactRow(null, true);
+  if (contactContainer) {
+    contactContainer.innerHTML = "";
+    contactIdCounter = 0;
+    addContactRow(null, true);
+  }
 }
 
 // ==================== SHOW SUCCESS TOAST ====================
-function showSuccessToast(projectId) {
+function showSuccessToast(message) {
   const toast = document.getElementById("successToast");
   const text = document.getElementById("successText");
   
-  text.textContent = `Project "${projectId}" added successfully`;
-  toast.classList.add("show");
-  
-  setTimeout(() => {
-    toast.classList.remove("show");
-  }, 5000);
+  if (toast && text) {
+    text.textContent = typeof message === 'string' && message.startsWith('EST') 
+      ? `Project "${message}" added successfully` 
+      : message;
+    toast.classList.add("show");
+    
+    setTimeout(() => {
+      toast.classList.remove("show");
+    }, 5000);
+  }
 }
 
 // ==================== RENDER TABLE ====================
 function renderTable() {
   const tbody = document.getElementById("projectTableBody");
+  if (!tbody) return;
+  
   tbody.innerHTML = "";
   
-  // Update total count
-  document.getElementById("totalProjects").textContent = filteredProjects.length;
+  const totalProjectsEl = document.getElementById("totalProjects");
+  if (totalProjectsEl) {
+    totalProjectsEl.textContent = filteredProjects.length;
+  }
   
   if (filteredProjects.length === 0) {
     tbody.innerHTML = `
@@ -407,7 +638,6 @@ function renderTable() {
     return;
   }
   
-  // Calculate pagination
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
   const paginatedProjects = filteredProjects.slice(startIndex, endIndex);
@@ -440,10 +670,10 @@ function renderTable() {
         </div>
       </td>
       <td>
-        <button class="view-btn" onclick="viewProject(${project.id})">👁</button>
+        <button class="view-btn" onclick="viewProject(${project.id})"><img src="./assets/imgaes/table_eye.png" ></button>
       </td>
       <td>
-        <button class="delete-btn" onclick="deleteProject(${project.id})">🗑</button>
+        <button class="delete-btn" onclick="deleteProject(${project.id})"><img src="./assets/imgaes/preview_delete_btn.png" ></button>
       </td>
     `;
     
@@ -455,13 +685,17 @@ function renderTable() {
 function setupPagination() {
   const totalPages = Math.ceil(filteredProjects.length / itemsPerPage);
   const paginationNumbers = document.getElementById("paginationNumbers");
+  
+  if (!paginationNumbers) return;
+  
   paginationNumbers.innerHTML = "";
   
-  // Update prev/next buttons
-  document.getElementById("prevBtn").disabled = currentPage === 1;
-  document.getElementById("nextBtn").disabled = currentPage === totalPages || totalPages === 0;
+  const prevBtn = document.getElementById("prevBtn");
+  const nextBtn = document.getElementById("nextBtn");
   
-  // Create page number buttons
+  if (prevBtn) prevBtn.disabled = currentPage === 1;
+  if (nextBtn) nextBtn.disabled = currentPage === totalPages || totalPages === 0;
+  
   for (let i = 1; i <= totalPages; i++) {
     const pageBtn = document.createElement("button");
     pageBtn.className = `page-number ${i === currentPage ? 'active' : ''}`;
@@ -493,7 +727,80 @@ function handleSearch(e) {
 // ==================== VIEW PROJECT ====================
 function viewProject(id) {
   const project = projectsData.find(p => p.id === id);
-  alert(`Viewing Project:\n\nID: ${project.customerId}\nName: ${project.name}\nStatus: ${project.status}%\nTeam Head: ${project.teamHead}`);
+  
+  if (!project) {
+    console.error("Project not found with id:", id);
+    return;
+  }
+  
+  currentProjectOverview = project;
+  
+  const projectsContent = document.querySelector('.projects-content');
+  if (projectsContent) {
+    projectsContent.style.display = 'none';
+  }
+  
+  const overviewPage = document.getElementById('projectOverviewPage');
+  if (!overviewPage) {
+    console.error("Project overview page element not found!");
+    return;
+  }
+  
+  overviewPage.style.display = 'block';
+  
+  const breadcrumbName = document.getElementById('projectOverviewName');
+  if (breadcrumbName) {
+    breadcrumbName.textContent = project.name;
+  }
+  
+  const assignedEmployeesEl = document.getElementById('projectOverviewAssignedEmployees');
+  if (assignedEmployeesEl) {
+    assignedEmployeesEl.textContent = projectOverviewAllocatedEmployees.length;
+  }
+  
+  const totalTasksEl = document.getElementById('projectOverviewTotalTasks');
+  if (totalTasksEl) totalTasksEl.textContent = tasksData.length;
+  
+  const completedTasksEl = document.getElementById('projectOverviewCompletedTasks');
+  if (completedTasksEl) completedTasksEl.textContent = tasksData.filter(t => t.status === 'Completed').length;
+  
+  const ongoingTasksEl = document.getElementById('projectOverviewOngoingTasks');
+  if (ongoingTasksEl) ongoingTasksEl.textContent = tasksData.filter(t => t.status === 'In Progress').length;
+  
+  const delayedTasksEl = document.getElementById('projectOverviewDelayedTasks');
+  if (delayedTasksEl) delayedTasksEl.textContent = tasksData.filter(t => t.status === 'Delayed').length;
+  
+  const overdueTasksEl = document.getElementById('projectOverviewOverdueTasks');
+  if (overdueTasksEl) overdueTasksEl.textContent = tasksData.filter(t => t.status === 'Overdue').length;
+  
+  const startingDateEl = document.getElementById('projectOverviewStartingDate');
+  if (startingDateEl) startingDateEl.textContent = project.startDate;
+  
+  const deadlineDateEl = document.getElementById('projectOverviewDeadlineDate');
+  if (deadlineDateEl) deadlineDateEl.textContent = project.deadline;
+  
+  const priorityBadge = document.querySelector('.project-overview-priority-badge');
+  if (priorityBadge) {
+    const priority = project.priority || 'High';
+    priorityBadge.textContent = priority;
+    priorityBadge.className = 'project-overview-priority-badge';
+    if (priority === 'High') priorityBadge.classList.add('project-overview-priority-high');
+    else if (priority === 'Medium') priorityBadge.classList.add('project-overview-priority-medium');
+    else priorityBadge.classList.add('project-overview-priority-low');
+  }
+  
+  const titleEl = document.getElementById('projectOverviewTitle');
+  if (titleEl) titleEl.textContent = project.name;
+  
+  const descriptionEl = document.getElementById('projectOverviewDescription');
+  if (descriptionEl) descriptionEl.textContent = project.description || 'No description';
+  
+  updateProjectOverviewEmployeeAvatars();
+  
+  // Reset task pagination to page 1
+  currentTaskPage = 1;
+  filteredTasksForPagination = [];
+  renderTasksTable();
 }
 
 // ==================== DELETE PROJECT ====================
@@ -502,7 +809,6 @@ function deleteProject(id) {
     projectsData = projectsData.filter(p => p.id !== id);
     filteredProjects = [...projectsData];
     
-    // Adjust current page if necessary
     const totalPages = Math.ceil(filteredProjects.length / itemsPerPage);
     if (currentPage > totalPages && totalPages > 0) {
       currentPage = totalPages;
@@ -514,9 +820,1149 @@ function deleteProject(id) {
   }
 }
 
-// ==================== AUTO-INITIALIZE ====================
+// ==================== PROJECT OVERVIEW FUNCTIONALITY ====================
+
+// ==================== BACK TO PROJECTS ====================
+function backToProjectsList() {
+  const overviewPage = document.getElementById('projectOverviewPage');
+  if (overviewPage) {
+    overviewPage.style.display = 'none';
+  }
+  
+  const projectsContent = document.querySelector('.projects-content');
+  if (projectsContent) {
+    projectsContent.style.display = 'block';
+  }
+  
+  currentProjectOverview = null;
+}
+
+// ==================== SWITCH OVERVIEW TAB ====================
+function switchProjectOverviewTab(tabName) {
+  document.querySelectorAll('.project-overview-tab-btn').forEach(btn => {
+    btn.classList.remove('active');
+  });
+  
+  document.querySelectorAll('.project-overview-tab-content').forEach(content => {
+    content.classList.remove('active');
+  });
+  
+  event.target.classList.add('active');
+  
+  if (tabName === 'overview') {
+    const overviewTab = document.getElementById('projectOverviewTabContent');
+    if (overviewTab) overviewTab.classList.add('active');
+  } else {
+    const resourcesTab = document.getElementById('projectOverviewResourcesTabContent');
+    if (resourcesTab) resourcesTab.classList.add('active');
+  }
+}
+
+// ==================== UPDATE EMPLOYEE AVATARS ====================
+function updateProjectOverviewEmployeeAvatars() {
+  const container = document.getElementById('projectOverviewEmployeeAvatars');
+  if (!container) return;
+  
+  container.innerHTML = '';
+  
+  const maxVisible = 4;
+  const visibleEmployees = projectOverviewAllocatedEmployees.slice(0, maxVisible);
+  const extraCount = projectOverviewAllocatedEmployees.length - maxVisible;
+  
+  visibleEmployees.forEach(emp => {
+    const avatar = document.createElement('div');
+    avatar.className = 'project-overview-avatar-circle';
+    avatar.style.background = emp.avatar || '#333';
+    avatar.textContent = emp.initial;
+    container.appendChild(avatar);
+  });
+  
+  if (extraCount > 0) {
+    const extraAvatar = document.createElement('div');
+    extraAvatar.className = 'project-overview-avatar-circle project-overview-extra-count';
+    extraAvatar.textContent = `+${extraCount}`;
+    container.appendChild(extraAvatar);
+  }
+}
+
+// ==================== OPEN EMPLOYEE MODAL ====================
+function openProjectOverviewEmployeeModal() {
+  const modal = document.getElementById('projectOverviewEmployeeModal');
+  if (!modal) return;
+  
+  modal.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+  
+  const modalProjectName = document.getElementById('projectOverviewEmployeeModalProjectName');
+  if (modalProjectName && currentProjectOverview) {
+    modalProjectName.textContent = currentProjectOverview.name;
+  }
+  
+  selectedProjectOverviewEmployees.clear();
+  
+  tempProjectOverviewAllocatedEmployees = [...projectOverviewAllocatedEmployees];
+  
+  renderProjectOverviewAllocateList();
+  renderProjectOverviewAllocatedList();
+  
+  updateProjectOverviewEmployeeCounts();
+}
+
+// ==================== CLOSE EMPLOYEE MODAL ====================
+function closeProjectOverviewEmployeeModal() {
+  const modal = document.getElementById('projectOverviewEmployeeModal');
+  if (modal) {
+    modal.style.display = 'none';
+  }
+  document.body.style.overflow = '';
+  selectedProjectOverviewEmployees.clear();
+  tempProjectOverviewAllocatedEmployees = [];
+}
+
+// ==================== SWITCH EMPLOYEE TAB ====================
+function switchProjectOverviewEmployeeTab(tabName) {
+  document.querySelectorAll('.project-overview-employee-tab-btn').forEach(btn => {
+    btn.classList.remove('active');
+  });
+  
+  document.querySelectorAll('.project-overview-employee-tab-content').forEach(content => {
+    content.classList.remove('active');
+  });
+  
+  event.target.classList.add('active');
+  
+  if (tabName === 'allocate') {
+    const allocateTab = document.getElementById('projectOverviewAllocateTabContent');
+    if (allocateTab) allocateTab.classList.add('active');
+  } else {
+    const allocatedTab = document.getElementById('projectOverviewAllocatedTabContent');
+    if (allocatedTab) allocatedTab.classList.add('active');
+  }
+}
+
+// ==================== RENDER ALLOCATE LIST ====================
+function renderProjectOverviewAllocateList() {
+  const container = document.getElementById('projectOverviewAllocateList');
+  if (!container) return;
+  
+  container.innerHTML = '';
+  
+  const allocatedIds = tempProjectOverviewAllocatedEmployees.map(emp => emp.id);
+  const availableToAllocate = projectOverviewAvailableEmployees.filter(emp => !allocatedIds.includes(emp.id));
+  
+  if (availableToAllocate.length === 0) {
+    container.innerHTML = '<p style="text-align: center; color: #999; padding: 20px;">No employees available to allocate</p>';
+    return;
+  }
+  
+  availableToAllocate.forEach(emp => {
+    const item = document.createElement('div');
+    item.className = 'project-overview-employee-item';
+    
+    item.innerHTML = `
+      <input type="checkbox" class="project-overview-employee-checkbox" 
+             onchange="toggleProjectOverviewEmployeeSelection(${emp.id})" 
+             id="project-overview-emp-${emp.id}">
+      <div class="project-overview-employee-avatar-large" style="background: ${emp.avatar}">${emp.initial}</div>
+      <span class="project-overview-employee-name">${emp.name}</span>
+    `;
+    
+    container.appendChild(item);
+  });
+}
+
+// ==================== RENDER ALLOCATED LIST ====================
+function renderProjectOverviewAllocatedList() {
+  const container = document.getElementById('projectOverviewAllocatedList');
+  if (!container) return;
+  
+  container.innerHTML = '';
+  
+  if (tempProjectOverviewAllocatedEmployees.length === 0) {
+    container.innerHTML = '<p style="text-align: center; color: #999; padding: 20px;">No employees allocated yet</p>';
+    return;
+  }
+  
+  tempProjectOverviewAllocatedEmployees.forEach(emp => {
+    const item = document.createElement('div');
+    item.className = 'project-overview-employee-item';
+    
+    item.innerHTML = `
+      <div class="project-overview-employee-avatar-large" style="background: ${emp.avatar}">${emp.initial}</div>
+      <span class="project-overview-employee-name">${emp.name}</span>
+      <button class="project-overview-remove-employee-btn" onclick="removeProjectOverviewEmployee(${emp.id})">
+        <img src="../assets/imgaes/preview_delete_btn.png" alt="Remove" style="width: 20px; height: 20px;">
+      </button>
+    `;
+    
+    container.appendChild(item);
+  });
+}
+
+// ==================== TOGGLE EMPLOYEE SELECTION ====================
+function toggleProjectOverviewEmployeeSelection(empId) {
+  if (selectedProjectOverviewEmployees.has(empId)) {
+    selectedProjectOverviewEmployees.delete(empId);
+  } else {
+    selectedProjectOverviewEmployees.add(empId);
+  }
+}
+
+// ==================== REMOVE EMPLOYEE ====================
+function removeProjectOverviewEmployee(empId) {
+  tempProjectOverviewAllocatedEmployees = tempProjectOverviewAllocatedEmployees.filter(emp => emp.id !== empId);
+  
+  renderProjectOverviewAllocateList();
+  renderProjectOverviewAllocatedList();
+  updateProjectOverviewEmployeeCounts();
+}
+
+// ==================== SAVE EMPLOYEE CHANGES ====================
+function saveProjectOverviewEmployeeChanges() {
+  selectedProjectOverviewEmployees.forEach(empId => {
+    const employee = projectOverviewAvailableEmployees.find(emp => emp.id === empId);
+    if (employee && !tempProjectOverviewAllocatedEmployees.find(emp => emp.id === empId)) {
+      tempProjectOverviewAllocatedEmployees.push(employee);
+    }
+  });
+  
+  projectOverviewAllocatedEmployees = [...tempProjectOverviewAllocatedEmployees];
+  
+  updateProjectOverviewEmployeeAvatars();
+  
+  const assignedEmployeesEl = document.getElementById('projectOverviewAssignedEmployees');
+  if (assignedEmployeesEl) {
+    assignedEmployeesEl.textContent = projectOverviewAllocatedEmployees.length;
+  }
+  
+  closeProjectOverviewEmployeeModal();
+  
+  const addedCount = selectedProjectOverviewEmployees.size;
+  if (addedCount > 0) {
+    showSuccessToast(`${addedCount} employee(s) allocated successfully`);
+  } else {
+    showSuccessToast('Employee changes saved successfully');
+  }
+}
+
+// ==================== UPDATE EMPLOYEE COUNTS ====================
+function updateProjectOverviewEmployeeCounts() {
+  const allocatedIds = tempProjectOverviewAllocatedEmployees.map(emp => emp.id);
+  const availableCount = projectOverviewAvailableEmployees.filter(emp => !allocatedIds.includes(emp.id)).length;
+  
+  const allocateCountEl = document.getElementById('projectOverviewAllocateCount');
+  if (allocateCountEl) {
+    allocateCountEl.textContent = availableCount;
+  }
+  
+  const allocatedCountEl = document.getElementById('projectOverviewAllocatedCount');
+  if (allocatedCountEl) {
+    allocatedCountEl.textContent = tempProjectOverviewAllocatedEmployees.length;
+  }
+}
+
+// ==================== EMPLOYEE SEARCH ====================
+function handleProjectOverviewEmployeeSearch(e) {
+  const searchTerm = e.target.value.toLowerCase();
+  const items = document.querySelectorAll('.project-overview-employee-item');
+  
+  items.forEach(item => {
+    const nameElement = item.querySelector('.project-overview-employee-name');
+    if (nameElement) {
+      const name = nameElement.textContent.toLowerCase();
+      if (name.includes(searchTerm)) {
+        item.style.display = 'flex';
+      } else {
+        item.style.display = 'none';
+      }
+    }
+  });
+}
+
+// ==================== TASK MANAGEMENT FUNCTIONALITY ====================
+
+// ==================== CALCULATE DURATION ====================
+function calculateTaskDuration(taskNumber) {
+  const startDate = document.getElementById(`taskStartDate${taskNumber}`)?.value;
+  const endDate = document.getElementById(`taskEndDate${taskNumber}`)?.value;
+  const startTime = document.getElementById(`taskStartTime${taskNumber}`)?.value;
+  const endTime = document.getElementById(`taskEndTime${taskNumber}`)?.value;
+  
+  if (!startDate || !endDate || !startTime || !endTime) {
+    return 'N/A';
+  }
+  
+  const start = new Date(`${startDate}T${startTime}`);
+  const end = new Date(`${endDate}T${endTime}`);
+  
+  const diffMs = end - start;
+  
+  if (diffMs < 0) {
+    return 'Invalid';
+  }
+  
+  const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+  const diffHours = Math.floor((diffMs % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const diffMinutes = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60));
+  
+  let duration = '';
+  if (diffDays > 0) {
+    duration += `${diffDays}d `;
+  }
+  if (diffHours > 0) {
+    duration += `${diffHours}h `;
+  }
+  if (diffMinutes > 0) {
+    duration += `${diffMinutes}m`;
+  }
+  
+  return duration.trim() || '0m';
+}
+
+// ==================== UPDATE DURATION FIELD ====================
+function updateTaskDuration(taskNumber) {
+  const durationField = document.getElementById(`taskDuration${taskNumber}`);
+  if (durationField) {
+    durationField.value = calculateTaskDuration(taskNumber);
+  }
+}
+
+// ==================== OPEN TASK MANAGEMENT PAGE ====================
+function openTaskManagementPage() {
+  const overviewPage = document.getElementById('projectOverviewPage');
+  if (overviewPage) {
+    overviewPage.style.display = 'none';
+  }
+  
+  const taskPage = document.getElementById('taskManagementPage');
+  if (taskPage) {
+    taskPage.style.display = 'block';
+  }
+  
+  const breadcrumbName = document.getElementById('taskBreadcrumbProjectName');
+  if (breadcrumbName && currentProjectOverview) {
+    breadcrumbName.textContent = currentProjectOverview.name;
+  }
+  
+  taskCardCounter = 0;
+  const container = document.getElementById('taskCardsContainer');
+  if (container) {
+    container.innerHTML = '';
+    addNewTaskCard();
+  }
+}
+
+// ==================== ADD NEW TASK CARD ====================
+function addNewTaskCard() {
+  taskCardCounter++;
+  const container = document.getElementById('taskCardsContainer');
+  
+  const existingCards = container.querySelectorAll('.task-card');
+  existingCards.forEach(card => {
+    card.classList.add('collapsed');
+    const expandBtn = card.querySelector('.task-expand-btn');
+    if (expandBtn) {
+      expandBtn.classList.remove('expanded');
+    }
+  });
+  
+  const taskCard = document.createElement('div');
+  taskCard.className = 'task-card';
+  taskCard.id = `taskCard${taskCardCounter}`;
+  taskCard.dataset.taskNumber = taskCardCounter;
+  
+  taskCard.innerHTML = `
+    <div class="task-card-header">
+      <div class="task-card-number-section">
+        <div class="task-number-badge">${String(taskCardCounter).padStart(2, '0')}</div>
+        <span class="task-card-title">Task ${taskCardCounter}</span>
+      </div>
+      <div class="task-card-actions">
+        <button class="task-expand-btn expanded" onclick="toggleTaskCard(${taskCardCounter})">▲</button>
+        <button class="task-delete-btn" onclick="deleteTaskCard(${taskCardCounter})">
+          <img src="../assets/imgaes/preview_delete_btn.png" alt="Delete">
+        </button>
+      </div>
+    </div>
+    
+    <div class="task-card-content">
+      <div class="task-form-row">
+        <div class="task-form-group">
+          <label>Task Name</label>
+          <input type="text" class="task-input" placeholder="Type here" id="taskName${taskCardCounter}">
+        </div>
+        <div class="task-form-group">
+          <label>Starting date</label>
+          <input type="date" class="task-input" id="taskStartDate${taskCardCounter}" onchange="updateTaskDuration(${taskCardCounter})">
+        </div>
+        <div class="task-form-group">
+          <label>Ending date</label>
+          <input type="date" class="task-input" id="taskEndDate${taskCardCounter}" onchange="updateTaskDuration(${taskCardCounter})">
+        </div>
+        <div class="task-form-group">
+          <label>Starting time</label>
+          <input type="time" class="task-input" id="taskStartTime${taskCardCounter}" onchange="updateTaskDuration(${taskCardCounter})">
+        </div>
+      </div>
+      
+      <div class="task-form-row">
+        <div class="task-form-group">
+          <label>End time</label>
+          <input type="time" class="task-input" id="taskEndTime${taskCardCounter}" onchange="updateTaskDuration(${taskCardCounter})">
+        </div>
+        <div class="task-form-group">
+          <label>Duration</label>
+          <input type="text" class="task-input" placeholder="Auto-calculated" id="taskDuration${taskCardCounter}" readonly style="background: #f3f4f6; cursor: not-allowed;">
+        </div>
+        <div class="task-form-group">
+          <label>Description</label>
+          <input type="text" class="task-input" placeholder="Enter description here" id="taskDescription${taskCardCounter}">
+        </div>
+        <div class="task-form-group">
+          <label>Assign Employee</label>
+          <select class="task-select" id="taskEmployee${taskCardCounter}">
+            <option value="">Select Employee</option>
+            <option value="Murugan">Murugan</option>
+            <option value="Safi">Safi</option>
+            <option value="Harish">Harish</option>
+            <option value="Pradeepa">Pradeepa</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  `;
+  
+  container.appendChild(taskCard);
+  currentExpandedTask = taskCardCounter;
+}
+
+// ==================== TOGGLE TASK CARD ====================
+function toggleTaskCard(taskNumber) {
+  const taskCard = document.getElementById(`taskCard${taskNumber}`);
+  const expandBtn = taskCard.querySelector('.task-expand-btn');
+  
+  if (taskCard.classList.contains('collapsed')) {
+    document.querySelectorAll('.task-card').forEach(card => {
+      card.classList.add('collapsed');
+      const btn = card.querySelector('.task-expand-btn');
+      if (btn) btn.classList.remove('expanded');
+    });
+    
+    taskCard.classList.remove('collapsed');
+    expandBtn.classList.add('expanded');
+    currentExpandedTask = taskNumber;
+  } else {
+    taskCard.classList.add('collapsed');
+    expandBtn.classList.remove('expanded');
+    currentExpandedTask = null;
+  }
+}
+
+// ==================== DELETE TASK CARD ====================
+function deleteTaskCard(taskNumber) {
+  if (confirm('Are you sure you want to delete this task?')) {
+    const taskCard = document.getElementById(`taskCard${taskNumber}`);
+    taskCard.remove();
+    
+    const remainingCards = document.querySelectorAll('.task-card');
+    taskCardCounter = 0;
+    remainingCards.forEach((card, index) => {
+      taskCardCounter++;
+      card.dataset.taskNumber = taskCardCounter;
+      card.id = `taskCard${taskCardCounter}`;
+      
+      const badge = card.querySelector('.task-number-badge');
+      const title = card.querySelector('.task-card-title');
+      if (badge) badge.textContent = String(taskCardCounter).padStart(2, '0');
+      if (title) title.textContent = `Task ${taskCardCounter}`;
+    });
+  }
+}
+
+// ==================== SAVE ALL TASKS ====================
+function saveAllTasks() {
+  const taskCards = document.querySelectorAll('.task-card');
+  const newTasks = [];
+  
+  taskCards.forEach(card => {
+    const taskNumber = card.dataset.taskNumber;
+    const task = {
+      id: tasksData.length + newTasks.length + 1,
+      taskNumber: taskNumber,
+      name: document.getElementById(`taskName${taskNumber}`)?.value || `Task ${taskNumber}`,
+      startDate: document.getElementById(`taskStartDate${taskNumber}`)?.value || '',
+      endDate: document.getElementById(`taskEndDate${taskNumber}`)?.value || '',
+      startTime: document.getElementById(`taskStartTime${taskNumber}`)?.value || '',
+      endTime: document.getElementById(`taskEndTime${taskNumber}`)?.value || '',
+      description: document.getElementById(`taskDescription${taskNumber}`)?.value || 'Description',
+      employee: document.getElementById(`taskEmployee${taskNumber}`)?.value || 'Unassigned',
+      status: 'In Progress',
+      progress: Math.floor(Math.random() * 100)
+    };
+    newTasks.push(task);
+  });
+  
+  tasksData = [...tasksData, ...newTasks];
+  
+  backToProjectOverview();
+  
+  // Reset to page 1 and clear filters
+  currentTaskPage = 1;
+  filteredTasksForPagination = [];
+  renderTasksTable();
+  
+  showSuccessToast(`${newTasks.length} task(s) added successfully!`);
+}
+
+// ==================== BACK TO PROJECT OVERVIEW ====================
+function backToProjectOverview() {
+  const taskPage = document.getElementById('taskManagementPage');
+  if (taskPage) {
+    taskPage.style.display = 'none';
+  }
+  
+  const overviewPage = document.getElementById('projectOverviewPage');
+  if (overviewPage) {
+    overviewPage.style.display = 'block';
+  }
+}
+
+// ==================== RENDER TASKS TABLE WITH PAGINATION ====================
+function renderTasksTable() {
+  const tbody = document.getElementById('projectTasksTableBody');
+  if (!tbody) return;
+  
+  tbody.innerHTML = '';
+  
+  // Use filtered data if available, otherwise use all tasks
+  const dataToShow = filteredTasksForPagination.length > 0 ? filteredTasksForPagination : tasksData;
+  
+  if (dataToShow.length === 0) {
+    tbody.innerHTML = `
+      <tr>
+        <td colspan="13" style="text-align: center; padding: 40px; color: #999">
+          No tasks found. Click "Add task" to create new tasks.
+        </td>
+      </tr>
+    `;
+    setupTaskPagination(0);
+    return;
+  }
+  
+  // Calculate pagination
+  const startIndex = (currentTaskPage - 1) * tasksPerPage;
+  const endIndex = startIndex + tasksPerPage;
+  const paginatedTasks = dataToShow.slice(startIndex, endIndex);
+  
+  // Render paginated tasks
+  paginatedTasks.forEach((task, index) => {
+    const actualIndex = startIndex + index + 1;
+    const row = document.createElement('tr');
+    row.innerHTML = `
+      <td>${actualIndex}</td>
+      <td>${task.name}</td>
+      <td>${task.description}</td>
+      <td>${task.startDate}</td>
+      <td>${task.startTime}</td>
+      <td>${task.endDate}</td>
+      <td>${task.endTime}</td>
+      <td>Fisto</td>
+      <td>${task.employee}</td>
+      <td><button class="view-report-btn" style="padding: 6px 12px; background: #0052CC; color: white; border: none; border-radius: 6px; cursor: pointer; font-size:0.6vw;">View Report</button></td>
+      <td>
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <div class="progress-bar" style="width: 100px; height: 8px; background: #e5e7eb; border-radius: 4px;">
+            <div style="width: ${task.progress}%; height: 100%; background: #0052CC; border-radius: 4px;"></div>
+          </div>
+          <span style="font-size: 0.85rem;">${task.progress}%</span>
+        </div>
+      </td>
+      <td><span class="status-badge" style="padding: 4px 12px; background: #dbeafe; color: #0052CC; border-radius: 6px; font-size: 0.85rem;">${task.status}</span></td>
+      <td><button class="comment-btn" style="padding: 6px 12px; background: #f3f4f6; border: 1px solid #CBCDD2; border-radius: 6px; cursor: pointer;">View</button></td>
+    `;
+    tbody.appendChild(row);
+  });
+  
+  // Setup pagination controls
+  setupTaskPagination(dataToShow.length);
+}
+
+// ==================== SETUP TASK PAGINATION ====================
+function setupTaskPagination(totalTasks) {
+  const totalPages = Math.ceil(totalTasks / tasksPerPage);
+  const paginationNumbers = document.getElementById('taskpaginationNumbers');
+  
+  if (!paginationNumbers) return;
+  
+  paginationNumbers.innerHTML = '';
+  
+  const prevBtn = document.getElementById('taskprevBtn');
+  const nextBtn = document.getElementById('tasknextBtn');
+  
+  if (prevBtn) prevBtn.disabled = currentTaskPage === 1;
+  if (nextBtn) nextBtn.disabled = currentTaskPage === totalPages || totalPages === 0;
+  
+  // Create page number buttons
+  for (let i = 1; i <= totalPages; i++) {
+    const pageBtn = document.createElement('button');
+    pageBtn.className = `taskpage-number ${i === currentTaskPage ? 'active' : ''}`;
+    pageBtn.textContent = String(i).padStart(2, '0');
+    pageBtn.addEventListener('click', () => {
+      currentTaskPage = i;
+      renderTasksTable();
+    });
+    paginationNumbers.appendChild(pageBtn);
+  }
+}
+
+// ==================== TASK SEARCH FUNCTIONALITY WITH PAGINATION ====================
+function handleTaskSearchInput(event) {
+  const searchTerm = event.target.value.toLowerCase().trim();
+  
+  // Reset to page 1 when searching
+  currentTaskPage = 1;
+  
+  // If search is empty, clear filtered data
+  if (!searchTerm) {
+    filteredTasksForPagination = [];
+    renderTasksTable();
+    return;
+  }
+  
+  // Filter tasks based on search term
+  filteredTasksForPagination = tasksData.filter(task => 
+    task.name.toLowerCase().includes(searchTerm) ||
+    task.description.toLowerCase().includes(searchTerm) ||
+    task.employee.toLowerCase().includes(searchTerm)
+  );
+  
+  renderTasksTable();
+}
+
+function clearTaskSearch() {
+  const searchInput = document.getElementById('TaskprojectSearchInput');
+  if (searchInput) {
+    searchInput.value = '';
+  }
+  filteredTasksForPagination = [];
+  currentTaskPage = 1;
+  renderTasksTable();
+}
+
+// ==================== FILE UPLOAD MODAL ====================
+function openProjectResourcesFileModal() {
+  console.log('Opening file upload modal...');
+  const fileModal = document.getElementById('projectResourcesFileModal');
+  if (!fileModal) {
+    console.error('File modal not found!');
+    return;
+  }
+  fileModal.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+  
+  const dropzone = document.getElementById('projectResourcesFileDropzone');
+  const fileInput = document.getElementById('projectResourcesFileInput');
+  
+  if (dropzone && fileInput) {
+    dropzone.onclick = () => fileInput.click();
+    
+    fileInput.onchange = (e) => handleProjectResourcesFileSelection(e.target.files);
+    
+    dropzone.ondragover = (e) => {
+      e.preventDefault();
+      dropzone.style.borderColor = '#0052CC';
+      dropzone.style.background = '#f0f7ff';
+    };
+    
+    dropzone.ondragleave = () => {
+      dropzone.style.borderColor = '#cbd5e0';
+      dropzone.style.background = 'white';
+    };
+    
+    dropzone.ondrop = (e) => {
+      e.preventDefault();
+      dropzone.style.borderColor = '#cbd5e0';
+      dropzone.style.background = 'white';
+      handleProjectResourcesFileSelection(e.dataTransfer.files);
+    };
+  }
+}
+
+function handleProjectResourcesFileSelection(files) {
+  projectResourcesSelectedFiles = Array.from(files);
+  const filesList = document.getElementById('projectResourcesFilesList');
+  const selectedSection = document.getElementById('projectResourcesSelectedFiles');
+  
+  if (!filesList || !selectedSection) return;
+  
+  if (projectResourcesSelectedFiles.length === 0) {
+    selectedSection.style.display = 'none';
+    return;
+  }
+  
+  selectedSection.style.display = 'block';
+  filesList.innerHTML = '';
+  
+  let totalSize = 0;
+  projectResourcesSelectedFiles.forEach((file, index) => {
+    totalSize += file.size;
+    const fileItem = document.createElement('div');
+    fileItem.className = 'project-resources-file-item';
+    fileItem.innerHTML = `
+      <div class="project-resources-file-info">
+        <div class="project-resources-file-icon">📄</div>
+        <div class="project-resources-file-details">
+          <h5>${file.name}</h5>
+          <span class="project-resources-file-size">${formatFileSize(file.size)}</span>
+        </div>
+      </div>
+      <button class="project-resources-action-btn delete" onclick="removeProjectResourcesSelectedFile(${index})">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+        </svg>
+      </button>
+    `;
+    filesList.appendChild(fileItem);
+  });
+  
+  const progress = document.querySelector('.project-resources-file-progress');
+  if (progress) progress.textContent = `${formatFileSize(totalSize)} / 50MB`;
+}
+
+function removeProjectResourcesSelectedFile(index) {
+  projectResourcesSelectedFiles.splice(index, 1);
+  handleProjectResourcesFileSelection(projectResourcesSelectedFiles);
+}
+
+function uploadProjectResourcesFiles() {
+  if (projectResourcesSelectedFiles.length === 0) {
+    alert('Please select files to upload');
+    return;
+  }
+  
+  projectResourcesSelectedFiles.forEach(file => {
+    projectResourcesUploadedFiles.push({
+      id: Date.now() + Math.random(),
+      name: file.name,
+      size: file.size,
+      type: file.type,
+      uploadDate: new Date().toLocaleString()
+    });
+  });
+  
+  showSuccessToast(`${projectResourcesSelectedFiles.length} file(s) uploaded successfully!`);
+  closeProjectResourcesFileModal();
+}
+
+function closeProjectResourcesFileModal() {
+  const fileModal = document.getElementById('projectResourcesFileModal');
+  if (!fileModal) return;
+  fileModal.style.display = 'none';
+  document.body.style.overflow = '';
+  
+  const filesList = document.getElementById('projectResourcesFilesList');
+  const selectedSection = document.getElementById('projectResourcesSelectedFiles');
+  const fileInput = document.getElementById('projectResourcesFileInput');
+  
+  if (filesList) filesList.innerHTML = '';
+  if (selectedSection) selectedSection.style.display = 'none';
+  if (fileInput) fileInput.value = '';
+  projectResourcesSelectedFiles = [];
+  
+  const progress = document.querySelector('.project-resources-file-progress');
+  if (progress) progress.textContent = '0 Bytes / 50MB';
+}
+
+// ==================== FILE VIEW MODAL ====================
+function openProjectResourcesFileViewModal() {
+  console.log('Opening file view modal...');
+  const fileViewModal = document.getElementById('projectResourcesFileViewModal');
+  if (!fileViewModal) {
+    console.error('File view modal not found!');
+    return;
+  }
+  fileViewModal.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+  renderProjectResourcesUploadedFiles();
+}
+
+function renderProjectResourcesUploadedFiles() {
+  const list = document.getElementById('projectResourcesUploadedFilesList');
+  if (!list) return;
+  
+  list.innerHTML = '';
+  
+  if (projectResourcesUploadedFiles.length === 0) {
+    list.innerHTML = '<p style="text-align: center; color: #999; padding: 40px;">No files uploaded yet</p>';
+    return;
+  }
+  
+  projectResourcesUploadedFiles.forEach(file => {
+    const fileItem = document.createElement('div');
+    fileItem.className = 'project-resources-file-item';
+    fileItem.innerHTML = `
+      <div class="project-resources-file-info">
+        <div class="project-resources-file-icon">📄</div>
+        <div class="project-resources-file-details">
+          <h5>${file.name}</h5>
+          <span class="project-resources-file-size">${formatFileSize(file.size)}</span>
+        </div>
+      </div>
+      <div class="project-resources-file-actions">
+        <button class="project-resources-action-btn" onclick="viewProjectResourcesFile('${file.id}')" title="View">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+            <circle cx="12" cy="12" r="3"/>
+          </svg>
+        </button>
+        <button class="project-resources-action-btn" onclick="downloadProjectResourcesFile('${file.id}')" title="Download">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+          </svg>
+        </button>
+        <button class="project-resources-action-btn delete" onclick="deleteProjectResourcesFile('${file.id}')" title="Delete">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+          </svg>
+        </button>
+      </div>
+    `;
+    list.appendChild(fileItem);
+  });
+}
+
+function viewProjectResourcesFile(id) {
+  const file = projectResourcesUploadedFiles.find(f => f.id == id);
+  if (file) {
+    alert(`Viewing: ${file.name}\n\nIn a real application, this would open the file viewer.`);
+  }
+}
+
+function downloadProjectResourcesFile(id) {
+  const file = projectResourcesUploadedFiles.find(f => f.id == id);
+  if (file) {
+    alert(`Downloading: ${file.name}\n\nIn a real application, this would download the file.`);
+    showSuccessToast(`${file.name} downloaded successfully!`);
+  }
+}
+
+function deleteProjectResourcesFile(id) {
+  if (confirm('Are you sure you want to delete this file?')) {
+    projectResourcesUploadedFiles = projectResourcesUploadedFiles.filter(f => f.id != id);
+    renderProjectResourcesUploadedFiles();
+    showSuccessToast('File deleted successfully!');
+  }
+}
+
+function closeProjectResourcesFileViewModal() {
+  const fileViewModal = document.getElementById('projectResourcesFileViewModal');
+  if (!fileViewModal) return;
+  fileViewModal.style.display = 'none';
+  document.body.style.overflow = '';
+}
+document.addEventListener("DOMContentLoaded", () => {
+  console.log("upload button loaded");
+  const but = document.getElementById('resourceUpload');
+  if (but) {
+    console.log("button exists");
+    but.addEventListener('click', () => {
+      openProjectResourcesLinkModal();
+    });
+  } else {
+    console.log("button not exists");
+  }
+});
+
+// ==================== LINK UPLOAD MODAL ====================
+function createProjectResourcesModals() {
+  // Check if modals already exist
+  if (document.getElementById('projectResourcesLinkModal')) return;
+
+  const modalsHTML = `
+    <!-- UPLOAD REFERENCE LINKS MODAL -->
+    <div id="projectResourcesLinkModal" class="project-resources-modal">
+      <div class="project-resources-modal-content">
+        <div class="project-resources-modal-header">
+          <h3>Upload link</h3>
+        </div>
+        <div class="project-resources-links-container" id="projectResourcesLinksInputContainer">
+          <div class="project-resources-link-row">
+            <input type="text" class="project-resources-link-name" placeholder="Link name">
+            <input type="url" class="project-resources-link-url" placeholder="https://example.com">
+            <button class="project-resources-link-remove" onclick="removeProjectResourcesLinkRow(this)" style="display: none;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#dc2626">
+                <circle cx="12" cy="12" r="10"/>
+                <line x1="15" y1="9" x2="9" y2="15"/>
+                <line x1="9" y1="9" x2="15" y2="15"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <button class="project-resources-add-link-btn" onclick="addProjectResourcesLinkRow()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <line x1="12" y1="5" x2="12" y2="19"/>
+            <line x1="5" y1="12" x2="19" y2="12"/>
+          </svg>
+          Add another Link
+        </button>
+        <div class="project-resources-modal-footer">
+          <button class="project-resources-btn-cancel" onclick="closeProjectResourcesLinkModal()">Cancel</button>
+          <button class="project-resources-btn-upload" onclick="uploadProjectResourcesLinks()">Upload</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- VIEW REFERENCE LINKS MODAL -->
+    <div id="projectResourcesLinkViewModal" class="project-resources-modal">
+      <div class="project-resources-modal-content">
+        <div class="project-resources-modal-header">
+          <h3>View Uploaded Links</h3>
+          <span class="project-resources-modal-close" onclick="closeProjectResourcesLinkViewModal()">&times;</span>
+        </div>
+        <div class="project-resources-links-list" id="projectResourcesUploadedLinksList"></div>
+        <div class="project-resources-modal-footer">
+          <button class="project-resources-btn-cancel" onclick="closeProjectResourcesLinkViewModal()">Close</button>
+        </div>
+      </div>
+    </div>
+  `;
+
+  // Append to body
+  document.body.insertAdjacentHTML('beforeend', modalsHTML);
+}
+
+// ==================== LINK UPLOAD MODAL ====================
+function openProjectResourcesLinkModal() {
+  createProjectResourcesModals(); // Create modals if they don't exist
+  
+  const linkModal = document.getElementById('projectResourcesLinkModal');
+  if (!linkModal) {
+    console.error('Link modal not found!');
+    return;
+  }
+  
+  linkModal.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+  
+  // Reset form
+  const container = document.getElementById('projectResourcesLinksInputContainer');
+  if (container) {
+    container.innerHTML = `
+      <div class="project-resources-link-row">
+        <input type="text" class="project-resources-link-name" placeholder="Link name">
+        <input type="url" class="project-resources-link-url" placeholder="https://example.com">
+        <button class="project-resources-link-remove" onclick="removeProjectResourcesLinkRow(this)" style="display: none;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#dc2626">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="15" y1="9" x2="9" y2="15"/>
+            <line x1="9" y1="9" x2="15" y2="15"/>
+          </svg>
+        </button>
+      </div>
+    `;
+  }
+}
+
+function closeProjectResourcesLinkModal() {
+  const linkModal = document.getElementById('projectResourcesLinkModal');
+  if (linkModal) {
+    linkModal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+  }
+}
+
+function addProjectResourcesLinkRow() {
+  const container = document.getElementById('projectResourcesLinksInputContainer');
+  if (!container) return;
+
+  const newRow = document.createElement('div');
+  newRow.className = 'project-resources-link-row';
+  newRow.innerHTML = `
+    <input type="text" class="project-resources-link-name" placeholder="Link name">
+    <input type="url" class="project-resources-link-url" placeholder="https://example.com">
+    <button class="project-resources-link-remove" onclick="removeProjectResourcesLinkRow(this)">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#dc2626">
+        <circle cx="12" cy="12" r="10"/>
+        <line x1="15" y1="9" x2="9" y2="15"/>
+        <line x1="9" y1="9" x2="15" y2="15"/>
+      </svg>
+    </button>
+  `;
+  container.appendChild(newRow);
+}
+
+function removeProjectResourcesLinkRow(button) {
+  const row = button.closest('.project-resources-link-row');
+  const container = document.getElementById('projectResourcesLinksInputContainer');
+  
+  if (container.children.length > 1) {
+    row.remove();
+  }
+}
+
+function uploadProjectResourcesLinks() {
+  const container = document.getElementById('projectResourcesLinksInputContainer');
+  const rows = container.querySelectorAll('.project-resources-link-row');
+  
+  const links = [];
+  let hasError = false;
+
+  rows.forEach(row => {
+    const name = row.querySelector('.project-resources-link-name').value.trim();
+    const url = row.querySelector('.project-resources-link-url').value.trim();
+    
+    if (name && url) {
+      links.push({ name, url, date: new Date().toLocaleDateString() });
+    } else if (name || url) {
+      hasError = true;
+    }
+  });
+
+  if (hasError) {
+    alert('Please fill in both name and URL for all links');
+    return;
+  }
+
+  if (links.length === 0) {
+    alert('Please add at least one link');
+    return;
+  }
+
+  // Store in localStorage (replace with your backend API call)
+  const currentProject = getCurrentProjectId(); // You need to implement this
+  const storageKey = `project_${currentProject}_links`;
+  const existingLinks = JSON.parse(localStorage.getItem(storageKey) || '[]');
+  localStorage.setItem(storageKey, JSON.stringify([...existingLinks, ...links]));
+
+  alert('Links uploaded successfully!');
+  closeProjectResourcesLinkModal();
+}
+// ==================== LINK VIEW MODAL ====================
+function openProjectResourcesLinkViewModal() {
+  createProjectResourcesModals(); // Create modals if they don't exist
+  
+  const linkViewModal = document.getElementById('projectResourcesLinkViewModal');
+  if (!linkViewModal) {
+    console.error('Link view modal not found!');
+    return;
+  }
+
+  linkViewModal.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+
+  // Load and display links
+  loadProjectResourcesLinks();
+}
+
+function closeProjectResourcesLinkViewModal() {
+  const linkViewModal = document.getElementById('projectResourcesLinkViewModal');
+  if (linkViewModal) {
+    linkViewModal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+  }
+}
+
+function loadProjectResourcesLinks() {
+  const list = document.getElementById('projectResourcesUploadedLinksList');
+  if (!list) return;
+
+  // Get links from localStorage (replace with your backend API call)
+  const currentProject = getCurrentProjectId(); // You need to implement this
+  const storageKey = `project_${currentProject}_links`;
+  const links = JSON.parse(localStorage.getItem(storageKey) || '[]');
+
+  if (links.length === 0) {
+    list.innerHTML = '<p style="text-align: center; color: #999; padding: 40px;">No links uploaded yet</p>';
+    return;
+  }
+
+  list.innerHTML = links.map((link, index) => `
+    <div class="project-resources-link-item">
+      <div class="project-resources-link-info">
+        <strong>${link.name}</strong>
+        <a href="${link.url}" target="_blank" rel="noopener noreferrer">${link.url}</a>
+        <span class="project-resources-link-date">Uploaded: ${link.date}</span>
+      </div>
+      <button class="project-resources-link-delete" onclick="deleteProjectResourcesLink(${index})">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+        </svg>
+        Delete
+      </button>
+    </div>
+  `).join('');
+}
+
+function deleteProjectResourcesLink(index) {
+  if (!confirm('Are you sure you want to delete this link?')) return;
+
+  const currentProject = getCurrentProjectId();
+  const storageKey = `project_${currentProject}_links`;
+  const links = JSON.parse(localStorage.getItem(storageKey) || '[]');
+  links.splice(index, 1);
+  localStorage.setItem(storageKey, JSON.stringify(links));
+
+  loadProjectResourcesLinks();
+}
+
+// Helper function - implement based on your project structure
+function getCurrentProjectId() {
+  // Return the current project ID
+  // Example: return currentProjectData.id;
+  return 'demo-project'; // Replace with actual logic
+}
+
+// ==================== HELPER FUNCTIONS ====================
+function formatFileSize(bytes) {
+  if (bytes === 0) return '0 Bytes';
+  const k = 1024;
+  const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+  const i = Math.floor(Math.log(bytes) / Math.log(k));
+  return Math.round(bytes / Math.pow(k, i) * 100) / 100 + ' ' + sizes[i];
+}
+
+// ==================== EXPOSE FUNCTIONS TO WINDOW ====================
+// ==================== EXPOSE FUNCTIONS TO WINDOW ====================
 if (typeof window !== 'undefined') {
   window.initializeProjectPage = initializeProjectPage;
   window.viewProject = viewProject;
   window.deleteProject = deleteProject;
+  window.backToProjectsList = backToProjectsList;
+  window.switchProjectOverviewTab = switchProjectOverviewTab;
+  window.openProjectOverviewEmployeeModal = openProjectOverviewEmployeeModal;
+  window.closeProjectOverviewEmployeeModal = closeProjectOverviewEmployeeModal;
+  window.switchProjectOverviewEmployeeTab = switchProjectOverviewEmployeeTab;
+  window.toggleProjectOverviewEmployeeSelection = toggleProjectOverviewEmployeeSelection;
+  window.removeProjectOverviewEmployee = removeProjectOverviewEmployee;
+  window.saveProjectOverviewEmployeeChanges = saveProjectOverviewEmployeeChanges;
+  window.openTaskManagementPage = openTaskManagementPage;
+  window.addNewTaskCard = addNewTaskCard;
+  window.toggleTaskCard = toggleTaskCard;
+  window.deleteTaskCard = deleteTaskCard;
+  window.saveAllTasks = saveAllTasks;
+  window.backToProjectOverview = backToProjectOverview;
+  window.calculateTaskDuration = calculateTaskDuration;
+  window.updateTaskDuration = updateTaskDuration;
+  window.handleTaskSearchInput = handleTaskSearchInput;
+  window.clearTaskSearch = clearTaskSearch;
+  
+  // RESOURCES FUNCTIONS
+  window.openProjectResourcesFileModal = openProjectResourcesFileModal;
+  window.closeProjectResourcesFileModal = closeProjectResourcesFileModal;
+  window.uploadProjectResourcesFiles = uploadProjectResourcesFiles;
+  window.openProjectResourcesFileViewModal = openProjectResourcesFileViewModal;
+  window.closeProjectResourcesFileViewModal = closeProjectResourcesFileViewModal;
+  window.viewProjectResourcesFile = viewProjectResourcesFile;
+  window.downloadProjectResourcesFile = downloadProjectResourcesFile;
+  window.deleteProjectResourcesFile = deleteProjectResourcesFile;
+  window.removeProjectResourcesSelectedFile = removeProjectResourcesSelectedFile;
+  window.openProjectResourcesLinkModal = openProjectResourcesLinkModal;
+  window.closeProjectResourcesLinkModal = closeProjectResourcesLinkModal;
+  window.addProjectResourcesLinkRow = addProjectResourcesLinkRow;
+  window.removeProjectResourcesLinkRow = removeProjectResourcesLinkRow;
+  window.uploadProjectResourcesLinks = uploadProjectResourcesLinks;
+  window.openProjectResourcesLinkViewModal = openProjectResourcesLinkViewModal;
+  window.closeProjectResourcesLinkViewModal = closeProjectResourcesLinkViewModal;
+  window.copyProjectResourcesLink = copyProjectResourcesLink;
+  window.deleteProjectResourcesLink = deleteProjectResourcesLink;
 }
