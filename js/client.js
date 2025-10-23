@@ -51,4 +51,4 @@ function initializeClientDatabaseTabs() {
     });
     
     console.log('Client database tabs initialized successfully!');
-}
+} 

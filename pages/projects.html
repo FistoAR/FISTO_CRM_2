@@ -22,7 +22,7 @@
         />
       </div>
       <button id="filterBtn" class="project-filter-btn">
-        <span>⚙</span> Filter
+        <img src="../assets/imgaes/filter_list.png" alt="" /> Filter
       </button>
     </div>
   </div>
@@ -331,23 +331,23 @@
     <!-- Project Details -->
     <div class="project-overview-details-section">
       <div class="project-overview-details-header-row">
-        <div class="project-overview-title-section">
-          <div class="project-overview-title-wrapper">
-            <h3 id="projectOverviewTitle">Excel Software</h3>
-            <span
-              class="project-overview-priority-badge project-overview-priority-high"
-              >High</span
+        <!-- Left Side: Large Project Info Card -->
+        <div class="project-overview-large-card">
+          <div class="project-overview-large-card-inner">
+            <div class="project-overview-title-wrapper">
+              <h3 id="projectOverviewTitle">Excel Software</h3>
+              <span
+                class="project-overview-priority-badge project-overview-priority-high"
+                >High</span
+              >
+            </div>
+            <p
+              class="project-overview-description"
+              id="projectOverviewDescription"
             >
+              to create excel software
+            </p>
           </div>
-          <p
-            class="project-overview-description"
-            id="projectOverviewDescription"
-          >
-            to create excel software
-          </p>
-        </div>
-
-        <div class="project-overview-info-card">
           <div class="project-overview-user-info">
             <div class="project-overview-user-avatar">F</div>
             <div class="project-overview-user-details">
@@ -357,41 +357,47 @@
           </div>
         </div>
 
-        <div class="project-overview-info-card">
-          <div class="project-overview-user-info project-overview-team-head">
-            <img
-              src="../assets/imgaes/crown_TL.png"
-              alt="Crown"
-              class="project-overview-crown-icon"
-            />
-            <div class="project-overview-user-avatar">F</div>
-            <div class="project-overview-user-details">
-              <span class="project-overview-user-name">Fisto</span>
-              <span class="project-overview-user-role">Team Head</span>
+        <!-- Right Side: 2x2 Grid of Cards -->
+        <div class="project-overview-grid-section">
+          <!-- Card 1: Team Head -->
+          <div class="project-overview-card">
+            <div class="project-overview-user-info project-overview-team-head">
+              <img
+                src="../assets/imgaes/crown_TL.png"
+                alt="Crown"
+                class="project-overview-crown-icon"
+              />
+              <div class="project-overview-user-avatar">F</div>
+              <div class="project-overview-user-details">
+                <span class="project-overview-user-name">Fisto</span>
+                <span class="project-overview-user-role">Team Head</span>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div class="project-overview-employees-section">
-          <span class="project-overview-section-label">Employees</span>
-          <div class="project-overview-employees-content">
-            <button
-              class="project-overview-add-view-btn"
-              onclick="openProjectOverviewEmployeeModal()"
-            >
-              ➕ Add/View
-            </button>
-            <div
-              class="project-overview-employee-avatars"
-              id="projectOverviewEmployeeAvatars"
-            ></div>
+          <!-- Card 2: Employees -->
+          <div class="project-overview-card">
+            <span class="project-overview-card-label">Employees</span>
+            <div class="project-overview-employees-content">
+              <button
+                class="project-overview-add-view-btn"
+                onclick="openProjectOverviewEmployeeModal()"
+              >
+                <img src="../assets/imgaes/person_add.png" alt="" /> Add/View
+              </button>
+              <div
+                class="project-overview-employee-avatars"
+                id="projectOverviewEmployeeAvatars"
+              >
+                <div class="project-overview-avatar-circle">J</div>
+                <div class="project-overview-avatar-circle">M</div>
+                <div class="project-overview-avatar-circle">S</div>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
 
-      <div class="project-overview-info-grid">
-        <div class="project-overview-info-row">
-          <div class="project-overview-info-card">
+          <!-- Card 3: Starting Date -->
+          <div class="project-overview-card">
             <span class="project-overview-card-label">Starting Date</span>
             <span
               class="project-overview-date-badge"
@@ -399,7 +405,9 @@
               >10-10-2025</span
             >
           </div>
-          <div class="project-overview-info-card">
+
+          <!-- Card 4: Deadline Date -->
+          <div class="project-overview-card">
             <span class="project-overview-card-label">Deadline Date</span>
             <span
               class="project-overview-date-badge"
@@ -413,24 +421,28 @@
 
     <!-- TASKS TABLE -->
     <div class="project-tasks-section">
-      <button class="project-task-add-btn" onclick="openTaskManagementPage()">
-        ➕ Add task
-      </button>
+      <div class="project-task-add-btn-wrap">
+        <button class="project-task-add-btn" onclick="openTaskManagementPage()">
+          <img src="../assets/imgaes/plus_btn.png" alt="" /> Add task
+        </button>
+      </div>
       <div class="project-tasks-header">
         <h3>Tasks / Activity Reports</h3>
         <div class="project-tasks-actions">
-          <div class="Taskproject-search-filter-section">
-            <div class="Tasksearch-box">
-              <input
-                type="text"
-                id="TaskprojectSearchInput"
-                placeholder="Search"
-                class="Taskproject-search-input"
-              />
+          <div class="project-tasks-actions">
+            <div class="Taskproject-search-filter-section">
+              <div class="Tasksearch-box">
+                <input
+                  type="text"
+                  id="TaskprojectSearchInput"
+                  placeholder="Search"
+                  class="Taskproject-search-input"
+                />
+              </div>
+              <button id="TaskfilterBtn" class="Taskproject-filter-btn">
+                <img src="../assets/imgaes/filter_list.png" alt="" /> Filter
+              </button>
             </div>
-            <button id="TaskfilterBtn" class="Taskproject-filter-btn">
-              <span>⚙</span> Filter
-            </button>
           </div>
         </div>
       </div>
@@ -488,7 +500,7 @@
     <div class="project-resources-section">
       <!-- Header -->
       <div class="project-resources-header">
-        <div class="project-resources-folder-icon">📁</div>
+        <div class="project-resources-folder-icon"><img src="../assets/imgaes/folder_icon.png" alt=""></div>
         <div class="project-resources-header-content">
           <h4>Assets & Shared Links</h4>
           <p
@@ -503,7 +515,7 @@
       <!-- Project Requirements Section -->
       <div class="project-resources-item-section">
         <div class="project-resources-item-header">
-          <div class="project-resources-item-icon">📄</div>
+          <div class="project-resources-item-icon"><img src="../assets/imgaes/blue_folder_icon.png" alt=""></div>
           <div class="project-resources-item-info">
             <h5>Project requirements</h5>
             <p>Upload Project files (e.g., DOC, PDF, images)</p>
@@ -539,7 +551,7 @@
       <!-- Reference Links Section -->
       <div class="project-resources-item-section">
         <div class="project-resources-item-header">
-          <div class="project-resources-item-icon">🔗</div>
+          <div class="project-resources-item-icon"><img src="../assets/imgaes/link_icon.png" alt=""></div>
           <div class="project-resources-item-info">
             <h5>Reference Links</h5>
             <p>Links</p>
@@ -547,7 +559,7 @@
         </div>
         <div class="project-resources-item-actions">
           <button
-          id="resourceUpload"
+            id="resourceUpload"
             class="project-resources-upload-btn"
             onclick="openProjectResourcesLinkModal()"
           >
@@ -778,7 +790,6 @@
 
 <!-- ==================== UPLOAD REFERENCE LINKS MODAL ==================== -->
 
-
 <!-- ==================== VIEW REFERENCE LINKS MODAL ==================== -->
 <!-- <div id="projectResourcesLinkViewModal" class="project-resources-modal">
   <div class="project-resources-modal-content">
@@ -806,7 +817,6 @@
     </div>
   </div>
 </div> -->
-
 
 <!-- 
 <div id="projectResourcesLinkModal2" class="project-resources-modal model_pop_resource">

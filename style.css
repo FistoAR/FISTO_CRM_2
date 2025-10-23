@@ -317,7 +317,7 @@ body {
 .content-area {
     flex: 1;
     padding: 20px;
-    background: #ffffff;
+    background: #F3F4F6;
     min-height: calc(100vh - 60px);
     position: relative;
 }

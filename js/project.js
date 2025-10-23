@@ -650,7 +650,7 @@ function renderTable() {
     else if (project.status < 60) progressClass += " medium";
     
     row.innerHTML = `
-      <td><strong>${project.name}</strong></td>
+      <td>${project.name}</td>
       <td>${project.startDate}</td>
       <td>${project.deadline}</td>
       <td>
@@ -1510,16 +1510,14 @@ function handleProjectResourcesFileSelection(files) {
     fileItem.className = 'project-resources-file-item';
     fileItem.innerHTML = `
       <div class="project-resources-file-info">
-        <div class="project-resources-file-icon">📄</div>
+        <div class="project-resources-file-icon"> <img src="../assets/imgaes/modal_file_bBlue.png"> </div>
         <div class="project-resources-file-details">
           <h5>${file.name}</h5>
           <span class="project-resources-file-size">${formatFileSize(file.size)}</span>
         </div>
       </div>
       <button class="project-resources-action-btn delete" onclick="removeProjectResourcesSelectedFile(${index})">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-          <path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
-        </svg>
+        <img src="../assets/imgaes/proicons_cancel.png" alt="Delete">
       </button>
     `;
     filesList.appendChild(fileItem);
@@ -1602,7 +1600,7 @@ function renderProjectResourcesUploadedFiles() {
     fileItem.className = 'project-resources-file-item';
     fileItem.innerHTML = `
       <div class="project-resources-file-info">
-        <div class="project-resources-file-icon">📄</div>
+        <div class="project-resources-file-icon"> <img src="../assets/imgaes/modal_file_bBlue.png"> </div>
         <div class="project-resources-file-details">
           <h5>${file.name}</h5>
           <span class="project-resources-file-size">${formatFileSize(file.size)}</span>
@@ -1610,20 +1608,13 @@ function renderProjectResourcesUploadedFiles() {
       </div>
       <div class="project-resources-file-actions">
         <button class="project-resources-action-btn" onclick="viewProjectResourcesFile('${file.id}')" title="View">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
-            <circle cx="12" cy="12" r="3"/>
-          </svg>
+        <img src="../assets/imgaes/table_eye.png" alt="View">
         </button>
         <button class="project-resources-action-btn" onclick="downloadProjectResourcesFile('${file.id}')" title="Download">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
-          </svg>
+        <img src="../assets/imgaes/download_icon.png" alt="View">
         </button>
         <button class="project-resources-action-btn delete" onclick="deleteProjectResourcesFile('${file.id}')" title="Delete">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-            <path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
-          </svg>
+        <img src="../assets/imgaes/preview_delete_btn.png" alt="Delete">
         </button>
       </div>
     `;
@@ -1721,7 +1712,7 @@ function createProjectResourcesModals() {
         </div>
         <div class="project-resources-links-list" id="projectResourcesUploadedLinksList"></div>
         <div class="project-resources-modal-footer">
-          <button class="project-resources-btn-cancel" onclick="closeProjectResourcesLinkViewModal()">Close</button>
+          <button class="project-resources-btn-cancel" onclick="closeProjectResourcesLinkViewModal()"> Close </button>
         </div>
       </div>
     </div>
@@ -1878,21 +1869,110 @@ function loadProjectResourcesLinks() {
 
   list.innerHTML = links.map((link, index) => `
     <div class="project-resources-link-item">
-      <div class="project-resources-link-info">
-        <strong>${link.name}</strong>
-        <a href="${link.url}" target="_blank" rel="noopener noreferrer">${link.url}</a>
-        <span class="project-resources-link-date">Uploaded: ${link.date}</span>
+      <div class="project-resources-link-wrapper">
+      <div class="project-resources-link-icon">
+        <img src="../assets/imgaes/link_icon.png" alt="Link" ">
       </div>
-      <button class="project-resources-link-delete" onclick="deleteProjectResourcesLink(${index})">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-          <polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
-        </svg>
-        Delete
-      </button>
+      <div class="project-resources-link-details">
+      <div>
+        <span class="project-resources-link-title">${link.name}</span>
+      </div>
+      <div>
+        <a href="${link.url}" target="_blank" class="project-resources-link-url-view">${link.url}</a>
+        </div>
+      </div>
+      </div>
+      <div class="project-resources-link-actions" >
+        <div>
+        <button class="project-resources-action-btn copy-btn-view" onclick="copyProjectResourcesLink('${link.url}')" title="Copy link">
+          <img src="../assets/imgaes/modal_copy_icon.png" alt="Copy" >
+        </button>
+        </div>
+        <div>
+        <button class="project-resources-action-btn delete-btn-view" onclick="deleteProjectResourcesLink(${index})" title="Delete">
+          <img src="../assets/imgaes/preview_delete_btn.png" alt="Delete">
+        </button>
+        </div>
+      </div>
     </div>
   `).join('');
 }
 
+// ==================== COPY LINK TO CLIPBOARD ====================
+function copyProjectResourcesLink(url) {
+  // Modern approach using Clipboard API
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(url)
+      .then(() => {
+        showCopySuccessMessage();
+      })
+      .catch(err => {
+        console.error('Failed to copy:', err);
+        fallbackCopyToClipboard(url);
+      });
+  } else {
+    // Fallback for older browsers
+    fallbackCopyToClipboard(url);
+  }
+}
+
+// Fallback copy method for older browsers
+function fallbackCopyToClipboard(text) {
+  const textArea = document.createElement("textarea");
+  textArea.value = text;
+  textArea.style.position = "fixed";
+  textArea.style.left = "-999999px";
+  textArea.style.top = "-999999px";
+  document.body.appendChild(textArea);
+  textArea.focus();
+  textArea.select();
+  
+  try {
+    document.execCommand('copy');
+    showCopySuccessMessage();
+  } catch (err) {
+    console.error('Fallback copy failed:', err);
+    alert('Failed to copy link. Please copy manually.');
+  }
+  
+  document.body.removeChild(textArea);
+}
+
+// Show success message when link is copied
+function showCopySuccessMessage() {
+  // Create a temporary toast notification
+  const toast = document.createElement('div');
+  toast.className = 'copy-success-toast';
+  toast.textContent = '✓ Link copied to clipboard!';
+  toast.style.cssText = `
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #10B981;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-family: 'Gilroy-SemiBold', sans-serif;
+    font-size: 0.9rem;
+    z-index: 10000;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    animation: slideInRight 0.3s ease;
+  `;
+  
+  document.body.appendChild(toast);
+  
+  // Remove after 2 seconds
+  setTimeout(() => {
+    toast.style.animation = 'slideOutRight 0.3s ease';
+    setTimeout(() => {
+      if (toast.parentNode) {
+        document.body.removeChild(toast);
+      }
+    }, 300);
+  }, 2000);
+}
+
+// ==================== DELETE LINK ====================
 function deleteProjectResourcesLink(index) {
   if (!confirm('Are you sure you want to delete this link?')) return;
 

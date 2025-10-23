@@ -64,6 +64,7 @@ async function loadPage(pageName) {
 }
 
 // Function to initialize page-specific functionality
+// Function to initialize page-specific functionality
 function initializePageScripts(pageName) {
   console.log("Initializing scripts for:", pageName);
 
@@ -126,6 +127,37 @@ function initializePageScripts(pageName) {
           console.error("initializeProjectPage function not found!");
         }
       }, 100);
+      break;
+
+    // ✅ ADD THIS NEW CASE FOR HR PAGE
+    case "hr":
+      setTimeout(() => {
+        console.log("🚀 Initializing HR page...");
+
+        // Initialize HR tabs first
+        if (typeof initializeHRTabs === "function") {
+          initializeHRTabs();
+          console.log("✅ HR tabs initialized");
+        }
+
+        // Render employee table
+        if (typeof renderEmployeeTable === "function") {
+          renderEmployeeTable();
+          console.log("✅ Employee table rendered");
+        }
+
+        // Initialize Add Employee Modal
+        if (typeof initializeAddEmployeeModal === "function") {
+          initializeAddEmployeeModal();
+          console.log("✅ Add Employee Modal initialized");
+        }
+
+        // Initialize Update Employee Modal
+        if (typeof initializeUpdateEmployeeModal === "function") {
+          initializeUpdateEmployeeModal();
+          console.log("✅ Update Employee Modal initialized");
+        }
+      }, 200);
       break;
   }
 }
