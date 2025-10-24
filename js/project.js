@@ -284,7 +284,7 @@ function setupEventListeners() {
   const addBtn = document.getElementById("addProjectBtn");
   const closeBtn = document.querySelector(".project-modal-close");
   
-  if (addBtn) {
+  if (addBtn ) {
     addBtn.addEventListener("click", () => {
       modal.style.display = "flex";
       document.body.style.overflow = "hidden";

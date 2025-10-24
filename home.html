@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FIST-O Dashboard</title>
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="./css/employee-details.css" />
+    <link rel="stylesheet" href="./css/update-employee.css" />
+    <link rel="stylesheet" href="./css/employee-req.css" />
+    <link rel="stylesheet" href="./css/customer-database.css" />
+    <link rel="stylesheet" href="./css/first-level.css" />
+    <link rel="stylesheet" href="./css/second-level.css" />
+    <link rel="stylesheet" href="./css/meeting-details.css" />
+    <link rel="stylesheet" href="./css/client.css" />
+    <link rel="stylesheet" href="./css/project.css" />
+    <link rel="stylesheet" href="./css/hr-req.css" />
+    <link rel="stylesheet" href="./css/attendance.css" />
+    <link rel="stylesheet" href="./css/hr.css" />
+  </head>
+  <body>
+    <!-- Sidebar (STAYS FIXED) -->
+    <div class="sidebar">
+      <div class="sidebar-header">
+        <div class="user-profile">
+          <img src="./assets/Imgaes/profile_user.png" alt="" />
+        </div>
+        <div class="user-info">
+          <p class="welcome-text">Welcome, Project Head</p>
+          <p class="role-text">Role: Project Head ID: FST008</p>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <a href="#" class="nav-item active" data-page="dashboard">
+          <img src="./assets/Imgaes/dashboard_icon.png" alt="" />
+          <span class="nav-text">Dashboard</span>
+        </a>
+        <a href="#" class="nav-item" data-page="analysis">
+          <img src="./assets/Imgaes/analysis_icon.png" alt="" />
+          <span class="nav-text">Analysis</span>
+        </a>
+        <a href="#" class="nav-item" data-page="client">
+          <img src="./assets/Imgaes/client_icon.png" alt="" />
+          <span class="nav-text">Clients</span>
+        </a>
+        <a href="#" class="nav-item" data-page="projects">
+          <img src="./assets/Imgaes/projects_icon.png" alt="" />
+          <span class="nav-text">Projects</span>
+        </a>
+        <a href="#" class="nav-item" data-page="employee-details">
+          <img src="./assets/Imgaes/employee_icon.png" alt="" />
+          <span class="nav-text">Employee Details</span>
+        </a>
+        <a href="#" class="nav-item" data-page="employee-request">
+          <img src="./assets/Imgaes/emp_req_icon.png" alt="" />
+          <span class="nav-text">Employee Request</span>
+        </a>
+        <a href="#" class="nav-item" data-page="hr">
+          <img src="./assets/Imgaes/hr_icon.png" alt="" />
+          <span class="nav-text">HR</span>
+        </a>
+        <a href="#" class="nav-item" data-page="daily-reports">
+          <img src="./assets/imgaes/daily_icon.png" alt="" />
+          <span class="nav-text">Daily Reports</span>
+        </a>
+        <a href="#" class="nav-item" data-page="reports">
+          <img src="./assets/Imgaes/reports_icon.png" alt="" />
+          <span class="nav-text">Reports</span>
+        </a>
+        <a href="#" class="nav-item" data-page="budget">
+          <img src="./assets/Imgaes/budget_icon.png" alt="" />
+          <span class="nav-text">Budget</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <a href="#" class="logout-btn">
+          <img src="./assets/imgaes/logout_white_icon.png" alt="" />
+          <span>Logout</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Main Content Wrapper -->
+    <div class="main-wrapper">
+      <!-- Hamburger Menu Button -->
+      <button class="hamburger-btn" id="hamburgerBtn">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <!-- Top Navbar (STAYS FIXED) -->
+      <nav class="top-navbar">
+        <div class="navbar-left">
+          <span class="current-date">Thursday 7 Oct,2025, 03:10:05 pm</span>
+        </div>
+        <div class="navbar-center">
+          <img src="./assets/Imgaes/Fist_O_logo_black.png" alt="" />
+        </div>
+        <div class="navbar-right">
+          <button class="icon-btn notification-btn">
+            <img src="./assets/Imgaes/nav_bell.png" alt="" />
+          </button>
+          <button class="icon-btn attendance-btn">
+            <img src="./assets/Imgaes/nav_calendar.png" alt="" />
+          </button>
+          <button class="icon-btn profile-btn">
+            <img src="./assets/Imgaes/nav_profile.png" alt="" />
+          </button>
+        </div>
+      </nav>
+
+      <!-- DYNAMIC CONTENT AREA (ONLY THIS CHANGES) -->
+      <div class="content-area" id="content-area">
+        <div class="loading">Loading...</div>
+      </div>
+    </div>
+
+    <!-- Sidebar Overlay for Mobile -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- Attendance Modal -->
+    <div id="attendanceModal" class="attendance-modal">
+      <div class="attendance-modal-content">
+        <!-- Modal Header -->
+        <div class="attendance-modal-header">
+          <h2>Record Attendance</h2>
+          <button class="attendance-close-btn" id="attendanceCloseBtn">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path
+                d="M18 6L6 18M6 6l12 12"
+                stroke="white"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+            </svg>
+          </button>
+          <div class="attendance-timer" id="attendanceTimer">00:00:00</div>
+        </div>
+
+        <!-- Modal Body -->
+        <div class="attendance-modal-body">
+          <div class="attendance-form">
+            <!-- Row 1 -->
+            <div class="attendance-form-row">
+              <div class="attendance-form-group">
+                <label for="employeeId">Employee ID</label>
+                <input type="text" id="employeeId" placeholder="FST001" />
+              </div>
+              <div class="attendance-form-group">
+                <label for="employeeName">Employee Name</label>
+                <input type="text" id="employeeName" placeholder="SAMEER" />
+              </div>
+            </div>
+
+            <!-- Row 2 -->
+            <div class="attendance-form-row">
+              <div class="attendance-form-group">
+                <label for="attendanceDate">Date</label>
+                <div class="attendance-date-input">
+                  <input
+                    type="text"
+                    id="attendanceDate"
+                    placeholder="13-10-2025"
+                    readonly
+                  />
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                    <rect
+                      x="3"
+                      y="4"
+                      width="18"
+                      height="18"
+                      rx="2"
+                      stroke="#0052cc"
+                      stroke-width="2"
+                    />
+                    <path
+                      d="M16 2v4M8 2v4M3 10h18"
+                      stroke="#0052cc"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                    />
+                  </svg>
+                </div>
+              </div>
+              <div class="attendance-form-group">
+                <label for="loginTime">Login Time</label>
+                <input
+                  type="text"
+                  id="loginTime"
+                  placeholder="04:22 PM"
+                  readonly
+                />
+              </div>
+            </div>
+
+            <!-- Row 3 -->
+            <div class="attendance-form-row">
+              <div class="attendance-form-group">
+                <label for="attendanceType">Attendance Type</label>
+                <select id="attendanceType" class="attendance-select">
+                  <option value="Morning">Morning</option>
+                  <option value="Afternoon">Afternoon</option>
+                </select>
+              </div>
+              <div class="attendance-form-group">
+                <label>Action</label>
+                <div class="attendance-radio-group">
+                  <label class="attendance-radio-label">
+                    <input
+                      type="radio"
+                      name="action"
+                      value="in"
+                      id="actionIn"
+                      checked
+                    />
+                    <span>In</span>
+                  </label>
+                  <label class="attendance-radio-label">
+                    <input
+                      type="radio"
+                      name="action"
+                      value="out"
+                      id="actionOut"
+                    />
+                    <span>Out</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Modal Footer -->
+        <div class="attendance-modal-footer">
+          <button class="attendance-btn-cancel" id="attendanceCancelBtn">
+            Cancel
+          </button>
+          <button class="attendance-btn-submit" id="attendanceSubmitBtn">
+            Submit Attendance
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Success Notification -->
+    <div
+      id="attendanceSuccessNotification"
+      class="attendance-success-notification"
+    >
+      <div class="attendance-success-content">
+        <div class="attendance-success-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+            <path
+              d="M5 13l4 4L19 7"
+              stroke="white"
+              stroke-width="3"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </div>
+        <div class="attendance-success-text" id="attendanceSuccessText">
+          Login Successful
+        </div>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="./js/employee-details.js"></script>
+    <script src="./js/employee-req.js"></script>
+    <script src="./js/client.js"></script>
+    <script src="./js/customer-database.js"></script>
+    <script src="./js/first-level.js"></script>
+    <script src="./js/second-level.js"></script>
+    <script src="./js/meeting-details.js"></script>
+    <script src="./js/project.js"></script>
+    <script src="./js/hr.js"></script>
+    <script src="./js/hr-req.js"></script>
+    <script src="./js/attendance.js"></script>
+    <script src="./script.js"></script>
+  </body>
+</html>

@@ -13,13 +13,277 @@
     cursor: pointer;
     transition: background-color 0.3s ease;
     font-family: 'Gilroy-Bold', sans-serif;
-    margin-top: 2vw;
+    margin-bottom: 1vw;
 }
 
 #addEmployeeBtn:hover {
     background: linear-gradient(to bottom, #0052CC 10%, #002966 100%);
     color: #ffffff;
     border-color: #0052CC;
+}
+
+/* Employee Table Styles */
+.employee-table-container {
+    width: 100%;
+    overflow-x: auto;
+    margin-top: 6vw;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e8e8e8;
+}
+
+.employee-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 1200px;
+}
+
+.employee-table thead {
+    background: #CBCDD2;
+}
+
+.employee-table thead th {
+    padding: 16px 20px;
+    text-align: left;
+    font-family: 'Gilroy-SemiBold', sans-serif;
+    font-size: .86vw;
+    color: #333;
+    text-transform: none;
+    letter-spacing: 0;
+    border-right: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+}
+
+.employee-table thead th:last-child {
+    border-right: none;
+}
+
+.employee-table tbody tr {
+    transition: background 0.2s ease;
+}
+
+.employee-table tbody tr:hover {
+    background: #fafafa;
+}
+
+.employee-table tbody td {
+    padding: 16px 20px;
+    font-size: .9vw;
+    font-family: 'Gilroy-SemiBold', sans-serif;
+    color: #333;
+    vertical-align: middle;
+    border-right: 2px solid #CBCDD2;
+    border-bottom: 2px solid #CBCDD2;
+}
+
+.employee-table tbody td:last-child {
+    border-right: none;
+}
+
+.employee-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Employee Name Cell with Photo */
+.employee-name-cell {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.employee-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.employee-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.avatar-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.employee-name-cell span {
+    font-weight: 500;
+    color: #333;
+}
+
+/* Job Role Badges */
+.job-role-badge {
+    display: inline-block;
+    padding: 5px 14px;
+    border-radius: 14px;
+    font-size: .84vw;
+    font-family: 'Gilroy-SemiBold', sans-serif;
+    text-transform: capitalize;
+}
+
+.job-role-onrole {
+    background: #d4f4dd;
+    color: #0d6832;
+}
+
+.job-role-intern {
+    background: #fff4d9;
+    color: #8b6914;
+    font-size: .95vw;
+}
+
+/* Status Badge */
+.status-badge {
+    display: inline-block;
+    padding: 5px 14px;
+    border-radius: 14px;
+    font-size: 0.8vw;
+    font-family: 'Gilroy-SemiBold', sans-serif;
+    text-transform: capitalize;
+}
+
+.status-working {
+    background: #dae8f5;
+    color: #0f4c7a;
+}
+
+/* Contact Cell with Icons */
+.contact-cell {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #000000;
+    font-family: 'Gilroy-SemiBold', sans-serif;
+}
+
+.contact-icon {
+    width: 100%;
+    height: auto;
+    max-width: 1.1vw;
+}
+
+
+
+.table-view-btn img,
+.table-delete-btn img {
+    width: 22px;
+    height: 22px;
+    display: block;
+}
+
+
+
+/* Column Widths for Better Layout */
+.employee-table thead th:nth-child(1),
+.employee-table tbody td:nth-child(1) {
+    width: 110px;
+}
+
+.employee-table thead th:nth-child(2),
+.employee-table tbody td:nth-child(2) {
+    width: 180px;
+}
+
+.employee-table thead th:nth-child(3),
+.employee-table tbody td:nth-child(3) {
+    width: 150px;
+}
+
+.employee-table thead th:nth-child(4),
+.employee-table tbody td:nth-child(4) {
+    width: 110px;
+}
+
+.employee-table thead th:nth-child(5),
+.employee-table tbody td:nth-child(5) {
+    width: 120px;
+}
+
+.employee-table thead th:nth-child(6),
+.employee-table tbody td:nth-child(6) {
+    width: 200px;
+}
+
+.employee-table thead th:nth-child(7),
+.employee-table tbody td:nth-child(7) {
+    width: 160px;
+}
+
+.employee-table thead th:nth-child(8),
+.employee-table tbody td:nth-child(8) {
+    width: 60px;
+    text-align: center;
+}
+
+.employee-table thead th:nth-child(9),
+.employee-table tbody td:nth-child(9) {
+    width: 60px;
+    text-align: center;
+}
+
+/* Center align View and Delete columns */
+.employee-table tbody td:nth-child(8),
+.employee-table tbody td:nth-child(9) {
+    text-align: center;
+}
+
+
+
+/* Customer Table Action Buttons with Images */
+.table-view-btn,
+.table-delete-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    border-radius: 6px;
+    margin: 0 auto;
+}
+
+.table-view-btn {
+    background: transparent;
+}
+
+.table-view-btn:hover {
+    background: #f0f0f0;
+    transform: scale(1.1);
+}
+
+.table-view-btn img {
+    width: 20px;
+    height: 20px;
+    display: block;
+}
+
+.table-delete-btn {
+    background: transparent;
+}
+
+.table-delete-btn:hover {
+    background: #fee2e2;
+    transform: scale(1.1);
+}
+
+.table-delete-btn img {
+    width: 20px;
+    height: 20px;
+    display: block;
 }
 
 /* Employee Modal Styles */
@@ -502,6 +766,40 @@
         margin-bottom: 1.5rem;
     }
 
+    .employee-table-container {
+        margin-top: 8vw;
+        border-radius: 10px;
+    }
+
+    .employee-table {
+        min-width: 900px;
+    }
+
+    .employee-table thead th {
+        font-size: 13px;
+        padding: 14px 16px;
+    }
+
+    .employee-table tbody td {
+        font-size: 13px;
+        padding: 14px 16px;
+    }
+
+    .job-role-badge,
+    .status-badge {
+        font-size: 12px;
+        padding: 4px 12px;
+    }
+
+    .contact-icon {
+        max-width: 16px;
+    }
+
+    .employee-avatar {
+        width: 32px;
+        height: 32px;
+    }
+
     .emp-modal-content {
         max-width: 80vw;
         margin: 5% auto;
@@ -557,6 +855,65 @@
         font-size: 0.8125rem;
         padding: 0.625rem 1.25rem;
         margin-top: 1.25rem;
+    }
+
+    .employee-table-container {
+        margin-top: 20px;
+        border-radius: 8px;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .employee-table {
+        min-width: 800px;
+        font-size: 12px;
+    }
+
+    .employee-table thead th {
+        font-size: 12px;
+        padding: 12px 14px;
+        white-space: nowrap;
+    }
+
+    .employee-table tbody td {
+        font-size: 12px;
+        padding: 12px 14px;
+    }
+
+    .employee-avatar {
+        width: 28px;
+        height: 28px;
+    }
+
+    .avatar-placeholder {
+        font-size: 14px;
+    }
+
+    .job-role-badge,
+    .status-badge {
+        font-size: 11px;
+        padding: 4px 10px;
+    }
+
+    .contact-icon {
+        max-width: 14px;
+    }
+
+    .table-view-btn img,
+    .table-delete-btn img {
+        width: 18px;
+        height: 18px;
+    }
+
+    /* Adjust column widths */
+    .employee-table thead th:nth-child(1),
+    .employee-table tbody td:nth-child(1) {
+        width: 90px;
+    }
+
+    .employee-table thead th:nth-child(2),
+    .employee-table tbody td:nth-child(2) {
+        width: 150px;
     }
 
     .emp-modal-content {
@@ -681,6 +1038,68 @@
         font-size: 0.75rem;
         padding: 0.5rem 1rem;
         margin-top: 1rem;
+        width: 40%;
+    }
+
+    .employee-table-container {
+        margin-top: 12px;
+        border-radius: 6px;
+    }
+
+    .employee-table tbody tr {
+        margin-bottom: 14px;
+        border-radius: 6px;
+    }
+
+    .employee-table tbody td {
+        padding: 10px 14px;
+        font-size: 13px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+    }
+
+    .employee-table tbody td::before {
+        margin-bottom: 4px;
+        font-size: 12px;
+    }
+
+    .employee-name-cell {
+        width: 100%;
+    }
+
+    .employee-avatar {
+        width: 32px;
+        height: 32px;
+    }
+
+    .avatar-placeholder {
+        font-size: 14px;
+    }
+
+    .job-role-badge,
+    .status-badge {
+        font-size: 11px;
+        padding: 4px 10px;
+    }
+
+    .contact-cell {
+        font-size: 12px;
+    }
+
+    .contact-icon {
+        max-width: 14px;
+    }
+
+    .table-view-btn,
+    .table-delete-btn {
+        padding: 6px;
+    }
+
+    .table-view-btn img,
+    .table-delete-btn img {
+        width: 16px;
+        height: 16px;
     }
 
     .emp-modal-content {
@@ -827,9 +1246,49 @@
 }
 
 /* Very Small Mobile (360px and below) */
-@media (max-width: 22.5rem) {
+@media (max-width: 360px) {
     .emp-modal-header h2 {
         font-size: 0.8125rem;
+    }
+
+    .employee-table-container {
+        margin-top: 10px;
+    }
+
+    .employee-table tbody tr {
+        margin-bottom: 12px;
+    }
+
+    .employee-table tbody td {
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+
+    .employee-table tbody td::before {
+        font-size: 11px;
+    }
+
+    .employee-avatar {
+        width: 28px;
+        height: 28px;
+    }
+
+    .avatar-placeholder {
+        font-size: 12px;
+    }
+
+    .job-role-badge,
+    .status-badge {
+        font-size: 10px;
+        padding: 3px 8px;
+    }
+
+    .contact-cell {
+        font-size: 11px;
+    }
+
+    .contact-icon {
+        max-width: 12px;
     }
 
     .emp-section-title {

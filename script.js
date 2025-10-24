@@ -8,6 +8,68 @@ const sidebarOverlay = document.getElementById("sidebarOverlay");
 // Cache for loaded pages
 const pageCache = {};
 
+// Get logged-in user from sessionStorage
+const currentUser = sessionStorage.getItem("loggedInUser");
+
+if (!currentUser) {
+  // No user logged in, force redirect to login page
+  if (window.location.pathname !== "/index.html") {
+    window.location.href = "index.html";
+  }
+}
+
+// Function to control sidebar visibility based on user
+function updateSidebarForUser() {
+  navItems.forEach((item) => {
+    const page = item.getAttribute("data-page");
+
+    // Example role-based visibility rules
+    switch (currentUser) {
+      case "FST001":
+        if (page === "employee-details" || page === "hr") {
+          item.style.display = "none";
+        } else {
+          item.style.display = "flex";
+        }
+        break;
+      case "FST002":
+        if (page === "employee-details" || page === "hr" || page === "budget" ) {
+          item.style.display = "none";
+        } else {
+          item.style.display = "flex";
+        }
+        break;
+      case "FST003":
+        if (page === "client" || page === "employee-details" || page === "hr" || page === "budget" ) {
+          item.style.display = "none";
+        } else {
+          item.style.display = "flex";
+        }
+        break;
+      case "FST004":
+       if (page === "client" || page === "employee-details" || page === "budget" ) {
+          item.style.display = "none";
+        } else {
+          item.style.display = "flex";
+        }
+        break;
+      case "FST005":
+       if (page === "client" || page === "employee-details" || page === "budget" || page === "hr" ) {
+          item.style.display = "none";
+        } else {
+          item.style.display = "flex";
+        }
+        break;
+      default:
+        // If user is unknown, hide all nav items (optional)
+        item.style.display = "none";
+    }
+  });
+}
+
+// Call updateSidebarForUser on page load
+updateSidebarForUser();
+
 // Function to load page content dynamically
 async function loadPage(pageName) {
   // Update URL hash
@@ -64,22 +126,18 @@ async function loadPage(pageName) {
 }
 
 // Function to initialize page-specific functionality
-// Function to initialize page-specific functionality
 function initializePageScripts(pageName) {
   console.log("Initializing scripts for:", pageName);
 
   switch (pageName) {
     case "employee-details":
-      // Wait for DOM to be ready, then initialize
       setTimeout(() => {
         if (typeof initializeEmployeeDetailsPage === "function") {
           initializeEmployeeDetailsPage();
         }
-
         if (typeof initializeUpdateEmployeeModal === "function") {
           initializeUpdateEmployeeModal();
         }
-
         if (typeof renderEmployeeTable === "function") {
           renderEmployeeTable();
         }
@@ -87,7 +145,6 @@ function initializePageScripts(pageName) {
       break;
 
     case "employee-request":
-      // Initialize employee request tabs
       setTimeout(() => {
         if (typeof initializeEmployeeRequestTabs === "function") {
           initializeEmployeeRequestTabs();
@@ -129,36 +186,31 @@ function initializePageScripts(pageName) {
       }, 100);
       break;
 
-    // ✅ ADD THIS NEW CASE FOR HR PAGE
     case "hr":
       setTimeout(() => {
         console.log("🚀 Initializing HR page...");
 
-        // Initialize HR tabs first
         if (typeof initializeHRTabs === "function") {
           initializeHRTabs();
-          console.log("✅ HR tabs initialized");
         }
-
-        // Render employee table
-        if (typeof renderEmployeeTable === "function") {
-          renderEmployeeTable();
-          console.log("✅ Employee table rendered");
+        if (typeof initializeHRRequests === "function") {
+          initializeHRRequests();
         }
-
-        // Initialize Add Employee Modal
-        if (typeof initializeAddEmployeeModal === "function") {
-          initializeAddEmployeeModal();
-          console.log("✅ Add Employee Modal initialized");
+        if (typeof initializeEmployeeDetailsPage === "function") {
+          initializeEmployeeDetailsPage();
         }
-
-        // Initialize Update Employee Modal
         if (typeof initializeUpdateEmployeeModal === "function") {
           initializeUpdateEmployeeModal();
-          console.log("✅ Update Employee Modal initialized");
         }
+        if (typeof renderEmployeeTable === "function") {
+          renderEmployeeTable();
+        }
+
+        console.log("✅ HR page fully initialized");
       }, 200);
       break;
+
+    // Add other cases here as needed...
   }
 }
 
@@ -203,7 +255,9 @@ if (logoutBtn) {
   logoutBtn.addEventListener("click", function (e) {
     e.preventDefault();
     if (confirm("Are you sure you want to logout?")) {
+      sessionStorage.clear();
       alert("Logged out successfully!");
+      window.location.href = "index.html";
     }
   });
 }
@@ -212,6 +266,7 @@ if (logoutBtn) {
 document.addEventListener("DOMContentLoaded", function () {
   const hash = window.location.hash.substring(1);
   const initialPage = hash || "dashboard";
+
   loadPage(initialPage);
   updateActiveNavItem(initialPage);
 });

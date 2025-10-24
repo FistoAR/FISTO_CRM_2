@@ -14,19 +14,18 @@
   <!-- ******************************************* HR EMPLOYEE CODE ****************************************** -->
 
   <div id="HRemployee-details" class="hr-tab-content active">
-    <div class="hr-employee-details-container">
-      <button id="HRaddEmployeeBtn" class="hr-btn-primary" style="float: right">
+    <div class="employee-details-container">
+      <button id="addEmployeeBtn" class="btn-primary" style="float: right">
         Add Employee
       </button>
-      <button id="HRupdateEmployeeBtn" style="display: none">
+      <button id="updateEmployeeBtn" style="display: none">
         update Employee
       </button>
     </div>
 
     <!-- HR EMPLOYEE TABLE STARTS HERE -->
-
-    <div class="hr-employee-table-container">
-      <table class="hr-employee-table">
+    <div class="employee-table-container">
+      <table class="employee-table">
         <thead>
           <tr>
             <th>Employee ID</th>
@@ -36,11 +35,11 @@
             <th>Working status</th>
             <th>Email Address (Personal)</th>
             <th>Phone Number (Personal)</th>
-            <th>View</th>
+            <th>View/Edit</th>
             <th>Delete</th>
           </tr>
         </thead>
-        <tbody id="HRemployeeTableBody">
+        <tbody id="employeeTableBody">
           <tr>
             <td
               colspan="9"
@@ -56,82 +55,82 @@
     <!-- HR EMPLOYEE TABLE ENDS HERE -->
 
     <!-------------------------------------------- Start of HR Employee Modal ------------------------------------------------>
-    <div id="HRemployeeModal" class="hr-emp-modal">
-      <div class="hr-emp-modal-content">
+    <div id="employeeModal" class="emp-modal">
+      <div class="emp-modal-content">
         <!-- Fixed Header -->
-        <div class="hr-emp-modal-header">
-          <h2 id="HRmodalTitle">Employee Details</h2>
-          <span class="hr-emp-modal-close">&times;</span>
+        <div class="emp-modal-header">
+          <h2 id="modalTitle">Employee Details</h2>
+          <span class="emp-modal-close">&times;</span>
         </div>
 
         <!-- Scrollable Body -->
-        <div class="hr-emp-modal-body">
-          <form id="hr-employeeForm" class="hr-emp-form">
+        <div class="emp-modal-body">
+          <form id="employeeForm" class="emp-form">
             <!-- Professional Information -->
-            <div class="hr-emp-form-section">
-              <h3 class="hr-emp-section-title">
-                <span class="hr-emp-section-icon"
+            <div class="emp-form-section">
+              <h3 class="emp-section-title">
+                <span class="emp-section-icon"
                   ><img src="./assets/Imgaes/modal_person.png" alt=""
                 /></span>
                 Professional Information
               </h3>
-              <div class="hr-emp-form-row">
-                <div class="hr-emp-form-group">
-                  <label class="hr-emp-label"
+              <div class="emp-form-row">
+                <div class="emp-form-group">
+                  <label class="emp-label"
                     >Employee ID
-                    <span class="hr-employee-important-fill">*</span>
+                    <span class="employee-important-fill">*</span>
                   </label>
                   <input
                     type="text"
-                    name="HRemployeeId"
-                    class="hr-emp-input"
+                    name="employeeId"
+                    class="emp-input"
                     placeholder="FST101"
                     required
                   />
                 </div>
-                <div class="hr-emp-form-group">
-                  <label class="hr-emp-label"
+                <div class="emp-form-group">
+                  <label class="emp-label"
                     >Date of Birth
-                    <span class="hr-employee-important-fill">*</span>
+                    <span class="employee-important-fill">*</span>
                   </label>
-                  <input type="date" name="dob" class="hr-emp-input" required />
+                  <input type="date" name="dob" class="emp-input" required />
                 </div>
               </div>
-              <div class="hr-emp-form-row">
-                <div class="hr-emp-form-group">
-                  <label class="hr-emp-label"
+              <div class="emp-form-row">
+                <div class="emp-form-group">
+                  <label class="emp-label"
                     >Employee Name
-                    <span class="hr-employee-important-fill">*</span>
+                    <span class="employee-important-fill">*</span>
                   </label>
                   <input
                     type="text"
-                    name="HRemployeeName"
-                    class="hr-emp-input"
+                    name="employeeName"
+                    class="emp-input"
                     placeholder="NEHA"
                     required
                   />
                 </div>
-                <div class="hr-emp-form-group">
-                  <label class="hr-emp-label"
+                <div class="emp-form-group">
+                  <label class="emp-label"
                     >Gender
-                    <span class="hr-employee-important-fill">*</span>
+                    <span class="employee-important-fill">*</span>
                   </label>
-                  <div class="hr-emp-radio-group">
-                    <label class="hr-emp-radio-label">
+                  <div class="emp-radio-group">
+                    <label class="emp-radio-label">
                       <input
                         type="radio"
                         name="gender"
                         value="male"
-                        class="hr-emp-radio"
+                        class="emp-radio"
                       />
                       Male
                     </label>
-                    <label class="hr-emp-radio-label">
+                    <label class="emp-radio-label">
                       <input
                         type="radio"
                         name="gender"
                         value="female"
-                        class="hr-emp-radio"
+                        class="emp-radio"
                       />
                       Female
                     </label>
@@ -141,102 +140,102 @@
             </div>
 
             <!-- Contact Information -->
-            <div class="hr-emp-form-section">
-              <h3 class="hr-emp-section-title">
-                <span class="hr-emp-section-icon"
+            <div class="emp-form-section">
+              <h3 class="emp-section-title">
+                <span class="emp-section-icon"
                   ><img src="./assets/Imgaes/modal_mail.png" alt=""
                 /></span>
                 Contact Information
               </h3>
-              <div class="hr-emp-form-row">
-                <div class="hr-emp-form-group">
-                  <label class="hr-emp-label">Email (Personal)</label>
+              <div class="emp-form-row">
+                <div class="emp-form-group">
+                  <label class="emp-label">Email (Personal)</label>
                   <input
                     type="email"
                     name="emailPersonal"
-                    class="hr-emp-input"
+                    class="emp-input"
                     placeholder="riya@gmail.com"
                     required
                   />
                 </div>
-                <div class="hr-emp-form-group">
-                  <label class="hr-emp-label">Email (Official)</label>
+                <div class="emp-form-group">
+                  <label class="emp-label">Email (Official)</label>
                   <input
                     type="email"
                     name="emailOfficial"
-                    class="hr-emp-input"
+                    class="emp-input"
                     placeholder="fisto@gmail.com"
                     required
                   />
                 </div>
               </div>
-              <div class="hr-emp-form-row">
-                <div class="hr-emp-form-group">
-                  <label class="hr-emp-label">Phone (Personal)</label>
+              <div class="emp-form-row">
+                <div class="emp-form-group">
+                  <label class="emp-label">Phone (Personal)</label>
                   <input
                     type="tel"
                     name="phonePersonal"
-                    class="hr-emp-input"
-                    placeholder="+91 1.234567891e+09"
+                    class="emp-input"
+                    placeholder="+91 1234567891"
                     required
                   />
                 </div>
-                <div class="hr-emp-form-group">
-                  <label class="hr-emp-label">Phone (Official)</label>
+                <div class="emp-form-group">
+                  <label class="emp-label">Phone (Official)</label>
                   <input
                     type="tel"
                     name="phoneOfficial"
-                    class="hr-emp-input"
-                    placeholder="+91 1.234567891e+09"
+                    class="emp-input"
+                    placeholder="+91 1234567891"
                   />
                 </div>
               </div>
             </div>
 
             <!-- Employment Details -->
-            <div class="hr-emp-form-section">
-              <h3 class="hr-emp-section-title">
-                <span class="hr-emp-section-icon">
+            <div class="emp-form-section">
+              <h3 class="emp-section-title">
+                <span class="emp-section-icon">
                   <img src="./assets/Imgaes/modal_emp.png" alt="" />
                 </span>
                 Employment Details
               </h3>
-              <div class="hr-emp-form-row">
-                <div class="hr-emp-form-group">
-                  <label class="hr-emp-label"
+              <div class="emp-form-row">
+                <div class="emp-form-group">
+                  <label class="emp-label"
                     >Job Role
-                    <span class="hr-employee-important-fill">*</span>
+                    <span class="employee-important-fill">*</span>
                   </label>
-                  <div class="hr-emp-radio-group">
-                    <label class="hr-emp-radio-label">
+                  <div class="emp-radio-group">
+                    <label class="emp-radio-label">
                       <input
                         type="radio"
                         name="employmentType"
                         value="On Role"
-                        class="hr-emp-radio"
-                        id="hr-empOnRole"
+                        class="emp-radio"
+                        id="empOnRole"
                         checked
                       />
                       On Role
                     </label>
-                    <label class="hr-emp-radio-label">
+                    <label class="emp-radio-label">
                       <input
                         type="radio"
-                        name="hremploymentType"
+                        name="employmentType"
                         value="Intern"
-                        class="hr-emp-radio"
-                        id="HRempIntern"
+                        class="emp-radio"
+                        id="empIntern"
                       />
                       Intern
                     </label>
                   </div>
                 </div>
-                <div class="hr-emp-form-group">
-                  <label class="hr-emp-label"
+                <div class="emp-form-group">
+                  <label class="emp-label"
                     >Designation
-                    <span class="hr-employee-important-fill">*</span>
+                    <span class="employee-important-fill">*</span>
                   </label>
-                  <select name="designation" class="hr-emp-select" required>
+                  <select name="designation" class="emp-select" required>
                     <option value="">Select Designation</option>
                     <option value="Developer">Developer</option>
                     <option value="UI/UX">UI/UX</option>
@@ -246,15 +245,15 @@
               </div>
 
               <!-- On Role Fields -->
-              <div class="hr-emp-form-row" id="onRoleFields">
-                <div class="hr-emp-form-group">
-                  <label class="hr-emp-label"
+              <div class="emp-form-row" id="onRoleFields">
+                <div class="emp-form-group">
+                  <label class="emp-label"
                     >Working Status
-                    <span class="hr-employee-important-fill">*</span>
+                    <span class="employee-important-fill">*</span>
                   </label>
                   <select
                     name="workingStatus"
-                    class="hr-emp-select"
+                    class="emp-select"
                     id="workingStatusOnRole"
                     required
                   >
@@ -264,15 +263,15 @@
                     <option value="on-leave">On Leave</option>
                   </select>
                 </div>
-                <div class="hr-emp-form-group">
-                  <label class="hr-emp-label"
+                <div class="emp-form-group">
+                  <label class="emp-label"
                     >Join Date
-                    <span class="hr-employee-important-fill">*</span>
+                    <span class="employee-important-fill">*</span>
                   </label>
                   <input
                     type="date"
                     name="joinDate"
-                    class="hr-emp-input"
+                    class="emp-input"
                     id="joinDateOnRole"
                     required
                   />
@@ -281,52 +280,52 @@
 
               <!-- Intern Fields -->
               <div id="internFields" style="display: none">
-                <div class="hr-emp-form-row">
-                  <div class="hr-emp-form-group">
-                    <label class="hr-emp-label"
+                <div class="emp-form-row">
+                  <div class="emp-form-group">
+                    <label class="emp-label"
                       >Intern Start Date
-                      <span class="hr-employee-important-fill">*</span>
+                      <span class="employee-important-fill">*</span>
                     </label>
                     <input
                       type="date"
                       name="internStartDate"
-                      class="hr-emp-input"
+                      class="emp-input"
                       id="internStartDate"
                     />
                   </div>
-                  <div class="hr-emp-form-group">
-                    <label class="hr-emp-label"
+                  <div class="emp-form-group">
+                    <label class="emp-label"
                       >Intern End Date
-                      <span class="hr-employee-important-fill">*</span>
+                      <span class="employee-important-fill">*</span>
                     </label>
                     <input
                       type="date"
                       name="internEndDate"
-                      class="hr-emp-input"
+                      class="emp-input"
                       id="internEndDate"
                     />
                   </div>
                 </div>
-                <div class="hr-emp-form-row">
-                  <div class="hr-emp-form-group">
-                    <label class="hr-emp-label">Duration (Months)</label>
+                <div class="emp-form-row">
+                  <div class="emp-form-group">
+                    <label class="emp-label">Duration (Months)</label>
                     <input
                       type="text"
                       name="durationMonths"
-                      class="hr-emp-input"
+                      class="emp-input"
                       id="durationMonths"
                       readonly
                       placeholder="Auto-calculated"
                     />
                   </div>
-                  <div class="hr-emp-form-group">
-                    <label class="hr-emp-label"
+                  <div class="emp-form-group">
+                    <label class="emp-label"
                       >Working Status
-                      <span class="hr-employee-important-fill">*</span>
+                      <span class="employee-important-fill">*</span>
                     </label>
                     <select
                       name="workingStatusIntern"
-                      class="hr-emp-select"
+                      class="emp-select"
                       id="workingStatusIntern"
                     >
                       <option value="">Select Status</option>
@@ -340,22 +339,22 @@
             </div>
 
             <!-- Address Information -->
-            <div class="hr-emp-form-section">
-              <h3 class="hr-emp-section-title">
-                <span class="hr-emp-section-icon"
+            <div class="emp-form-section">
+              <h3 class="emp-section-title">
+                <span class="emp-section-icon"
                   ><img src="./assets/Imgaes/modal_location.png" alt=""
                 /></span>
                 Address Information
               </h3>
-              <div class="hr-emp-form-group hr-emp-full-width">
-                <label class="hr-emp-label"
+              <div class="emp-form-group emp-full-width">
+                <label class="emp-label"
                   >Address
-                  <span class="hr-employee-important-fill">*</span>
+                  <span class="employee-important-fill">*</span>
                 </label>
                 <textarea
                   name="address"
                   rows="3"
-                  class="hr-emp-textarea"
+                  class="emp-textarea"
                   placeholder="Enter complete address"
                 ></textarea>
               </div>
@@ -363,37 +362,37 @@
 
             <!-- Document Upload -->
             <!-- Document Upload -->
-            <div class="hr-emp-form-section">
-              <h3 class="hr-emp-section-title">
-                <span class="hr-emp-section-icon">
+            <div class="emp-form-section">
+              <h3 class="emp-section-title">
+                <span class="emp-section-icon">
                   <img src="./assets/Imgaes/modal_doc.png" alt="" />
                 </span>
                 Document Upload
               </h3>
-              <div class="hr-emp-upload-grid">
+              <div class="emp-upload-grid">
                 <!-- Employee Photo (Single File) -->
-                <div class="hr-emp-upload-item">
-                  <div class="hr-emp-upload-head">
-                    <div class="hr-emp-upload-icon">
+                <div class="emp-upload-item">
+                  <div class="emp-upload-head">
+                    <div class="emp-upload-icon">
                       <img src="./assets/Imgaes/modal_doc_cam.png" alt="" />
                     </div>
-                    <label class="hr-emp-upload-label">Employee Photo</label>
+                    <label class="emp-upload-label">Employee Photo</label>
                   </div>
                   <div
-                    class="hr-emp-preview-container"
+                    class="emp-preview-container"
                     id="preview-employeePhoto"
                   ></div>
                   <input
                     type="file"
                     id="employeePhoto"
                     name="employeePhoto"
-                    class="hr-emp-file-input"
+                    class="emp-file-input"
                     accept=".jpg,.jpeg,.png"
                   />
-                  <div class="hr-emp-button-container">
+                  <div class="emp-button-container">
                     <button
                       type="button"
-                      class="hr-emp-upload-btn"
+                      class="emp-upload-btn"
                       onclick="document.getElementById('employeePhoto').click()"
                     >
                       <img
@@ -406,28 +405,28 @@
                 </div>
 
                 <!-- Resume/CV (Single File) -->
-                <div class="hr-emp-upload-item">
-                  <div class="hr-emp-upload-head">
-                    <div class="hr-emp-upload-icon">
+                <div class="emp-upload-item">
+                  <div class="emp-upload-head">
+                    <div class="emp-upload-icon">
                       <img src="./assets/Imgaes/modal_doc_cv.png" alt="" />
                     </div>
-                    <label class="hr-emp-upload-label">Resume/CV</label>
+                    <label class="emp-upload-label">Resume/CV</label>
                   </div>
                   <div
-                    class="hr-emp-preview-container"
+                    class="emp-preview-container"
                     id="preview-resumeCV"
                   ></div>
                   <input
                     type="file"
                     id="resumeCV"
                     name="resumeCV"
-                    class="hr-emp-file-input"
+                    class="emp-file-input"
                     accept=".pdf,.doc,.docx"
                   />
-                  <div class="hr-emp-button-container">
+                  <div class="emp-button-container">
                     <button
                       type="button"
-                      class="hr-emp-upload-btn"
+                      class="emp-upload-btn"
                       onclick="document.getElementById('resumeCV').click()"
                     >
                       <img
@@ -440,29 +439,26 @@
                 </div>
 
                 <!-- ID Proof (Multiple Files) -->
-                <div class="hr-emp-upload-item">
-                  <div class="hr-emp-upload-head">
-                    <div class="hr-emp-upload-icon">
+                <div class="emp-upload-item">
+                  <div class="emp-upload-head">
+                    <div class="emp-upload-icon">
                       <img src="./assets/Imgaes/modal_doc_id.png" alt="" />
                     </div>
-                    <label class="hr-emp-upload-label">ID Proof</label>
+                    <label class="emp-upload-label">ID Proof</label>
                   </div>
-                  <div
-                    class="hr-emp-preview-container"
-                    id="preview-idProof"
-                  ></div>
+                  <div class="emp-preview-container" id="preview-idProof"></div>
                   <input
                     type="file"
                     id="idProof"
                     name="idProof"
-                    class="hr-emp-file-input"
+                    class="emp-file-input"
                     accept=".pdf,.jpg,.jpeg,.png"
                     multiple
                   />
-                  <div class="hr-emp-button-container">
+                  <div class="emp-button-container">
                     <button
                       type="button"
-                      class="hr-emp-upload-btn"
+                      class="emp-upload-btn"
                       onclick="document.getElementById('idProof').click()"
                     >
                       <img
@@ -475,29 +471,29 @@
                 </div>
 
                 <!-- Certificates (Multiple Files) -->
-                <div class="hr-emp-upload-item">
-                  <div class="hr-emp-upload-head">
-                    <div class="hr-emp-upload-icon">
+                <div class="emp-upload-item">
+                  <div class="emp-upload-head">
+                    <div class="emp-upload-icon">
                       <img src="./assets/Imgaes/modal_doc_certi.png" alt="" />
                     </div>
-                    <label class="hr-emp-upload-label">Certificates</label>
+                    <label class="emp-upload-label">Certificates</label>
                   </div>
                   <div
-                    class="hr-emp-preview-container"
+                    class="emp-preview-container"
                     id="preview-certificates"
                   ></div>
                   <input
                     type="file"
                     id="certificates"
                     name="certificates"
-                    class="hr-emp-file-input"
+                    class="emp-file-input"
                     accept=".pdf,.jpg,.jpeg,.png"
                     multiple
                   />
-                  <div class="hr-emp-button-container">
+                  <div class="emp-button-container">
                     <button
                       type="button"
-                      class="hr-emp-upload-btn"
+                      class="emp-upload-btn"
                       onclick="document.getElementById('certificates').click()"
                     >
                       <img
@@ -510,29 +506,29 @@
                 </div>
 
                 <!-- Other Documents (Multiple Files) -->
-                <div class="hr-emp-upload-item">
-                  <div class="hr-emp-upload-head">
-                    <div class="hr-emp-upload-icon">
+                <div class="emp-upload-item">
+                  <div class="emp-upload-head">
+                    <div class="emp-upload-icon">
                       <img src="./assets/Imgaes/modal_doc_pin.png" alt="" />
                     </div>
-                    <label class="hr-emp-upload-label">Other Documents</label>
+                    <label class="emp-upload-label">Other Documents</label>
                   </div>
                   <div
-                    class="hr-emp-preview-container"
+                    class="emp-preview-container"
                     id="preview-otherDocs"
                   ></div>
                   <input
                     type="file"
                     id="otherDocs"
                     name="otherDocs"
-                    class="hr-emp-file-input"
+                    class="emp-file-input"
                     accept=".pdf,.jpg,.jpeg,.png"
                     multiple
                   />
-                  <div class="hr-emp-button-container">
+                  <div class="emp-button-container">
                     <button
                       type="button"
-                      class="hr-emp-upload-btn"
+                      class="emp-upload-btn"
                       onclick="document.getElementById('otherDocs').click()"
                     >
                       <img
@@ -547,54 +543,54 @@
             </div>
 
             <!-- Account Security -->
-            <div class="hr-emp-form-section">
-              <h3 class="hr-emp-section-title">
-                <span class="hr-emp-section-icon">
+            <div class="emp-form-section">
+              <h3 class="emp-section-title">
+                <span class="emp-section-icon">
                   <img src="./assets/Imgaes/modal_lock.png" alt="" />
                 </span>
                 Account Security
               </h3>
-              <div class="hr-emp-form-row">
-                <div class="hr-emp-form-group">
-                  <label class="hr-emp-label"
+              <div class="emp-form-row">
+                <div class="emp-form-group">
+                  <label class="emp-label"
                     >Password
-                    <span class="hr-employee-important-fill">*</span>
+                    <span class="employee-important-fill">*</span>
                   </label>
-                  <div class="hr-emp-password-wrapper">
+                  <div class="emp-password-wrapper">
                     <input
                       type="password"
                       name="password"
                       id="password"
-                      class="hr-emp-input"
+                      class="emp-input"
                       placeholder="Enter Password"
                       required
                     />
                     <img
                       src="./assets/Imgaes/eye_slash_login.png"
                       alt="Toggle Password"
-                      class="hr-emp-eye-icon"
+                      class="emp-eye-icon"
                       id="togglePassword"
                     />
                   </div>
                 </div>
-                <div class="hr-emp-form-group">
-                  <label class="hr-emp-label"
+                <div class="emp-form-group">
+                  <label class="emp-label"
                     >Confirm Password
-                    <span class="hr-employee-important-fill">*</span>
+                    <span class="employee-important-fill">*</span>
                   </label>
-                  <div class="hr-emp-password-wrapper">
+                  <div class="emp-password-wrapper">
                     <input
                       type="password"
                       name="confirmPassword"
                       id="confirmPassword"
-                      class="hr-emp-input"
+                      class="emp-input"
                       placeholder="Enter Same Password"
                       required
                     />
                     <img
                       src="./assets/Imgaes/eye_slash_login.png"
                       alt="Toggle Confirm Password"
-                      class="hr-emp-eye-icon"
+                      class="emp-eye-icon"
                       id="toggleConfirmPassword"
                     />
                   </div>
@@ -616,12 +612,12 @@
         </div>
 
         <!-- Fixed Footer -->
-        <div class="hr-emp-modal-footer">
-          <div class="hr-emp-form-actions">
-            <!-- <button type="button" class="hr-emp-btn-cancel" id="empCancelBtn">
+        <div class="emp-modal-footer">
+          <div class="emp-form-actions">
+            <!-- <button type="button" class="emp-btn-cancel" id="empCancelBtn">
             Cancel
           </button> -->
-            <button type="submit" class="hr-emp-btn-submit" id="empSubmitBtn">
+            <button type="submit" class="emp-btn-submit" id="empSubmitBtn">
               Register Employee
             </button>
           </div>
@@ -630,75 +626,75 @@
     </div>
     <!--------------------------------------------End of HR Employee Modal ------------------------------------------------>
 
-    <!--------------------------------------------Start Update Employee Modal ------------------------------------------------>
-    <div id="updateEmployeeModal" class="hr-update-emp-modal">
-      <div class="hr-update-emp-modal-content">
+    <!-------------------------------------------- Start of HR Update Employee Modal ------------------------------------------------>
+    <div id="updateEmployeeModal" class="update-emp-modal">
+      <div class="update-emp-modal-content">
         <!-- Fixed Header -->
-        <div class="hr-update-emp-modal-header">
+        <div class="update-emp-modal-header">
           <h2 id="updateModalTitle">Update Employee Details</h2>
-          <span class="hr-update-emp-modal-close">&times;</span>
+          <span class="update-emp-modal-close">&times;</span>
         </div>
 
         <!-- Scrollable Body -->
-        <div class="hr-update-emp-modal-body">
-          <form id="updateEmployeeForm" class="hr-update-emp-form">
+        <div class="update-emp-modal-body">
+          <form id="updateEmployeeForm" class="update-emp-form">
             <!-- Professional Information -->
-            <div class="hr-update-emp-form-section">
-              <h3 class="hr-update-emp-section-title">
-                <span class="hr-update-emp-section-icon">
+            <div class="update-emp-form-section">
+              <h3 class="update-emp-section-title">
+                <span class="update-emp-section-icon">
                   <img src="./assets/Imgaes/modal_person.png" alt="" />
                 </span>
                 Professional Information
               </h3>
-              <div class="hr-update-emp-form-row">
-                <div class="hr-update-emp-form-group">
-                  <label class="hr-update-emp-label">Employee ID</label>
+              <div class="update-emp-form-row">
+                <div class="update-emp-form-group">
+                  <label class="update-emp-label">Employee ID</label>
                   <input
                     type="text"
                     name="employeeId"
-                    class="hr-update-emp-input"
+                    class="update-emp-input"
                     placeholder="FST101"
                     required
                   />
                 </div>
-                <div class="hr-update-emp-form-group">
-                  <label class="hr-update-emp-label">Date of Birth</label>
+                <div class="update-emp-form-group">
+                  <label class="update-emp-label">Date of Birth</label>
                   <input
                     type="date"
                     name="dob"
-                    class="hr-update-emp-input"
+                    class="update-emp-input"
                     required
                   />
                 </div>
               </div>
-              <div class="hr-update-emp-form-row">
-                <div class="hr-update-emp-form-group">
-                  <label class="hr-update-emp-label">Employee Name</label>
+              <div class="update-emp-form-row">
+                <div class="update-emp-form-group">
+                  <label class="update-emp-label">Employee Name</label>
                   <input
                     type="text"
                     name="employeeName"
-                    class="hr-update-emp-input"
+                    class="update-emp-input"
                     placeholder="NEHA"
                   />
                 </div>
-                <div class="hr-update-emp-form-group">
-                  <label class="hr-update-emp-label">Gender</label>
-                  <div class="hr-update-emp-radio-group">
-                    <label class="hr-update-emp-radio-label">
+                <div class="update-emp-form-group">
+                  <label class="update-emp-label">Gender</label>
+                  <div class="update-emp-radio-group">
+                    <label class="update-emp-radio-label">
                       <input
                         type="radio"
                         name="gender"
                         value="male"
-                        class="hr-update-emp-radio"
+                        class="update-emp-radio"
                       />
                       Male
                     </label>
-                    <label class="hr-update-emp-radio-label">
+                    <label class="update-emp-radio-label">
                       <input
                         type="radio"
                         name="gender"
                         value="female"
-                        class="hr-update-emp-radio"
+                        class="update-emp-radio"
                       />
                       Female
                     </label>
@@ -708,100 +704,96 @@
             </div>
 
             <!-- Contact Information -->
-            <div class="hr-update-emp-form-section">
-              <h3 class="hr-update-emp-section-title">
-                <span class="hr-update-emp-section-icon">
+            <div class="update-emp-form-section">
+              <h3 class="update-emp-section-title">
+                <span class="update-emp-section-icon">
                   <img src="./assets/Imgaes/modal_mail.png" alt="" />
                 </span>
                 Contact Information
               </h3>
-              <div class="hr-update-emp-form-row">
-                <div class="hr-update-emp-form-group">
-                  <label class="hr-update-emp-label">Email (Personal)</label>
+              <div class="update-emp-form-row">
+                <div class="update-emp-form-group">
+                  <label class="update-emp-label">Email (Personal)</label>
                   <input
                     type="email"
                     name="emailPersonal"
-                    class="hr-update-emp-input"
+                    class="update-emp-input"
                     placeholder="riya@gmail.com"
                     required
                   />
                 </div>
-                <div class="hr-update-emp-form-group">
-                  <label class="hr-update-emp-label">Email (Official)</label>
+                <div class="update-emp-form-group">
+                  <label class="update-emp-label">Email (Official)</label>
                   <input
                     type="email"
                     name="emailOfficial"
-                    class="hr-update-emp-input"
+                    class="update-emp-input"
                     placeholder="fisto@gmail.com"
                     required
                   />
                 </div>
               </div>
-              <div class="hr-update-emp-form-row">
-                <div class="hr-update-emp-form-group">
-                  <label class="hr-update-emp-label">Phone (Personal)</label>
+              <div class="update-emp-form-row">
+                <div class="update-emp-form-group">
+                  <label class="update-emp-label">Phone (Personal)</label>
                   <input
                     type="tel"
                     name="phonePersonal"
-                    class="hr-update-emp-input"
-                    placeholder="+91 1.234567891e+09"
+                    class="update-emp-input"
+                    placeholder="+91 1234567891"
                     required
                   />
                 </div>
-                <div class="hr-update-emp-form-group">
-                  <label class="hr-update-emp-label">Phone (Official)</label>
+                <div class="update-emp-form-group">
+                  <label class="update-emp-label">Phone (Official)</label>
                   <input
                     type="tel"
                     name="phoneOfficial"
-                    class="hr-update-emp-input"
-                    placeholder="+91 1.234567891e+09"
+                    class="update-emp-input"
+                    placeholder="+91 1234567891"
                   />
                 </div>
               </div>
             </div>
 
             <!-- Employment Details -->
-            <div class="hr-update-emp-form-section">
-              <h3 class="hr-update-emp-section-title">
-                <span class="hr-update-emp-section-icon">
+            <div class="update-emp-form-section">
+              <h3 class="update-emp-section-title">
+                <span class="update-emp-section-icon">
                   <img src="./assets/Imgaes/modal_emp.png" alt="" />
                 </span>
                 Employment Details
               </h3>
-              <div class="hr-update-emp-form-row">
-                <div class="hr-update-emp-form-group">
-                  <label class="hr-update-emp-label">Employment Type</label>
-                  <div class="hr-update-emp-radio-group">
-                    <label class="hr-update-emp-radio-label">
+              <div class="update-emp-form-row">
+                <div class="update-emp-form-group">
+                  <label class="update-emp-label">Employment Type</label>
+                  <div class="update-emp-radio-group">
+                    <label class="update-emp-radio-label">
                       <input
                         type="radio"
                         name="employmentType"
                         value="On Role"
-                        class="hr-update-emp-radio"
+                        class="update-emp-radio"
                         id="updateEmpOnRole"
                         checked
                       />
                       On Role
                     </label>
-                    <label class="hr-update-emp-radio-label">
+                    <label class="update-emp-radio-label">
                       <input
                         type="radio"
                         name="employmentType"
                         value="Intern"
-                        class="hr-update-emp-radio"
+                        class="update-emp-radio"
                         id="updateEmpIntern"
                       />
                       Intern
                     </label>
                   </div>
                 </div>
-                <div class="hr-update-emp-form-group">
-                  <label class="hr-update-emp-label">Designation</label>
-                  <select
-                    name="designation"
-                    class="hr-update-emp-select"
-                    required
-                  >
+                <div class="update-emp-form-group">
+                  <label class="update-emp-label">Designation</label>
+                  <select name="designation" class="update-emp-select" required>
                     <option value="">Select Designation</option>
                     <option value="Developer">Developer</option>
                     <option value="UI/UX">UI/UX</option>
@@ -811,12 +803,12 @@
               </div>
 
               <!-- On Role Fields -->
-              <div class="hr-update-emp-form-row" id="updateOnRoleFields">
-                <div class="hr-update-emp-form-group">
-                  <label class="hr-update-emp-label">Working Status</label>
+              <div class="update-emp-form-row" id="updateOnRoleFields">
+                <div class="update-emp-form-group">
+                  <label class="update-emp-label">Working Status</label>
                   <select
                     name="workingStatus"
-                    class="hr-update-emp-select"
+                    class="update-emp-select"
                     id="updateWorkingStatusOnRole"
                     required
                   >
@@ -826,12 +818,12 @@
                     <option value="on-leave">On Leave</option>
                   </select>
                 </div>
-                <div class="hr-update-emp-form-group">
-                  <label class="hr-update-emp-label">Join Date</label>
+                <div class="update-emp-form-group">
+                  <label class="update-emp-label">Join Date</label>
                   <input
                     type="date"
                     name="joinDate"
-                    class="hr-update-emp-input"
+                    class="update-emp-input"
                     id="updateJoinDateOnRole"
                     required
                   />
@@ -840,43 +832,43 @@
 
               <!-- Intern Fields -->
               <div id="updateInternFields" style="display: none">
-                <div class="hr-update-emp-form-row">
-                  <div class="hr-update-emp-form-group">
-                    <label class="hr-update-emp-label">Intern Start Date</label>
+                <div class="update-emp-form-row">
+                  <div class="update-emp-form-group">
+                    <label class="update-emp-label">Intern Start Date</label>
                     <input
                       type="date"
                       name="internStartDate"
-                      class="hr-update-emp-input"
+                      class="update-emp-input"
                       id="updateInternStartDate"
                     />
                   </div>
-                  <div class="hr-update-emp-form-group">
-                    <label class="hr-update-emp-label">Intern End Date</label>
+                  <div class="update-emp-form-group">
+                    <label class="update-emp-label">Intern End Date</label>
                     <input
                       type="date"
                       name="internEndDate"
-                      class="hr-update-emp-input"
+                      class="update-emp-input"
                       id="updateInternEndDate"
                     />
                   </div>
                 </div>
-                <div class="hr-update-emp-form-row">
-                  <div class="hr-update-emp-form-group">
-                    <label class="hr-update-emp-label">Duration (Months)</label>
+                <div class="update-emp-form-row">
+                  <div class="update-emp-form-group">
+                    <label class="update-emp-label">Duration (Months)</label>
                     <input
                       type="text"
                       name="durationMonths"
-                      class="hr-update-emp-input"
+                      class="update-emp-input"
                       id="updateDurationMonths"
                       readonly
                       placeholder="Auto-calculated"
                     />
                   </div>
-                  <div class="hr-update-emp-form-group">
-                    <label class="hr-update-emp-label">Working Status</label>
+                  <div class="update-emp-form-group">
+                    <label class="update-emp-label">Working Status</label>
                     <select
                       name="workingStatusIntern"
-                      class="hr-update-emp-select"
+                      class="update-emp-select"
                       id="updateWorkingStatusIntern"
                     >
                       <option value="">Select Status</option>
@@ -890,58 +882,58 @@
             </div>
 
             <!-- Address Information -->
-            <div class="hr-update-emp-form-section">
-              <h3 class="hr-update-emp-section-title">
-                <span class="hr-update-emp-section-icon">
+            <div class="update-emp-form-section">
+              <h3 class="update-emp-section-title">
+                <span class="update-emp-section-icon">
                   <img src="./assets/Imgaes/modal_location.png" alt="" />
                 </span>
                 Address Information
               </h3>
-              <div class="hr-update-emp-form-group hr-update-emp-full-width">
-                <label class="hr-update-emp-label">Address</label>
+              <div class="update-emp-form-group update-emp-full-width">
+                <label class="update-emp-label">Address</label>
                 <textarea
                   name="address"
                   rows="3"
-                  class="hr-update-emp-textarea"
+                  class="update-emp-textarea"
                   placeholder="Enter complete address"
                 ></textarea>
               </div>
             </div>
 
             <!-- Document Upload -->
-            <div class="hr-update-emp-form-section">
-              <h3 class="hr-update-emp-section-title">
-                <span class="hr-update-emp-section-icon">
+            <div class="update-emp-form-section">
+              <h3 class="update-emp-section-title">
+                <span class="update-emp-section-icon">
                   <img src="./assets/Imgaes/modal_doc.png" alt="" />
                 </span>
                 Document Upload
               </h3>
-              <div class="hr-update-emp-upload-grid">
+              <div class="update-emp-upload-grid">
                 <!-- Employee Photo (Single File) -->
-                <div class="hr-update-emp-upload-item">
-                  <div class="hr-update-emp-upload-head">
-                    <div class="hr-update-emp-upload-icon">
+                <div class="update-emp-upload-item">
+                  <div class="update-emp-upload-head">
+                    <div class="update-emp-upload-icon">
                       <img src="./assets/Imgaes/modal_doc_cam.png" alt="" />
                     </div>
-                    <label class="hr-update-emp-upload-label"
+                    <label class="update-emp-upload-label"
                       >Employee Photo</label
                     >
                   </div>
                   <div
-                    class="hr-update-emp-preview-container"
+                    class="update-emp-preview-container"
                     id="update-preview-employeePhoto"
                   ></div>
                   <input
                     type="file"
                     id="updateEmployeePhoto"
                     name="employeePhoto"
-                    class="hr-update-emp-file-input"
+                    class="update-emp-file-input"
                     accept=".jpg,.jpeg,.png"
                   />
-                  <div class="hr-update-emp-button-container">
+                  <div class="update-emp-button-container">
                     <button
                       type="button"
-                      class="hr-update-emp-upload-btn"
+                      class="update-emp-upload-btn"
                       onclick="document.getElementById('updateEmployeePhoto').click()"
                     >
                       <img
@@ -954,28 +946,28 @@
                 </div>
 
                 <!-- Resume/CV (Single File) -->
-                <div class="hr-update-emp-upload-item">
-                  <div class="hr-update-emp-upload-head">
-                    <div class="hr-update-emp-upload-icon">
+                <div class="update-emp-upload-item">
+                  <div class="update-emp-upload-head">
+                    <div class="update-emp-upload-icon">
                       <img src="./assets/Imgaes/modal_doc_cv.png" alt="" />
                     </div>
-                    <label class="hr-update-emp-upload-label">Resume/CV</label>
+                    <label class="update-emp-upload-label">Resume/CV</label>
                   </div>
                   <div
-                    class="hr-update-emp-preview-container"
+                    class="update-emp-preview-container"
                     id="update-preview-resumeCV"
                   ></div>
                   <input
                     type="file"
                     id="updateResumeCV"
                     name="resumeCV"
-                    class="hr-update-emp-file-input"
+                    class="update-emp-file-input"
                     accept=".pdf,.doc,.docx"
                   />
-                  <div class="hr-update-emp-button-container">
+                  <div class="update-emp-button-container">
                     <button
                       type="button"
-                      class="hr-update-emp-upload-btn"
+                      class="update-emp-upload-btn"
                       onclick="document.getElementById('updateResumeCV').click()"
                     >
                       <img
@@ -988,29 +980,29 @@
                 </div>
 
                 <!-- ID Proof (Multiple Files) -->
-                <div class="hr-update-emp-upload-item">
-                  <div class="hr-update-emp-upload-head">
-                    <div class="hr-update-emp-upload-icon">
+                <div class="update-emp-upload-item">
+                  <div class="update-emp-upload-head">
+                    <div class="update-emp-upload-icon">
                       <img src="./assets/Imgaes/modal_doc_id.png" alt="" />
                     </div>
-                    <label class="hr-update-emp-upload-label">ID Proof</label>
+                    <label class="update-emp-upload-label">ID Proof</label>
                   </div>
                   <div
-                    class="hr-update-emp-preview-container"
+                    class="update-emp-preview-container"
                     id="update-preview-idProof"
                   ></div>
                   <input
                     type="file"
                     id="updateIdProof"
                     name="idProof"
-                    class="hr-update-emp-file-input"
+                    class="update-emp-file-input"
                     accept=".pdf,.jpg,.jpeg,.png"
                     multiple
                   />
-                  <div class="hr-update-emp-button-container">
+                  <div class="update-emp-button-container">
                     <button
                       type="button"
-                      class="hr-update-emp-upload-btn"
+                      class="update-emp-upload-btn"
                       onclick="document.getElementById('updateIdProof').click()"
                     >
                       <img
@@ -1023,31 +1015,29 @@
                 </div>
 
                 <!-- Certificates (Multiple Files) -->
-                <div class="hr-update-emp-upload-item">
-                  <div class="hr-update-emp-upload-head">
-                    <div class="hr-update-emp-upload-icon">
+                <div class="update-emp-upload-item">
+                  <div class="update-emp-upload-head">
+                    <div class="update-emp-upload-icon">
                       <img src="./assets/Imgaes/modal_doc_certi.png" alt="" />
                     </div>
-                    <label class="hr-update-emp-upload-label"
-                      >Certificates</label
-                    >
+                    <label class="update-emp-upload-label">Certificates</label>
                   </div>
                   <div
-                    class="hr-update-emp-preview-container"
+                    class="update-emp-preview-container"
                     id="update-preview-certificates"
                   ></div>
                   <input
                     type="file"
                     id="updateCertificates"
                     name="certificates"
-                    class="hr-update-emp-file-input"
+                    class="update-emp-file-input"
                     accept=".pdf,.jpg,.jpeg,.png"
                     multiple
                   />
-                  <div class="hr-update-emp-button-container">
+                  <div class="update-emp-button-container">
                     <button
                       type="button"
-                      class="hr-update-emp-upload-btn"
+                      class="update-emp-upload-btn"
                       onclick="document.getElementById('updateCertificates').click()"
                     >
                       <img
@@ -1060,31 +1050,31 @@
                 </div>
 
                 <!-- Other Documents (Multiple Files) -->
-                <div class="hr-update-emp-upload-item">
-                  <div class="hr-update-emp-upload-head">
-                    <div class="hr-update-emp-upload-icon">
+                <div class="update-emp-upload-item">
+                  <div class="update-emp-upload-head">
+                    <div class="update-emp-upload-icon">
                       <img src="./assets/Imgaes/modal_doc_pin.png" alt="" />
                     </div>
-                    <label class="hr-update-emp-upload-label"
+                    <label class="update-emp-upload-label"
                       >Other Documents</label
                     >
                   </div>
                   <div
-                    class="hr-update-emp-preview-container"
+                    class="update-emp-preview-container"
                     id="update-preview-otherDocs"
                   ></div>
                   <input
                     type="file"
                     id="updateOtherDocs"
                     name="otherDocs"
-                    class="hr-update-emp-file-input"
+                    class="update-emp-file-input"
                     accept=".pdf,.jpg,.jpeg,.png"
                     multiple
                   />
-                  <div class="hr-update-emp-button-container">
+                  <div class="update-emp-button-container">
                     <button
                       type="button"
-                      class="hr-update-emp-upload-btn"
+                      class="update-emp-upload-btn"
                       onclick="document.getElementById('updateOtherDocs').click()"
                     >
                       <img
@@ -1101,11 +1091,11 @@
         </div>
 
         <!-- Fixed Footer -->
-        <div class="hr-update-emp-modal-footer">
-          <div class="hr-update-emp-form-actions">
+        <div class="update-emp-modal-footer">
+          <div class="update-emp-form-actions">
             <button
               type="submit"
-              class="hr-update-emp-btn-submit"
+              class="update-emp-btn-submit"
               id="updateEmpSubmitBtn"
             >
               Update Employee
@@ -1114,8 +1104,15 @@
         </div>
       </div>
     </div>
+    <!-------------------------------------------- Start of HR Update Employee Modal ------------------------------------------------>
 
-    <!--------------------------------------------End Update Employee Modal ------------------------------------------------>
+    <!-- File View Modal -->
+    <div id="fileViewModal" class="update-emp-view-modal">
+      <div class="update-emp-view-modal-content">
+        <span class="update-emp-view-modal-close">&times;</span>
+        <div id="fileViewContent"></div>
+      </div>
+    </div>
 
     <!-- HR Employee Details end div -->
   </div>
@@ -1123,9 +1120,73 @@
   <!-- ******************************************* HR REQUEST CODE ****************************************** -->
 
   <div id="HRrequests" class="hr-tab-content">
-    <h3>Requests Content</h3>
-    <p>Requests content goes here...</p>
+    <div class="hr-requests-container">
+      <!-- HISTORY BUTTON (TOP RIGHT) -->
+      <button id="viewHistoryBtn" class="btn-history">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+          <path
+            d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+        History
+      </button>
+
+      <!-- Leave Requests Section -->
+      <div class="hr-requests-section">
+        <h2 class="hr-section-title">Leave Requests</h2>
+
+        <div class="hr-requests-table-container">
+          <table class="hr-requests-table">
+            <thead>
+              <tr>
+                <th>Employee Name</th>
+                <th>Designation</th>
+                <th>Job Role</th>
+                <th>From Date</th>
+                <th>To Date</th>
+                <th>Reason</th>
+                <th>Decision</th>
+              </tr>
+            </thead>
+            <tbody id="leaveRequestsTableBody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Permission Requests Section -->
+      <div class="hr-requests-section">
+        <h2 class="hr-section-title">Permission Requests</h2>
+
+        <div class="hr-requests-table-container">
+          <table class="hr-requests-table">
+            <thead>
+              <tr>
+                <th>Employee Name</th>
+                <th>Designation</th>
+                <th>Job Role</th>
+                <th>Date</th>
+                <th>From Time</th>
+                <th>To Time</th>
+                <th>Reason</th>
+                <th>Decision</th>
+              </tr>
+            </thead>
+            <tbody id="permissionRequestsTableBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- End div of hr request -->
   </div>
+
+  
+
+  
 
   <!-- ******************************************* HR SALARY CODE ****************************************** -->
 
