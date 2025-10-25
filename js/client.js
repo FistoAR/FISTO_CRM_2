@@ -32,6 +32,8 @@ function initializeClientDatabaseTabs() {
             const activeContent = document.getElementById(tabId);
             if (activeContent) {
                 activeContent.classList.add('active');
+            } else {
+                console.error('Tab content not found for:', tabId);
             }
             
             // Update page title
@@ -39,16 +41,22 @@ function initializeClientDatabaseTabs() {
                 pageTitle.textContent = tabText;
             }
             
-            // Update button text
+            // Update button text based on tab
             if (addBtnText) {
-                if (tabId === 'meeting-details') {
-                    addBtnText.textContent = 'Add Meeting';
-                } else {
-                    addBtnText.textContent = 'Add customer';
+                switch(tabId) {
+                    case 'meeting-details':
+                        addBtnText.textContent = 'Add Meeting';
+                        break;
+                    case 'report-details':
+                    case 'report-database':
+                        addBtnText.textContent = 'Add Report';
+                        break;
+                    default:
+                        addBtnText.textContent = 'Add customer';
                 }
             }
         });
     });
     
     console.log('Client database tabs initialized successfully!');
-} 
+}

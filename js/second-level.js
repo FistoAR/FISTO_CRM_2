@@ -9,6 +9,12 @@ function initializeSecondLevelFollowup() {
   const saveBtn = document.getElementById("secondLevelSaveBtn");
   const form = document.getElementById("secondLevelForm");
   const tableBody = document.getElementById("second-levelTableBody");
+  
+  // Filter elements
+  const filterBtn = document.getElementById("secondfilterBtn");
+  const filterDropdown = document.getElementById("secondLevelFilterDropdown");
+  const applyFilterBtn = document.getElementById("secondLevelApplyFilter");
+  const clearFilterBtn = document.getElementById("secondLevelClearFilter");
 
   // Check if modal exists
   if (!modal) {
@@ -146,6 +152,7 @@ function initializeSecondLevelFollowup() {
   ];
 
   let editingIndex = -1;
+  let currentFilter = "All"; // Track current filter
 
   // Initial render
   renderTable();
@@ -153,11 +160,57 @@ function initializeSecondLevelFollowup() {
   // Listen for records moved from first level
   window.addEventListener("moveToSecondLevel", function (e) {
     const record = e.detail;
-    // Reset status to None when moving to second level
     record.status = "None";
     secondLevelCustomers.push(record);
     renderTable();
   });
+
+  // ========================================
+  // FILTER FUNCTIONALITY
+  // ========================================
+
+  // Toggle filter dropdown
+  if (filterBtn) {
+    filterBtn.addEventListener("click", function(e) {
+      e.stopPropagation();
+      filterDropdown.classList.toggle("active");
+    });
+  }
+
+  // Close dropdown when clicking outside
+  document.addEventListener("click", function(e) {
+    if (filterDropdown && !filterDropdown.contains(e.target) && e.target !== filterBtn) {
+      filterDropdown.classList.remove("active");
+    }
+  });
+
+  // Apply Filter
+  if (applyFilterBtn) {
+    applyFilterBtn.addEventListener("click", function() {
+      const selectedFilter = document.querySelector('input[name="secondLevelFilter"]:checked');
+      if (selectedFilter) {
+        currentFilter = selectedFilter.value;
+        renderTable();
+        filterDropdown.classList.remove("active");
+        console.log("Filter applied:", currentFilter);
+      }
+    });
+  }
+
+  // Clear Filter
+  if (clearFilterBtn) {
+    clearFilterBtn.addEventListener("click", function() {
+      currentFilter = "All";
+      document.querySelector('input[name="secondLevelFilter"][value="All"]').checked = true;
+      renderTable();
+      filterDropdown.classList.remove("active");
+      console.log("Filter cleared");
+    });
+  }
+
+  // ========================================
+  // MODAL FUNCTIONALITY
+  // ========================================
 
   // Close Edit Modal
   if (closeBtn) {
@@ -190,9 +243,8 @@ function initializeSecondLevelFollowup() {
     modal.classList.remove("active");
     form.reset();
 
-    // Reset dropdown to original value if user canceled
     if (editingIndex !== -1) {
-      renderTable(); // Re-render to reset dropdown to original status
+      renderTable();
     }
 
     editingIndex = -1;
@@ -202,7 +254,10 @@ function initializeSecondLevelFollowup() {
     viewModal.classList.remove("active");
   }
 
-  // Save Button
+  // ========================================
+  // SAVE FUNCTIONALITY
+  // ========================================
+
   // Save Button
   if (saveBtn) {
     saveBtn.addEventListener("click", function (e) {
@@ -213,7 +268,6 @@ function initializeSecondLevelFollowup() {
         const remarks = formData.get("remarksSecond");
         const nextFollowupDate = formData.get("nextFollowupDateSecond");
 
-        // Get the status from the hidden field
         const statusField = document.querySelector(
           '[name="statusHiddenSecond"]'
         );
@@ -221,7 +275,6 @@ function initializeSecondLevelFollowup() {
           ? statusField.value
           : secondLevelCustomers[editingIndex].status;
 
-        // Update the record
         secondLevelCustomers[editingIndex].status = status;
         secondLevelCustomers[editingIndex].remarks = remarks;
         secondLevelCustomers[editingIndex].nextFollowupDate = nextFollowupDate;
@@ -229,17 +282,19 @@ function initializeSecondLevelFollowup() {
           .toISOString()
           .split("T")[0];
 
-        // IMPORTANT: Re-render the table to show updated data
         renderTable();
         closeModal();
 
-        // Optional: Show success message
         console.log("2nd level follow-up updated successfully!");
       } else {
         form.reportValidity();
       }
     });
   }
+
+  // ========================================
+  // EVENT LISTENERS
+  // ========================================
 
   // Event delegation for view button
   tableBody.addEventListener("click", function (e) {
@@ -263,12 +318,15 @@ function initializeSecondLevelFollowup() {
     }
   });
 
-  // Open Edit Modal Function (when status dropdown changes)
+  // ========================================
+  // OPEN MODALS
+  // ========================================
+
+  // Open Edit Modal Function
   function openEditModal(index, selectedStatus) {
     editingIndex = index;
     const record = secondLevelCustomers[index];
 
-    // Populate form
     document.querySelector('[name="companyNameDisplaySecond"]').value =
       record.companyName;
     document.querySelector('[name="customerNameDisplaySecond"]').value =
@@ -279,7 +337,6 @@ function initializeSecondLevelFollowup() {
     document.querySelector('[name="nextFollowupDateSecond"]').value =
       record.nextFollowupDate;
 
-    // Update modal title with status
     document.querySelector(
       ".second-level-modal-header h2"
     ).textContent = `Update 2nd Level Status - ${selectedStatus}`;
@@ -287,8 +344,7 @@ function initializeSecondLevelFollowup() {
     modal.classList.add("active");
   }
 
-  // Open View Modal Function (when view button is clicked)
-  // Open View Modal Function (when view button is clicked)
+  // Open View Modal Function
   function openViewModal(index) {
     const record = secondLevelCustomers[index];
     const customerData = record.fullCustomerData;
@@ -337,59 +393,72 @@ function initializeSecondLevelFollowup() {
     viewModal.classList.add("active");
   }
 
-  // Render Table
+  // ========================================
+  // RENDER TABLE WITH FILTER
+  // ========================================
+
   function renderTable() {
-    if (secondLevelCustomers.length === 0) {
+    // Filter data based on current filter
+    let filteredData = secondLevelCustomers;
+    
+    if (currentFilter !== "All") {
+      filteredData = secondLevelCustomers.filter(record => record.status === currentFilter);
+    }
+
+    if (filteredData.length === 0) {
       tableBody.innerHTML = `
-                <tr>
-                    <td colspan="9" style="text-align: center; padding: 40px; color: #999">
-                        No customer's data available
-                    </td>
-                </tr>
-            `;
+        <tr>
+          <td colspan="9" style="text-align: center; padding: 40px; color: #999">
+            ${currentFilter === "All" ? "No customer's data available" : `No customers with status "${currentFilter}"`}
+          </td>
+        </tr>
+      `;
       return;
     }
 
-    tableBody.innerHTML = secondLevelCustomers
-      .map((record, index) => {
+    tableBody.innerHTML = filteredData
+      .map((record) => {
+        // Get original index for data binding
+        const originalIndex = secondLevelCustomers.indexOf(record);
+        
         return `
-                <tr>
-                    <td>
-                        <select class="second-level-status-select" data-index="${index}">
-                            <option value="None" ${
-                              record.status === "None" ? "selected" : ""
-                            }>None</option>
-                            <option value="Lead" ${
-                              record.status === "Lead" ? "selected" : ""
-                            }>Lead</option>
-                            <option value="Drop" ${
-                              record.status === "Drop" ? "selected" : ""
-                            }>Drop</option>
-                            <option value="Quotation" ${
-                              record.status === "Quotation" ? "selected" : ""
-                            }>Quotation</option>
-                            <option value="In Progress" ${
-                              record.status === "In Progress" ? "selected" : ""
-                            }>In Progress</option>
-                            <option value="Not Interest" ${
-                              record.status === "Not Interest" ? "selected" : ""
-                            }>Not Interest</option>
-                        </select>
-                    </td>
-                    <td>${record.remarks || "-"}</td>
-                    <td>${record.updateDate || "-"}</td>
-                    <td>${record.nextFollowupDate || "-"}</td>
-                    <td>${record.customerId}</td>
-                    <td>${record.initiatedDate}</td>
-                    <td>${record.companyName}</td>
-                    <td>${record.customerName}</td>
-                    <td>
-                        <button class="second-level-view-btn" data-index="${index}">
-                            <img src="../assets/imgaes/table_eye.png" alt="View" />
-                        </button>
-                    </td>
-                </tr>
-            `;
+          <tr>
+            <td>
+              <select class="second-level-status-select" data-index="${originalIndex}">
+                <option value="None" ${
+                  record.status === "None" ? "selected" : ""
+                }>None</option>
+                <option value="Lead" ${
+                  record.status === "Lead" ? "selected" : ""
+                }>Lead</option>
+                <option value="Drop" ${
+                  record.status === "Drop" ? "selected" : ""
+                }>Drop</option>
+                <option value="Quotation" ${
+                  record.status === "Quotation" ? "selected" : ""
+                }>Quotation</option>
+                <option value="In Progress" ${
+                  record.status === "In Progress" ? "selected" : ""
+                }>In Progress</option>
+                <option value="Not Interest" ${
+                  record.status === "Not Interest" ? "selected" : ""
+                }>Not Interest</option>
+              </select>
+            </td>
+            <td>${record.remarks || "-"}</td>
+            <td>${record.updateDate || "-"}</td>
+            <td>${record.nextFollowupDate || "-"}</td>
+            <td>${record.customerId}</td>
+            <td>${record.initiatedDate}</td>
+            <td>${record.companyName}</td>
+            <td>${record.customerName}</td>
+            <td>
+              <button class="second-level-view-btn" data-index="${originalIndex}">
+                <img src="../assets/imgaes/table_eye.png" alt="View" />
+              </button>
+            </td>
+          </tr>
+        `;
       })
       .join("");
   }

@@ -9,6 +9,12 @@ function initializeFirstLevelFollowup() {
   const saveBtn = document.getElementById("firstLevelSaveBtn");
   const form = document.getElementById("firstLevelForm");
   const tableBody = document.getElementById("first-levelTableBody");
+  
+  // Filter elements
+  const filterBtn = document.getElementById("firstfilterBtn");
+  const filterDropdown = document.getElementById("firstLevelFilterDropdown");
+  const applyFilterBtn = document.getElementById("firstLevelApplyFilter");
+  const clearFilterBtn = document.getElementById("firstLevelClearFilter");
 
   // Check if modal exists
   if (!modal) {
@@ -168,12 +174,85 @@ function initializeFirstLevelFollowup() {
         designation: "Supply Chain Head",
       },
     },
+    {
+      status: "Follow-Up Taken",
+      remarks: "Meeting scheduled for next week",
+      updateDate: "2025-10-15",
+      nextFollowupDate: "2025-10-22",
+      customerId: "CUST007",
+      initiatedDate: "2025-10-14",
+      companyName: "AutoParts India",
+      customerName: "Suresh Iyer",
+      fullCustomerData: {
+        date: "2025-10-14",
+        customerId: "CUST007",
+        companyName: "AutoParts India",
+        customerName: "Suresh Iyer",
+        industryType: "Automotive",
+        website: "www.autopartsindia.com",
+        address: "34, Industrial Estate, Coimbatore - 641014",
+        reference: "Cold Call",
+        remarks: "Dealer management system",
+        contactPerson: "Suresh Iyer",
+        phoneNumber: "+91 96543 21098",
+        mailId: "suresh@autopartsindia.com",
+        designation: "Sales Director",
+      },
+    },
   ];
 
   let editingIndex = -1;
+  let currentFilter = "All"; // Track current filter
 
   // Initial render
   renderTable();
+
+  // ========================================
+  // FILTER FUNCTIONALITY
+  // ========================================
+
+  // Toggle filter dropdown
+  if (filterBtn) {
+    filterBtn.addEventListener("click", function(e) {
+      e.stopPropagation();
+      filterDropdown.classList.toggle("active");
+    });
+  }
+
+  // Close dropdown when clicking outside
+  document.addEventListener("click", function(e) {
+    if (filterDropdown && !filterDropdown.contains(e.target) && e.target !== filterBtn) {
+      filterDropdown.classList.remove("active");
+    }
+  });
+
+  // Apply Filter
+  if (applyFilterBtn) {
+    applyFilterBtn.addEventListener("click", function() {
+      const selectedFilter = document.querySelector('input[name="firstLevelFilter"]:checked');
+      if (selectedFilter) {
+        currentFilter = selectedFilter.value;
+        renderTable();
+        filterDropdown.classList.remove("active");
+        console.log("Filter applied:", currentFilter);
+      }
+    });
+  }
+
+  // Clear Filter
+  if (clearFilterBtn) {
+    clearFilterBtn.addEventListener("click", function() {
+      currentFilter = "All";
+      document.querySelector('input[name="firstLevelFilter"][value="All"]').checked = true;
+      renderTable();
+      filterDropdown.classList.remove("active");
+      console.log("Filter cleared");
+    });
+  }
+
+  // ========================================
+  // MODAL FUNCTIONALITY
+  // ========================================
 
   // Close Edit Modal
   if (closeBtn) {
@@ -206,9 +285,8 @@ function initializeFirstLevelFollowup() {
     modal.classList.remove("active");
     form.reset();
 
-    // Reset dropdown to original value if user canceled
     if (editingIndex !== -1) {
-      renderTable(); // Re-render to reset dropdown to original status
+      renderTable();
     }
 
     editingIndex = -1;
@@ -218,7 +296,10 @@ function initializeFirstLevelFollowup() {
     viewModal.classList.remove("active");
   }
 
-  // Save Button
+  // ========================================
+  // SAVE FUNCTIONALITY
+  // ========================================
+
   // Save Button
   if (saveBtn) {
     saveBtn.addEventListener("click", function (e) {
@@ -229,13 +310,11 @@ function initializeFirstLevelFollowup() {
         const remarks = formData.get("remarks");
         const nextFollowupDate = formData.get("nextFollowupDate");
 
-        // Get the status from the hidden field
         const statusField = document.querySelector('[name="statusHidden"]');
         const status = statusField
           ? statusField.value
           : firstLevelCustomers[editingIndex].status;
 
-        // Update the record
         firstLevelCustomers[editingIndex].status = status;
         firstLevelCustomers[editingIndex].remarks = remarks;
         firstLevelCustomers[editingIndex].nextFollowupDate = nextFollowupDate;
@@ -243,16 +322,13 @@ function initializeFirstLevelFollowup() {
           .toISOString()
           .split("T")[0];
 
-        // If status is "Follow-Up Taken", move to second level
         if (status === "Follow-Up Taken") {
           moveToSecondLevel(editingIndex);
         }
 
-        // IMPORTANT: Re-render the table to show updated data
         renderTable();
         closeModal();
 
-        // Optional: Show success message
         console.log("Follow-up updated successfully!");
       } else {
         form.reportValidity();
@@ -264,16 +340,18 @@ function initializeFirstLevelFollowup() {
   function moveToSecondLevel(index) {
     const record = firstLevelCustomers[index];
 
-    // Trigger event to add to second level
     window.dispatchEvent(
       new CustomEvent("moveToSecondLevel", {
         detail: record,
       })
     );
 
-    // Remove from first level
     firstLevelCustomers.splice(index, 1);
   }
+
+  // ========================================
+  // EVENT LISTENERS
+  // ========================================
 
   // Event delegation for view button
   tableBody.addEventListener("click", function (e) {
@@ -297,12 +375,15 @@ function initializeFirstLevelFollowup() {
     }
   });
 
+  // ========================================
+  // OPEN MODALS
+  // ========================================
+
   // Open Edit Modal Function (when status dropdown changes)
   function openEditModal(index, selectedStatus) {
     editingIndex = index;
     const record = firstLevelCustomers[index];
 
-    // Populate form
     document.querySelector('[name="companyNameDisplay"]').value =
       record.companyName;
     document.querySelector('[name="customerNameDisplay"]').value =
@@ -312,7 +393,6 @@ function initializeFirstLevelFollowup() {
     document.querySelector('[name="nextFollowupDate"]').value =
       record.nextFollowupDate;
 
-    // Update modal title with status
     document.querySelector(
       ".first-level-modal-header h2"
     ).textContent = `Update Follow-up - ${selectedStatus}`;
@@ -320,7 +400,6 @@ function initializeFirstLevelFollowup() {
     modal.classList.add("active");
   }
 
-  // Open View Modal Function (when view button is clicked)
   // Open View Modal Function (when view button is clicked)
   function openViewModal(index) {
     const record = firstLevelCustomers[index];
@@ -368,60 +447,73 @@ function initializeFirstLevelFollowup() {
     viewModal.classList.add("active");
   }
 
-  // Render Table
+  // ========================================
+  // RENDER TABLE WITH FILTER
+  // ========================================
+
   function renderTable() {
-    if (firstLevelCustomers.length === 0) {
+    // Filter data based on current filter
+    let filteredData = firstLevelCustomers;
+    
+    if (currentFilter !== "All") {
+      filteredData = firstLevelCustomers.filter(record => record.status === currentFilter);
+    }
+
+    if (filteredData.length === 0) {
       tableBody.innerHTML = `
-                <tr>
-                    <td colspan="9" style="text-align: center; padding: 40px; color: #999">
-                        No customer's data available
-                    </td>
-                </tr>
-            `;
+        <tr>
+          <td colspan="9" style="text-align: center; padding: 40px; color: #999">
+            ${currentFilter === "All" ? "No customer's data available" : `No customers with status "${currentFilter}"`}
+          </td>
+        </tr>
+      `;
       return;
     }
 
-    tableBody.innerHTML = firstLevelCustomers
-      .map((record, index) => {
+    tableBody.innerHTML = filteredData
+      .map((record) => {
+        // Get original index for data binding
+        const originalIndex = firstLevelCustomers.indexOf(record);
+        
         return `
-                <tr>
-                    <td>
-                        <select class="first-level-status-select" data-index="${index}">
-                            <option value="None" ${
-                              record.status === "None" ? "selected" : ""
-                            }>None</option>
-                            <option value="Not Picking" ${
-                              record.status === "Not Picking" ? "selected" : ""
-                            }>Not Picking</option>
-                            <option value="Not Interest" ${
-                              record.status === "Not Interest" ? "selected" : ""
-                            }>Not Interest</option>
-                            <option value="Not Reachable" ${
-                              record.status === "Not Reachable"
-                                ? "selected"
-                                : ""
-                            }>Not Reachable</option>
-                            <option value="Follow-Up Taken" ${
-                              record.status === "Follow-Up Taken"
-                                ? "selected"
-                                : ""
-                            }>Follow-Up Taken</option>
-                        </select>
-                    </td>
-                    <td>${record.remarks || "-"}</td>
-                    <td>${record.updateDate || "-"}</td>
-                    <td>${record.nextFollowupDate || "-"}</td>
-                    <td>${record.customerId}</td>
-                    <td>${record.initiatedDate}</td>
-                    <td>${record.companyName}</td>
-                    <td>${record.customerName}</td>
-                    <td>
-                        <button class="first-level-view-btn" data-index="${index}">
-                            <img src="../assets/imgaes/table_eye.png" alt="View" />
-                        </button>
-                    </td>
-                </tr>
-            `;
+          <tr>
+            <td>
+              <select class="first-level-status-select" data-index="${originalIndex}">
+                <option value="None" ${
+                  record.status === "None" ? "selected" : ""
+                }>None</option>
+                <option value="Not Picking" ${
+                  record.status === "Not Picking" ? "selected" : ""
+                }>Not Picking</option>
+                <option value="Not Interest" ${
+                  record.status === "Not Interest" ? "selected" : ""
+                }>Not Interest</option>
+                <option value="Not Reachable" ${
+                  record.status === "Not Reachable"
+                    ? "selected"
+                    : ""
+                }>Not Reachable</option>
+                <option value="Follow-Up Taken" ${
+                  record.status === "Follow-Up Taken"
+                    ? "selected"
+                    : ""
+                }>Follow-Up Taken</option>
+              </select>
+            </td>
+            <td>${record.remarks || "-"}</td>
+            <td>${record.updateDate || "-"}</td>
+            <td>${record.nextFollowupDate || "-"}</td>
+            <td>${record.customerId}</td>
+            <td>${record.initiatedDate}</td>
+            <td>${record.companyName}</td>
+            <td>${record.customerName}</td>
+            <td>
+              <button class="first-level-view-btn" data-index="${originalIndex}">
+                <img src="../assets/imgaes/table_eye.png" alt="View" />
+              </button>
+            </td>
+          </tr>
+        `;
       })
       .join("");
   }

@@ -125,6 +125,10 @@
                 </div>
               </div>
               <div class="form-group">
+                <label>Link Name</label>
+                <input type="Name" class="project-input" />
+              </div>
+              <div class="form-group">
                 <label>Enter Document Link</label>
                 <input type="url" id="documentLink" class="project-input" />
               </div>
@@ -136,9 +140,13 @@
             <div class="form-row">
               <div class="form-group">
                 <label>Allocated Team <span class="required">*</span></label>
-                <select id="allocatedTeam" class="project-select" required>
+                <select id="allocatedTeam" class="project-select">
                   <option value="">Select Team</option>
                 </select>
+                <div
+                  id="selectedTeamsContainer"
+                  class="selected-teams-container"
+                ></div>
               </div>
               <div class="form-group">
                 <label>Reporting Person <span class="required">*</span></label>
@@ -500,7 +508,9 @@
     <div class="project-resources-section">
       <!-- Header -->
       <div class="project-resources-header">
-        <div class="project-resources-folder-icon"><img src="../assets/imgaes/folder_icon.png" alt=""></div>
+        <div class="project-resources-folder-icon">
+          <img src="../assets/imgaes/folder_icon.png" alt="" />
+        </div>
         <div class="project-resources-header-content">
           <h4>Assets & Shared Links</h4>
           <p
@@ -515,7 +525,9 @@
       <!-- Project Requirements Section -->
       <div class="project-resources-item-section">
         <div class="project-resources-item-header">
-          <div class="project-resources-item-icon"><img src="../assets/imgaes/blue_folder_icon.png" alt=""></div>
+          <div class="project-resources-item-icon">
+            <img src="../assets/imgaes/blue_folder_icon.png" alt="" />
+          </div>
           <div class="project-resources-item-info">
             <h5>Project requirements</h5>
             <p>Upload Project files (e.g., DOC, PDF, images)</p>
@@ -551,7 +563,9 @@
       <!-- Reference Links Section -->
       <div class="project-resources-item-section">
         <div class="project-resources-item-header">
-          <div class="project-resources-item-icon"><img src="../assets/imgaes/link_icon.png" alt=""></div>
+          <div class="project-resources-item-icon">
+            <img src="../assets/imgaes/link_icon.png" alt="" />
+          </div>
           <div class="project-resources-item-info">
             <h5>Reference Links</h5>
             <p>Links</p>

@@ -581,6 +581,49 @@
     font-family: 'Gilroy-Regular', sans-serif;
 }
 
+.selected-teams-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+  min-height: 20px;
+}
+
+.team-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #e8f4ff;
+  border: 1px solid #0052cc;
+  border-radius: 20px;
+  padding: 6px 12px;
+  font-size: 14px;
+  color: #0052cc;
+  font-family: 'Gilroy-Medium', sans-serif;
+}
+
+.team-tag-remove {
+  background: transparent;
+  border: none;
+  color: #0052cc;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 0;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s;
+}
+
+.team-tag-remove:hover {
+  background: #0052cc;
+  color: white;
+}
+
 /* ==================== CONTACT FIELDS STYLES ==================== */
 
 .contact-form-row {

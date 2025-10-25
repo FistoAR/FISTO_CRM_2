@@ -15,17 +15,19 @@
     <button class="customer-tab-btn" data-tab="meeting-details">
       Meeting Details
     </button>
+    <button class="customer-tab-btn" data-tab="report-database">Report</button>
   </div>
 
   <!-- Customer Database Section -->
   <div class="tab-content active" id="customer-database">
-    <button
-      class="customer-database-add-btn"
-      id="openCustomerModal"
-      style="float: right"
-    >
-      <img src="../assets/imgaes/plus_btn.png" alt="" /> Add Customer
-    </button>
+    <div class="customer-database-btns">
+      <button class="customer-database-filter-btn">
+        <img src="../assets/imgaes/filter_list.png" alt="" />
+      </button>
+      <button class="customer-database-add-btn" id="openCustomerModal">
+        <img src="../assets/imgaes/plus_btn.png" alt="" /> Add Customer
+      </button>
+    </div>
 
     <!-- CUSTOMER DATABASE TABLE -->
     <div class="customer-database-table-container">
@@ -196,63 +198,24 @@
 
             <!-- Contact Details Section -->
             <div class="customer-form-section">
-              <h3 class="customer-section-title">Contact Details</h3>
-
-              <div class="customer-form-row">
-                <div class="customer-form-group">
-                  <label class="customer-label">
-                    Contact Person <span class="customer-required">*</span>
-                  </label>
-                  <input
-                    type="text"
-                    name="contactPerson"
-                    class="customer-input"
-                    placeholder="Enter Contact Person"
-                    required
-                  />
-                </div>
-
-                <div class="customer-form-group">
-                  <label class="customer-label">
-                    Phone Number <span class="customer-required">*</span>
-                  </label>
-                  <input
-                    type="tel"
-                    name="phoneNumber"
-                    class="customer-input"
-                    placeholder="+91 1234567890"
-                    required
-                  />
-                </div>
-
-                <div class="customer-form-group">
-                  <label class="customer-label">
-                    Mail ID <span class="customer-required">*</span>
-                  </label>
-                  <input
-                    type="email"
-                    name="mailId"
-                    class="customer-input"
-                    placeholder="example@email.com"
-                    required
-                  />
-                </div>
+              <div class="customer-section-title-flex">
+                <h3
+                  class="customer-section-title"
+                  style="border: none; margin: 0; padding: 0"
+                >
+                  Contact Details
+                </h3>
+                <button
+                  type="button"
+                  class="customer-btn-add-contact"
+                  id="addContactBtn"
+                >
+                  + Add Contact
+                </button>
               </div>
 
-              <div class="customer-form-row">
-                <div class="customer-form-group">
-                  <label class="customer-label">
-                    Designation <span class="customer-required">*</span>
-                  </label>
-                  <input
-                    type="text"
-                    name="designation"
-                    class="customer-input"
-                    placeholder="Enter Designation"
-                    required
-                  />
-                </div>
-              </div>
+              <!-- Container for dynamic contact rows -->
+              <div id="customerContactsContainer"></div>
             </div>
           </form>
         </div>
@@ -282,6 +245,69 @@
 
   <!-- 1st Level Follow-up Section -->
   <div class="tab-content" id="first-level">
+    <button id="firstfilterBtn" class="first-level-filter-btn">
+      <img src="../assets/imgaes/filter_list.png" alt="" /> Filter
+    </button>
+
+    <div id="firstLevelFilterDropdown" class="first-level-filter-dropdown">
+      <div class="first-level-filter-dropdown-content">
+        <h4 class="first-level-filter-dropdown-title">Filter by Status</h4>
+
+        <div class="first-level-filter-options">
+          <label class="first-level-filter-radio-label">
+            <input type="radio" name="firstLevelFilter" value="All" checked />
+            <span>Show All</span>
+          </label>
+
+          <label class="first-level-filter-radio-label">
+            <input type="radio" name="firstLevelFilter" value="Not Picking" />
+            <span>Not Picking</span>
+          </label>
+
+          <label class="first-level-filter-radio-label">
+            <input type="radio" name="firstLevelFilter" value="Not Interest" />
+            <span>Not Interest</span>
+          </label>
+
+          <label class="first-level-filter-radio-label">
+            <input type="radio" name="firstLevelFilter" value="Not Reachable" />
+            <span>Not Reachable</span>
+          </label>
+
+          <label class="first-level-filter-radio-label">
+            <input
+              type="radio"
+              name="firstLevelFilter"
+              value="Follow-Up Taken"
+            />
+            <span>Follow-Up Taken</span>
+          </label>
+
+          <label class="first-level-filter-radio-label">
+            <input type="radio" name="firstLevelFilter" value="None" />
+            <span>None</span>
+          </label>
+        </div>
+
+        <div class="first-level-filter-actions">
+          <button
+            type="button"
+            class="first-level-filter-apply-btn"
+            id="firstLevelApplyFilter"
+          >
+            Apply
+          </button>
+          <button
+            type="button"
+            class="first-level-filter-clear-btn"
+            id="firstLevelClearFilter"
+          >
+            Clear
+          </button>
+        </div>
+      </div>
+    </div>
+
     <!-- 1st Level TABLE -->
     <div class="first-level-table-container">
       <table class="first-level-table">
@@ -598,6 +624,70 @@
 
   <!-- 2nd Level Follow-up Section -->
   <div class="tab-content" id="second-level">
+    <button id="secondfilterBtn" class="second-level-filter-btn">
+      <img src="../assets/imgaes/filter_list.png" alt="" /> Filter
+    </button>
+
+    <div id="secondLevelFilterDropdown" class="second-level-filter-dropdown">
+      <div class="second-level-filter-dropdown-content">
+        <h4 class="second-level-filter-dropdown-title">Filter by Status</h4>
+
+        <div class="second-level-filter-options">
+          <label class="second-level-filter-radio-label">
+            <input type="radio" name="secondLevelFilter" value="All" checked />
+            <span>Show All</span>
+          </label>
+
+          <label class="second-level-filter-radio-label">
+            <input type="radio" name="secondLevelFilter" value="Lead" />
+            <span>Lead</span>
+          </label>
+
+          <label class="second-level-filter-radio-label">
+            <input type="radio" name="secondLevelFilter" value="Drop" />
+            <span>Drop</span>
+          </label>
+
+          <label class="second-level-filter-radio-label">
+            <input type="radio" name="secondLevelFilter" value="Quotation" />
+            <span>Quotation</span>
+          </label>
+
+          <label class="second-level-filter-radio-label">
+            <input type="radio" name="secondLevelFilter" value="In Progress" />
+            <span>In Progress</span>
+          </label>
+
+          <label class="second-level-filter-radio-label">
+            <input type="radio" name="secondLevelFilter" value="Not Interest" />
+            <span>Not Interest</span>
+          </label>
+
+          <label class="second-level-filter-radio-label">
+            <input type="radio" name="secondLevelFilter" value="None" />
+            <span>None</span>
+          </label>
+        </div>
+
+        <div class="second-level-filter-actions">
+          <button
+            type="button"
+            class="second-level-filter-apply-btn"
+            id="secondLevelApplyFilter"
+          >
+            Apply
+          </button>
+          <button
+            type="button"
+            class="second-level-filter-clear-btn"
+            id="secondLevelClearFilter"
+          >
+            Clear
+          </button>
+        </div>
+      </div>
+    </div>
+
     <div class="second-level-table-container">
       <table class="second-level-table">
         <thead>
@@ -1245,5 +1335,9 @@
         </div>
       </div>
     </div>
+  </div>
+
+  <div class="tab-content" id="report-database">
+    <h1>Report Content Here</h1>
   </div>
 </div>

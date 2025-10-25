@@ -1,3 +1,30 @@
+.customer-database-btns {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1vw;
+}
+
+.customer-database-filter-btn{
+    font-size: 1vw;
+    background-color: transparent;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-family: 'Gilroy-Bold', sans-serif;
+    margin-bottom: 1vw;
+}
+
+.customer-database-filter-btn img{
+    width: 100%;
+    height: auto;
+    max-width: 2vw;
+}
+
+.customer-database-filter-btn:hover {
+    transform: scale(1.2);
+}
+
 .customer-database-add-btn {
     font-size: 1vw;
     padding: 10px 20px;
@@ -108,7 +135,8 @@
     cursor: pointer;
     outline: none;
     appearance: none;
-    accent-color: #9ca3af; /* Grey accent color */
+    accent-color: #9ca3af;
+    /* Grey accent color */
     background-color: transparent;
     background-repeat: no-repeat;
     background-position: right 8px center;
@@ -118,12 +146,14 @@
 }
 
 .table-status-select:hover {
-    background-color: #f3f4f6; /* Light grey on hover */
+    background-color: #f3f4f6;
+    /* Light grey on hover */
 }
 
 .table-status-select:focus {
     outline: none;
-    background-color: #f3f4f6; /* Light grey on focus */
+    background-color: #f3f4f6;
+    /* Light grey on focus */
 }
 
 /* Dropdown options styling with grey hover */
@@ -137,7 +167,8 @@
 /* Override browser's blue highlight with grey using box-shadow */
 .table-status-select option:hover,
 .table-status-select option:checked {
-    box-shadow: 0 0 10px 100px #e5e7eb inset !important; /* Grey highlight */
+    box-shadow: 0 0 10px 100px #e5e7eb inset !important;
+    /* Grey highlight */
     background-color: #e5e7eb !important;
     color: #333 !important;
 }
@@ -232,6 +263,14 @@
     margin-bottom: 30px;
 }
 
+.customer-section-title-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #0052CC;
+    margin-bottom: 1vw;
+}
+
 .customer-section-title {
     font-size: 1.2vw;
     font-family: 'Gilroy-Bold', sans-serif;
@@ -286,6 +325,65 @@
 .customer-input::placeholder {
     color: #999;
 }
+
+/* Contact detail */
+.customer-btn-add-contact {
+    background: #0052CC;
+    color: white;
+    padding: 10px;
+    margin-bottom: 1vw;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: .7vw;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Gilroy-Bold', sans-serif;
+}
+
+.customer-contact-row {
+    position: relative;
+    border-radius: 8px;
+    margin-bottom: 16px;
+}
+
+.customer-contact-row-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.customer-contact-row-title {
+    color: #333;
+    font-size: 1vw;
+    font-family: 'Gilroy-Medium', sans-serif;
+}
+
+.customer-contact-delete-btn {
+    background: transparent;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: background 0.3s;
+}
+
+.customer-contact-delete-btn img {
+    width: 100%;
+    height: auto;
+    max-width: 1.5vw;
+}
+
+.customer-contact-delete-btn:hover {
+    transform: scale(1.1);
+}
+
 
 /* Customer Modal Footer */
 .customer-modal-footer {
@@ -352,7 +450,8 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto; /* Center the button */
+    margin: 0 auto;
+    /* Center the button */
 }
 
 .customer-table-view-btn {
@@ -368,7 +467,8 @@
     width: 20px;
     height: 20px;
     display: block;
-    margin: 0 auto; /* Center the image */
+    margin: 0 auto;
+    /* Center the image */
 }
 
 .customer-table-delete-btn {
@@ -384,7 +484,8 @@
     width: 20px;
     height: 20px;
     display: block;
-    margin: 0 auto; /* Center the image */
+    margin: 0 auto;
+    /* Center the image */
 }
 
 

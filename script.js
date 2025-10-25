@@ -155,26 +155,31 @@ function initializePageScripts(pageName) {
       break;
 
     case "client":
-      setTimeout(() => {
-        if (typeof initializeClientDatabaseTabs === "function") {
-          initializeClientDatabaseTabs();
-        }
-        if (typeof initializeCustomerModal === "function") {
-          initializeCustomerModal();
-        }
-        if (typeof initializeFirstLevelFollowup === "function") {
-          initializeFirstLevelFollowup();
-        }
-        if (typeof initializeSecondLevelFollowup === "function") {
-          initializeSecondLevelFollowup();
-        }
-        if (typeof initializeMeetingDetails === "function") {
-          initializeMeetingDetails();
-        } else {
-          console.error("initializeMeetingDetails function not found!");
-        }
-      }, 100);
-      break;
+  setTimeout(() => {
+    if (typeof initializeClientDatabaseTabs === "function") {
+      initializeClientDatabaseTabs();
+    }
+    if (typeof initializeCustomerModal === "function") {
+      initializeCustomerModal();
+    }
+    if (typeof initializeFirstLevelFollowup === "function") {
+      initializeFirstLevelFollowup();
+    }
+    if (typeof initializeSecondLevelFollowup === "function") {
+      initializeSecondLevelFollowup();
+    }
+    if (typeof initializeMeetingDetails === "function") {
+      initializeMeetingDetails();
+    }
+    // ✅ ADD THIS - Initialize Report Details
+    if (typeof initializeReportDetails === "function") {
+      initializeReportDetails();
+    } else {
+      console.error("initializeReportDetails function not found!");
+    }
+  }, 100);
+  break;
+
 
     case "projects":
       setTimeout(() => {

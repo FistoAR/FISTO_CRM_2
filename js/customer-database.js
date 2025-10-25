@@ -6,15 +6,19 @@ function initializeCustomerModal() {
     const openBtn = document.getElementById('openCustomerModal');
     const closeBtn = document.querySelector('.customer-modal-close');
     const submitBtn = document.getElementById('customerSubmitBtn');
-    const clearBtn = document.getElementById('customerClearBtn');
     const form = document.getElementById('customerForm');
     const tableBody = document.getElementById('customer-databaseTableBody');
+    const addContactBtn = document.getElementById('addContactBtn');
+    const contactsContainer = document.getElementById('customerContactsContainer');
     
     // Check if elements exist
     if (!modal || !openBtn) {
         console.error('Modal or button not found!');
         return;
     }
+    
+    // Contact row counter
+    let contactRowCounter = 0;
     
     // FAKE DATA - Pre-populated customer records
     let customers = [
@@ -28,122 +32,95 @@ function initializeCustomerModal() {
             address: '123, Anna Salai, Chennai - 600002',
             reference: 'LinkedIn',
             remarks: 'Interested in CRM implementation',
-            contactPerson: 'Rajesh Kumar',
-            phoneNumber: '+91 98765 43210',
-            mailId: 'rajesh@techvision.com',
-            designation: 'CTO'
+            contacts: [
+                {
+                    contactPerson: 'Rajesh Kumar',
+                    phoneNumber: '+91 98765 43210',
+                    mailId: 'rajesh@techvision.com',
+                    designation: 'CTO'
+                }
+            ]
         },
-        {
-            date: '2025-10-03',
-            customerId: 'CUST002',
-            companyName: 'Global Retail Corp',
-            customerName: 'Priya Sharma',
-            industryType: 'Retail',
-            website: 'www.globalretail.in',
-            address: '45, MG Road, Bangalore - 560001',
-            reference: 'Trade Show',
-            remarks: 'Looking for inventory management system',
-            contactPerson: 'Priya Sharma',
-            phoneNumber: '+91 98123 45678',
-            mailId: 'priya.sharma@globalretail.in',
-            designation: 'Operations Manager'
-        },
-        {
-            date: '2025-10-05',
-            customerId: 'CUST003',
-            companyName: 'Sunrise Manufacturing',
-            customerName: 'Arun Patel',
-            industryType: 'Manufacturing',
-            website: 'www.sunrisemfg.com',
-            address: '78, Industrial Area, Pune - 411019',
-            reference: 'Email Campaign',
-            remarks: 'Needs production tracking software',
-            contactPerson: 'Arun Patel',
-            phoneNumber: '+91 97654 32109',
-            mailId: 'arun.patel@sunrisemfg.com',
-            designation: 'Plant Manager'
-        },
-        {
-            date: '2025-10-08',
-            customerId: 'CUST004',
-            companyName: 'HealthCare Plus',
-            customerName: 'Dr. Meena Reddy',
-            industryType: 'Healthcare',
-            website: 'www.healthcareplus.in',
-            address: '12, Hospital Road, Hyderabad - 500003',
-            reference: 'Referral',
-            remarks: 'Patient management system required',
-            contactPerson: 'Dr. Meena Reddy',
-            phoneNumber: '+91 99887 76655',
-            mailId: 'meena@healthcareplus.in',
-            designation: 'Director'
-        },
-        {
-            date: '2025-10-10',
-            customerId: 'CUST005',
-            companyName: 'EduTech Academy',
-            customerName: 'Vikram Singh',
-            industryType: 'Education',
-            website: 'www.edutech.academy',
-            address: '56, College Street, Kolkata - 700073',
-            reference: 'Google Search',
-            remarks: 'Online course management platform',
-            contactPerson: 'Vikram Singh',
-            phoneNumber: '+91 98456 78901',
-            mailId: 'vikram@edutech.academy',
-            designation: 'Founder & CEO'
-        },
-        {
-            date: '2025-10-12',
-            customerId: 'CUST006',
-            companyName: 'FoodHub Logistics',
-            customerName: 'Anita Desai',
-            industryType: 'Food & Beverage',
-            website: 'www.foodhub.co.in',
-            address: '89, Service Road, Mumbai - 400051',
-            reference: 'Partner Introduction',
-            remarks: 'Supply chain management solution needed',
-            contactPerson: 'Anita Desai',
-            phoneNumber: '+91 97123 45678',
-            mailId: 'anita@foodhub.co.in',
-            designation: 'Supply Chain Head'
-        },
-        {
-            date: '2025-10-14',
-            customerId: 'CUST007',
-            companyName: 'AutoParts India',
-            customerName: 'Suresh Iyer',
-            industryType: 'Automotive',
-            website: 'www.autopartsindia.com',
-            address: '34, Industrial Estate, Coimbatore - 641014',
-            reference: 'Cold Call',
-            remarks: 'Dealer management system',
-            contactPerson: 'Suresh Iyer',
-            phoneNumber: '+91 96543 21098',
-            mailId: 'suresh@autopartsindia.com',
-            designation: 'Sales Director'
-        },
-        {
-            date: '2025-10-15',
-            customerId: 'CUST008',
-            companyName: 'FinTech Innovations',
-            customerName: 'Kavita Menon',
-            industryType: 'Financial Services',
-            website: 'www.fintech-inn.com',
-            address: '101, Business Park, Gurgaon - 122002',
-            reference: 'Conference',
-            remarks: 'Custom financial analytics dashboard',
-            contactPerson: 'Kavita Menon',
-            phoneNumber: '+91 98765 12345',
-            mailId: 'kavita@fintech-inn.com',
-            designation: 'VP Technology'
-        }
+        // ... rest of your fake data with contacts array ...
     ];
     
     let editingIndex = -1;
 
     // Initial render on page load
     renderTable();
+
+    // Add Contact Row Function
+    function addContactRow(contactData = null) {
+        contactRowCounter++;
+        const isFirst = contactsContainer.children.length === 0;
+        
+        const contactRow = document.createElement('div');
+        contactRow.className = 'customer-contact-row';
+        contactRow.dataset.contactId = contactRowCounter;
+        
+        contactRow.innerHTML = `
+            <div class="customer-contact-row-header">
+                <span class="customer-contact-row-title">Contact ${contactRowCounter}</span>
+                ${!isFirst ? `
+                    <button type="button" class="customer-contact-delete-btn" data-contact-id="${contactRowCounter}">
+                        <img src="../assets/imgaes/preview_delete_btn.png" alt="Delete" />
+                    </button>
+                ` : ''}
+            </div>
+            <div class="customer-form-row">
+                <div class="customer-form-group">
+                    <label class="customer-label">
+                        Contact Person <span class="customer-required">*</span>
+                    </label>
+                    <input type="text" name="contactPerson[]" class="customer-input" 
+                        placeholder="Enter Contact Person" value="${contactData?.contactPerson || ''}" required />
+                </div>
+                <div class="customer-form-group">
+                    <label class="customer-label">
+                        Phone Number <span class="customer-required">*</span>
+                    </label>
+                    <input type="tel" name="phoneNumber[]" class="customer-input" 
+                        placeholder="+91 1234567890" value="${contactData?.phoneNumber || ''}" required />
+                </div>
+                <div class="customer-form-group">
+                    <label class="customer-label">Mail ID</label>
+                    <input type="email" name="mailId[]" class="customer-input" 
+                        placeholder="example@email.com" value="${contactData?.mailId || ''}" required />
+                </div>
+            </div>
+            <div class="customer-form-row">
+                <div class="customer-form-group">
+                    <label class="customer-label">Designation</label>
+                    <input type="text" name="designation[]" class="customer-input" 
+                        placeholder="Enter Designation" value="${contactData?.designation || ''}" required />
+                </div>
+            </div>
+        `;
+        
+        contactsContainer.appendChild(contactRow);
+    }
+
+    // Delete Contact Row Function
+    function deleteContactRow(contactId) {
+        const rowToDelete = contactsContainer.querySelector(`[data-contact-id="${contactId}"]`);
+        if (rowToDelete) {
+            rowToDelete.remove();
+        }
+    }
+
+    // Event delegation for delete buttons
+    contactsContainer.addEventListener('click', function(e) {
+        if (e.target.classList.contains('customer-contact-delete-btn')) {
+            const contactId = e.target.getAttribute('data-contact-id');
+            deleteContactRow(contactId);
+        }
+    });
+
+    // Add Contact Button Click
+    addContactBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        addContactRow();
+    });
 
     // Open Modal for Adding
     openBtn.addEventListener('click', function(e) {
@@ -154,12 +131,16 @@ function initializeCustomerModal() {
         submitBtn.textContent = 'Submit';
         editingIndex = -1;
         form.reset();
+        
+        // Clear and add one contact row
+        contactsContainer.innerHTML = '';
+        contactRowCounter = 0;
+        addContactRow();
     });
 
     // Close Modal
     closeBtn.addEventListener('click', closeModal);
     
-    // Close modal when clicking outside
     modal.addEventListener('click', function(e) {
         if (e.target === modal) {
             closeModal();
@@ -169,14 +150,27 @@ function initializeCustomerModal() {
     function closeModal() {
         modal.classList.remove('active');
         form.reset();
+        contactsContainer.innerHTML = '';
+        contactRowCounter = 0;
         editingIndex = -1;
     }
 
-    // Clear Form (if button exists)
-    if (clearBtn) {
-        clearBtn.addEventListener('click', function() {
-            form.reset();
+    // Collect Contact Data
+    function collectContactData() {
+        const contacts = [];
+        const contactRows = contactsContainer.querySelectorAll('.customer-contact-row');
+        
+        contactRows.forEach(row => {
+            const contact = {
+                contactPerson: row.querySelector('[name="contactPerson[]"]').value,
+                phoneNumber: row.querySelector('[name="phoneNumber[]"]').value,
+                mailId: row.querySelector('[name="mailId[]"]').value,
+                designation: row.querySelector('[name="designation[]"]').value
+            };
+            contacts.push(contact);
         });
+        
+        return contacts;
     }
 
     // Submit Form
@@ -195,10 +189,7 @@ function initializeCustomerModal() {
                 address: formData.get('address'),
                 reference: formData.get('reference'),
                 remarks: formData.get('remarks'),
-                contactPerson: formData.get('contactPerson'),
-                phoneNumber: formData.get('phoneNumber'),
-                mailId: formData.get('mailId'),
-                designation: formData.get('designation')
+                contacts: collectContactData() // Collect multiple contacts
             };
 
             if (editingIndex === -1) {
@@ -214,9 +205,8 @@ function initializeCustomerModal() {
         }
     });
 
-    // Event delegation for dynamically created buttons
+    // Event delegation for table buttons
     tableBody.addEventListener('click', function(e) {
-        // Check if click was on view/edit button or its icon
         const viewBtn = e.target.closest('.customer-table-view-btn');
         const deleteBtn = e.target.closest('.customer-table-delete-btn');
         
@@ -243,6 +233,8 @@ function initializeCustomerModal() {
         }
 
         tableBody.innerHTML = customers.map((customer, index) => {
+            // Show first contact's name
+            const firstContact = customer.contacts?.[0] || {};
             return `
                 <tr>
                     <td>${customer.date}</td>
@@ -280,10 +272,17 @@ function initializeCustomerModal() {
         document.querySelector('[name="address"]').value = customer.address;
         document.querySelector('[name="reference"]').value = customer.reference;
         document.querySelector('[name="remarks"]').value = customer.remarks;
-        document.querySelector('[name="contactPerson"]').value = customer.contactPerson;
-        document.querySelector('[name="phoneNumber"]').value = customer.phoneNumber;
-        document.querySelector('[name="mailId"]').value = customer.mailId;
-        document.querySelector('[name="designation"]').value = customer.designation;
+        
+        // Load contacts
+        contactsContainer.innerHTML = '';
+        contactRowCounter = 0;
+        if (customer.contacts && customer.contacts.length > 0) {
+            customer.contacts.forEach(contact => {
+                addContactRow(contact);
+            });
+        } else {
+            addContactRow();
+        }
         
         document.getElementById('customerModalTitle').textContent = 'Edit Client';
         submitBtn.textContent = 'Save Changes';
@@ -298,22 +297,7 @@ function initializeCustomerModal() {
         }
     }
 
-    // Expose customer data globally for first level
-window.customerData = customers;
-
-// Trigger event when customers change
-function notifyCustomerDataChange() {
     window.customerData = customers;
-    window.dispatchEvent(new Event('customerDataUpdated'));
-}
-
-// Call notifyCustomerDataChange() after renderTable()
-const originalRenderTable = renderTable;
-renderTable = function() {
-    originalRenderTable();
-    notifyCustomerDataChange();
-};
-
     
     console.log('Customer modal initialized successfully!');
 }
