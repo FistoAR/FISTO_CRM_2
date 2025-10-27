@@ -174,8 +174,6 @@ function initializePageScripts(pageName) {
     // ✅ ADD THIS - Initialize Report Details
     if (typeof initializeReportDetails === "function") {
       initializeReportDetails();
-    } else {
-      console.error("initializeReportDetails function not found!");
     }
   }, 100);
   break;
