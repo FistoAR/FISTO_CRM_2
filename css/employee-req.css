@@ -1,25 +1,30 @@
-.employee-request-content h2{
+.employee-request-content h2 {
     font-size: 2vw;
-    font-family: 'Gilroy-Bold',sans-serif;
+    font-family: 'Gilroy-Bold', sans-serif;
 }
+
 .employee-request-tabs {
-    display: flex;
-    gap: 15px;
-    margin-top: 2vw;
-    margin-bottom: 1.5vw;
-    flex-wrap: wrap;
+    display: inline-flex;
+    gap: 1vw;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 0.5vw;
+    background: white;
+    margin: 1vw 0 1vw 0;
 }
 
 .employee-request-tab-button {
-    padding: 12px 30px;
-    border: 2px solid #e0e0e0;
-    background: white;
+    padding: 10px 28px;
+    border: none;
+    background: transparent;
     color: #666;
-    border-radius: 30px;
+    border-radius: 10px;
     cursor: pointer;
     font-size: 0.95vw;
     font-family: 'Gilroy-SemiBold', sans-serif;
+    font-weight: 500;
     transition: all 0.3s ease;
+    white-space: nowrap;
 }
 
 .employee-request-tab-button:hover {
@@ -29,9 +34,8 @@
 }
 
 .employee-request-tab-button.employee-request-active {
-    background: #0052cc;
-    color: white;
-    border-color: #0052cc;
+     background: linear-gradient(to bottom, #0052CC 10%, #002966 100%);
+    color: #ffffff;
 }
 
 .employee-request-form-section {
@@ -48,6 +52,7 @@
         opacity: 0;
         transform: translateY(10px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);

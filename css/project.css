@@ -582,46 +582,46 @@
 }
 
 .selected-teams-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 10px;
-  min-height: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+    min-height: 20px;
 }
 
 .team-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: #e8f4ff;
-  border: 1px solid #0052cc;
-  border-radius: 20px;
-  padding: 6px 12px;
-  font-size: 14px;
-  color: #0052cc;
-  font-family: 'Gilroy-Medium', sans-serif;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #e8f4ff;
+    border: 1px solid #0052cc;
+    border-radius: 20px;
+    padding: 6px 12px;
+    font-size: 14px;
+    color: #0052cc;
+    font-family: 'Gilroy-Medium', sans-serif;
 }
 
 .team-tag-remove {
-  background: transparent;
-  border: none;
-  color: #0052cc;
-  cursor: pointer;
-  font-size: 16px;
-  font-weight: bold;
-  padding: 0;
-  width: 18px;
-  height: 18px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  transition: all 0.2s;
+    background: transparent;
+    border: none;
+    color: #0052cc;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 0;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.2s;
 }
 
 .team-tag-remove:hover {
-  background: #0052cc;
-  color: white;
+    background: #0052cc;
+    color: white;
 }
 
 /* ==================== CONTACT FIELDS STYLES ==================== */
@@ -1433,7 +1433,6 @@
 
 /* ==================== TASK MANAGEMENT PAGE ==================== */
 .task-management-page {
-    padding: 20px;
     animation: fadeIn 0.3s ease;
 }
 
@@ -1473,11 +1472,41 @@
     padding: 15px 20px;
 }
 
+.task-card .task-card-summary {
+    display: none;
+    align-items: center;
+    gap: 120px;
+    border-radius: 8px;
+    font-size: 1vw;
+    font-family: 'Gilroy-Regular', sans-serif;
+    color: #444;
+}
+
+.task-card.collapsed .task-card-summary {
+    display: flex;
+}
+
+.task-card.collapsed .task-card-content {
+    display: none;
+}
+
+.task-card-summary .badge {
+    background: #DBEAFE;
+    color: #585858;
+    padding: 8px 12px;
+    border-radius: 30px;
+    font-size: 1vw;
+    font-family: 'Gilroy-Regular', sans-serif;
+
+}
+
+
 .task-card-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-bottom: 20px;
+    cursor: pointer;
 }
 
 .task-card.collapsed .task-card-header {
@@ -1526,6 +1555,12 @@
 .task-expand-btn.expanded {
     transform: rotate(180deg);
 }
+
+.task-expand-btn img {
+    width: 30px;
+    height: auto;
+}
+
 
 .task-delete-btn {
     background: none;
@@ -1607,7 +1642,7 @@
     background: #6B7280;
     color: white;
     border: none;
-    border-radius: 6px;
+    border-radius: 30px;
     font-size: 0.9rem;
     font-family: 'Gilroy-SemiBold', sans-serif;
     cursor: pointer;
@@ -2184,7 +2219,7 @@
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
-.project-resources-link-wrapper{
+.project-resources-link-wrapper {
     display: flex;
     align-items: center;
     gap: 1vw;
@@ -2201,7 +2236,7 @@
     border-radius: 8px;
 }
 
-.project-resources-link-actions{
+.project-resources-link-actions {
     display: flex;
     gap: 1vw;
 }
@@ -2240,9 +2275,10 @@
     color: #1f2937;
 }
 
-.project-resources-link-title{
+.project-resources-link-title {
     font-family: 'Gilroy-Medium', sans-serif;
 }
+
 .project-resources-file-size {
     font-size: .6vw;
     font-family: 'Gilroy-Medium', sans-serif;
@@ -2266,7 +2302,7 @@
     gap: 8px;
 }
 
-.project-resources-action-btn img{
+.project-resources-action-btn img {
     width: 20px;
     height: auto;
     display: flex;
@@ -2278,7 +2314,8 @@
     transition: all 0.2s ease;
 }
 
-.copy-btn-view, .delete-btn-view {
+.copy-btn-view,
+.delete-btn-view {
     border: none;
 }
 
@@ -2756,7 +2793,7 @@
     .success-toast.show {
         right: 10px;
     }
-    
+
 }
 
 /* Small Mobile (320px - 480px) */
@@ -2885,173 +2922,177 @@
 
 /* ==================== TABLET (769px - 1024px) ==================== */
 @media (min-width: 769px) and (max-width: 1024px) {
-    
+
     /* Project Overview */
     .project-overview-breadcrumbs {
         font-size: 14px;
     }
-    
+
     .project-overview-tab-btn {
         font-size: 14px;
         padding: 10px 18px;
     }
-    
+
     .project-overview-stats {
         grid-template-columns: repeat(3, 1fr);
         gap: 12px;
     }
-    
+
     .project-overview-stat-number {
         font-size: 1.8rem;
     }
-    
+
     .project-overview-stat-label {
         font-size: 13px;
     }
-    
+
     .project-overview-details-header-row {
         flex-direction: column;
         margin-bottom: 2vw;
     }
-    
+
     .project-overview-grid-section {
         grid-template-columns: repeat(2, 1fr);
     }
-    
+
     .project-overview-large-card {
         padding: 20px;
     }
-    
+
     .project-overview-large-card h3 {
         font-size: 1.3rem;
     }
-    
+
     .project-overview-card {
         padding: 14px;
     }
-    
+
     .project-overview-card-label {
         font-size: 13px;
     }
-    
+
     .project-overview-user-name {
         font-size: 14px;
     }
-    
+
     .project-overview-user-role {
         font-size: 12px;
     }
-    
+
     /* Tasks */
     .project-tasks-header h3 {
         font-size: 16px;
     }
-    
-    
+
+
     .Taskproject-search-filter-section {
         flex-wrap: wrap;
     }
-    
+
     .Taskproject-search-input {
         font-size: 14px;
     }
-    
+
     .project-tasks-table th,
     .project-tasks-table td {
         padding: 10px 12px;
         font-size: 13px;
     }
-    
+
     /* Task Management */
     .task-management-title {
         font-size: 1.5rem;
     }
-    
+
     .task-form-row {
         grid-template-columns: repeat(2, 1fr);
         gap: 12px;
     }
-    
+
     .task-card-header {
         flex-wrap: wrap;
         gap: 12px;
     }
-    
+
     /* Employee Modal */
     .project-overview-employee-modal-content {
         max-width: 90vw;
     }
-    
+
     .project-overview-employee-modal-header h2 {
         font-size: 1.3rem;
     }
-    
+
     .project-overview-employee-tab-btn {
         font-size: 14px;
         padding: 12px 20px;
     }
-    
+
     .project-overview-employee-search-input {
         font-size: 14px;
     }
-    
+
     .project-overview-employee-name {
         font-size: 14px;
     }
-    
+
     /* Resources */
     .project-resources-header {
         padding: 12px;
         gap: 12px;
     }
-    
+
     .project-resources-header-content h4,
     .project-resources-subtitle {
         font-size: 14px;
     }
-    .project-resources-item-info h5{
+
+    .project-resources-item-info h5 {
         font-size: 14px;
     }
-    .project-resources-item-info p{
+
+    .project-resources-item-info p {
         font-size: 12px;
     }
 
-    .project-resources-btn-cancel, .project-resources-btn-upload {
+    .project-resources-btn-cancel,
+    .project-resources-btn-upload {
         font-size: 1rem;
         padding: 8px 20px;
     }
+
     .project-resources-upload-btn,
     .project-resources-view-btn {
         flex: 1;
         font-size: 13px;
     }
-    
+
     .project-resources-dropzone {
         padding: 40px 20px;
     }
-    
+
     .project-resources-dropzone-text {
         font-size: 15px;
     }
-    
+
     .project-resources-dropzone-formats {
         font-size: 13px;
     }
-    
+
     .project-resources-link-row {
         flex-wrap: wrap;
         gap: 10px;
     }
-    
+
     .project-resources-modal-header h3 {
         font-size: 1.5rem;
     }
 
-    .taskpagination-btn{
+    .taskpagination-btn {
         font-size: 1rem;
     }
 
-    .taskpage-number{
+    .taskpage-number {
         font-size: 1rem;
     }
 }
@@ -3059,276 +3100,276 @@
 
 /* ==================== MOBILE (481px - 768px) ==================== */
 @media (min-width: 481px) and (max-width: 768px) {
-    
+
     /* Project Overview */
     .project-overview-breadcrumbs {
         font-size: 13px;
     }
-    
+
     .project-overview-tabs {
         overflow-x: auto;
         gap: 8px;
     }
-    
+
     .project-overview-tab-btn {
         font-size: 13px;
         padding: 10px 16px;
         white-space: nowrap;
     }
-    
+
     .project-overview-stats {
         grid-template-columns: repeat(2, 1fr);
         gap: 10px;
     }
-    
+
     .project-overview-stat-card {
         padding: 12px;
     }
-    
+
     .project-overview-stat-number {
         font-size: 1.5rem;
     }
-    
+
     .project-overview-stat-label {
         font-size: 12px;
     }
-    
+
     .project-overview-details-header-row {
         flex-direction: column;
         gap: 12px;
     }
-    
+
     .project-overview-large-card {
         padding: 18px;
     }
-    
+
     .project-overview-large-card h3 {
         font-size: 1.2rem;
     }
-    
+
     .project-overview-description {
         font-size: 13px;
     }
-    
+
     .project-overview-grid-section {
         grid-template-columns: 1fr;
     }
-    
+
     .project-overview-card {
         padding: 14px;
     }
-    
+
     .project-overview-card-label {
         font-size: 12px;
     }
-    
+
     .project-overview-user-avatar {
         width: 36px;
         height: 36px;
     }
-    
+
     .project-overview-user-name {
         font-size: 13px;
     }
-    
+
     .project-overview-user-role {
         font-size: 11px;
     }
-    
+
     .project-overview-employees-content {
         flex-direction: column;
         gap: 10px;
     }
-    
+
     .project-overview-add-view-btn {
         width: 100%;
         justify-content: center;
     }
-    
+
     /* Tasks */
     .project-tasks-header {
         flex-direction: column;
         gap: 12px;
     }
-    
+
     .project-tasks-actions {
         width: 100%;
     }
-    
+
     .Taskproject-search-filter-section {
         flex-direction: column;
         width: 100%;
     }
-    
+
     .Tasksearch-box {
         width: 100%;
     }
-    
+
     .Taskproject-search-input {
         width: 100%;
         font-size: 14px;
     }
-    
+
     .Taskproject-filter-btn {
         width: 100%;
         justify-content: center;
     }
-    
+
     .project-task-add-btn {
         width: 100%;
     }
-    
+
     .project-tasks-table-wrapper {
         overflow-x: auto;
     }
-    
+
     .project-tasks-table {
         min-width: 800px;
     }
-    
+
     .taskpagination-container {
         flex-wrap: wrap;
         gap: 8px;
     }
-    
+
     /* Task Management */
     .task-management-title {
         font-size: 1.3rem;
     }
-    
+
     .task-form-row {
         grid-template-columns: 1fr;
         gap: 12px;
     }
-    
+
     .task-card {
         padding: 16px;
     }
-    
+
     .task-card-header {
         flex-wrap: wrap;
         gap: 10px;
     }
-    
+
     .task-number-badge {
         width: 45px;
         height: 45px;
         font-size: 1.1rem;
     }
-    
+
     .task-card-title {
         font-size: 15px;
     }
-    
+
     .task-management-actions {
         flex-direction: column;
         gap: 10px;
     }
-    
+
     .task-save-btn,
     .task-cancel-btn {
         width: 100%;
     }
-    
+
     /* Employee Modal */
     .project-overview-employee-modal-content {
         max-width: 95vw;
     }
-    
+
     .project-overview-employee-modal-header h2 {
         font-size: 1.2rem;
     }
-    
+
     .project-overview-employee-tabs {
         flex-wrap: wrap;
     }
-    
+
     .project-overview-employee-tab-btn {
         font-size: 13px;
         padding: 12px 16px;
         flex: 1;
     }
-    
+
     .project-overview-employee-search-input {
         font-size: 14px;
     }
-    
+
     .project-overview-employee-name {
         font-size: 13px;
     }
-    
+
     .project-overview-btn-save,
     .project-overview-btn-cancel {
         width: 100%;
     }
-    
+
     /* Resources */
     .project-resources-section {
         padding: 20px 15px;
     }
-    
+
     .project-resources-header {
         flex-direction: column;
         gap: 10px;
         padding: 12px;
     }
-    
+
     .project-resources-header-content h4 {
         font-size: 14px;
     }
-    
+
     .project-resources-item-section {
         flex-direction: column;
         gap: 12px;
         padding: 12px;
     }
-    
+
     .project-resources-item-actions {
         width: 100%;
         flex-direction: column;
         gap: 10px;
     }
-    
+
     .project-resources-upload-btn,
     .project-resources-view-btn {
         width: 100%;
         justify-content: center;
     }
-    
+
     .project-resources-modal-content {
         max-width: 95vw;
     }
-    
+
     .project-resources-modal-header h3 {
         font-size: 1.3rem;
     }
-    
+
     .project-resources-dropzone {
         padding: 30px 20px;
         margin: 20px;
     }
-    
+
     .project-resources-link-row {
         flex-direction: column;
         gap: 10px;
     }
-    
+
     .project-resources-link-name,
     .project-resources-link-url {
         width: 100%;
     }
-    
+
     .project-resources-file-item,
     .project-resources-link-item {
         flex-direction: column;
         align-items: flex-start;
         gap: 12px;
     }
-    
+
     .project-resources-link-wrapper {
         width: 100%;
     }
-    
+
     .project-resources-link-actions {
         width: 100%;
         justify-content: flex-end;
@@ -3338,370 +3379,370 @@
 
 /* ==================== SMALL MOBILE (< 481px) ==================== */
 @media (max-width: 480px) {
-    
+
     /* Project Overview */
     .project-overview-breadcrumbs {
         font-size: 12px;
         margin-bottom: 15px;
     }
-    
+
     .project-overview-tabs {
         overflow-x: auto;
         gap: 6px;
         flex-wrap: nowrap;
     }
-    
+
     .project-overview-tab-btn {
         font-size: 12px;
         padding: 8px 14px;
         white-space: nowrap;
         flex-shrink: 0;
     }
-    
+
     .project-overview-stats {
         grid-template-columns: 1fr;
         gap: 8px;
     }
-    
+
     .project-overview-stat-card {
         padding: 10px 12px;
         flex-direction: row;
         gap: 12px;
     }
-    
+
     .project-overview-stat-icon img {
         max-width: 20px;
     }
-    
+
     .project-overview-stat-number {
         font-size: 1.3rem;
     }
-    
+
     .project-overview-stat-label {
         font-size: 11px;
     }
-    
+
     .project-overview-details-header-row {
         flex-direction: column;
         gap: 10px;
     }
-    
+
     .project-overview-large-card {
         padding: 14px;
     }
-    
+
     .project-overview-large-card h3 {
         font-size: 1.1rem;
     }
-    
+
     .project-overview-description {
         font-size: 12px;
     }
-    
+
     .project-overview-priority-badge {
         font-size: 11px;
         padding: 3px 8px;
     }
-    
+
     .project-overview-grid-section {
         grid-template-columns: 1fr;
         gap: 10px;
     }
-    
+
     .project-overview-card {
         padding: 12px;
     }
-    
+
     .project-overview-card-label {
         font-size: 11px;
     }
-    
+
     .project-overview-user-avatar {
         width: 32px;
         height: 32px;
         font-size: 0.85rem;
     }
-    
+
     .project-overview-crown-icon {
         width: 28px;
     }
-    
+
     .project-overview-user-name {
         font-size: 12px;
     }
-    
+
     .project-overview-user-role {
         font-size: 10px;
     }
-    
+
     .project-overview-employees-content {
         flex-direction: column;
         gap: 8px;
     }
-    
+
     .project-overview-add-view-btn {
         width: 100%;
         font-size: 12px;
         padding: 8px 12px;
         justify-content: center;
     }
-    
+
     .project-overview-avatar-circle {
         width: 28px;
         height: 28px;
         font-size: 0.7rem;
     }
-    
+
     .project-overview-date-badge {
         font-size: 12px;
         padding: 6px 10px;
     }
-    
+
     /* Tasks */
     .project-tasks-header {
         flex-direction: column;
         gap: 10px;
     }
-    
+
     .project-tasks-header h3 {
         font-size: 14px;
     }
-    
+
     .Taskproject-search-filter-section {
         flex-direction: column;
         width: 100%;
         gap: 10px;
     }
-    
+
     .Tasksearch-box {
         width: 100%;
     }
-    
+
     .Taskproject-search-input {
         width: 100%;
         font-size: 13px;
         padding: 10px 15px 10px 38px;
     }
-    
+
     .Taskproject-filter-btn {
         width: 100%;
         font-size: 13px;
         justify-content: center;
     }
-    
+
     .project-task-add-btn {
         font-size: 12px;
         padding: 8px 14px;
         justify-content: center;
     }
-    
+
     .project-tasks-table {
         min-width: 100%;
         font-size: 11px;
     }
-    
+
     .project-tasks-table th,
     .project-tasks-table td {
         padding: 8px 6px;
         font-size: 11px;
     }
-    
+
     .taskpagination-container {
         gap: 8px;
     }
-    
+
     .taskpagination-btn {
         font-size: 12px;
     }
-    
+
     .taskpagination-numbers {
         width: 100%;
         justify-content: center;
     }
-    
+
     .taskpage-number {
         font-size: 11px;
         padding: 6px 8px;
     }
-    
+
     /* Task Management */
     .task-management-title {
         font-size: 1.1rem;
     }
-    
+
     .task-management-breadcrumbs {
         font-size: 12px;
     }
-    
+
     .task-form-row {
         grid-template-columns: 1fr;
         gap: 10px;
     }
-    
+
     .task-card {
         padding: 12px;
     }
-    
+
     .task-card-header {
         flex-wrap: wrap;
         gap: 8px;
     }
-    
+
     .task-number-badge {
         width: 38px;
         height: 38px;
         font-size: 0.9rem;
     }
-    
+
     .task-card-title {
         font-size: 13px;
     }
-    
+
     .task-input,
     .task-select {
         font-size: 13px;
         padding: 8px 10px;
     }
-    
+
     .task-textarea {
         font-size: 13px;
         min-height: 60px;
     }
-    
+
     .task-add-more-btn {
         width: 100%;
         font-size: 13px;
     }
-    
+
     .task-management-actions {
         flex-direction: column;
         gap: 8px;
     }
-    
+
     .task-save-btn,
     .task-cancel-btn {
         width: 100%;
         font-size: 13px;
         padding: 10px 16px;
     }
-    
+
     /* Employee Modal */
     .project-overview-employee-modal-content {
         max-width: 100%;
         border-radius: 12px;
     }
-    
+
     .project-overview-employee-modal-header {
         padding: 14px 16px;
     }
-    
+
     .project-overview-employee-modal-header h2 {
         font-size: 1.1rem;
     }
-    
+
     .project-overview-employee-modal-close {
         font-size: 26px;
     }
-    
+
     .project-overview-employee-tabs {
         flex-wrap: wrap;
         padding: 0 16px;
     }
-    
+
     .project-overview-employee-tab-btn {
         font-size: 12px;
         padding: 10px 12px;
         flex: 1;
     }
-    
+
     .project-overview-employee-search {
         padding: 14px 16px;
     }
-    
+
     .project-overview-employee-search-input {
         font-size: 13px;
     }
-    
+
     .project-overview-employee-tab-content {
         padding: 14px 16px;
         max-height: 350px;
     }
-    
+
     .project-overview-employee-item {
         padding: 10px;
     }
-    
+
     .project-overview-employee-avatar-large {
         width: 32px;
         height: 32px;
         font-size: 0.9rem;
     }
-    
+
     .project-overview-employee-name {
         font-size: 12px;
     }
-    
+
     .project-overview-employee-modal-footer {
         padding: 14px 16px;
         flex-direction: column;
     }
-    
+
     .project-overview-btn-save,
     .project-overview-btn-cancel {
         width: 100%;
         font-size: 13px;
     }
-    
+
     /* Resources */
     .project-resources-section {
         padding: 16px 12px;
     }
-    
+
     .project-resources-header {
         flex-direction: column;
         gap: 8px;
         padding: 10px;
     }
-    
+
     .project-resources-folder-icon img {
         max-width: 18px;
     }
-    
+
     .project-resources-header-content {
         flex-direction: column;
         gap: 4px;
     }
-    
+
     .project-resources-header-content h4,
     .project-resources-subtitle {
         font-size: 13px;
     }
-    
+
     .project-resources-item-section {
         flex-direction: column;
         gap: 10px;
         padding: 10px;
     }
-    
+
     .project-resources-item-icon img {
         width: 40px;
         height: 40px;
     }
-    
+
     .project-resources-item-info h5 {
         font-size: 14px;
     }
-    
+
     .project-resources-item-info p {
         font-size: 12px;
     }
-    
+
     .project-resources-item-actions {
         width: 100%;
         flex-direction: column;
         gap: 8px;
     }
-    
+
     .project-resources-upload-btn,
     .project-resources-view-btn {
         width: 100%;
@@ -3709,112 +3750,112 @@
         padding: 8px 12px;
         justify-content: center;
     }
-    
+
     .project-resources-modal-content {
         max-width: 100%;
     }
-    
+
     .project-resources-modal-header {
         padding: 16px 20px;
     }
-    
+
     .project-resources-modal-header h3 {
         font-size: 1.2rem;
     }
-    
+
     .project-resources-dropzone {
         padding: 24px 16px;
         margin: 16px;
     }
-    
+
     .project-resources-dropzone-icon svg {
         width: 40px;
         height: 40px;
     }
-    
+
     .project-resources-dropzone-text {
         font-size: 14px;
     }
-    
+
     .project-resources-dropzone-formats {
         font-size: 12px;
     }
-    
+
     .project-resources-files-list,
     .project-resources-links-list {
         padding: 16px;
         gap: 10px;
     }
-    
+
     .project-resources-file-item,
     .project-resources-link-item {
         padding: 10px;
         flex-direction: column;
         gap: 10px;
     }
-    
+
     .project-resources-link-wrapper {
         width: 100%;
         gap: 10px;
     }
-    
+
     .project-resources-file-icon img,
     .project-resources-link-icon img {
         width: 20px;
     }
-    
+
     .project-resources-file-details h5,
     .project-resources-link-title {
         font-size: 13px;
     }
-    
+
     .project-resources-file-size {
         font-size: 11px;
     }
-    
+
     .project-resources-link-url-text {
         font-size: 12px;
     }
-    
+
     .project-resources-link-actions {
         width: 100%;
         justify-content: flex-end;
     }
-    
+
     .project-resources-action-btn img {
         width: 18px;
     }
-    
+
     .project-resources-links-container {
         padding: 16px;
     }
-    
+
     .project-resources-link-row {
         flex-direction: column;
         gap: 8px;
     }
-    
+
     .project-resources-link-name,
     .project-resources-link-url {
         width: 100%;
         font-size: 12px;
         padding: 10px 12px;
     }
-    
+
     .project-resources-link-remove {
         width: 100%;
         height: 40px;
     }
-    
+
     .project-resources-add-link-btn {
         margin: 0 16px;
         font-size: 13px;
     }
-    
+
     .project-resources-modal-footer {
         padding: 14px 16px;
     }
-    
+
     .project-resources-btn-cancel,
     .project-resources-btn-upload {
         width: 100%;

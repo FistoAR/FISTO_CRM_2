@@ -1184,15 +1184,80 @@
     <!-- End div of hr request -->
   </div>
 
-  
-
-  
-
   <!-- ******************************************* HR SALARY CODE ****************************************** -->
 
   <div id="HRsalary" class="hr-tab-content">
-    <h3>Salary Calculation Content</h3>
-    <p>Salary calculation content goes here...</p>
+    <div class="hr-salary-header">
+      <div id="hrSalaryCalendarWidget" class="hr-salary-calendar-widget">
+        <div class="hr-salary-calendar-header">
+          DD/MM/YEAR
+          <button id="hrSalaryCalendarToggle" class="hr-salary-calendar-btn">
+            <img src="../assets/imgaes/calendar_icon.png" alt="" />
+          </button>
+        </div>
+        <div
+          id="hrSalaryCalendarDropdown"
+          class="hr-salary-calendar-dropdown"
+          style="display: none"
+        ></div>
+      </div>
+
+      <!-- Generate Button (Hidden initially) -->
+      <button
+        id="hrSalaryGenerateBtn"
+        class="hr-salary-generate-btn"
+        style="display: none"
+      >
+        Generate Salary
+      </button>
+    </div>
+
+    <button
+      id="hrSalaryBackBtn"
+      class="hr-salary-back-btn"
+      style="display: none"
+    >
+      ← back to salary
+    </button>
+
+    <!-- Month List Table -->
+    <div id="hrSalaryMonthList" class="hr-salary-month-list">
+      <table class="hr-salary-list-table">
+        <thead>
+          <tr>
+            <th>S.No</th>
+            <th>Year</th>
+            <th>Month</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="hrSalaryMonthListBody"></tbody>
+      </table>
+    </div>
+
+    <!-- Detail View (Hidden initially) -->
+    <div
+      id="hrSalaryDetailView"
+      class="hr-salary-detail-view"
+      style="display: none"
+    >
+      <table class="hr-salary-detail-table">
+        <thead>
+          <tr>
+            <th>Employee ID</th>
+            <th>Employee Name</th>
+            <th>Date</th>
+            <th>Month</th>
+            <th>Year</th>
+            <th>Designation</th>
+            <th>Job Role</th>
+            <th>This Month Salary</th>
+            <th>View</th>
+          </tr>
+        </thead>
+        <tbody id="hrSalaryDetailBody"></tbody>
+      </table>
+    </div>
   </div>
 
   <!-- ******************************************* HR REPORTS CODE ****************************************** -->

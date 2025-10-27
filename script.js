@@ -189,29 +189,34 @@ function initializePageScripts(pageName) {
       }, 100);
       break;
 
-    case "hr":
-      setTimeout(() => {
-        console.log("🚀 Initializing HR page...");
+case "hr":
+  setTimeout(() => {
+    console.log("🚀 Initializing HR page...");
 
-        if (typeof initializeHRTabs === "function") {
-          initializeHRTabs();
-        }
-        if (typeof initializeHRRequests === "function") {
-          initializeHRRequests();
-        }
-        if (typeof initializeEmployeeDetailsPage === "function") {
-          initializeEmployeeDetailsPage();
-        }
-        if (typeof initializeUpdateEmployeeModal === "function") {
-          initializeUpdateEmployeeModal();
-        }
-        if (typeof renderEmployeeTable === "function") {
-          renderEmployeeTable();
-        }
+    if (typeof initializeHRTabs === "function") {
+      initializeHRTabs();
+    }
+    if (typeof initializeHRRequests === "function") {
+      initializeHRRequests();
+    }
+    if (typeof initializeEmployeeDetailsPage === "function") {
+      initializeEmployeeDetailsPage();
+    }
+    if (typeof initializeUpdateEmployeeModal === "function") {
+      initializeUpdateEmployeeModal();
+    }
+    if (typeof renderEmployeeTable === "function") {
+      renderEmployeeTable();
+    }
+    // 🚩 ADD THIS BLOCK
+    if (typeof initializeHRSalaryPage === "function") {
+      initializeHRSalaryPage();
+    }
 
-        console.log("✅ HR page fully initialized");
-      }, 200);
-      break;
+    console.log("✅ HR page fully initialized");
+  }, 200);
+  break;
+
 
     // Add other cases here as needed...
   }

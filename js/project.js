@@ -607,48 +607,48 @@ function setupEventListeners() {
   setupTeamSelectorListener();
 
   // ==================== HANDLE FORM SUBMIT ====================
-function handleFormSubmit(e) {
-  e.preventDefault();
-  console.log('Form submitted!'); 
+  function handleFormSubmit(e) {
+    e.preventDefault();
+    console.log("Form submitted!");
 
-  const form = document.getElementById("projectForm");
+    const form = document.getElementById("projectForm");
 
-  if (!form.checkValidity()) {
-    form.reportValidity();
-    return;
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
+    const formData = {
+      id: projectsData.length + 1,
+      customerId: document.getElementById("customerId").value,
+      name: document.getElementById("onboardingProject").selectedOptions[0]
+        .textContent,
+      description: document.getElementById("projectDescription").value,
+      contacts: collectContactData(),
+      allocatedTeam: selectedTeams,
+      reportingPerson: document.getElementById("reportingPerson").value,
+      startDate: formatDate(document.getElementById("startDate").value),
+      deadline: formatDate(document.getElementById("completionDate").value),
+      revieDate: document.getElementById("revieDate").value,
+      remarks: document.getElementById("remarks").value,
+      teamHead: "Fisto",
+      initiatedBy: "Fisto",
+      priority: "High",
+      status: Math.floor(Math.random() * 100) + 1,
+    };
+
+    projectsData.push(formData);
+    filteredProjects = [...projectsData];
+
+    currentPage = Math.ceil(filteredProjects.length / itemsPerPage);
+
+    renderTable();
+    setupPagination();
+
+    showSuccessToast(formData.customerId);
+
+    closeModal();
   }
-
-  const formData = {
-    id: projectsData.length + 1,
-    customerId: document.getElementById("customerId").value,
-    name: document.getElementById("onboardingProject").selectedOptions[0]
-      .textContent,
-    description: document.getElementById("projectDescription").value,
-    contacts: collectContactData(),
-    allocatedTeam: selectedTeams,
-    reportingPerson: document.getElementById("reportingPerson").value,
-    startDate: formatDate(document.getElementById("startDate").value),
-    deadline: formatDate(document.getElementById("completionDate").value),
-    revieDate: document.getElementById("revieDate").value,
-    remarks: document.getElementById("remarks").value,
-    teamHead: "Fisto",
-    initiatedBy: "Fisto",
-    priority: "High",
-    status: Math.floor(Math.random() * 100) + 1,
-  };
-
-  projectsData.push(formData);
-  filteredProjects = [...projectsData];
-
-  currentPage = Math.ceil(filteredProjects.length / itemsPerPage);
-
-  renderTable();
-  setupPagination();
-
-  showSuccessToast(formData.customerId);
-
-  closeModal();
-}
 
   function closeModal() {
     console.log("closeModal called"); // ← Add this line
@@ -659,9 +659,9 @@ function handleFormSubmit(e) {
     if (modal) {
       modal.style.display = "none";
       console.log("Modal hidden");
-    }else {
-    console.error('Modal element not found!');
-  }
+    } else {
+      console.error("Modal element not found!");
+    }
 
     // Restore body scroll
     document.body.style.overflow = "";
@@ -864,8 +864,6 @@ function removeContactRow(button) {
     addContactRow(null, true);
   }
 }
-
-
 
 // ==================== COLLECT CONTACT DATA ====================
 function collectContactData() {
@@ -1548,7 +1546,7 @@ function addNewTaskCard() {
   taskCard.dataset.taskNumber = taskCardCounter;
 
   taskCard.innerHTML = `
-    <div class="task-card-header">
+    <div class="task-card-header" onclick="toggleTaskCard(${taskCardCounter})" >
       <div class="task-card-number-section">
         <div class="task-number-badge">${String(taskCardCounter).padStart(
           2,
@@ -1556,11 +1554,19 @@ function addNewTaskCard() {
         )}</div>
         <span class="task-card-title">Task ${taskCardCounter}</span>
       </div>
+      <div class="task-card-summary">
+    <span class="task-card-summary-desc badge">task Name</span>
+    <span class="task-card-summary-activities badge">assigned employee: None</span>
+    <span class="task-card-summary-startdate badge">Start date: ---- -- --</span>
+    <span class="task-card-summary-enddate badge">End date: ---- -- --</span>
+  </div>
       <div class="task-card-actions">
-        <button class="task-expand-btn expanded" onclick="toggleTaskCard(${taskCardCounter})">▲</button>
-        <button class="task-delete-btn" onclick="deleteTaskCard(${taskCardCounter})">
-          <img src="../assets/imgaes/preview_delete_btn.png" alt="Delete">
-        </button>
+      <button class="task-delete-btn" onclick="deleteTaskCard(${taskCardCounter})">
+        <img src="../assets/imgaes/preview_delete_btn.png" alt="Delete">
+      </button>
+        <button class="task-expand-btn expanded" > 
+        <img src="../assets/imgaes/task_arrow.png" alt="Delete">
+       </button>
       </div>
     </div>
     
@@ -1574,13 +1580,13 @@ function addNewTaskCard() {
           <label>Starting date</label>
           <input type="date" class="task-input" id="taskStartDate${taskCardCounter}" onchange="updateTaskDuration(${taskCardCounter})">
         </div>
+         <div class="task-form-group">
+          <label>Starting time</label>
+          <input type="time" class="task-input" id="taskStartTime${taskCardCounter}" onchange="updateTaskDuration(${taskCardCounter})">
+        </div>
         <div class="task-form-group">
           <label>Ending date</label>
           <input type="date" class="task-input" id="taskEndDate${taskCardCounter}" onchange="updateTaskDuration(${taskCardCounter})">
-        </div>
-        <div class="task-form-group">
-          <label>Starting time</label>
-          <input type="time" class="task-input" id="taskStartTime${taskCardCounter}" onchange="updateTaskDuration(${taskCardCounter})">
         </div>
       </div>
       
@@ -1615,9 +1621,36 @@ function addNewTaskCard() {
   currentExpandedTask = taskCardCounter;
 }
 
+function updateTaskSummary(taskCard) {
+  const taskNumber = taskCard.dataset.taskNumber;
+  const name =
+    document.getElementById("taskName" + taskNumber)?.value || "Not set";
+  const assigned =
+    document.getElementById("taskEmployee" + taskNumber)?.value || "Unassigned";
+  const start =
+    document.getElementById("taskStartDate" + taskNumber)?.value || "--";
+  const end =
+    document.getElementById("taskEndDate" + taskNumber)?.value || "--";
+
+  taskCard.querySelector(".task-card-summary-desc").textContent = name;
+  taskCard.querySelector(".task-card-summary-activities").textContent =
+    "Assigned To: " + assigned;
+  taskCard.querySelector(".task-card-summary-startdate").textContent =
+    "Start date: " + start;
+  taskCard.querySelector(".task-card-summary-enddate").textContent =
+    "End date: " + end;
+}
+
+document.querySelectorAll(".task-input, .task-select").forEach((input) => {
+  input.addEventListener("change", function () {
+    const card = input.closest(".task-card");
+    updateTaskSummary(card);
+  });
+});
+
 // ==================== TOGGLE TASK CARD ====================
 function toggleTaskCard(taskNumber) {
-  const taskCard = document.getElementById(`taskCard${taskNumber}`);
+  const taskCard = document.getElementById("taskCard" + taskNumber);
   const expandBtn = taskCard.querySelector(".task-expand-btn");
 
   if (taskCard.classList.contains("collapsed")) {
@@ -1635,6 +1668,7 @@ function toggleTaskCard(taskNumber) {
     expandBtn.classList.remove("expanded");
     currentExpandedTask = null;
   }
+  updateTaskSummary(taskCard);
 }
 
 // ==================== DELETE TASK CARD ====================
