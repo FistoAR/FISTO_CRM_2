@@ -18,60 +18,6 @@ const onboardingProjects = [
       },
     ],
   },
-  {
-    id: "EST2M45",
-    name: "Hiring Platform",
-    description: "AI-powered recruitment and applicant tracking system",
-    contacts: [
-      {
-        person: "Priya Sharma",
-        phone: "+91 9876543210",
-        email: "priya@techcorp.com",
-        designation: "HR Director",
-      },
-    ],
-  },
-  {
-    id: "EST3K72",
-    name: "Software Application",
-    description: "Custom enterprise resource planning software solution",
-    contacts: [
-      {
-        person: "Rajesh Patel",
-        phone: "+91 9123456789",
-        email: "rajesh@enterprise.com",
-        designation: "CTO",
-      },
-    ],
-  },
-  {
-    id: "EST4P19",
-    name: "E-Commerce Platform",
-    description:
-      "Full-stack e-commerce solution with payment gateway integration",
-    contacts: [
-      {
-        person: "Sneha Reddy",
-        phone: "+91 9988776655",
-        email: "sneha@ecomm.com",
-        designation: "Business Head",
-      },
-    ],
-  },
-  {
-    id: "EST5L88",
-    name: "Mobile Banking App",
-    description:
-      "Secure mobile banking application with biometric authentication",
-    contacts: [
-      {
-        person: "Vikram Singh",
-        phone: "+91 9234567890",
-        email: "vikram@banktech.com",
-        designation: "Product Lead",
-      },
-    ],
-  },
 ];
 
 // Fake team data
@@ -97,102 +43,6 @@ let projectsData = [
     initiatedBy: "Fisto",
     description: "to create excel software",
   },
-  {
-    id: 2,
-    name: "Hiring Platform",
-    startDate: "07/10/2025",
-    deadline: "30/10/2025",
-    teamHead: "Fisto",
-    status: 11,
-    customerId: "EST2M45",
-    priority: "Medium",
-    initiatedBy: "Fisto",
-    description: "AI recruitment system",
-  },
-  {
-    id: 3,
-    name: "Software application",
-    startDate: "09/10/2025",
-    deadline: "07/10/2025",
-    teamHead: "Fisto",
-    status: 22,
-    customerId: "EST3K72",
-    priority: "High",
-    initiatedBy: "Fisto",
-    description: "ERP solution",
-  },
-  {
-    id: 4,
-    name: "E-Commerce Platform",
-    startDate: "15/10/2025",
-    deadline: "15/11/2025",
-    teamHead: "Fisto",
-    status: 45,
-    customerId: "EST4P19",
-    priority: "Low",
-    initiatedBy: "Fisto",
-    description: "Online store",
-  },
-  {
-    id: 5,
-    name: "Mobile Banking App",
-    startDate: "20/10/2025",
-    deadline: "20/12/2025",
-    teamHead: "Fisto",
-    status: 5,
-    customerId: "EST5L88",
-    priority: "High",
-    initiatedBy: "Fisto",
-    description: "Banking app",
-  },
-  {
-    id: 6,
-    name: "Hiring Platform",
-    startDate: "07/10/2025",
-    deadline: "30/10/2025",
-    teamHead: "Fisto",
-    status: 33,
-    customerId: "EST2M45",
-    priority: "Medium",
-    initiatedBy: "Fisto",
-    description: "HR system",
-  },
-  {
-    id: 7,
-    name: "Software application",
-    startDate: "09/10/2025",
-    deadline: "07/10/2025",
-    teamHead: "Fisto",
-    status: 67,
-    customerId: "EST3K72",
-    priority: "High",
-    initiatedBy: "Fisto",
-    description: "Business software",
-  },
-  {
-    id: 8,
-    name: "Excel Software",
-    startDate: "10/10/2025",
-    deadline: "24/10/2025",
-    teamHead: "Fisto",
-    status: 88,
-    customerId: "EST1N98",
-    priority: "High",
-    initiatedBy: "Fisto",
-    description: "Excel integration",
-  },
-  {
-    id: 9,
-    name: "E-Commerce Platform",
-    startDate: "15/10/2025",
-    deadline: "15/11/2025",
-    teamHead: "Fisto",
-    status: 55,
-    customerId: "EST4P19",
-    priority: "Low",
-    initiatedBy: "Fisto",
-    description: "E-commerce site",
-  },
 ];
 
 // Sample employee data for overview page
@@ -211,137 +61,24 @@ let projectOverviewAllocatedEmployees = [
   { id: 9, name: "Pradeepa", initial: "P", avatar: "#999999" },
 ];
 
+let taskReportsData = [];
 // Fake task data
 let tasksData = [
   {
     id: 1,
-    taskNumber: 1,
-    name: "Database Design",
+    name: "Design Homepage",
+    description: "Create wireframes and mockups",
     startDate: "2025-10-15",
-    endDate: "2025-10-18",
     startTime: "09:00",
-    endTime: "17:00",
-    description: "Design",
-    employee: "Murugan",
-    status: "Completed",
-    progress: 100,
-  },
-  {
-    id: 2,
-    taskNumber: 2,
-    name: "API Development",
-    startDate: "2025-10-16",
     endDate: "2025-10-20",
-    startTime: "10:00",
     endTime: "18:00",
-    description: "Develop",
-    employee: "Safi",
+    assignedBy: "John Doe",
+    assignedTo: "Jane Smith",
+    progress: 0,
     status: "In Progress",
-    progress: 65,
-  },
-  {
-    id: 3,
-    taskNumber: 3,
-    name: "UI Design",
-    startDate: "2025-10-14",
-    endDate: "2025-10-19",
-    startTime: "09:30",
-    endTime: "16:30",
-    description: "Create",
-    employee: "Harish",
-    status: "In Progress",
-    progress: 78,
-  },
-  {
-    id: 4,
-    taskNumber: 4,
-    name: "Testing Phase",
-    startDate: "2025-10-20",
-    endDate: "2025-10-25",
-    startTime: "11:00",
-    endTime: "19:00",
-    description: "Conduct",
-    employee: "Pradeepa",
-    status: "Not Started",
-    progress: 0,
-  },
-  {
-    id: 5,
-    taskNumber: 5,
-    name: "Frontend Integration",
-    startDate: "2025-10-17",
-    endDate: "2025-10-22",
-    startTime: "08:00",
-    endTime: "16:00",
-    description: "Integrate",
-    employee: "Murugan",
-    status: "In Progress",
-    progress: 45,
-  },
-  {
-    id: 6,
-    taskNumber: 6,
-    name: "Security Audit",
-    startDate: "2025-10-21",
-    endDate: "2025-10-24",
-    startTime: "10:30",
-    endTime: "17:30",
-    description: "Perform",
-    employee: "Safi",
-    status: "Not Started",
-    progress: 0,
-  },
-  {
-    id: 7,
-    taskNumber: 7,
-    name: "Documentation",
-    startDate: "2025-10-18",
-    endDate: "2025-10-23",
-    startTime: "09:00",
-    endTime: "15:00",
-    description: "Write",
-    employee: "Harish",
-    status: "In Progress",
-    progress: 30,
-  },
-  {
-    id: 8,
-    taskNumber: 8,
-    name: "Performance Optimization",
-    startDate: "2025-10-22",
-    endDate: "2025-10-26",
-    startTime: "11:30",
-    endTime: "18:30",
-    description: "Optimize",
-    employee: "Pradeepa",
-    status: "Not Started",
-    progress: 0,
-  },
-  {
-    id: 9,
-    taskNumber: 9,
-    name: "Deployment Setup",
-    startDate: "2025-10-23",
-    endDate: "2025-10-25",
-    startTime: "08:30",
-    endTime: "16:30",
-    description: "Configure",
-    employee: "Murugan",
-    status: "Not Started",
-    progress: 0,
-  },
-  {
-    id: 10,
-    taskNumber: 10,
-    name: "User Training",
-    startDate: "2025-10-24",
-    endDate: "2025-10-26",
-    startTime: "10:00",
-    endTime: "14:00",
-    description: "Conduct",
-    employee: "Safi",
-    status: "Not Started",
-    progress: 0,
+    comments: "Making good progress",
+    outcomes: "Initial designs completed",
+    reports: [],
   },
 ];
 
@@ -372,6 +109,185 @@ let contactButtonListenerAttached = false;
 
 let selectedTeams = [];
 
+// ==================== ROLE-BASED VISIBILITY FUNCTION ====================
+function updateProjectPageForDesignation() {
+  // Get user designation from sessionStorage
+  const userDesignation = sessionStorage.getItem("userDesignation");
+
+  // Get elements to hide/show
+  const addProjectBtn = document.getElementById("addProjectBtn");
+  const projectTaskaddbtn = document.querySelector(".project-task-add-btn");
+
+  const employeeTabButtons = document.querySelectorAll(".project-overview-employee-tab-btn");
+  const allocateTabContent = document.getElementById("projectOverviewAllocateTabContent");
+  const allocatedTabContent = document.getElementById("projectOverviewAllocatedTabContent");
+  const removeEmployeeButtons = document.querySelectorAll(".project-overview-remove-employee-btn");
+  const saveChangesButton = document.querySelector(".project-overview-btn-save");
+  const addViewBtn = document.querySelector(".project-overview-add-view-btn");
+
+
+  // Role-based visibility rules
+  switch (userDesignation) {
+    case "SBU":
+      if (addProjectBtn) addProjectBtn.style.display = "flex";
+      setTimeout(() => {
+        const reportButtons = document.querySelectorAll(".project-view-report-btn");
+        reportButtons.forEach(btn => {
+          const taskId = btn.getAttribute("onclick").match(/\d+/)[0]; // Extract task ID from onclick
+          btn.textContent = "View Report";
+          btn.setAttribute("onclick", `openTaskHistoryModal(${taskId})`);
+        });
+      }, 500);
+      break;
+
+    case "Project Head":
+      if (addProjectBtn) addProjectBtn.style.display = "flex";
+            setTimeout(() => {
+        const reportButtons = document.querySelectorAll(".project-view-report-btn");
+        reportButtons.forEach(btn => {
+          const taskId = btn.getAttribute("onclick").match(/\d+/)[0]; // Extract task ID from onclick
+          btn.textContent = "View Report";
+          btn.setAttribute("onclick", `openTaskHistoryModal(${taskId})`);
+        });
+      }, 500);
+      break;
+
+    case "Team Head":
+      if (projectTaskaddbtn) {
+        projectTaskaddbtn.style.display = "none";
+      }
+      if (addViewBtn) {
+        addViewBtn.innerHTML =
+          '<img src="../assets/imgaes/person_add.png" alt="" /> View';
+        // Optional: Make it look read-only
+        addViewBtn.style.opacity = "0.8";
+      }
+      // Hide the "Allocate" tab button (first button)
+      if (employeeTabButtons.length > 0) {
+        employeeTabButtons[0].style.display = "none";
+      }
+
+      // Hide the "Allocate" tab content
+      if (allocateTabContent) {
+        allocateTabContent.style.display = "none";
+        allocateTabContent.classList.remove("active");
+      }
+
+      // Make sure "Allocated" tab button is active
+      if (employeeTabButtons.length > 1) {
+        employeeTabButtons[1].classList.add("active");
+      }
+
+      // Show the "Allocated" tab content and make it active
+      if (allocatedTabContent) {
+        allocatedTabContent.style.display = "block";
+        allocatedTabContent.classList.add("active");
+      }
+
+      // Hide all "Remove" buttons (delete employee buttons)
+      removeEmployeeButtons.forEach((btn) => {
+        btn.style.display = "none";
+      });
+
+      // Hide "Save Changes" button
+      if (saveChangesButton) {
+        saveChangesButton.style.display = "none";
+      }
+      break;
+
+    case "HR Manager":
+      if (projectTaskaddbtn) {
+        projectTaskaddbtn.style.display = "none";
+      }
+      if (addViewBtn) {
+        addViewBtn.innerHTML =
+          '<img src="../assets/imgaes/person_add.png" alt="" /> View';
+        // Optional: Make it look read-only
+        addViewBtn.style.opacity = "0.8";
+      }
+      // Hide the "Allocate" tab button (first button)
+      if (employeeTabButtons.length > 0) {
+        employeeTabButtons[0].style.display = "none";
+      }
+
+      // Hide the "Allocate" tab content
+      if (allocateTabContent) {
+        allocateTabContent.style.display = "none";
+        allocateTabContent.classList.remove("active");
+      }
+
+      // Make sure "Allocated" tab button is active
+      if (employeeTabButtons.length > 1) {
+        employeeTabButtons[1].classList.add("active");
+      }
+
+      // Show the "Allocated" tab content and make it active
+      if (allocatedTabContent) {
+        allocatedTabContent.style.display = "block";
+        allocatedTabContent.classList.add("active");
+      }
+
+      // Hide all "Remove" buttons (delete employee buttons)
+      removeEmployeeButtons.forEach((btn) => {
+        btn.style.display = "none";
+      });
+
+      // Hide "Save Changes" button
+      if (saveChangesButton) {
+        saveChangesButton.style.display = "none";
+      }
+      break;
+
+    case "Junior Developer":
+      if (projectTaskaddbtn) {
+        projectTaskaddbtn.style.display = "none";
+      }
+      if (addViewBtn) {
+        addViewBtn.innerHTML =
+          '<img src="../assets/imgaes/person_add.png" alt="" /> View';
+        // Optional: Make it look read-only
+        addViewBtn.style.opacity = "0.8";
+      }
+      // Hide the "Allocate" tab button (first button)
+      if (employeeTabButtons.length > 0) {
+        employeeTabButtons[0].style.display = "none";
+      }
+
+      // Hide the "Allocate" tab content
+      if (allocateTabContent) {
+        allocateTabContent.style.display = "none";
+        allocateTabContent.classList.remove("active");
+      }
+
+      // Make sure "Allocated" tab button is active
+      if (employeeTabButtons.length > 1) {
+        employeeTabButtons[1].classList.add("active");
+      }
+
+      // Show the "Allocated" tab content and make it active
+      if (allocatedTabContent) {
+        allocatedTabContent.style.display = "block";
+        allocatedTabContent.classList.add("active");
+      }
+
+      // Hide all "Remove" buttons (delete employee buttons)
+      removeEmployeeButtons.forEach((btn) => {
+        btn.style.display = "none";
+      });
+
+      // Hide "Save Changes" button
+      if (saveChangesButton) {
+        saveChangesButton.style.display = "none";
+      }
+      break;
+
+    default:
+      // Unknown designation - hide everything for security
+      // Add your custom hide/show logic here
+      break;
+  }
+}
+
 // ==================== INITIALIZATION ====================
 
 function initializeProjectPage() {
@@ -390,6 +306,7 @@ function initializeProjectPage() {
   setupEventListeners();
   renderTable();
   setupPagination();
+  updateProjectPageForDesignation();
 }
 
 // ==================== POPULATE DROPDOWNS ====================
@@ -1125,6 +1042,7 @@ function viewProject(id) {
   currentTaskPage = 1;
   filteredTasksForPagination = [];
   renderTasksTable();
+  updateProjectPageForDesignation();
 }
 
 // ==================== DELETE PROJECT ====================
@@ -1242,6 +1160,7 @@ function openProjectOverviewEmployeeModal() {
   renderProjectOverviewAllocatedList();
 
   updateProjectOverviewEmployeeCounts();
+  updateProjectPageForDesignation();
 }
 
 // ==================== CLOSE EMPLOYEE MODAL ====================
@@ -1282,6 +1201,8 @@ function switchProjectOverviewEmployeeTab(tabName) {
     );
     if (allocatedTab) allocatedTab.classList.add("active");
   }
+
+  updateProjectPageForDesignation();
 }
 
 // ==================== RENDER ALLOCATE LIST ====================
@@ -1750,21 +1671,19 @@ function backToProjectOverview() {
 
 // ==================== RENDER TASKS TABLE WITH PAGINATION ====================
 function renderTasksTable() {
-  const tbody = document.getElementById("projectTasksTableBody");
-  if (!tbody) return;
+  const tableBody = document.getElementById("projectTasksTableBody");
 
-  tbody.innerHTML = "";
+  if (!tableBody) return;
 
-  // Use filtered data if available, otherwise use all tasks
   const dataToShow =
     filteredTasksForPagination.length > 0
       ? filteredTasksForPagination
       : tasksData;
 
   if (dataToShow.length === 0) {
-    tbody.innerHTML = `
+    tableBody.innerHTML = `
       <tr>
-        <td colspan="13" style="text-align: center; padding: 40px; color: #999">
+        <td colspan="13" style="text-align: center; padding: 40px; color: #999;">
           No tasks found. Click "Add task" to create new tasks.
         </td>
       </tr>
@@ -1773,42 +1692,389 @@ function renderTasksTable() {
     return;
   }
 
-  // Calculate pagination
-  const startIndex = (currentTaskPage - 1) * tasksPerPage;
-  const endIndex = startIndex + tasksPerPage;
-  const paginatedTasks = dataToShow.slice(startIndex, endIndex);
+  const start = (currentTaskPage - 1) * tasksPerPage;
+  const end = start + tasksPerPage;
+  const tasksToDisplay = dataToShow.slice(start, end);
 
-  // Render paginated tasks
-  paginatedTasks.forEach((task, index) => {
-    const actualIndex = startIndex + index + 1;
-    const row = document.createElement("tr");
-    row.innerHTML = `
-      <td>${actualIndex}</td>
-      <td>${task.name}</td>
-      <td>${task.description}</td>
-      <td>${task.startDate}</td>
-      <td>${task.startTime}</td>
-      <td>${task.endDate}</td>
-      <td>${task.endTime}</td>
-      <td>Fisto</td>
-      <td>${task.employee}</td>
-      <td><button class="view-report-btn" style="padding: 6px 12px; background: #0052CC; color: white; border: none; border-radius: 6px; cursor: pointer; font-size:0.6vw;">View Report</button></td>
-      <td>
-        <div style="display: flex; align-items: center; gap: 10px;">
-          <div class="progress-bar" style="width: 100px; height: 8px; background: #e5e7eb; border-radius: 4px;">
-            <div style="width: ${task.progress}%; height: 100%; background: #0052CC; border-radius: 4px;"></div>
-          </div>
-          <span style="font-size: 0.85rem;">${task.progress}%</span>
-        </div>
-      </td>
-      <td><span class="status-badge" style="padding: 4px 12px; background: #dbeafe; color: #0052CC; border-radius: 6px; font-size: 0.85rem;">${task.status}</span></td>
-      <td><button class="comment-btn" style="padding: 6px 12px; background: #f3f4f6; border: 1px solid #CBCDD2; border-radius: 6px; cursor: pointer;">View</button></td>
-    `;
-    tbody.appendChild(row);
-  });
+  tableBody.innerHTML = tasksToDisplay
+    .map((task, index) => {
+      let progressClass = "";
+      if (task.progress < 50) {
+        progressClass = "low";
+      } else if (task.progress < 75) {
+        progressClass = "medium";
+      }
 
-  // Setup pagination controls
+      return `
+        <tr>
+          <td>${start + index + 1}</td>
+          <td>${task.name || "N/A"}</td>
+          <td>${task.description || "No description"}</td>
+          <td>${task.startDate ? formatDate(task.startDate) : "-"}</td>
+          <td>${task.startTime || "-"}</td>
+          <td>${task.endDate ? formatDate(task.endDate) : "-"}</td>
+          <td>${task.endTime || "-"}</td>
+          <td>${task.assignedBy || "System"}</td>
+          <td>${task.assignedTo || task.employee || "Unassigned"}</td>
+          <td>
+            <button 
+              class="project-view-report-btn" 
+              onclick="openTaskReportModal(${task.id})"
+            >
+              Add Report
+            </button>
+          </td>
+          <td style="min-width: 150px;">
+            <div class="project-progress-container" style="display: flex; align-items: center; gap: 10px;">
+              <div class="project-progress-bar" style="flex: 1; height: 10px; background: #e0e0e0; border-radius: 10px; overflow: hidden; min-width: 80px; max-width: 120px;">
+                <div class="project-progress-fill ${progressClass}" style="width: ${
+        task.progress
+      }%; height: 100%; border-radius: 10px; transition: width 0.3s ease;"></div>
+              </div>
+              <span class="project-progress-text" style="font-size: 13px; font-weight: 600; color: #333; min-width: 45px; font-family: 'Gilroy-Bold', sans-serif;">${
+                task.progress
+              }%</span>
+            </div>
+          </td>
+          <td>
+            <span class="project-status-badge project-status-${task.status
+              .toLowerCase()
+              .replace(/\s/g, "-")}">${task.status}</span>
+          </td>
+          <td>${task.comments || task.outcomes || "-"}</td>
+        </tr>
+      `;
+    })
+    .join("");
+
   setupTaskPagination(dataToShow.length);
+}
+
+function openTaskReportModal(taskId) {
+  const task = tasksData.find((t) => t.id === taskId);
+  if (!task) return;
+
+  // Create modal HTML dynamically
+  const modalHTML = `
+    <div id="taskReportModal" class="task-report-modal" style="display: flex;">
+      <div class="task-report-modal-content">
+        <div class="task-report-modal-header">
+          <div>
+            <h2>${task.name}</h2>
+            </div>
+            <div class="task-report-timestamp">${new Date().toLocaleString(
+              "en-GB",
+              {
+                day: "2-digit",
+                month: "short",
+                year: "numeric",
+                hour: "2-digit",
+                minute: "2-digit",
+                hour12: true,
+              }
+            )}</div>
+        </div>
+
+        <div class="task-report-modal-body">
+          <!-- 2x2 Grid for Activity Name, Description, Progress, Status -->
+          <div class="task-report-grid-container">
+            <div class="task-report-form-group">
+              <label class="task-report-label">Activity Name</label>
+              <input 
+                type="text" 
+                class="task-report-input task-report-readonly" 
+                value="${task.name}"
+                readonly
+              />
+            </div>
+            
+            <div class="task-report-form-group">
+              <label class="task-report-label">Description:</label>
+              <input 
+                type="text" 
+                class="task-report-input task-report-readonly" 
+                value="${task.description}"
+                readonly
+              />
+            </div>
+
+            <div class="task-report-form-group">
+              <label class="task-report-label">Progress (%) <span class="required">*</span></label>
+              <input 
+                type="number" 
+                id="taskReportProgress" 
+                class="task-report-input" 
+                min="0" 
+                max="100" 
+                value="${task.progress}"
+                placeholder="Enter progress percentage (0-100)"
+                required
+              />
+            </div>
+
+            <div class="task-report-form-group">
+              <label class="task-report-label">Status <span class="required">*</span></label>
+              <select id="taskReportStatus" class="task-report-select" required>
+                <option value="In Progress" ${
+                  task.status === "In Progress" ? "selected" : ""
+                }>In Progress</option>
+                <option value="Completed" ${
+                  task.status === "Completed" ? "selected" : ""
+                }>Completed</option>
+                <option value="Stuck" ${
+                  task.status === "Stuck" ? "selected" : ""
+                }>Stuck</option>
+                <option value="On Hold" ${
+                  task.status === "On Hold" ? "selected" : ""
+                }>On Hold</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Full Width Outcomes/Reports Textarea -->
+          <div class="task-report-form-group">
+            <label class="task-report-label">Outcomes / Reports</label>
+            <textarea 
+              id="taskReportOutcomes" 
+              class="task-report-textarea" 
+              placeholder="Add outcomes or reports"
+            >${task.outcomes || ""}</textarea>
+          </div>
+        </div>
+
+        <div class="task-report-modal-footer">
+          <button class="task-report-btn-history" onclick="openTaskHistoryModal(${taskId})">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <circle cx="12" cy="12" r="10"/>
+              <polyline points="12 6 12 12 16 14"/>
+            </svg>
+            History
+          </button>
+          <div class="task-report-footer-right">
+            <button class="task-report-btn-cancel" onclick="closeTaskReportModal()">Cancel</button>
+            <button class="task-report-btn-submit" onclick="submitTaskReport(${taskId})">submit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+
+  // Remove existing modal if any
+  const existingModal = document.getElementById("taskReportModal");
+  if (existingModal) {
+    existingModal.remove();
+  }
+
+  // Append to body
+  document.body.insertAdjacentHTML("beforeend", modalHTML);
+
+  // Prevent background scroll
+  document.body.style.overflow = "hidden";
+
+  // Close on outside click
+  document
+    .getElementById("taskReportModal")
+    .addEventListener("click", function (e) {
+      if (e.target.id === "taskReportModal") {
+        closeTaskReportModal();
+      }
+    });
+}
+
+// Close Report Modal
+function closeTaskReportModal() {
+  const modal = document.getElementById("taskReportModal");
+  if (modal) {
+    modal.style.display = "none";
+    modal.remove();
+  }
+  document.body.style.overflow = "";
+}
+
+// Submit Task Report
+function submitTaskReport(taskId) {
+  const task = tasksData.find((t) => t.id === taskId);
+  if (!task) return;
+
+  // Get form values
+  const progress = parseInt(
+    document.getElementById("taskReportProgress").value
+  );
+  const status = document.getElementById("taskReportStatus").value;
+  const outcomes = document.getElementById("taskReportOutcomes").value.trim();
+
+  // Validation
+  if (isNaN(progress) || progress < 0 || progress > 100) {
+    alert("Please enter a valid progress percentage (0-100)");
+    return;
+  }
+
+  if (!status) {
+    alert("Please select a status");
+    return;
+  }
+
+  // Store old values for history
+  const oldProgress = task.progress;
+  const oldStatus = task.status;
+  const oldOutcomes = task.outcomes || "";
+
+  // Create report entry
+  const reportEntry = {
+    id: task.reports ? task.reports.length + 1 : 1,
+    taskId: taskId,
+    taskName: task.name,
+    date: new Date().toLocaleString("en-GB", {
+      day: "2-digit",
+      month: "2-digit",
+      year: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: true,
+    }),
+    oldProgress: oldProgress,
+    newProgress: progress,
+    oldStatus: oldStatus,
+    newStatus: status,
+    outcomes: outcomes,
+    timestamp: new Date().getTime(),
+  };
+
+  // Initialize reports array if doesn't exist
+  if (!task.reports) {
+    task.reports = [];
+  }
+
+  // Add to reports history
+  task.reports.push(reportEntry);
+
+  // Update task
+  task.progress = progress;
+  task.status = status;
+  task.outcomes = outcomes;
+
+  // Auto-complete if progress is 100%
+  if (progress === 100) {
+    task.status = "Completed";
+  }
+
+  // Refresh table
+  renderTasksTable();
+
+  // Show success message
+  showSuccessToast("Report submitted successfully!");
+
+  // Close modal
+  closeTaskReportModal();
+}
+
+// ==================== TASK HISTORY MODAL FUNCTIONS ====================
+
+// Open History Modal
+function openTaskHistoryModal(taskId) {
+  const task = tasksData.find((t) => t.id === taskId);
+  if (!task) return;
+
+  const reports = task.reports || [];
+
+  // Build table rows
+  let tableRows = "";
+  if (reports.length === 0) {
+    tableRows = `
+      <tr>
+        <td colspan="6" class="task-history-empty">
+          <div class="task-history-empty-icon"></div>
+          <div>No previous reports found</div>
+        </td>
+      </tr>
+    `;
+  } else {
+    tableRows = reports
+      .reverse()
+      .map(
+        (report, index) => `
+      <tr>
+        <td>${reports.length - index}</td>
+        <td class="task-history-activity-cell">
+          ${report.taskName}
+          <span class="task-history-arrow">→</span>
+          ${task.name}
+        </td>
+        <td>${report.newProgress}%</td>
+        <td>${report.newStatus}</td>
+        <td>${report.outcomes || "-"}</td>
+        <td>${report.date}</td>
+      </tr>
+    `
+      )
+      .join("");
+  }
+
+  const modalHTML = `
+    <div id="taskHistoryModal" class="task-history-modal" style="display: flex;">
+      <div class="task-history-modal-content">
+        <div class="task-history-modal-header">
+          <h2>Previous Reports</h2>
+          <button class="task-history-close" onclick="closeTaskHistoryModal()">&times;</button>
+        </div>
+
+        <div class="task-history-modal-body">
+          <div class="task-history-table-wrapper">
+            <table class="task-history-table">
+              <thead>
+                <tr>
+                  <th>S.No</th>
+                  <th>Activity</th>
+                  <th>Progress</th>
+                  <th>Status</th>
+                  <th>Outcome</th>
+                  <th>Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${tableRows}
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="task-history-modal-footer">
+          <button class="task-history-btn-close" onclick="closeTaskHistoryModal()">Previous</button>
+        </div>
+      </div>
+    </div>
+  `;
+
+  // Remove existing modal if any
+  const existingModal = document.getElementById("taskHistoryModal");
+  if (existingModal) {
+    existingModal.remove();
+  }
+
+  // Append to body
+  document.body.insertAdjacentHTML("beforeend", modalHTML);
+
+  // Prevent background scroll
+  document.body.style.overflow = "hidden";
+
+  // Close on outside click
+  document
+    .getElementById("taskHistoryModal")
+    .addEventListener("click", function (e) {
+      if (e.target.id === "taskHistoryModal") {
+        closeTaskHistoryModal();
+      }
+    });
+}
+
+// Close History Modal
+function closeTaskHistoryModal() {
+  const modal = document.getElementById("taskHistoryModal");
+  if (modal) {
+    modal.style.display = "none";
+    modal.remove();
+  }
+  document.body.style.overflow = "";
 }
 
 // ==================== SETUP TASK PAGINATION ====================
@@ -1860,8 +2126,10 @@ function handleTaskSearchInput(event) {
   filteredTasksForPagination = tasksData.filter(
     (task) =>
       task.name.toLowerCase().includes(searchTerm) ||
-      task.description.toLowerCase().includes(searchTerm) ||
-      task.employee.toLowerCase().includes(searchTerm)
+      (task.description &&
+        task.description.toLowerCase().includes(searchTerm)) ||
+      (task.employee && task.employee.toLowerCase().includes(searchTerm)) ||
+      (task.assignedTo && task.assignedTo.toLowerCase().includes(searchTerm))
   );
 
   renderTasksTable();
@@ -2504,6 +2772,11 @@ if (typeof window !== "undefined") {
   window.updateTaskDuration = updateTaskDuration;
   window.handleTaskSearchInput = handleTaskSearchInput;
   window.clearTaskSearch = clearTaskSearch;
+  window.openTaskReportModal = openTaskReportModal;
+  window.closeTaskReportModal = closeTaskReportModal;
+  window.submitTaskReport = submitTaskReport;
+  window.openTaskHistoryModal = openTaskHistoryModal;
+  window.closeTaskHistoryModal = closeTaskHistoryModal;
 
   // RESOURCES FUNCTIONS
   window.openProjectResourcesFileModal = openProjectResourcesFileModal;

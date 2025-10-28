@@ -5,14 +5,14 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: .5vw;
   gap: 15px;
 }
 
 /* Calendar Widget */
 .hr-salary-calendar-widget {
   position: relative;
-  width: 250px;
+  width: 12vw;
 }
 
 .hr-salary-calendar-header {
@@ -22,10 +22,12 @@
   background: white;
   border: 1px solid #ddd;
   border-radius: 8px;
-  padding: 12px 15px;
+  padding: 8px 15px;
   cursor: pointer;
   transition: all 0.3s;
-  margin: .5vw;
+  font-family: 'Gilroy-Medium', sans-serif;
+  font-size: .8vw;
+  margin-top: .5vw;
 }
 
 .hr-salary-calendar-header:hover {
@@ -34,7 +36,7 @@
 
 .hr-salary-calendar-label {
   font-family: 'Gilroy-SemiBold', sans-serif;
-  font-size: 0.95rem;
+  font-size: .1vw;
   color: #333;
 }
 
@@ -52,22 +54,20 @@
   transform: scale(1.1);
 }
 
-.hr-salary-calendar-btn img{
-    width: 30px;
-    height: auto;
+.hr-salary-calendar-btn img {
+  width: 25px;
+  height: auto;
 }
 
 .hr-salary-calendar-dropdown {
   position: absolute;
   top: 100%;
   left: 0;
-  margin-top: 5px;
   background: white;
   border: 1px solid #ddd;
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   z-index: 100;
-  width: 320px;
   padding: 15px;
 }
 
@@ -75,7 +75,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 15px;
+  margin-bottom: .3vw;
   font-family: 'Gilroy-Bold', sans-serif;
   font-size: 1rem;
   color: #333;
@@ -84,7 +84,7 @@
 .hr-salary-calendar-nav {
   background: none;
   border: none;
-  font-size: 1.2rem;
+  font-size: 1vw;
   cursor: pointer;
   padding: 5px 10px;
   color: #0052CC;
@@ -142,8 +142,6 @@
   display: flex;
   justify-content: flex-end;
   gap: 10px;
-  margin-top: 10px;
-  padding-top: 10px;
   border-top: 1px solid #e5e7eb;
 }
 
@@ -171,6 +169,7 @@
   font-family: 'Gilroy-Bold', sans-serif;
   cursor: pointer;
   transition: all 0.3s;
+  margin: 1vw 0;
 }
 
 .hr-salary-back-btn:hover {
@@ -197,7 +196,14 @@
 }
 
 /* Tables */
-.hr-salary-list-table,
+.hr-salary-list-table {
+  border-collapse: collapse;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e8e8e8;
+}
+
 .hr-salary-detail-table {
   width: 100%;
   border-collapse: collapse;
@@ -324,11 +330,16 @@
 }
 
 /* Table Wrapper */
-.hr-salary-month-list,
+.hr-salary-month-list {
+  width: 100%;
+  overflow-x: auto;
+  border-radius: 12px;
+}
+
 .hr-salary-detail-view {
   width: 100%;
   overflow-x: auto;
-  margin-top: 2vw;
+  margin-top: 1vw;
   background: #fff;
   border-radius: 12px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
@@ -353,8 +364,13 @@
 }
 
 @keyframes hrSalaryFadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 .hr-salary-modal-content {
@@ -376,6 +392,7 @@
     transform: translateY(-50px);
     opacity: 0;
   }
+
   to {
     transform: translateY(0);
     opacity: 1;
@@ -437,7 +454,7 @@
 }
 
 .hr-salary-modal-body::-webkit-scrollbar-thumb {
-  background: #0052CC;
+  background: grey;
   border-radius: 10px;
 }
 

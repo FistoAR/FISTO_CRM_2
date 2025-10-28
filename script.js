@@ -10,7 +10,10 @@ const pageCache = {};
 
 // Get logged-in user from sessionStorage
 const currentUser = sessionStorage.getItem("loggedInUser");
+const userName = sessionStorage.getItem("userName");
+const userDesignation = sessionStorage.getItem("userDesignation");
 
+// Check if user is logged in
 if (!currentUser) {
   // No user logged in, force redirect to login page
   if (window.location.pathname !== "/index.html") {
@@ -18,43 +21,56 @@ if (!currentUser) {
   }
 }
 
-// Function to control sidebar visibility based on user
+// Update the welcome text and role display
+const welcomeText = document.querySelector(".welcome-text");
+const roleText = document.querySelector(".role-text");
+
+if (welcomeText && userName) {
+  welcomeText.textContent = `Welcome, ${userName}`;
+}
+
+if (roleText && userDesignation && currentUser) {
+  roleText.textContent = `Role: ${userDesignation} | ID: ${currentUser}`;
+}
+
+// Function to control sidebar visibility based on user DESIGNATION
+// Function to control sidebar visibility based on user DESIGNATION
 function updateSidebarForUser() {
   navItems.forEach((item) => {
     const page = item.getAttribute("data-page");
 
-    // Example role-based visibility rules
-    switch (currentUser) {
-      case "FST001":
+    // Role-based visibility rules using DESIGNATION
+    switch (userDesignation) {
+      case "SBU":
         if (page === "employee-details" || page === "hr") {
           item.style.display = "none";
         } else {
           item.style.display = "flex";
         }
         break;
-      case "FST002":
-        if (page === "employee-details" || page === "hr" || page === "budget" ) {
+      case "Project Head":
+        if (page === "employee-details" || page === "hr" || page === "budget") {
           item.style.display = "none";
         } else {
           item.style.display = "flex";
         }
         break;
-      case "FST003":
-        if (page === "client" || page === "employee-details" || page === "hr" || page === "budget" ) {
+      case "Team Head":
+        if (page === "client" || page === "employee-details" || page === "hr" || page === "budget") {
           item.style.display = "none";
         } else {
           item.style.display = "flex";
         }
         break;
-      case "FST004":
-       if (page === "client" || page === "employee-details" || page === "budget" ) {
+      case "HR Manager":
+        if (page === "client" || page === "employee-details" || page === "budget") {
           item.style.display = "none";
         } else {
           item.style.display = "flex";
         }
         break;
-      case "FST005":
-       if (page === "client" || page === "employee-details" || page === "budget" || page === "hr" ) {
+      case "Junior Developer":
+        if (page === "client" || page === "employee-details" || page === "budget" || page === "hr") {
           item.style.display = "none";
         } else {
           item.style.display = "flex";
@@ -66,6 +82,7 @@ function updateSidebarForUser() {
     }
   });
 }
+
 
 // Call updateSidebarForUser on page load
 updateSidebarForUser();
@@ -155,29 +172,27 @@ function initializePageScripts(pageName) {
       break;
 
     case "client":
-  setTimeout(() => {
-    if (typeof initializeClientDatabaseTabs === "function") {
-      initializeClientDatabaseTabs();
-    }
-    if (typeof initializeCustomerModal === "function") {
-      initializeCustomerModal();
-    }
-    if (typeof initializeFirstLevelFollowup === "function") {
-      initializeFirstLevelFollowup();
-    }
-    if (typeof initializeSecondLevelFollowup === "function") {
-      initializeSecondLevelFollowup();
-    }
-    if (typeof initializeMeetingDetails === "function") {
-      initializeMeetingDetails();
-    }
-    // ✅ ADD THIS - Initialize Report Details
-    if (typeof initializeReportDetails === "function") {
-      initializeReportDetails();
-    }
-  }, 100);
-  break;
-
+      setTimeout(() => {
+        if (typeof initializeClientDatabaseTabs === "function") {
+          initializeClientDatabaseTabs();
+        }
+        if (typeof initializeCustomerModal === "function") {
+          initializeCustomerModal();
+        }
+        if (typeof initializeFirstLevelFollowup === "function") {
+          initializeFirstLevelFollowup();
+        }
+        if (typeof initializeSecondLevelFollowup === "function") {
+          initializeSecondLevelFollowup();
+        }
+        if (typeof initializeMeetingDetails === "function") {
+          initializeMeetingDetails();
+        }
+        if (typeof initializeReportDetails === "function") {
+          initializeReportDetails();
+        }
+      }, 100);
+      break;
 
     case "projects":
       setTimeout(() => {
@@ -189,34 +204,32 @@ function initializePageScripts(pageName) {
       }, 100);
       break;
 
-case "hr":
-  setTimeout(() => {
-    console.log("🚀 Initializing HR page...");
+    case "hr":
+      setTimeout(() => {
+        console.log("🚀 Initializing HR page...");
 
-    if (typeof initializeHRTabs === "function") {
-      initializeHRTabs();
-    }
-    if (typeof initializeHRRequests === "function") {
-      initializeHRRequests();
-    }
-    if (typeof initializeEmployeeDetailsPage === "function") {
-      initializeEmployeeDetailsPage();
-    }
-    if (typeof initializeUpdateEmployeeModal === "function") {
-      initializeUpdateEmployeeModal();
-    }
-    if (typeof renderEmployeeTable === "function") {
-      renderEmployeeTable();
-    }
-    // 🚩 ADD THIS BLOCK
-    if (typeof initializeHRSalaryPage === "function") {
-      initializeHRSalaryPage();
-    }
+        if (typeof initializeHRTabs === "function") {
+          initializeHRTabs();
+        }
+        if (typeof initializeHRRequests === "function") {
+          initializeHRRequests();
+        }
+        if (typeof initializeEmployeeDetailsPage === "function") {
+          initializeEmployeeDetailsPage();
+        }
+        if (typeof initializeUpdateEmployeeModal === "function") {
+          initializeUpdateEmployeeModal();
+        }
+        if (typeof renderEmployeeTable === "function") {
+          renderEmployeeTable();
+        }
+        if (typeof initializeHRSalaryPage === "function") {
+          initializeHRSalaryPage();
+        }
 
-    console.log("✅ HR page fully initialized");
-  }, 200);
-  break;
-
+        console.log("✅ HR page fully initialized");
+      }, 200);
+      break;
 
     // Add other cases here as needed...
   }

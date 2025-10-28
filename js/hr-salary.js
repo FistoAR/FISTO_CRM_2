@@ -1,7 +1,7 @@
 // ==================== HR SALARY DATA ====================
 const hrSalaryEmployees = [
-  { id: 'FSTNTI01', name: 'Sameer', designation: 'Team Head', jobRole: 'On role', basicSalary: 12000 },
-  { id: 'FSTNTI02', name: 'Sham', designation: 'Developer', jobRole: 'On role', basicSalary: 15000 },
+  { id: 'FSTNTI01', name: 'Sham', designation: 'Team Head', jobRole: 'On role', basicSalary: 12000 },
+  { id: 'FSTNTI02', name: 'Sameer', designation: 'Developer', jobRole: 'On role', basicSalary: 15000 },
   { id: 'FSTNTI03', name: 'Shafi', designation: 'Designer', jobRole: 'Intern', basicSalary: 8000 },
   { id: 'FSTNTI04', name: 'Harish', designation: 'Tester', jobRole: 'On role', basicSalary: 11000 }
 ];
@@ -9,7 +9,7 @@ const hrSalaryEmployees = [
 const hrSalaryRecords = [
   {
     employeeId: 'FSTNTI01',
-    employeeName: 'Sameer',
+    employeeName: 'Sham',
     designation: 'Team Head',
     jobRole: 'On role',
     date: '02 OCT 2025',
@@ -26,7 +26,7 @@ const hrSalaryRecords = [
   },
   {
     employeeId: 'FSTNTI02',
-    employeeName: 'Sham',
+    employeeName: 'Sameer',
     designation: 'Developer',
     jobRole: 'On role',
     date: '02 OCT 2025',
@@ -134,17 +134,17 @@ function renderMonthYearPicker() {
   let pickerHTML = `
     <div class="hr-salary-calendar-month-year">
       <button id="hrSalaryPrevYear" class="hr-salary-calendar-nav">◀</button>
-      <span style="font-size: 1.1rem;">${currentYear}</span>
+      <span style="font-size: .8vw;">${currentYear}</span>
       <button id="hrSalaryNextYear" class="hr-salary-calendar-nav">▶</button>
     </div>
-    <div class="hr-salary-month-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 15px 0;">
+    <div class="hr-salary-month-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px; margin: 10px 0;">
   `;
   
   monthNames.forEach((month, index) => {
     const isSelected = selectedMonth === index && selectedYear === currentYear;
     pickerHTML += `
       <div class="hr-salary-month-item" data-month="${index}" 
-           style="padding: 12px; text-align: center; border-radius: 8px; cursor: pointer; background: ${isSelected ? '#0052CC' : '#f5f5f5'}; color: ${isSelected ? 'white' : '#333'}; font-family: 'Gilroy-SemiBold', sans-serif; transition: all 0.2s; font-size: 0.9rem;">
+           style="padding: 12px; text-align: center; border-radius: 8px; cursor: pointer; background: ${isSelected ? '#0052CC' : '#f5f5f5'}; color: ${isSelected ? 'white' : '#333'}; font-family: 'Gilroy-SemiBold', sans-serif; transition: all 0.2s; font-size: 0.8vw;">
         ${month.substring(0, 3)}
       </div>
     `;
@@ -152,9 +152,9 @@ function renderMonthYearPicker() {
   
   pickerHTML += `
     </div>
-    <div class="hr-salary-calendar-actions" style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 10px; padding-top: 10px; border-top: 1px solid #e5e7eb;">
-      <button id="hrSalaryCancelBtn" style="background: transparent; color: #0052CC; border: none; padding: 6px 16px; cursor: pointer; font-family: 'Gilroy-SemiBold'; font-size: 0.9rem; border-radius: 5px;">CANCEL</button>
-      <button id="hrSalaryOkBtn" style="background: #0052CC; color: white; border: none; padding: 6px 16px; cursor: pointer; font-family: 'Gilroy-SemiBold'; font-size: 0.9rem; border-radius: 5px;">OK</button>
+    <div class="hr-salary-calendar-actions" style="display: flex; justify-content: flex-end; gap: 10px; 10px; border-top: 1px solid #e5e7eb;">
+      <button id="hrSalaryCancelBtn" style="background: transparent; color: #0052CC; border: none; padding: 6px 16px; cursor: pointer; font-family: 'Gilroy-SemiBold'; font-size: 0.8vw; border-radius: 5px;">CANCEL</button>
+      <button id="hrSalaryOkBtn" style="background: #0052CC; color: white; border: none; padding: 6px 16px; cursor: pointer; font-family: 'Gilroy-SemiBold'; font-size: 0.8vw; border-radius: 5px;">OK</button>
     </div>
   `;
   
@@ -455,7 +455,7 @@ function createGenerateModal() {
       <div class="hr-salary-modal-body">
         <div class="hr-salary-form-section">
           <h3 class="hr-salary-section-title">
-            <span class="hr-salary-section-icon">👤</span> Professional information
+            <img src="./assets/Imgaes/modal_person.png" alt=""> Professional information
           </h3>
           <div class="hr-salary-form-row">
             <div class="hr-salary-form-group full-width hr-salary-employee-search">
@@ -480,7 +480,7 @@ function createGenerateModal() {
 
         <div class="hr-salary-form-section">
           <h3 class="hr-salary-section-title">
-            <span class="hr-salary-section-icon">💰</span> Salary Information
+           <img src="./assets/Imgaes/money_icon.png" alt=""> Salary Information
           </h3>
           <div class="hr-salary-form-row">
             <div class="hr-salary-form-group">
@@ -496,7 +496,7 @@ function createGenerateModal() {
 
         <div class="hr-salary-form-section">
           <h3 class="hr-salary-section-title">
-            <span class="hr-salary-section-icon">ℹ️</span> Other Information
+            <img src="./assets/Imgaes/i_icon.png" alt=""> Other Information
           </h3>
           <div class="hr-salary-form-row">
             <div class="hr-salary-form-group">
@@ -644,7 +644,7 @@ function showViewDetailsModal(record) {
   modal.innerHTML = `
     <div class="hr-salary-modal-content">
       <div class="hr-salary-modal-header">
-        <h2>Salary Details - ${record.employeeName}</h2>
+        <h2>Edit Salary Details - ${record.employeeName}</h2>
         <span class="hr-salary-modal-close" id="hrSalaryViewClose">&times;</span>
       </div>
 
@@ -652,64 +652,64 @@ function showViewDetailsModal(record) {
         
         <div class="hr-salary-form-section">
           <h3 class="hr-salary-section-title">
-            <span class="hr-salary-section-icon">👤</span> Employee Information
+            <img src="./assets/Imgaes/modal_person.png" alt=""> Employee Information
           </h3>
           <div class="hr-salary-form-row">
             <div class="hr-salary-form-group">
               <label class="hr-salary-label">Employee ID</label>
-              <input type="text" class="hr-salary-input" value="${record.employeeId}" readonly>
+              <input type="text" id="viewEmpId" class="hr-salary-input" value="${record.employeeId}" readonly>
             </div>
             <div class="hr-salary-form-group">
               <label class="hr-salary-label">Employee Name</label>
-              <input type="text" class="hr-salary-input" value="${record.employeeName}" readonly>
+              <input type="text" id="viewEmpName" class="hr-salary-input" value="${record.employeeName}" readonly>
             </div>
             <div class="hr-salary-form-group">
               <label class="hr-salary-label">Designation</label>
-              <input type="text" class="hr-salary-input" value="${record.designation}" readonly>
+              <input type="text" id="viewDesignation" class="hr-salary-input" value="${record.designation}" readonly>
             </div>
             <div class="hr-salary-form-group">
               <label class="hr-salary-label">Job Role</label>
-              <input type="text" class="hr-salary-input" value="${record.jobRole}" readonly>
+              <input type="text" id="viewJobRole" class="hr-salary-input" value="${record.jobRole}" readonly>
             </div>
           </div>
         </div>
 
         <div class="hr-salary-form-section">
           <h3 class="hr-salary-section-title">
-            <span class="hr-salary-section-icon">💰</span> Salary Breakdown
+            <img src="./assets/Imgaes/money_icon.png" alt=""> Salary Breakdown
           </h3>
           <div class="hr-salary-form-row">
             <div class="hr-salary-form-group">
               <label class="hr-salary-label">Basic Salary</label>
-              <input type="text" class="hr-salary-input" value="₹ ${record.basicSalary.toLocaleString()}" readonly>
+              <input type="number" id="viewBasicSalary" class="hr-salary-input" value="${record.basicSalary}">
             </div>
             <div class="hr-salary-form-group">
               <label class="hr-salary-label">Incentive</label>
-              <input type="text" class="hr-salary-input" value="₹ ${record.incentive.toLocaleString()}" readonly>
+              <input type="number" id="viewIncentive" class="hr-salary-input" value="${record.incentive}">
             </div>
             <div class="hr-salary-form-group">
               <label class="hr-salary-label">Bonus</label>
-              <input type="text" class="hr-salary-input" value="₹ ${record.bonus.toLocaleString()}" readonly>
+              <input type="number" id="viewBonus" class="hr-salary-input" value="${record.bonus}">
             </div>
             <div class="hr-salary-form-group">
               <label class="hr-salary-label">Medical</label>
-              <input type="text" class="hr-salary-input" value="₹ ${record.medical.toLocaleString()}" readonly>
+              <input type="number" id="viewMedical" class="hr-salary-input" value="${record.medical}">
             </div>
             <div class="hr-salary-form-group">
               <label class="hr-salary-label">Other Allowance</label>
-              <input type="text" class="hr-salary-input" value="₹ ${record.otherAllowance.toLocaleString()}" readonly>
+              <input type="number" id="viewOtherAllowance" class="hr-salary-input" value="${record.otherAllowance}">
             </div>
             <div class="hr-salary-form-group">
               <label class="hr-salary-label">Deductions</label>
-              <input type="text" class="hr-salary-input" value="₹ ${record.deductions.toLocaleString()}" readonly style="color: red;">
+              <input type="number" id="viewDeductions" class="hr-salary-input" value="${record.deductions}">
             </div>
             <div class="hr-salary-form-group">
               <label class="hr-salary-label">Loss of Pay</label>
-              <input type="text" class="hr-salary-input" value="₹ ${record.lossOfPay.toLocaleString()}" readonly style="color: red;">
+              <input type="number" id="viewLossOfPay" class="hr-salary-input" value="${record.lossOfPay}">
             </div>
             <div class="hr-salary-form-group">
               <label class="hr-salary-label" style="font-weight: bold;">Total Salary</label>
-              <input type="text" class="hr-salary-input" value="₹ ${record.totalSalary.toLocaleString()}" readonly style="background: #e9f7ef; font-weight: bold; color: #0d6832;">
+              <input type="text" id="viewTotalSalary" class="hr-salary-input" value="₹ ${record.totalSalary.toLocaleString()}" readonly style="background: #e9f7ef; font-weight: bold; color: #0d6832;">
             </div>
           </div>
         </div>
@@ -718,7 +718,8 @@ function showViewDetailsModal(record) {
 
       <div class="hr-salary-modal-footer">
         <div class="hr-salary-form-actions">
-          <button id="hrSalaryViewCloseBtn" class="hr-salary-btn-cancel">Close</button>
+          <button id="hrSalaryUpdateViewBtn" class="hr-salary-btn-submit">Update Salary</button>
+          <button id="hrSalaryViewCloseBtn" class="hr-salary-btn-cancel">Cancel</button>
         </div>
       </div>
     </div>
@@ -728,12 +729,70 @@ function showViewDetailsModal(record) {
   
   document.body.appendChild(modal);
   
+  // Auto-calculate total salary on input change
+  const calculateTotal = () => {
+    const basicSalary = parseFloat(document.getElementById('viewBasicSalary').value) || 0;
+    const incentive = parseFloat(document.getElementById('viewIncentive').value) || 0;
+    const bonus = parseFloat(document.getElementById('viewBonus').value) || 0;
+    const medical = parseFloat(document.getElementById('viewMedical').value) || 0;
+    const otherAllowance = parseFloat(document.getElementById('viewOtherAllowance').value) || 0;
+    const deductions = parseFloat(document.getElementById('viewDeductions').value) || 0;
+    const lossOfPay = parseFloat(document.getElementById('viewLossOfPay').value) || 0;
+    
+    const total = basicSalary + incentive + bonus + medical + otherAllowance - deductions - lossOfPay;
+    document.getElementById('viewTotalSalary').value = '₹ ' + total.toLocaleString();
+  };
+  
   setTimeout(() => {
+    // Add event listeners for auto-calculation
+    ['viewBasicSalary', 'viewIncentive', 'viewBonus', 'viewMedical', 'viewOtherAllowance', 'viewDeductions', 'viewLossOfPay'].forEach(id => {
+      const input = document.getElementById(id);
+      if (input) {
+        input.addEventListener('input', calculateTotal);
+      }
+    });
+    
+    // Close button handlers
     document.getElementById('hrSalaryViewClose').onclick = () => modal.remove();
     document.getElementById('hrSalaryViewCloseBtn').onclick = () => modal.remove();
     modal.onclick = (e) => { if (e.target === modal) modal.remove(); };
+    
+    // Update button handler
+    document.getElementById('hrSalaryUpdateViewBtn').onclick = function() {
+      // Find and update the record in the array
+      const recordIndex = hrSalaryRecords.findIndex(r => 
+        r.employeeId === record.employeeId && 
+        r.year.toString() === record.year.toString() && 
+        r.month === record.month
+      );
+      
+      if (recordIndex !== -1) {
+        hrSalaryRecords[recordIndex] = {
+          ...hrSalaryRecords[recordIndex],
+          basicSalary: parseFloat(document.getElementById('viewBasicSalary').value) || 0,
+          incentive: parseFloat(document.getElementById('viewIncentive').value) || 0,
+          bonus: parseFloat(document.getElementById('viewBonus').value) || 0,
+          medical: parseFloat(document.getElementById('viewMedical').value) || 0,
+          otherAllowance: parseFloat(document.getElementById('viewOtherAllowance').value) || 0,
+          deductions: parseFloat(document.getElementById('viewDeductions').value) || 0,
+          lossOfPay: parseFloat(document.getElementById('viewLossOfPay').value) || 0,
+          totalSalary: parseFloat(document.getElementById('viewBasicSalary').value || 0) + 
+                      parseFloat(document.getElementById('viewIncentive').value || 0) + 
+                      parseFloat(document.getElementById('viewBonus').value || 0) + 
+                      parseFloat(document.getElementById('viewMedical').value || 0) + 
+                      parseFloat(document.getElementById('viewOtherAllowance').value || 0) - 
+                      parseFloat(document.getElementById('viewDeductions').value || 0) - 
+                      parseFloat(document.getElementById('viewLossOfPay').value || 0)
+        };
+        
+        alert('Salary updated successfully!');
+        renderDetailTable(record.year, record.month);
+        modal.remove();
+      }
+    };
   }, 10);
 }
+
 
 // ==================== GLOBAL EXPORTS ====================
 if (typeof window !== 'undefined') {

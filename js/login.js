@@ -27,9 +27,39 @@ document.getElementById("employeeId").addEventListener("input", function () {
 const employeeError = document.getElementById("employeeIdError");
 const passwordError = document.getElementById("passwordError");
 
-// List of valid employee IDs
-const validIds = ["FST001", "FST002", "FST003", "FST004", "FST005"];
-const validPassword = "1234";
+// Array of employee objects with ID, Password, Name, and Designation
+const employees = [
+  {
+    employeeId: "FST001",
+    password: "1234",
+    name: "Agasthiya",
+    designation: "SBU"
+  },
+  {
+    employeeId: "FST002",
+    password: "1234",
+    name: "Atchaya",
+    designation: "Project Head"
+  },
+  {
+    employeeId: "FST003",
+    password: "1234",
+    name: "Sham",
+    designation: "Team Head"
+  },
+  {
+    employeeId: "FST004",
+    password: "1234",
+    name: "Prakash",
+    designation: "HR Manager"
+  },
+  {
+    employeeId: "FST005",
+    password: "1234",
+    name: "Luffy",
+    designation: "Junior Developer"
+  }
+];
 
 // Handle Form Submission
 document.getElementById("loginForm").addEventListener("submit", function (event) {
@@ -54,27 +84,32 @@ document.getElementById("loginForm").addEventListener("submit", function (event)
     return;
   }
 
+  // Find employee by ID
+  const employee = employees.find(emp => emp.employeeId === employeeId);
+
   // Validate Employee ID
-  if (!validIds.includes(employeeId)) {
+  if (!employee) {
     employeeError.textContent = "Invalid Employee ID";
     return;
   }
 
   // Validate Password
-  if (password !== validPassword) {
+  if (employee.password !== password) {
     passwordError.textContent = "Wrong Password";
     return;
   }
 
   // If valid credentials -> show spinner & redirect
-loginBtn.disabled = true;
-loginBtn.innerHTML = '<div class="loading-spinner"></div>';
+  loginBtn.disabled = true;
+  loginBtn.innerHTML = '<div class="loading-spinner"></div>';
 
-// Store logged-in user ID
-sessionStorage.setItem("loggedInUser", employeeId);
+  // Store logged-in user data in sessionStorage
+  sessionStorage.setItem("loggedInUser", employee.employeeId);
+  sessionStorage.setItem("userName", employee.name);
+  sessionStorage.setItem("userDesignation", employee.designation);
 
-// Redirect with slight delay
-setTimeout(() => {
-  window.location.href = "home.html";
-}, 1200);
+  // Redirect with slight delay
+  setTimeout(() => {
+    window.location.href = "home.html";
+  }, 1200);
 });
