@@ -63,7 +63,7 @@ function initializeCustomerModal() {
                 <span class="customer-contact-row-title">Contact ${contactRowCounter}</span>
                 ${!isFirst ? `
                     <button type="button" class="customer-contact-delete-btn" data-contact-id="${contactRowCounter}">
-                        <img src="../assets/imgaes/preview_delete_btn.png" alt="Delete" />
+                        <img src="../assets/imgaes/preview_delete_btn.webp" alt="Delete" />
                     </button>
                 ` : ''}
             </div>
@@ -245,12 +245,12 @@ function initializeCustomerModal() {
                     <td>${customer.reference}</td>
                     <td>
                         <button class="customer-table-view-btn" data-index="${index}">
-                            <img src="../assets/imgaes/table_eye.png" alt="View" />
+                            <img src="../assets/imgaes/table_eye.webp" alt="View" />
                         </button>
                     </td>
                     <td>
                         <button class="customer-table-delete-btn" data-index="${index}">
-                            <img src="../assets/imgaes/preview_delete_btn.png" alt="Delete" />
+                            <img src="../assets/imgaes/preview_delete_btn.webp" alt="Delete" />
                         </button>
                     </td>
                 </tr>

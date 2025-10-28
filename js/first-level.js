@@ -16,9 +16,14 @@ function initializeFirstLevelFollowup() {
   const applyFilterBtn = document.getElementById("firstLevelApplyFilter");
   const clearFilterBtn = document.getElementById("firstLevelClearFilter");
 
-  // Check if modal exists
+  // Check if required elements exist
   if (!modal) {
     console.error("First level modal not found!");
+    return;
+  }
+
+  if (!tableBody) {
+    console.error("Table body not found!");
     return;
   }
 
@@ -212,16 +217,22 @@ function initializeFirstLevelFollowup() {
   // ========================================
 
   // Toggle filter dropdown
-  if (filterBtn) {
+  if (filterBtn && filterDropdown) {
     filterBtn.addEventListener("click", function(e) {
       e.stopPropagation();
       filterDropdown.classList.toggle("active");
+      console.log("Filter button clicked, dropdown active:", filterDropdown.classList.contains("active"));
     });
+  } else {
+    console.warn("Filter button or dropdown not found");
   }
 
   // Close dropdown when clicking outside
   document.addEventListener("click", function(e) {
-    if (filterDropdown && !filterDropdown.contains(e.target) && e.target !== filterBtn) {
+    if (filterDropdown && 
+        !filterDropdown.contains(e.target) && 
+        filterBtn && 
+        !filterBtn.contains(e.target)) {
       filterDropdown.classList.remove("active");
     }
   });
@@ -233,7 +244,9 @@ function initializeFirstLevelFollowup() {
       if (selectedFilter) {
         currentFilter = selectedFilter.value;
         renderTable();
-        filterDropdown.classList.remove("active");
+        if (filterDropdown) {
+          filterDropdown.classList.remove("active");
+        }
         console.log("Filter applied:", currentFilter);
       }
     });
@@ -243,9 +256,14 @@ function initializeFirstLevelFollowup() {
   if (clearFilterBtn) {
     clearFilterBtn.addEventListener("click", function() {
       currentFilter = "All";
-      document.querySelector('input[name="firstLevelFilter"][value="All"]').checked = true;
+      const allFilterRadio = document.querySelector('input[name="firstLevelFilter"][value="All"]');
+      if (allFilterRadio) {
+        allFilterRadio.checked = true;
+      }
       renderTable();
-      filterDropdown.classList.remove("active");
+      if (filterDropdown) {
+        filterDropdown.classList.remove("active");
+      }
       console.log("Filter cleared");
     });
   }
@@ -282,8 +300,12 @@ function initializeFirstLevelFollowup() {
   }
 
   function closeModal() {
-    modal.classList.remove("active");
-    form.reset();
+    if (modal) {
+      modal.classList.remove("active");
+    }
+    if (form) {
+      form.reset();
+    }
 
     if (editingIndex !== -1) {
       renderTable();
@@ -293,7 +315,9 @@ function initializeFirstLevelFollowup() {
   }
 
   function closeViewModal() {
-    viewModal.classList.remove("active");
+    if (viewModal) {
+      viewModal.classList.remove("active");
+    }
   }
 
   // ========================================
@@ -301,7 +325,7 @@ function initializeFirstLevelFollowup() {
   // ========================================
 
   // Save Button
-  if (saveBtn) {
+  if (saveBtn && form) {
     saveBtn.addEventListener("click", function (e) {
       e.preventDefault();
 
@@ -354,26 +378,28 @@ function initializeFirstLevelFollowup() {
   // ========================================
 
   // Event delegation for view button
-  tableBody.addEventListener("click", function (e) {
-    const viewBtn = e.target.closest(".first-level-view-btn");
+  if (tableBody) {
+    tableBody.addEventListener("click", function (e) {
+      const viewBtn = e.target.closest(".first-level-view-btn");
 
-    if (viewBtn) {
-      const index = parseInt(viewBtn.getAttribute("data-index"));
-      openViewModal(index);
-    }
-  });
-
-  // Handle status dropdown change
-  tableBody.addEventListener("change", function (e) {
-    if (e.target.classList.contains("first-level-status-select")) {
-      const index = parseInt(e.target.getAttribute("data-index"));
-      const selectedStatus = e.target.value;
-
-      if (selectedStatus !== "None") {
-        openEditModal(index, selectedStatus);
+      if (viewBtn) {
+        const index = parseInt(viewBtn.getAttribute("data-index"));
+        openViewModal(index);
       }
-    }
-  });
+    });
+
+    // Handle status dropdown change
+    tableBody.addEventListener("change", function (e) {
+      if (e.target.classList.contains("first-level-status-select")) {
+        const index = parseInt(e.target.getAttribute("data-index"));
+        const selectedStatus = e.target.value;
+
+        if (selectedStatus !== "None") {
+          openEditModal(index, selectedStatus);
+        }
+      }
+    });
+  }
 
   // ========================================
   // OPEN MODALS
@@ -384,20 +410,26 @@ function initializeFirstLevelFollowup() {
     editingIndex = index;
     const record = firstLevelCustomers[index];
 
-    document.querySelector('[name="companyNameDisplay"]').value =
-      record.companyName;
-    document.querySelector('[name="customerNameDisplay"]').value =
-      record.customerName;
-    document.querySelector('[name="statusHidden"]').value = selectedStatus;
-    document.querySelector('[name="remarks"]').value = record.remarks;
-    document.querySelector('[name="nextFollowupDate"]').value =
-      record.nextFollowupDate;
+    const companyNameField = document.querySelector('[name="companyNameDisplay"]');
+    const customerNameField = document.querySelector('[name="customerNameDisplay"]');
+    const statusHiddenField = document.querySelector('[name="statusHidden"]');
+    const remarksField = document.querySelector('[name="remarks"]');
+    const nextFollowupDateField = document.querySelector('[name="nextFollowupDate"]');
+    const modalHeader = document.querySelector(".first-level-modal-header h2");
 
-    document.querySelector(
-      ".first-level-modal-header h2"
-    ).textContent = `Update Follow-up - ${selectedStatus}`;
+    if (companyNameField) companyNameField.value = record.companyName;
+    if (customerNameField) customerNameField.value = record.customerName;
+    if (statusHiddenField) statusHiddenField.value = selectedStatus;
+    if (remarksField) remarksField.value = record.remarks;
+    if (nextFollowupDateField) nextFollowupDateField.value = record.nextFollowupDate;
 
-    modal.classList.add("active");
+    if (modalHeader) {
+      modalHeader.textContent = `Update Follow-up - ${selectedStatus}`;
+    }
+
+    if (modal) {
+      modal.classList.add("active");
+    }
   }
 
   // Open View Modal Function (when view button is clicked)
@@ -405,46 +437,41 @@ function initializeFirstLevelFollowup() {
     const record = firstLevelCustomers[index];
     const customerData = record.fullCustomerData;
 
+    // Helper function to safely set value
+    const setFieldValue = (id, value) => {
+      const field = document.getElementById(id);
+      if (field) {
+        field.value = value || "-";
+      }
+    };
+
     // Populate Customer Database Information
-    document.getElementById("viewDbDate").value = customerData.date || "-";
-    document.getElementById("viewDbCustomerId").value =
-      customerData.customerId || "-";
-    document.getElementById("viewDbCompanyName").value =
-      customerData.companyName || "-";
-    document.getElementById("viewDbCustomerName").value =
-      customerData.customerName || "-";
-    document.getElementById("viewDbIndustryType").value =
-      customerData.industryType || "-";
-    document.getElementById("viewDbWebsite").value =
-      customerData.website || "-";
-    document.getElementById("viewDbAddress").value =
-      customerData.address || "-";
-    document.getElementById("viewDbReference").value =
-      customerData.reference || "-";
-    document.getElementById("viewDbRemarks").value =
-      customerData.remarks || "-";
+    setFieldValue("viewDbDate", customerData.date);
+    setFieldValue("viewDbCustomerId", customerData.customerId);
+    setFieldValue("viewDbCompanyName", customerData.companyName);
+    setFieldValue("viewDbCustomerName", customerData.customerName);
+    setFieldValue("viewDbIndustryType", customerData.industryType);
+    setFieldValue("viewDbWebsite", customerData.website);
+    setFieldValue("viewDbAddress", customerData.address);
+    setFieldValue("viewDbReference", customerData.reference);
+    setFieldValue("viewDbRemarks", customerData.remarks);
 
     // Populate Contact Details
-    document.getElementById("viewDbContactPerson").value =
-      customerData.contactPerson || "-";
-    document.getElementById("viewDbPhoneNumber").value =
-      customerData.phoneNumber || "-";
-    document.getElementById("viewDbMailId").value = customerData.mailId || "-";
-    document.getElementById("viewDbDesignation").value =
-      customerData.designation || "-";
+    setFieldValue("viewDbContactPerson", customerData.contactPerson);
+    setFieldValue("viewDbPhoneNumber", customerData.phoneNumber);
+    setFieldValue("viewDbMailId", customerData.mailId);
+    setFieldValue("viewDbDesignation", customerData.designation);
 
     // Populate 1st Level Follow-up Information
-    document.getElementById("viewFollowupStatus").value = record.status;
-    document.getElementById("viewFollowupInitiatedDate").value =
-      record.initiatedDate || "-";
-    document.getElementById("viewFollowupUpdateDate").value =
-      record.updateDate || "-";
-    document.getElementById("viewFollowupNextDate").value =
-      record.nextFollowupDate || "-";
-    document.getElementById("viewFollowupRemarks").value =
-      record.remarks || "No remarks yet";
+    setFieldValue("viewFollowupStatus", record.status);
+    setFieldValue("viewFollowupInitiatedDate", record.initiatedDate);
+    setFieldValue("viewFollowupUpdateDate", record.updateDate);
+    setFieldValue("viewFollowupNextDate", record.nextFollowupDate);
+    setFieldValue("viewFollowupRemarks", record.remarks || "No remarks yet");
 
-    viewModal.classList.add("active");
+    if (viewModal) {
+      viewModal.classList.add("active");
+    }
   }
 
   // ========================================
@@ -452,6 +479,8 @@ function initializeFirstLevelFollowup() {
   // ========================================
 
   function renderTable() {
+    if (!tableBody) return;
+
     // Filter data based on current filter
     let filteredData = firstLevelCustomers;
     
@@ -509,7 +538,7 @@ function initializeFirstLevelFollowup() {
             <td>${record.customerName}</td>
             <td>
               <button class="first-level-view-btn" data-index="${originalIndex}">
-                <img src="../assets/imgaes/table_eye.png" alt="View" />
+                <img src="../assets/imgaes/table_eye.webp" alt="View" />
               </button>
             </td>
           </tr>

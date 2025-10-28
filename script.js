@@ -15,7 +15,6 @@ const userDesignation = sessionStorage.getItem("userDesignation");
 
 // Check if user is logged in
 if (!currentUser) {
-  // No user logged in, force redirect to login page
   if (window.location.pathname !== "/index.html") {
     window.location.href = "index.html";
   }
@@ -34,8 +33,12 @@ if (roleText && userDesignation && currentUser) {
 }
 
 // Function to control sidebar visibility based on user DESIGNATION
-// Function to control sidebar visibility based on user DESIGNATION
 function updateSidebarForUser() {
+  if (!navItems || navItems.length === 0) {
+    console.warn("No navigation items found");
+    return;
+  }
+
   navItems.forEach((item) => {
     const page = item.getAttribute("data-page");
 
@@ -77,18 +80,18 @@ function updateSidebarForUser() {
         }
         break;
       default:
-        // If user is unknown, hide all nav items (optional)
         item.style.display = "none";
     }
   });
 }
 
-
-// Call updateSidebarForUser on page load
-updateSidebarForUser();
-
 // Function to load page content dynamically
 async function loadPage(pageName) {
+  if (!contentArea) {
+    console.error("Content area not found");
+    return;
+  }
+
   // Update URL hash
   window.location.hash = pageName;
 
@@ -103,7 +106,9 @@ async function loadPage(pageName) {
 
       // Add fade-in animation
       setTimeout(() => {
-        contentArea.style.opacity = "1";
+        if (contentArea) {
+          contentArea.style.opacity = "1";
+        }
       }, 50);
       return;
     }
@@ -127,18 +132,24 @@ async function loadPage(pageName) {
     initializePageScripts(pageName);
 
     // Add fade-in animation
-    contentArea.style.opacity = "0";
-    setTimeout(() => {
-      contentArea.style.opacity = "1";
-    }, 50);
+    if (contentArea) {
+      contentArea.style.opacity = "0";
+      setTimeout(() => {
+        if (contentArea) {
+          contentArea.style.opacity = "1";
+        }
+      }, 50);
+    }
   } catch (error) {
     console.error("Error loading page:", error);
-    contentArea.innerHTML = `
-            <div class="error-message">
-                <h3>Error loading page</h3>
-                <p>The page "${pageName}" could not be loaded. Please try again.</p>
-            </div>
-        `;
+    if (contentArea) {
+      contentArea.innerHTML = `
+        <div class="error-message">
+          <h3>Error loading page</h3>
+          <p>The page "${pageName}" could not be loaded. Please try again.</p>
+        </div>
+      `;
+    }
   }
 }
 
@@ -230,13 +241,13 @@ function initializePageScripts(pageName) {
         console.log("✅ HR page fully initialized");
       }, 200);
       break;
-
-    // Add other cases here as needed...
   }
 }
 
 // Function to update active nav item
 function updateActiveNavItem(pageName) {
+  if (!navItems || navItems.length === 0) return;
+
   navItems.forEach((nav) => {
     nav.classList.remove("active");
     if (nav.getAttribute("data-page") === pageName) {
@@ -246,20 +257,22 @@ function updateActiveNavItem(pageName) {
 }
 
 // Add click event to all nav items
-navItems.forEach((item) => {
-  item.addEventListener("click", function (e) {
-    e.preventDefault();
+if (navItems && navItems.length > 0) {
+  navItems.forEach((item) => {
+    item.addEventListener("click", function (e) {
+      e.preventDefault();
 
-    const pageName = this.getAttribute("data-page");
-    if (pageName) {
-      loadPage(pageName);
-    }
+      const pageName = this.getAttribute("data-page");
+      if (pageName) {
+        loadPage(pageName);
+      }
 
-    if (window.innerWidth <= 1024 && sidebar.classList.contains("active")) {
-      toggleSidebar();
-    }
+      if (window.innerWidth <= 1024 && sidebar && sidebar.classList.contains("active")) {
+        toggleSidebar();
+      }
+    });
   });
-});
+}
 
 // Handle browser back/forward buttons
 window.addEventListener("hashchange", function () {
@@ -290,6 +303,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   loadPage(initialPage);
   updateActiveNavItem(initialPage);
+  updateSidebarForUser(); // Call after DOM is loaded
 });
 
 // Update current date and time
@@ -317,6 +331,11 @@ setInterval(updateDateTime, 1000);
 
 // Function to toggle sidebar
 function toggleSidebar() {
+  if (!sidebar || !hamburgerBtn || !sidebarOverlay) {
+    console.warn("Sidebar elements not found");
+    return;
+  }
+
   sidebar.classList.toggle("active");
   hamburgerBtn.classList.toggle("active");
   sidebarOverlay.classList.toggle("active");
@@ -342,11 +361,13 @@ let resizeTimer;
 window.addEventListener("resize", function () {
   clearTimeout(resizeTimer);
   resizeTimer = setTimeout(function () {
-    if (window.innerWidth > 1024 && sidebar.classList.contains("active")) {
+    if (window.innerWidth > 1024 && sidebar && sidebar.classList.contains("active")) {
       toggleSidebar();
     }
   }, 250);
 });
 
 // Add smooth transition to content area
-contentArea.style.transition = "opacity 0.3s ease";
+if (contentArea) {
+  contentArea.style.transition = "opacity 0.3s ease";
+}

@@ -10,11 +10,11 @@ function togglePassword() {
   if (passwordInput.type === "password") {
     passwordInput.type = "text";
     toggleIcon.innerHTML =
-      '<img src="./assets/Imgaes/eye_login.png" alt="Show Password">';
+      '<img src="./assets/Imgaes/eye_login.webp" alt="Show Password">';
   } else {
     passwordInput.type = "password";
     toggleIcon.innerHTML =
-      '<img src="./assets/Imgaes/eye_slash_login.png" alt="Hide Password">';
+      '<img src="./assets/Imgaes/eye_slash_login.webp" alt="Hide Password">';
   }
 }
 

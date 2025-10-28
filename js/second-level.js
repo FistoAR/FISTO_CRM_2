@@ -454,7 +454,7 @@ function initializeSecondLevelFollowup() {
             <td>${record.customerName}</td>
             <td>
               <button class="second-level-view-btn" data-index="${originalIndex}">
-                <img src="../assets/imgaes/table_eye.png" alt="View" />
+                <img src="../assets/imgaes/table_eye.webp" alt="View" />
               </button>
             </td>
           </tr>

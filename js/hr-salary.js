@@ -455,7 +455,7 @@ function createGenerateModal() {
       <div class="hr-salary-modal-body">
         <div class="hr-salary-form-section">
           <h3 class="hr-salary-section-title">
-            <img src="./assets/Imgaes/modal_person.png" alt=""> Professional information
+            <img src="./assets/Imgaes/modal_person.webp" alt=""> Professional information
           </h3>
           <div class="hr-salary-form-row">
             <div class="hr-salary-form-group full-width hr-salary-employee-search">
@@ -480,7 +480,7 @@ function createGenerateModal() {
 
         <div class="hr-salary-form-section">
           <h3 class="hr-salary-section-title">
-           <img src="./assets/Imgaes/money_icon.png" alt=""> Salary Information
+           <img src="./assets/Imgaes/money_icon.webp" alt=""> Salary Information
           </h3>
           <div class="hr-salary-form-row">
             <div class="hr-salary-form-group">
@@ -496,7 +496,7 @@ function createGenerateModal() {
 
         <div class="hr-salary-form-section">
           <h3 class="hr-salary-section-title">
-            <img src="./assets/Imgaes/i_icon.png" alt=""> Other Information
+            <img src="./assets/Imgaes/i_icon.webp" alt=""> Other Information
           </h3>
           <div class="hr-salary-form-row">
             <div class="hr-salary-form-group">
@@ -652,7 +652,7 @@ function showViewDetailsModal(record) {
         
         <div class="hr-salary-form-section">
           <h3 class="hr-salary-section-title">
-            <img src="./assets/Imgaes/modal_person.png" alt=""> Employee Information
+            <img src="./assets/Imgaes/modal_person.webp" alt=""> Employee Information
           </h3>
           <div class="hr-salary-form-row">
             <div class="hr-salary-form-group">
@@ -676,7 +676,7 @@ function showViewDetailsModal(record) {
 
         <div class="hr-salary-form-section">
           <h3 class="hr-salary-section-title">
-            <img src="./assets/Imgaes/money_icon.png" alt=""> Salary Breakdown
+            <img src="./assets/Imgaes/money_icon.webp" alt=""> Salary Breakdown
           </h3>
           <div class="hr-salary-form-row">
             <div class="hr-salary-form-group">

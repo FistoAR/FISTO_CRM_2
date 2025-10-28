@@ -158,7 +158,7 @@ function updateProjectPageForDesignation() {
       }
       if (addViewBtn) {
         addViewBtn.innerHTML =
-          '<img src="../assets/imgaes/person_add.png" alt="" /> View';
+          '<img src="../assets/imgaes/person_add.webp" alt="" /> View';
         // Optional: Make it look read-only
         addViewBtn.style.opacity = "0.8";
       }
@@ -201,7 +201,7 @@ function updateProjectPageForDesignation() {
       }
       if (addViewBtn) {
         addViewBtn.innerHTML =
-          '<img src="../assets/imgaes/person_add.png" alt="" /> View';
+          '<img src="../assets/imgaes/person_add.webp" alt="" /> View';
         // Optional: Make it look read-only
         addViewBtn.style.opacity = "0.8";
       }
@@ -244,7 +244,7 @@ function updateProjectPageForDesignation() {
       }
       if (addViewBtn) {
         addViewBtn.innerHTML =
-          '<img src="../assets/imgaes/person_add.png" alt="" /> View';
+          '<img src="../assets/imgaes/person_add.webp" alt="" /> View';
         // Optional: Make it look read-only
         addViewBtn.style.opacity = "0.8";
       }
@@ -737,7 +737,7 @@ function addContactRow(contactData = null, isFirst = false) {
       ${
         isFirst || contactContainer.children.length === 0
           ? '<button type="button" class="add-contact-btn" title="Add Contact">Add New Contact</button>'
-          : '<button type="button" class="remove-contact-btn" title="Remove Contact"><img src="../assets/imgaes/preview_delete_btn.png"></button>'
+          : '<button type="button" class="remove-contact-btn" title="Remove Contact"><img src="../assets/imgaes/preview_delete_btn.webp"></button>'
       }
     </div>
     <div class="form-row contact-form-row">
@@ -886,12 +886,12 @@ function renderTable() {
       <td>
         <button class="view-btn" onclick="viewProject(${
           project.id
-        })"><img src="./assets/imgaes/table_eye.png" ></button>
+        })"><img src="./assets/imgaes/table_eye.webp" ></button>
       </td>
       <td>
         <button class="delete-btn" onclick="deleteProject(${
           project.id
-        })"><img src="./assets/imgaes/preview_delete_btn.png" ></button>
+        })"><img src="./assets/imgaes/preview_delete_btn.webp" ></button>
       </td>
     `;
 
@@ -1262,7 +1262,7 @@ function renderProjectOverviewAllocatedList() {
       <div class="project-overview-employee-avatar-large" style="background: ${emp.avatar}">${emp.initial}</div>
       <span class="project-overview-employee-name">${emp.name}</span>
       <button class="project-overview-remove-employee-btn" onclick="removeProjectOverviewEmployee(${emp.id})">
-        <img src="../assets/imgaes/preview_delete_btn.png" alt="Remove" style="width: 20px; height: 20px;">
+        <img src="../assets/imgaes/preview_delete_btn.webp" alt="Remove" style="width: 20px; height: 20px;">
       </button>
     `;
 
@@ -1483,10 +1483,10 @@ function addNewTaskCard() {
   </div>
       <div class="task-card-actions">
       <button class="task-delete-btn" onclick="deleteTaskCard(${taskCardCounter})">
-        <img src="../assets/imgaes/preview_delete_btn.png" alt="Delete">
+        <img src="../assets/imgaes/preview_delete_btn.webp" alt="Delete">
       </button>
         <button class="task-expand-btn expanded" > 
-        <img src="../assets/imgaes/task_arrow.png" alt="Delete">
+        <img src="../assets/imgaes/task_arrow.webp" alt="Delete">
        </button>
       </div>
     </div>
@@ -2209,7 +2209,7 @@ function handleProjectResourcesFileSelection(files) {
     fileItem.className = "project-resources-file-item";
     fileItem.innerHTML = `
       <div class="project-resources-file-info">
-        <div class="project-resources-file-icon"> <img src="../assets/imgaes/modal_file_bBlue.png"> </div>
+        <div class="project-resources-file-icon"> <img src="../assets/imgaes/modal_file_bBlue.webp"> </div>
         <div class="project-resources-file-details">
           <h5>${file.name}</h5>
           <span class="project-resources-file-size">${formatFileSize(
@@ -2218,7 +2218,7 @@ function handleProjectResourcesFileSelection(files) {
         </div>
       </div>
       <button class="project-resources-action-btn delete" onclick="removeProjectResourcesSelectedFile(${index})">
-        <img src="../assets/imgaes/proicons_cancel.png" alt="Delete">
+        <img src="../assets/imgaes/proicons_cancel.webp" alt="Delete">
       </button>
     `;
     filesList.appendChild(fileItem);
@@ -2308,7 +2308,7 @@ function renderProjectResourcesUploadedFiles() {
     fileItem.className = "project-resources-file-item";
     fileItem.innerHTML = `
       <div class="project-resources-file-info">
-        <div class="project-resources-file-icon"> <img src="../assets/imgaes/modal_file_bBlue.png"> </div>
+        <div class="project-resources-file-icon"> <img src="../assets/imgaes/modal_file_bBlue.webp"> </div>
         <div class="project-resources-file-details">
           <h5>${file.name}</h5>
           <span class="project-resources-file-size">${formatFileSize(
@@ -2320,17 +2320,17 @@ function renderProjectResourcesUploadedFiles() {
         <button class="project-resources-action-btn" onclick="viewProjectResourcesFile('${
           file.id
         }')" title="View">
-        <img src="../assets/imgaes/table_eye.png" alt="View">
+        <img src="../assets/imgaes/table_eye.webp" alt="View">
         </button>
         <button class="project-resources-action-btn" onclick="downloadProjectResourcesFile('${
           file.id
         }')" title="Download">
-        <img src="../assets/imgaes/download_icon.png" alt="View">
+        <img src="../assets/imgaes/download_icon.webp" alt="View">
         </button>
         <button class="project-resources-action-btn delete" onclick="deleteProjectResourcesFile('${
           file.id
         }')" title="Delete">
-        <img src="../assets/imgaes/preview_delete_btn.png" alt="Delete">
+        <img src="../assets/imgaes/preview_delete_btn.webp" alt="Delete">
         </button>
       </div>
     `;
@@ -2613,7 +2613,7 @@ function loadProjectResourcesLinks() {
     <div class="project-resources-link-item">
       <div class="project-resources-link-wrapper">
       <div class="project-resources-link-icon">
-        <img src="../assets/imgaes/link_icon.png" alt="Link" ">
+        <img src="../assets/imgaes/link_icon.webp" alt="Link" ">
       </div>
       <div class="project-resources-link-details">
       <div>
@@ -2627,12 +2627,12 @@ function loadProjectResourcesLinks() {
       <div class="project-resources-link-actions" >
         <div>
         <button class="project-resources-action-btn copy-btn-view" onclick="copyProjectResourcesLink('${link.url}')" title="Copy link">
-          <img src="../assets/imgaes/modal_copy_icon.png" alt="Copy" >
+          <img src="../assets/imgaes/modal_copy_icon.webp" alt="Copy" >
         </button>
         </div>
         <div>
         <button class="project-resources-action-btn delete-btn-view" onclick="deleteProjectResourcesLink(${index})" title="Delete">
-          <img src="../assets/imgaes/preview_delete_btn.png" alt="Delete">
+          <img src="../assets/imgaes/preview_delete_btn.webp" alt="Delete">
         </button>
         </div>
       </div>

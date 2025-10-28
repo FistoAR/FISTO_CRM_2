@@ -212,10 +212,10 @@ function initializeEmployeeDetailsPage() {
     function togglePasswordVisibility(inputField, toggleButton) {
         if (inputField.type === 'password') {
             inputField.type = 'text';
-            toggleButton.src = './assets/Imgaes/eye_login.png';
+            toggleButton.src = './assets/Imgaes/eye_login.webp';
         } else {
             inputField.type = 'password';
-            toggleButton.src = './assets/Imgaes/eye_slash_login.png';
+            toggleButton.src = './assets/Imgaes/eye_slash_login.webp';
         }
     }
 
@@ -577,24 +577,24 @@ function renderEmployeeTable() {
             <td><span class="status-badge status-working">${employee.workingStatus}</span></td>
             <td>
                 <div class="contact-cell">
-                    <img src="./assets/Imgaes/table_mail.png" alt="Email" class="contact-icon">
+                    <img src="./assets/Imgaes/table_mail.webp" alt="Email" class="contact-icon">
                     ${employee.emailPersonal}
                 </div>
             </td>
             <td>
                 <div class="contact-cell">
-                    <img src="./assets/Imgaes/table_call.png" alt="Phone" class="contact-icon">
+                    <img src="./assets/Imgaes/table_call.webp" alt="Phone" class="contact-icon">
                     ${employee.phonePersonal}
                 </div>
             </td>
             <td>
                 <button class="table-view-btn" onclick="viewEmployee(${index})">
-                    <img src="./assets/Imgaes/table_eye.png" alt="View">
+                    <img src="./assets/Imgaes/table_eye.webp" alt="View">
                 </button>
             </td>
             <td>
                 <button class="table-delete-btn" onclick="deleteEmployee(${index})">
-                    <img src="./assets/Imgaes/preview_delete_btn.png" alt="Delete">
+                    <img src="./assets/Imgaes/preview_delete_btn.webp" alt="Delete">
                 </button>
             </td>
         `;

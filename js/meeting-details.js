@@ -617,12 +617,12 @@ function initializeMeetingDetails() {
           </td>
           <td>
             <button class="meeting-view-btn" data-index="${index}">
-              <img src="../assets/imgaes/table_eye.png" alt="View" />
+              <img src="../assets/imgaes/table_eye.webp" alt="View" />
             </button>
           </td>
           <td>
             <button class="meeting-delete-btn" data-index="${index}">
-              <img src="../assets/imgaes/preview_delete_btn.png" alt="Delete" />
+              <img src="../assets/imgaes/preview_delete_btn.webp" alt="Delete" />
             </button>
           </td>
         </tr>
