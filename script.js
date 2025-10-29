@@ -79,6 +79,9 @@ function updateSidebarForUser() {
           item.style.display = "flex";
         }
         break;
+        case "Super Admin":
+       
+        break;
       default:
         item.style.display = "none";
     }
@@ -241,6 +244,21 @@ function initializePageScripts(pageName) {
         console.log("✅ HR page fully initialized");
       }, 200);
       break;
+
+      case "daily-reports":
+      setTimeout(() => {
+        console.log("🚀 Initializing Daily Reports page...");
+        if (typeof initializeDailyReports === "function") {
+          initializeDailyReports();
+        } else {
+          console.error("initializeDailyReports function not found!");
+        }
+        console.log("✅ Daily Reports page initialized");
+      }, 100);
+      break;
+
+      
+  
   }
 }
 

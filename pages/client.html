@@ -1335,6 +1335,241 @@
         </div>
       </div>
     </div>
+
+    <!-- Upload MoM Modal -->
+<div id="uploadMomModal" class="meeting-modal">
+  <div class="meeting-modal-content">
+    <!-- Fixed Header -->
+    <div class="meeting-modal-header">
+      <h2>Meeting Details</h2>
+      <span class="upload-mom-modal-close">&times;</span>
+    </div>
+
+    <!-- Scrollable Body -->
+    <div class="meeting-modal-body">
+      <form id="uploadMomForm" class="meeting-form">
+        <!-- Row 1 -->
+        <div class="meeting-form-row">
+          <div class="meeting-form-group">
+            <label class="meeting-label">
+              Date of Meeting <span class="meeting-required">*</span>
+            </label>
+            <input
+              type="text"
+              name="momMeetingDate"
+              class="meeting-input"
+              placeholder="MM/DD/YYYY"
+              required
+            />
+          </div>
+
+          <div class="meeting-form-group">
+            <label class="meeting-label">
+              Time <span class="meeting-required">*</span>
+            </label>
+            <input
+              type="text"
+              name="momTime"
+              class="meeting-input"
+              placeholder="10:00 - 11:00 AM"
+              required
+            />
+          </div>
+
+          <div class="meeting-form-group">
+            <label class="meeting-label">
+              Order <span class="meeting-required">*</span>
+            </label>
+            <input
+              type="text"
+              name="momOrder"
+              class="meeting-input"
+              placeholder="Enter order"
+              required
+            />
+          </div>
+        </div>
+
+        <!-- Row 2 -->
+        <div class="meeting-form-row">
+          <div class="meeting-form-group">
+            <label class="meeting-label">
+              Meeting/Project Name <span class="meeting-required">*</span>
+            </label>
+            <input
+              type="text"
+              name="momProjectName"
+              class="meeting-input"
+              placeholder="Enter project name"
+              required
+            />
+          </div>
+
+          <div class="meeting-form-group">
+            <label class="meeting-label">
+              Customer Name <span class="meeting-required">*</span>
+            </label>
+            <input
+              type="text"
+              name="momCustomerName"
+              class="meeting-input"
+              placeholder="Enter customer name"
+              required
+            />
+          </div>
+
+          <div class="meeting-form-group">
+            <label class="meeting-label">
+              Department/Division <span class="meeting-required">*</span>
+            </label>
+            <input
+              type="text"
+              name="momDepartment"
+              class="meeting-input"
+              placeholder="Enter department"
+              required
+            />
+          </div>
+        </div>
+
+        <!-- Row 3 -->
+        <div class="meeting-form-row">
+          <div class="meeting-form-group">
+            <label class="meeting-label">
+              E-mail ID <span class="meeting-required">*</span>
+            </label>
+            <input
+              type="email"
+              name="momEmail"
+              class="meeting-input"
+              placeholder="Enter email"
+              required
+            />
+          </div>
+
+          <div class="meeting-form-group">
+            <label class="meeting-label">
+              Phone Number <span class="meeting-required">*</span>
+            </label>
+            <input
+              type="tel"
+              name="momPhone"
+              class="meeting-input"
+              placeholder="+91 789 456 1230"
+              required
+            />
+          </div>
+
+          <div class="meeting-form-group">
+            <label class="meeting-label">
+              Duration <span class="meeting-required">*</span>
+            </label>
+            <input
+              type="text"
+              name="momDuration"
+              class="meeting-input"
+              placeholder="Enter duration"
+              required
+            />
+          </div>
+        </div>
+
+        <!-- Row 4 -->
+       <div class="meeting-form-row">
+  <div class="meeting-form-group">
+    <label class="meeting-label">
+      Attendees <span class="meeting-required">*</span>
+    </label>
+    <div id="momEmployeeDropdownContainer"></div>
+    <input type="hidden" id="momAttendeesHidden" name="momAttendees" required />
+  </div>
+
+  <div class="meeting-form-group">
+    <label class="meeting-label">
+      Location <span class="meeting-required">*</span>
+    </label>
+    <input
+      type="text"
+      name="momLocation"
+      class="meeting-input"
+      placeholder="Coimbatore"
+      required
+    />
+  </div>
+
+  <div class="meeting-form-row-time">
+    <div class="meeting-form-group">
+      <label class="meeting-label">
+        From Time <span class="meeting-required">*</span>
+      </label>
+      <input
+        type="time"
+        name="momFromTime"
+        class="meeting-input meeting-time-input"
+        required
+      />
+    </div>
+
+    <div class="meeting-form-group">
+      <label class="meeting-label">
+        To Time <span class="meeting-required">*</span>
+      </label>
+      <input
+        type="time"
+        name="momToTime"
+        class="meeting-input meeting-time-input"
+        required
+      />
+    </div>
+  </div>
+</div>
+
+        <!-- Row 5 - Meeting Objective -->
+        <div class="meeting-form-row">
+          <div class="meeting-form-group full-width">
+            <label class="meeting-label">
+              Meeting Objective <span class="meeting-required">*</span>
+            </label>
+            <textarea
+              name="momObjective"
+              class="meeting-textarea"
+              rows="3"
+              placeholder="Enter meeting objective"
+              required
+            ></textarea>
+          </div>
+        </div>
+
+        <!-- Row 6 - Conclusion -->
+        <div class="meeting-form-row">
+          <div class="meeting-form-group full-width">
+            <label class="meeting-label">
+              Conclusion <span class="meeting-required">*</span>
+            </label>
+            <textarea
+              name="momConclusion"
+              class="meeting-textarea"
+              rows="3"
+              placeholder="Enter conclusion"
+              required
+            ></textarea>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <!-- Fixed Footer -->
+    <div class="meeting-modal-footer">
+      <button
+        type="button"
+        class="meeting-btn-submit"
+        id="uploadMomSubmitBtn"
+      >
+        Submit
+      </button>
+    </div>
+  </div>
+</div>
   </div>
 
   <div class="tab-content" id="report-database">

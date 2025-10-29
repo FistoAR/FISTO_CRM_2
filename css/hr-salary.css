@@ -12,7 +12,6 @@
 /* Calendar Widget */
 .hr-salary-calendar-widget {
   position: relative;
-  width: 12vw;
 }
 
 .hr-salary-calendar-header {
@@ -660,43 +659,256 @@
   background-color: #d1d5db;
 }
 
-/* ==================== RESPONSIVE DESIGN ==================== */
+/* ==================== COMPLETE RESPONSIVE MEDIA QUERIES FOR HR SALARY ==================== */
 
+/* ==================== TABLET (768px - 1024px) ==================== */
 @media (max-width: 1024px) {
+  /* Header & Calendar */
+  .hr-salary-header {
+    gap: 12px;
+    margin-bottom: 0.875rem;
+  }
+
+  .hr-salary-calendar-widget {
+    max-width: 220px;
+  }
+
+  .hr-salary-calendar-header {
+    font-size: 0.8125rem;
+    padding: 8px 12px;
+  }
+
+  .hr-salary-calendar-label {
+    font-size: 0.875rem;
+  }
+
+  .hr-salary-calendar-dropdown {
+    min-width: 260px;
+    padding: 12px;
+  }
+
+  .hr-salary-calendar-month-year {
+    font-size: 0.9375rem;
+    margin-bottom: 0.625rem;
+  }
+
+  .hr-salary-calendar-nav {
+    font-size: 0.9375rem;
+  }
+
+  .hr-salary-calendar-day-header {
+    font-size: 0.6875rem;
+  }
+
+  .hr-salary-calendar-day {
+    font-size: 0.8125rem;
+    padding: 6px;
+  }
+
+  /* Buttons */
+  .hr-salary-back-btn,
+  .hr-salary-generate-btn {
+    padding: 8px 18px;
+    font-size: 0.9375rem;
+  }
+
+  /* Tables */
+  .hr-salary-list-table th,
+  .hr-salary-detail-table th {
+    padding: 14px 16px;
+    font-size: 0.8125rem;
+  }
+
+  .hr-salary-list-table td,
+  .hr-salary-detail-table td {
+    padding: 14px 16px;
+    font-size: 0.875rem;
+  }
+
+  .hr-salary-click-btn,
+  .hr-salary-view-btn {
+    padding: 6px 16px;
+    font-size: 0.8125rem;
+  }
+
+  .hr-salary-avatar {
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+  }
+
+  .hr-salary-jobrole-badge {
+    font-size: 0.75rem;
+    padding: 4px 12px;
+  }
+
+  /* Modal */
   .hr-salary-modal-content {
-    max-width: 75vw;
+    max-width: 70vw;
+  }
+
+  .hr-salary-modal-header {
+    padding: 16px 24px;
   }
 
   .hr-salary-modal-header h2 {
     font-size: 1.125rem;
   }
 
+  .hr-salary-modal-close {
+    font-size: 24px;
+  }
+
+  .hr-salary-modal-body {
+    padding: 20px;
+  }
+
+  .hr-salary-form-section {
+    padding: 18px;
+    margin-bottom: 15px;
+  }
+
   .hr-salary-section-title {
     font-size: 1rem;
+    margin-bottom: 15px;
+  }
+
+  .hr-salary-section-icon {
+    font-size: 1.1rem;
+  }
+
+  .hr-salary-form-row {
+    gap: 15px;
   }
 
   .hr-salary-label {
-    font-size: 0.875rem;
+    font-size: 0.8125rem;
+    margin-bottom: 6px;
   }
 
   .hr-salary-input,
   .hr-salary-select,
   .hr-salary-textarea {
-    font-size: 0.875rem;
+    padding: 10px 12px;
+    font-size: 0.8125rem;
+  }
+
+  .hr-salary-radio-label {
+    font-size: 0.8125rem;
+  }
+
+  .hr-salary-modal-footer {
+    padding: 16px 24px;
   }
 
   .hr-salary-btn-submit,
   .hr-salary-btn-cancel {
+    padding: 10px 32px;
     font-size: 0.9375rem;
   }
 }
 
-@media (max-width: 768px) {
+/* ==================== MOBILE (481px - 767px) ==================== */
+@media (max-width: 767px) {
+  /* Header & Calendar */
+  .hr-salary-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    margin-bottom: 0.75rem;
+  }
+
+  .hr-salary-calendar-widget {
+    max-width: 100%;
+  }
+
+  .hr-salary-calendar-header {
+    font-size: 0.875rem;
+    padding: 10px 12px;
+  }
+
+  .hr-salary-calendar-dropdown {
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: 280px;
+    padding: 12px;
+  }
+
+  .hr-salary-calendar-month-year {
+    font-size: 0.9375rem;
+  }
+
+  .hr-salary-calendar-day {
+    padding: 8px;
+    font-size: 0.875rem;
+  }
+
+  .hr-salary-calendar-btn img {
+    width: 20px;
+  }
+
+  /* Buttons */
+  .hr-salary-back-btn,
+  .hr-salary-generate-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 10px 20px;
+    font-size: 0.9375rem;
+  }
+
+  /* Tables */
+  .hr-salary-month-list,
+  .hr-salary-detail-view {
+    overflow-x: auto;
+    margin-top: 0.75rem;
+  }
+
+  .hr-salary-list-table,
+  .hr-salary-detail-table {
+    min-width: 800px;
+  }
+
+  .hr-salary-list-table th,
+  .hr-salary-detail-table th {
+    padding: 12px 10px;
+    font-size: 0.75rem;
+    white-space: nowrap;
+  }
+
+  .hr-salary-list-table td,
+  .hr-salary-detail-table td {
+    padding: 12px 10px;
+    font-size: 0.8125rem;
+  }
+
+  .hr-salary-click-btn,
+  .hr-salary-view-btn {
+    padding: 6px 12px;
+    font-size: 0.75rem;
+    white-space: nowrap;
+  }
+
+  .hr-salary-avatar {
+    width: 28px;
+    height: 28px;
+    font-size: 12px;
+  }
+
+  .hr-salary-jobrole-badge {
+    font-size: 0.6875rem;
+    padding: 4px 10px;
+  }
+
+  /* Modal */
+  .hr-salary-modal {
+    padding: 10px;
+  }
+
   .hr-salary-modal-content {
     width: 95%;
     max-width: 95vw;
-    max-height: 95vh;
-    margin: 2.5% auto;
+    margin: 5% auto;
+    max-height: 90vh;
   }
 
   .hr-salary-modal-header {
@@ -708,39 +920,61 @@
   }
 
   .hr-salary-modal-close {
-    font-size: 24px;
+    font-size: 22px;
   }
 
   .hr-salary-modal-body {
-    padding: 18px;
+    padding: 15px;
   }
 
   .hr-salary-form-section {
-    padding: 18px;
-  }
-
-  .hr-salary-form-row {
-    grid-template-columns: 1fr;
-    gap: 14px;
+    padding: 15px;
+    margin-bottom: 12px;
   }
 
   .hr-salary-section-title {
     font-size: 0.9375rem;
+    margin-bottom: 12px;
+  }
+
+  .hr-salary-section-icon {
+    font-size: 1rem;
+  }
+
+  .hr-salary-form-row {
+    grid-template-columns: 1fr;
+    gap: 12px;
   }
 
   .hr-salary-label {
-    font-size: 0.8125rem;
+    font-size: 0.875rem;
+    margin-bottom: 6px;
   }
 
   .hr-salary-input,
   .hr-salary-select,
   .hr-salary-textarea {
-    font-size: 0.8125rem;
     padding: 10px 12px;
+    font-size: 0.875rem;
+  }
+
+  .hr-salary-radio-group {
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
   }
 
   .hr-salary-radio-label {
-    font-size: 0.8125rem;
+    font-size: 0.875rem;
+  }
+
+  .hr-salary-search-results {
+    max-height: 150px;
+  }
+
+  .hr-salary-search-item {
+    padding: 10px 12px;
+    font-size: 0.875rem;
   }
 
   .hr-salary-modal-footer {
@@ -748,42 +982,229 @@
   }
 
   .hr-salary-form-actions {
+    flex-direction: column-reverse;
     width: 100%;
-    flex-direction: column;
   }
 
   .hr-salary-btn-submit,
   .hr-salary-btn-cancel {
     width: 100%;
-    font-size: 0.875rem;
-    padding: 12px 30px;
+    padding: 12px 20px;
+    font-size: 0.9375rem;
   }
 }
 
+/* ==================== SMALL MOBILE (320px - 480px) ==================== */
 @media (max-width: 480px) {
-  .hr-salary-modal-header h2 {
+  /* Header & Calendar */
+  .hr-salary-header {
+    margin-bottom: 0.625rem;
+    gap: 8px;
+  }
+
+  .hr-salary-calendar-dropdown {
+    min-width: calc(100vw - 40px);
+    max-width: 300px;
+    padding: 10px;
+  }
+
+  .hr-salary-calendar-month-year {
     font-size: 0.875rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .hr-salary-calendar-day-header {
+    font-size: 0.625rem;
+    padding: 4px;
+  }
+
+  .hr-salary-calendar-day {
+    padding: 6px;
+    font-size: 0.8125rem;
+  }
+
+  .hr-salary-calendar-actions button {
+    padding: 6px 12px;
+    font-size: 0.75rem;
+  }
+
+  /* Buttons */
+  .hr-salary-back-btn,
+  .hr-salary-generate-btn {
+    padding: 10px 16px;
+    font-size: 0.875rem;
+  }
+
+  /* Tables */
+  .hr-salary-list-table,
+  .hr-salary-detail-table {
+    min-width: 700px;
+  }
+
+  .hr-salary-list-table th,
+  .hr-salary-detail-table th {
+    padding: 10px 8px;
+    font-size: 0.6875rem;
+  }
+
+  .hr-salary-list-table td,
+  .hr-salary-detail-table td {
+    padding: 10px 8px;
+    font-size: 0.75rem;
+  }
+
+  .hr-salary-click-btn,
+  .hr-salary-view-btn {
+    padding: 6px 10px;
+    font-size: 0.6875rem;
+  }
+
+  .hr-salary-avatar {
+    width: 24px;
+    height: 24px;
+    font-size: 11px;
+  }
+
+  .hr-salary-jobrole-badge {
+    font-size: 0.625rem;
+    padding: 3px 8px;
+  }
+
+  /* Modal */
+  .hr-salary-modal-content {
+    width: 98%;
+    max-width: 98vw;
+    margin: 2% auto;
+    border-radius: 10px;
+  }
+
+  .hr-salary-modal-header {
+    padding: 12px 15px;
+    border-radius: 10px 10px 0 0;
+  }
+
+  .hr-salary-modal-header h2 {
+    font-size: 0.9375rem;
+  }
+
+  .hr-salary-modal-close {
+    font-size: 20px;
+  }
+
+  .hr-salary-modal-body {
+    padding: 12px;
+  }
+
+  .hr-salary-form-section {
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: 8px;
   }
 
   .hr-salary-section-title {
     font-size: 0.875rem;
+    margin-bottom: 10px;
     gap: 6px;
   }
 
+  .hr-salary-section-icon {
+    font-size: 0.9rem;
+  }
+
+  .hr-salary-form-row {
+    gap: 10px;
+  }
+
   .hr-salary-label {
-    font-size: 0.75rem;
+    font-size: 0.8125rem;
+    margin-bottom: 5px;
   }
 
   .hr-salary-input,
   .hr-salary-select,
   .hr-salary-textarea {
-    font-size: 0.75rem;
-    padding: 9px 11px;
+    padding: 8px 10px;
+    font-size: 0.8125rem;
+  }
+
+  .hr-salary-radio-group {
+    gap: 10px;
+  }
+
+  .hr-salary-radio-label {
+    font-size: 0.8125rem;
+  }
+
+  .hr-salary-radio {
+    width: 14px;
+    height: 14px;
+  }
+
+  .hr-salary-search-results {
+    max-height: 120px;
+  }
+
+  .hr-salary-search-item {
+    padding: 8px 10px;
+    font-size: 0.8125rem;
+  }
+
+  .hr-salary-modal-footer {
+    padding: 12px 15px;
   }
 
   .hr-salary-btn-submit,
   .hr-salary-btn-cancel {
-    font-size: 0.8125rem;
-    padding: 10px 24px;
+    padding: 10px 16px;
+    font-size: 0.875rem;
+  }
+}
+
+/* ==================== TOUCH DEVICE OPTIMIZATION ==================== */
+@media (hover: none) and (pointer: coarse) {
+  /* Increase touch targets */
+  .hr-salary-back-btn,
+  .hr-salary-generate-btn,
+  .hr-salary-click-btn,
+  .hr-salary-view-btn {
+    min-height: 44px;
+  }
+
+  .hr-salary-calendar-day {
+    min-width: 36px;
+    min-height: 36px;
+  }
+
+  .hr-salary-input,
+  .hr-salary-select {
+    min-height: 44px;
+  }
+
+  /* Remove hover effects on touch */
+  .hr-salary-back-btn:hover,
+  .hr-salary-generate-btn:hover,
+  .hr-salary-click-btn:hover,
+  .hr-salary-view-btn:hover {
+    transform: none;
+  }
+
+  /* Add active states */
+  .hr-salary-back-btn:active,
+  .hr-salary-generate-btn:active,
+  .hr-salary-click-btn:active,
+  .hr-salary-view-btn:active {
+    transform: scale(0.97);
+  }
+}
+
+/* ==================== LANDSCAPE MOBILE ==================== */
+@media (max-width: 767px) and (orientation: landscape) {
+  .hr-salary-modal-content {
+    max-height: 85vh;
+  }
+
+  .hr-salary-calendar-dropdown {
+    max-height: 70vh;
+    overflow-y: auto;
   }
 }

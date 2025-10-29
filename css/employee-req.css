@@ -170,6 +170,19 @@
         font-size: 1.75rem;
     }
 
+     .employee-request-tabs {
+        gap: 0.625rem;
+        padding: 0.5rem;
+        margin: 0.875rem 0;
+        border-radius: 8px;
+    }
+
+    .employee-request-tab-button {
+        padding: 0.625rem 1.25rem;
+        font-size: clamp(0.75rem, 0.9vw, 0.9375rem);
+        border-radius: 8px;
+    }
+
     .employee-request-tab-button {
         font-size: 1.125rem;
         padding: 10px 25px;
@@ -212,25 +225,30 @@
         margin-bottom: 20px;
     }
 
+     .employee-request-tabs {
+        gap: 0.5rem;
+        padding: 0.5rem;
+        margin: 0.75rem 0;
+        border-radius: 8px;
+        /* Option 1: Grid layout for mobile */
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* 2 columns on mobile */
+    }
+
+    .employee-request-tab-button {
+        padding: 0.625rem 1rem;
+        font-size: clamp(0.75rem, 0.85vw, 0.875rem);
+        border-radius: 6px;
+        text-align: center;
+        justify-content: center;
+    }
+
     .employee-request-section-title {
         font-size: 1.5rem;
         margin-bottom: 20px;
     }
 
-    .employee-request-tabs {
-        gap: 12px;
-        margin-bottom: 30px;
-        justify-content: center;
-    }
-
-    .employee-request-tab-button {
-        font-size: 1rem;
-        padding: 10px 20px;
-        flex: 1;
-        min-width: 120px;
-        text-align: center;
-    }
-
+   
     .employee-request-field-label {
         font-size: 0.938rem;
         margin-bottom: 6px;
@@ -277,21 +295,25 @@
         margin-bottom: 18px;
     }
 
-    .employee-request-section-title {
-        font-size: 1.25rem;
-        margin-bottom: 18px;
-    }
-
-    .employee-request-tabs {
-        gap: 10px;
-        margin-bottom: 25px;
+     .employee-request-tabs {
+        gap: 0.5rem;
+        padding: 0.5rem;
+        margin: 0.625rem 0;
+        border-radius: 6px;
+        /* Option: Single column on very small screens */
+        grid-template-columns: 1fr; /* Stack vertically */
     }
 
     .employee-request-tab-button {
-        font-size: 0.875rem;
-        padding: 10px 15px;
-        min-width: 100px;
-        border-radius: 25px;
+        padding: 0.625rem 0.75rem;
+        font-size: clamp(0.6875rem, 0.8vw, 0.8125rem);
+        border-radius: 6px;
+        width: 100%; /* Full width buttons */
+    }
+
+    .employee-request-section-title {
+        font-size: 1.25rem;
+        margin-bottom: 18px;
     }
 
     .employee-request-field-label {
@@ -345,18 +367,6 @@
     .employee-request-section-title {
         font-size: 1.125rem;
         margin-bottom: 15px;
-    }
-
-    .employee-request-tabs {
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    .employee-request-tab-button {
-        font-size: 0.813rem;
-        padding: 12px 15px;
-        width: 100%;
-        min-width: unset;
     }
 
     .employee-request-field-label {

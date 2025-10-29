@@ -359,7 +359,7 @@
 
 .customer-contact-row-title {
     color: #333;
-    font-size: 1vw;
+    font-size: clamp(0.75rem, 1vw, 1rem);
     font-family: 'Gilroy-Medium', sans-serif;
 }
 
@@ -563,6 +563,21 @@
         width: 18px;
         height: 18px;
     }
+        .customer-btn-add-contact {
+        padding: 0.625rem 0.75rem;
+        margin-bottom: 0.875rem;
+        font-size: 0.8125rem;
+        border-radius: 8px;
+    }
+
+    .customer-contact-delete-btn {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.6875rem;
+    }
+
+    .customer-contact-delete-btn img {
+        max-width: 20px;
+    }
 }
 
 /* Mobile (481px - 767px) */
@@ -671,6 +686,22 @@
         width: 16px;
         height: 16px;
     }
+        .customer-btn-add-contact {
+        padding: 0.5rem 0.625rem;
+        margin-bottom: 0.75rem;
+        font-size: 0.75rem;
+        border-radius: 6px;
+    }
+
+    .customer-contact-delete-btn {
+        padding: 0.375rem 0.625rem;
+        font-size: 0.625rem;
+        border-radius: 3px;
+    }
+
+    .customer-contact-delete-btn img {
+        max-width: 18px;
+    }
 }
 
 /* Small Mobile (320px - 480px) */
@@ -731,5 +762,24 @@
     .customer-table-delete-btn img {
         width: 14px;
         height: 14px;
+    }
+        .customer-btn-add-contact {
+        padding: 0.5rem;
+        margin-bottom: 0.625rem;
+        font-size: 0.6875rem;
+        border-radius: 6px;
+    }
+
+    .customer-contact-delete-btn {
+        padding: 0.375rem 0.5rem;
+        font-size: 0.625rem;
+    }
+
+    .customer-contact-delete-btn img {
+        max-width: 16px;
+    }
+
+    .customer-contact-delete-btn:hover {
+        transform: scale(1.05); /* Reduced scale for mobile */
     }
 }

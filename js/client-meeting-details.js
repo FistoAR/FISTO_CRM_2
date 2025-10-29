@@ -3,11 +3,15 @@ function initializeMeetingDetails() {
 
   const modal = document.getElementById("meetingModal");
   const viewModal = document.getElementById("meetingViewModal");
+  const uploadMomModal = document.getElementById("uploadMomModal");
   const openBtn = document.querySelector(".meeting-details-add-btn");
   const closeBtn = document.querySelector(".meeting-modal-close");
   const viewCloseBtn = document.querySelector(".meeting-view-modal-close");
+  const uploadMomCloseBtn = document.querySelector(".upload-mom-modal-close");
   const submitBtn = document.getElementById("meetingSubmitBtn");
+  const uploadMomSubmitBtn = document.getElementById("uploadMomSubmitBtn");
   const form = document.getElementById("meetingForm");
+  const uploadMomForm = document.getElementById("uploadMomForm");
   const tableBody = document.getElementById("meeting-detailsTableBody");
 
   // Check if required elements exist
@@ -18,6 +22,11 @@ function initializeMeetingDetails() {
 
   if (!viewModal) {
     console.error("View modal not found!");
+    return;
+  }
+
+  if (!uploadMomModal) {
+    console.error("Upload MoM modal not found!");
     return;
   }
 
@@ -52,6 +61,7 @@ function initializeMeetingDetails() {
       meetingTitle: "Q3 Review",
       projectName: "CRM Development",
       momFile: null,
+      momData: null,
       attendees: ["EMP001", "EMP002", "EMP003"],
       meetingLinks: ["https://meet.google.com/abc-defg-hij"],
       meetingMode: "Remote",
@@ -67,6 +77,7 @@ function initializeMeetingDetails() {
       meetingTitle: "Demo Session",
       projectName: "E-commerce Platform",
       momFile: null,
+      momData: null,
       attendees: ["EMP101", "EMP102"],
       meetingLinks: ["https://zoom.us/j/123456789"],
       meetingMode: "Onsite",
@@ -82,6 +93,7 @@ function initializeMeetingDetails() {
       meetingTitle: "Sprint 5 Planning",
       projectName: "Mobile App",
       momFile: null,
+      momData: null,
       attendees: ["EMP201", "EMP202", "EMP203"],
       meetingLinks: [
         "https://teams.microsoft.com/meeting123",
@@ -100,6 +112,7 @@ function initializeMeetingDetails() {
       meetingTitle: "Sprint 5 Planning",
       projectName: "Mobile App",
       momFile: null,
+      momData: null,
       attendees: ["EMP201", "EMP202", "EMP203"],
       meetingLinks: [
         "https://teams.microsoft.com/meeting123",
@@ -112,22 +125,25 @@ function initializeMeetingDetails() {
   ];
 
   let editingIndex = -1;
+  let currentUploadIndex = -1;
   let meetingLinks = [""]; // Store links as array
 
   renderTable();
 
+  // Open Add Meeting Modal
   if (openBtn) {
     openBtn.addEventListener("click", function (e) {
       e.preventDefault();
       modal.classList.add("active");
-      document.body.style.overflow = "hidden"; // Prevent body scroll
+      document.body.style.overflow = "hidden";
       editingIndex = -1;
-      meetingLinks = [""]; // Reset links
+      meetingLinks = [""];
       renderMeetingLinks();
       initializeEmployeeDropdown();
     });
   }
 
+  // Close buttons
   if (closeBtn) {
     closeBtn.addEventListener("click", closeModal);
   }
@@ -136,6 +152,11 @@ function initializeMeetingDetails() {
     viewCloseBtn.addEventListener("click", closeViewModal);
   }
 
+  if (uploadMomCloseBtn) {
+    uploadMomCloseBtn.addEventListener("click", closeUploadMomModal);
+  }
+
+  // Click outside to close modals
   if (modal) {
     modal.addEventListener("click", function (e) {
       if (e.target === modal) {
@@ -152,9 +173,17 @@ function initializeMeetingDetails() {
     });
   }
 
+  if (uploadMomModal) {
+    uploadMomModal.addEventListener("click", function (e) {
+      if (e.target === uploadMomModal) {
+        closeUploadMomModal();
+      }
+    });
+  }
+
   function closeModal() {
     modal.classList.remove("active");
-    document.body.style.overflow = ""; // Restore body scroll
+    document.body.style.overflow = "";
     form.reset();
     editingIndex = -1;
     meetingLinks = [""];
@@ -162,10 +191,17 @@ function initializeMeetingDetails() {
 
   function closeViewModal() {
     viewModal.classList.remove("active");
-    document.body.style.overflow = ""; // Restore body scroll
+    document.body.style.overflow = "";
   }
 
-  // FIXED: Employee Dropdown - Hide selected, keep dropdown stable
+  function closeUploadMomModal() {
+    uploadMomModal.classList.remove("active");
+    document.body.style.overflow = "";
+    uploadMomForm.reset();
+    currentUploadIndex = -1;
+  }
+
+  // Employee Dropdown for Add Meeting Modal
   function initializeEmployeeDropdown() {
     const container = document.getElementById("employeeDropdownContainer");
     if (!container) {
@@ -231,7 +267,7 @@ function initializeMeetingDetails() {
               );
             }
             renderSelectedEmployees();
-            renderEmployeeList(searchInput.value); // Re-render to hide/show
+            renderEmployeeList(searchInput.value);
           });
         });
     }
@@ -274,7 +310,7 @@ function initializeMeetingDetails() {
           employeeList.classList.remove("active");
         } else {
           employeeList.classList.add("active");
-          renderEmployeeList(""); // Show all unselected
+          renderEmployeeList("");
         }
       });
 
@@ -303,7 +339,145 @@ function initializeMeetingDetails() {
     renderEmployeeList();
   }
 
-  // FIXED: Meeting Links - Preserve values and add delete buttons
+  // Employee Dropdown for Upload MoM Modal
+  function initializeMomEmployeeDropdown(preSelectedEmployees = []) {
+    const container = document.getElementById("momEmployeeDropdownContainer");
+    if (!container) {
+      console.error("MoM Employee dropdown container not found!");
+      return;
+    }
+
+    container.innerHTML = `
+      <div class="meeting-employee-dropdown">
+        <input 
+          type="text" 
+          id="momEmployeeSearch" 
+          class="meeting-input meeting-search-input" 
+          placeholder="Search Employee IDs..."
+          readonly
+        />
+        <div class="meeting-employee-list" id="momEmployeeList"></div>
+        <div class="meeting-selected-employees" id="momSelectedEmployees"></div>
+      </div>
+    `;
+
+    const searchInput = document.getElementById("momEmployeeSearch");
+    const employeeList = document.getElementById("momEmployeeList");
+    const selectedEmployeesContainer = document.getElementById("momSelectedEmployees");
+    let selectedEmployees = [...preSelectedEmployees]; // Pre-select employees
+
+    // Render employee list with hiding selected ones
+    function renderEmployeeList(filter = "") {
+      const filtered = employeeIds.filter((id) =>
+        id.toLowerCase().includes(filter.toLowerCase())
+      );
+
+      employeeList.innerHTML = filtered
+        .map((id) => {
+          const isSelected = selectedEmployees.includes(id);
+          return `
+        <div class="meeting-employee-item ${
+          isSelected ? "hidden" : ""
+        }" data-id="${id}">
+          <input type="checkbox" id="mom-emp-${id}" ${
+            isSelected ? "checked" : ""
+          } />
+          <label for="mom-emp-${id}">${id}</label>
+        </div>
+      `;
+        })
+        .join("");
+
+      // Add click handlers
+      document
+        .querySelectorAll("#momEmployeeList .meeting-employee-item input")
+        .forEach((cb) => {
+          cb.addEventListener("change", function () {
+            const empId = this.closest(".meeting-employee-item").dataset.id;
+            if (this.checked) {
+              if (!selectedEmployees.includes(empId)) {
+                selectedEmployees.push(empId);
+              }
+            } else {
+              selectedEmployees = selectedEmployees.filter(
+                (id) => id !== empId
+              );
+            }
+            renderSelectedEmployees();
+            renderEmployeeList(searchInput.value);
+          });
+        });
+    }
+
+    // Render selected employees as badges
+    function renderSelectedEmployees() {
+      selectedEmployeesContainer.innerHTML = selectedEmployees
+        .map(
+          (id) => `
+        <span class="meeting-employee-badge">
+          ${id}
+          <button type="button" class="meeting-remove-emp" data-id="${id}">×</button>
+        </span>
+      `
+        )
+        .join("");
+
+      // Add remove handlers
+      document.querySelectorAll("#momSelectedEmployees .meeting-remove-emp").forEach((btn) => {
+        btn.addEventListener("click", function () {
+          const empId = this.dataset.id;
+          selectedEmployees = selectedEmployees.filter((id) => id !== empId);
+          renderEmployeeList(searchInput.value);
+          renderSelectedEmployees();
+        });
+      });
+
+      // Store in hidden input
+      const hiddenInput = document.getElementById("momAttendeesHidden");
+      if (hiddenInput) {
+        hiddenInput.value = selectedEmployees.join(",");
+      }
+    }
+
+    if (searchInput) {
+      // Toggle dropdown on click
+      searchInput.addEventListener("click", function () {
+        const isActive = employeeList.classList.contains("active");
+        if (isActive) {
+          employeeList.classList.remove("active");
+        } else {
+          employeeList.classList.add("active");
+          renderEmployeeList("");
+        }
+      });
+
+      // Make input editable for search
+      searchInput.removeAttribute("readonly");
+      searchInput.addEventListener("input", function () {
+        employeeList.classList.add("active");
+        renderEmployeeList(this.value);
+      });
+
+      // Open dropdown on focus
+      searchInput.addEventListener("focus", function () {
+        employeeList.classList.add("active");
+        renderEmployeeList(this.value);
+      });
+    }
+
+    // Close dropdown when clicking outside
+    document.addEventListener("click", function (e) {
+      if (!container.contains(e.target)) {
+        employeeList.classList.remove("active");
+      }
+    });
+
+    // Initial render
+    renderEmployeeList();
+    renderSelectedEmployees(); // Render pre-selected employees
+  }
+
+  // Meeting Links Management
   function renderMeetingLinks() {
     const container = document.getElementById("meetingLinksContainer");
     if (!container) return;
@@ -369,6 +543,7 @@ function initializeMeetingDetails() {
     });
   }
 
+  // Submit Add Meeting Form
   if (submitBtn) {
     submitBtn.addEventListener("click", function (e) {
       e.preventDefault();
@@ -393,8 +568,9 @@ function initializeMeetingDetails() {
           fromTime: formData.get("fromTime"),
           toTime: formData.get("toTime"),
           meetingTitle: formData.get("meetingTitle"),
-          projectName: "N/A", // Default value since removed from form
+          projectName: "N/A",
           momFile: null,
+          momData: null,
           attendees: attendees,
           meetingLinks: validLinks,
           meetingMode: formData.get("meetingMode"),
@@ -416,6 +592,7 @@ function initializeMeetingDetails() {
     });
   }
 
+  // Table event handlers
   if (tableBody) {
     tableBody.addEventListener("click", function (e) {
       const viewBtn = e.target.closest(".meeting-view-btn");
@@ -424,7 +601,7 @@ function initializeMeetingDetails() {
 
       if (viewBtn) {
         const index = parseInt(viewBtn.getAttribute("data-index"));
-        console.log("View button clicked for index:", index); // Debug log
+        console.log("View button clicked for index:", index);
         openViewModal(index);
       } else if (deleteBtn) {
         const index = parseInt(deleteBtn.getAttribute("data-index"));
@@ -436,34 +613,115 @@ function initializeMeetingDetails() {
     });
   }
 
+  // Handle Upload MoM Button Click
   function handleFileUpload(index) {
-    const fileInput = document.createElement("input");
-    fileInput.type = "file";
-    fileInput.accept = ".pdf,.doc,.docx";
-    fileInput.onchange = function (e) {
-      if (e.target.files.length > 0) {
-        meetings[index].momFile = e.target.files[0].name;
-        renderTable();
-        alert(`File "${e.target.files[0].name}" selected for upload!`);
+    currentUploadIndex = index;
+    const meeting = meetings[index];
+
+    // Open the Upload MoM modal
+    uploadMomModal.classList.add("active");
+    document.body.style.overflow = "hidden";
+
+    // Pre-fill form with existing meeting data
+    if (uploadMomForm) {
+      uploadMomForm.reset();
+
+      // Pre-populate fields from meeting data
+      if (meeting.momData) {
+        // If MoM data exists, fill all fields
+        const momData = meeting.momData;
+        uploadMomForm.elements["momMeetingDate"].value = momData.meetingDate || "";
+        uploadMomForm.elements["momTime"].value = momData.time || "";
+        uploadMomForm.elements["momOrder"].value = momData.order || "";
+        uploadMomForm.elements["momProjectName"].value = momData.projectName || "";
+        uploadMomForm.elements["momCustomerName"].value = momData.customerName || "";
+        uploadMomForm.elements["momDepartment"].value = momData.department || "";
+        uploadMomForm.elements["momEmail"].value = momData.email || "";
+        uploadMomForm.elements["momPhone"].value = momData.phone || "";
+        uploadMomForm.elements["momDuration"].value = momData.duration || "";
+        uploadMomForm.elements["momLocation"].value = momData.location || "";
+        uploadMomForm.elements["momFromTime"].value = momData.fromTime || "";
+        uploadMomForm.elements["momToTime"].value = momData.toTime || "";
+        uploadMomForm.elements["momObjective"].value = momData.objective || "";
+        uploadMomForm.elements["momConclusion"].value = momData.conclusion || "";
+        
+        // Initialize employee dropdown with existing attendees
+        const existingAttendees = momData.attendees ? momData.attendees.split(",") : [];
+        initializeMomEmployeeDropdown(existingAttendees);
+      } else {
+        // Pre-populate with basic meeting data
+        uploadMomForm.elements["momMeetingDate"].value = meeting.dateOfMeeting || "";
+        uploadMomForm.elements["momTime"].value = `${meeting.fromTime} - ${meeting.toTime}` || "";
+        uploadMomForm.elements["momProjectName"].value = meeting.projectName || "";
+        uploadMomForm.elements["momDuration"].value = meeting.duration ? `${meeting.duration} minutes` : "";
+        uploadMomForm.elements["momFromTime"].value = meeting.fromTime || "";
+        uploadMomForm.elements["momToTime"].value = meeting.toTime || "";
+        
+        // Initialize employee dropdown with meeting's attendees
+        initializeMomEmployeeDropdown(meeting.attendees || []);
       }
-    };
-    fileInput.click();
+    }
   }
 
+  // Submit Upload MoM Form
+  if (uploadMomSubmitBtn) {
+    uploadMomSubmitBtn.addEventListener("click", function (e) {
+      e.preventDefault();
+
+      if (uploadMomForm.checkValidity()) {
+        const formData = new FormData(uploadMomForm);
+
+        // Get attendees from hidden input
+        const attendeesValue = document.getElementById("momAttendeesHidden")?.value || "";
+
+        // Store MoM data in the meeting object
+        const momData = {
+          meetingDate: formData.get("momMeetingDate"),
+          time: formData.get("momTime"),
+          order: formData.get("momOrder"),
+          projectName: formData.get("momProjectName"),
+          customerName: formData.get("momCustomerName"),
+          department: formData.get("momDepartment"),
+          email: formData.get("momEmail"),
+          phone: formData.get("momPhone"),
+          duration: formData.get("momDuration"),
+          attendees: attendeesValue, // Comma-separated employee IDs
+          location: formData.get("momLocation"),
+          fromTime: formData.get("momFromTime"),
+          toTime: formData.get("momToTime"),
+          objective: formData.get("momObjective"),
+          conclusion: formData.get("momConclusion"),
+        };
+
+        // Update the meeting with MoM data
+        if (currentUploadIndex !== -1) {
+          meetings[currentUploadIndex].momData = momData;
+          meetings[currentUploadIndex].momFile = "Meeting_Minutes.pdf";
+
+          alert("Meeting Minutes uploaded successfully!");
+          closeUploadMomModal();
+          renderTable();
+        }
+      } else {
+        uploadMomForm.reportValidity();
+      }
+    });
+  }
+
+  // Open View Modal
   function openViewModal(index) {
     console.log("Opening view modal for index:", index);
     console.log("Meeting data:", meetings[index]);
 
     const meeting = meetings[index];
 
-    // Check if view modal exists
     if (!viewModal) {
       console.error("View modal element not found!");
       alert("Error: View modal not found in the page.");
       return;
     }
 
-    // Populate basic information with error handling
+    // Populate basic information
     try {
       const titleEl = document.getElementById("viewMeetingTitle");
       const dateEl = document.getElementById("viewMeetingDate");
@@ -496,8 +754,6 @@ function initializeMeetingDetails() {
       const attendeesContainer = document.getElementById(
         "viewAttendeesContainer"
       );
-      console.log("Attendees container found:", attendeesContainer);
-      console.log("Meeting attendees:", meeting.attendees);
 
       if (attendeesContainer) {
         if (meeting.attendees && meeting.attendees.length > 0) {
@@ -507,31 +763,21 @@ function initializeMeetingDetails() {
             )
             .join("");
 
-          console.log("Generated badges HTML:", badgesHTML);
           attendeesContainer.innerHTML = badgesHTML;
-          console.log("Attendees populated successfully");
         } else {
           attendeesContainer.innerHTML =
             '<span style="color: #999; font-style: italic;">No attendees selected</span>';
-          console.log("No attendees to display");
         }
-      } else {
-        console.error(
-          "❌ Attendees container not found! Check your HTML for element with id='viewAttendeesContainer'"
-        );
-        alert("Error: Attendees container not found in the modal.");
       }
     } catch (error) {
       console.error("Error populating attendees:", error);
     }
 
-    // Populate meeting links as CLICKABLE links
+    // Populate meeting links
     try {
       const linksContainer = document.getElementById(
         "viewMeetingLinksContainer"
       );
-      console.log("Links container found:", linksContainer);
-      console.log("Meeting links:", meeting.meetingLinks);
 
       if (linksContainer) {
         if (meeting.meetingLinks && meeting.meetingLinks.length > 0) {
@@ -552,29 +798,93 @@ function initializeMeetingDetails() {
             )
             .join("");
 
-          console.log("Generated links HTML:", linksHTML);
           linksContainer.innerHTML = linksHTML;
-          console.log("Links populated successfully");
         } else {
           linksContainer.innerHTML = "";
-          console.log("No links to display");
         }
-      } else {
-        console.error(
-          "❌ Links container not found! Check your HTML for element with id='viewMeetingLinksContainer'"
-        );
       }
     } catch (error) {
       console.error("Error populating links:", error);
     }
 
+    // Populate MoM data if available
+    try {
+      const momContainer = document.getElementById("viewMomDataContainer");
+      
+      if (momContainer) {
+        if (meeting.momData) {
+          const momData = meeting.momData;
+          
+          // Parse attendees
+          const momAttendees = momData.attendees ? momData.attendees.split(",").filter(id => id) : [];
+          const attendeesBadges = momAttendees.length > 0 
+            ? momAttendees.map(id => `<span class="meeting-attendee-badge-view">${id}</span>`).join("")
+            : '<span style="color: #999; font-style: italic;">No attendees</span>';
+          
+          const momHTML = `
+            <div class="mom-data-section">
+              <h3 style="color: #0052cc; margin-bottom: 15px;">Meeting Minutes Details</h3>
+              
+              <div class="mom-data-grid">
+                <div class="mom-data-field">
+                  <label>Customer Name:</label>
+                  <p>${momData.customerName || "N/A"}</p>
+                </div>
+                <div class="mom-data-field">
+                  <label>Department/Division:</label>
+                  <p>${momData.department || "N/A"}</p>
+                </div>
+                <div class="mom-data-field">
+                  <label>Email:</label>
+                  <p>${momData.email || "N/A"}</p>
+                </div>
+                <div class="mom-data-field">
+                  <label>Phone:</label>
+                  <p>${momData.phone || "N/A"}</p>
+                </div>
+                <div class="mom-data-field">
+                  <label>Location:</label>
+                  <p>${momData.location || "N/A"}</p>
+                </div>
+                <div class="mom-data-field">
+                  <label>Order:</label>
+                  <p>${momData.order || "N/A"}</p>
+                </div>
+              </div>
+              
+              <div class="mom-data-full">
+                <div class="mom-data-field">
+                  <label>Attendees:</label>
+                  <div class="mom-attendees-badges">
+                    ${attendeesBadges}
+                  </div>
+                </div>
+                <div class="mom-data-field">
+                  <label>Meeting Objective:</label>
+                  <p>${momData.objective || "N/A"}</p>
+                </div>
+                <div class="mom-data-field">
+                  <label>Conclusion:</label>
+                  <p>${momData.conclusion || "N/A"}</p>
+                </div>
+              </div>
+            </div>
+          `;
+          momContainer.innerHTML = momHTML;
+        } else {
+          momContainer.innerHTML = '<p style="color: #999; font-style: italic; text-align: center;">No Meeting Minutes uploaded yet.</p>';
+        }
+      }
+    } catch (error) {
+      console.error("Error populating MoM data:", error);
+    }
+
     // Show modal
-    console.log("Showing view modal...");
     viewModal.classList.add("active");
     document.body.style.overflow = "hidden";
-    console.log("View modal opened successfully!");
   }
 
+  // Delete Meeting
   function deleteMeeting(index) {
     if (confirm("Are you sure you want to delete this meeting?")) {
       meetings.splice(index, 1);
@@ -585,6 +895,7 @@ function initializeMeetingDetails() {
     }
   }
 
+  // Render Table
   function renderTable() {
     if (!tableBody) return;
 
@@ -611,8 +922,8 @@ function initializeMeetingDetails() {
           <td>${meeting.meetingTitle}</td>
           <td>${meeting.projectName}</td>
           <td>
-            <button class="meeting-upload-btn" data-index="${index}">
-              <span>+</span> Add
+            <button class="meeting-upload-btn ${meeting.momData ? 'uploaded' : ''}" data-index="${index}">
+              ${meeting.momData ? '<img src="../assets/imgaes/tabler_eye.png" alt="View" /> View ' : '<img src="../assets/imgaes/plus_btn.webp" alt="View" /> Add'}
             </button>
           </td>
           <td>

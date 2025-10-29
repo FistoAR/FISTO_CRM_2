@@ -58,6 +58,12 @@ const employees = [
     password: "1234",
     name: "Luffy",
     designation: "Junior Developer"
+  },
+  {
+    employeeId: "FST000",
+    password: "1234",
+    name: "Shanks",
+    designation: "Super Admin"
   }
 ];
 

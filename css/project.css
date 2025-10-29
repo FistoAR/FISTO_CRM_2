@@ -80,7 +80,7 @@
     width: 15vw;
     font-family: 'Gilroy-Regular', sans-serif;
     background-color: #DFDFDF;
-    background-image: url('../assets/imgaes/search.png');
+    background-image: url('../assets/imgaes/search.webp');
     background-repeat: no-repeat;
     background-position: 15px center;
     background-size: 20px;
@@ -1255,7 +1255,7 @@
 }
 
 .project-tasks-header h3 {
-    font-size: 1vw;
+    font-size: clamp(0.875rem, 1vw, 1.125rem);
     font-family: 'Gilroy-Bold', sans-serif;
     color: #000;
     margin: 0;
@@ -3125,6 +3125,29 @@
         gap: 1rem;
     }
 
+      .add-contact-btn {
+        padding: 0.625rem 0.75rem;
+        margin-bottom: 0.875rem;
+        font-size: 0.8125rem;
+        border-radius: 8px;
+    }
+
+    .add-contact-btn:hover {
+        transform: scale(1.08);
+    }
+
+    .remove-contact-btn {
+        border-radius: 8px;
+    }
+
+    .remove-contact-btn img {
+        width: 22px;
+    }
+
+    .remove-contact-btn:hover {
+        transform: scale(1.08);
+    }
+
     .contact-form-row {
         grid-template-columns: 1fr;
     }
@@ -3156,6 +3179,18 @@
     .btn-secondary {
         padding: 0.75rem 2rem;
         font-size: 0.875rem;
+    }
+    .task-card .task-card-summary {
+        gap: 1.25rem;
+        font-size: 0.875rem;
+        padding: 0.5rem;
+        border-radius: 6px;
+    }
+
+    .task-card-summary .badge {
+        padding: 6px 10px;
+        font-size: 0.8125rem;
+        border-radius: 25px;
     }
 }
 
@@ -3287,6 +3322,30 @@
         margin-bottom: 0.875rem;
     }
 
+     .add-contact-btn {
+        padding: 0.625rem;
+        margin-bottom: 0.75rem;
+        font-size: 0.875rem;
+        border-radius: 8px;
+    }
+
+    .add-contact-btn:hover {
+        transform: scale(1.05); /* Reduced scale for mobile */
+    }
+
+    .remove-contact-btn {
+        border-radius: 6px;
+        padding: 0.25rem;
+    }
+
+    .remove-contact-btn img {
+        width: 20px;
+    }
+
+    .remove-contact-btn:hover {
+        transform: scale(1.05);
+    }
+
     .form-group label {
         font-size: 0.8125rem;
         margin-bottom: 0.5rem;
@@ -3341,6 +3400,20 @@
 
     .success-toast.show {
         right: 10px;
+    }
+
+    .task-card .task-card-summary {
+        gap: 1rem;
+        font-size: 0.875rem;
+        padding: 0.5rem;
+        flex-wrap: wrap; /* Allow wrapping on mobile */
+        border-radius: 6px;
+    }
+
+    .task-card-summary .badge {
+        padding: 6px 10px;
+        font-size: 0.8125rem;
+        border-radius: 20px;
     }
 
 }
@@ -3439,9 +3512,10 @@
 
     .add-contact-btn,
     .remove-contact-btn {
-        width: 35px;
-        height: 35px;
-        font-size: 18px;
+        padding: 0.625rem;
+        margin-bottom: 0.75rem;
+        font-size: 0.5rem;
+        border-radius: 8px;
     }
 
     .project-table .view-btn,
@@ -3529,10 +3603,6 @@
     }
 
     /* Tasks */
-    .project-tasks-header h3 {
-        font-size: 16px;
-    }
-
 
     .Taskproject-search-filter-section {
         flex-wrap: wrap;
@@ -3762,10 +3832,6 @@
     .Taskproject-filter-btn {
         width: 100%;
         justify-content: center;
-    }
-
-    .project-task-add-btn {
-        width: 100%;
     }
 
     .project-tasks-table-wrapper {
@@ -4051,10 +4117,6 @@
     .project-tasks-header {
         flex-direction: column;
         gap: 10px;
-    }
-
-    .project-tasks-header h3 {
-        font-size: 14px;
     }
 
     .Taskproject-search-filter-section {
